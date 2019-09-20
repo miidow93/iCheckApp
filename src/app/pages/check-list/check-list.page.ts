@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { CheckListService } from 'src/app/core/services/check-list.service';
+import { CheckListService } from 'src/app/core/services/check-list/check-list.service';
+import { Conducteur } from 'src/app/shared/models/conducteur';
+import { Constants } from 'src/app/shared/constants';
+import { EnginService } from 'src/app/core/services/engin/engin.service';
+import { Engin } from 'src/app/shared/models/engin';
 
 @Component({
   selector: 'app-check-list',
@@ -8,10 +12,20 @@ import { CheckListService } from 'src/app/core/services/check-list.service';
 })
 export class CheckListPage implements OnInit {
 
-  constructor(private checkListService: CheckListService) { }
+  conducteur: Conducteur;
+  engins: Engin[];
+  constructor(private checkListService: CheckListService, private enginService: EnginService) { }
 
   ngOnInit() {
-    this.checkListService.getAllCheckList().subscribe(res => console.log(res[2].type.type));
+    this.enginService.getEngins().subscribe(res => { this.engins = res; console.log(res); });
   }
 
+  createImagePath(serverPath: string) {
+    return `${Constants.serverImg}${serverPath}`;
+    // return `http://localhost:4772/${serverPath}`;
+  }
+
+  onClick(imageEngin) {
+    console.log(imageEngin);
+  }
 }

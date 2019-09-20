@@ -1,37 +1,38 @@
 <ion-app>
-  <ion-menu side="start" contentId="main" menuId="first">
-    <ion-header>
-      <ion-toolbar translucent color="primary">
-        <ion-title>Menu</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content>
-      <ion-list>
-        <ion-item button [routerLink]="['/check-list']">
-          <fa-icon [icon]="faClipboardList" size="2x" slot="start" style="margin-left: 3%"></fa-icon>
-          <ion-label>Check List</ion-label>
-        </ion-item>
-        <ion-item button [routerLink]="['/home']">
-          <fa-icon [icon]="faUser" size="2x" slot="start" style="margin-left: 3%"></fa-icon>
-          <ion-label>Conducteur</ion-label>
-        </ion-item>
-        <ion-item button [routerLink]="['/check-list']">
-          <fa-icon [icon]="faTruck" size="2x" slot="start"></fa-icon>
-          <ion-label>Tracteur</ion-label>
-        </ion-item>
-        <ion-item button [routerLink]="['/home']">
-          <fa-icon [icon]="faTruckLoading" size="2x" slot="start"></fa-icon>
-          <ion-label>Attelage</ion-label>
-        </ion-item>
-      </ion-list>
-    </ion-content>
-  </ion-menu>
-
-  <div style="height: 88vh;">
-    <ion-router-outlet id="main" main></ion-router-outlet>
-  </div>
-
   <div class="ion-page" main>
+    <ion-menu side="start" contentId="main" menuId="first">
+      <ion-header>
+        <ion-toolbar translucent color="primary">
+          <ion-title>Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-item button [routerLink]="['/check-list']">
+            <fa-icon [icon]="faClipboardList" size="2x" slot="start" style="margin-left: 3%"></fa-icon>
+            <ion-label>Check List</ion-label>
+          </ion-item>
+          <ion-item button [routerLink]="['/home']">
+            <fa-icon [icon]="faUser" size="2x" slot="start" style="margin-left: 3%"></fa-icon>
+            <ion-label>Conducteur</ion-label>
+          </ion-item>
+          <ion-item button [routerLink]="['/check-list']">
+            <fa-icon [icon]="faTruck" size="2x" slot="start"></fa-icon>
+            <ion-label>Tracteur</ion-label>
+          </ion-item>
+          <ion-item button [routerLink]="['/home']">
+            <fa-icon [icon]="faTruckLoading" size="2x" slot="start"></fa-icon>
+            <ion-label>Attelage</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+
+    <div style="height: 88vh;">
+      <ion-router-outlet id="main" main></ion-router-outlet>
+    </div>
+
+
     <ion-header>
       <ion-toolbar>
         <ion-buttons slot="start">

@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap} from 'rxjs/operators';
 
-const API = Constants.api + '/values/check';
+const API = Constants.api + 'checkList';
 
 @Injectable({
   providedIn: 'root'
