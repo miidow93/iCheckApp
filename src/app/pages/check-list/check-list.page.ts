@@ -11,7 +11,7 @@ export class CheckListPage implements OnInit {
   constructor(private checkListService: CheckListService) { }
 
   ngOnInit() {
-    this.checkListService.getAllCheckList().subscribe(res => console.log(res[2].type.type));
+    // this.checkListService.getAllCheckList().subscribe(res => console.log(res[2].type.type));
   }
 
 }

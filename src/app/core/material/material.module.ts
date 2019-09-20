@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {
   MatCheckboxModule,
@@ -35,7 +34,7 @@ import {
   MatPaginatorModule
 } from '@angular/material';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 
 @NgModule({
@@ -44,7 +43,6 @@ import {
     ],
   imports: [
     CommonModule,
-    BrowserAnimationsModule,
     MatCheckboxModule,
     MatButtonModule,
     MatInputModule,
@@ -74,10 +72,10 @@ import {
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatMomentDateModule
   ],
   exports: [
-    BrowserAnimationsModule,
     MatCheckboxModule,
     MatButtonModule,
     MatInputModule,
@@ -107,7 +105,8 @@ import {
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatMomentDateModule
   ]
 })
 export class MaterialModule { }

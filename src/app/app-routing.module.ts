@@ -7,7 +7,9 @@ const routes: Routes = [
   { path: 'check-list', loadChildren: () => import('./pages/check-list/check-list.module').then(m => m.CheckListPageModule) },
   { path: 'tracteur', loadChildren: './pages/tracteur/tracteur.module#TracteurPageModule' },
   { path: 'attelage', loadChildren: './pages/attelage/attelage.module#AttelagePageModule' },
+  { path: 'conducteur', loadChildren: './pages/conducteur/conducteur.module#ConducteurPageModule' },
   { path: '**', redirectTo: 'home' },
+
   // { path: 'home', loadChildren: './pages/home/home.module#HomePageModule' }
 ];
 
