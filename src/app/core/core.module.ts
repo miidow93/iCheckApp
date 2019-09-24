@@ -11,12 +11,12 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     MaterialModule,
     FontAwesomeModule,
-    HttpClientModule
+    // HttpClientModule
   ],
   exports: [
     MaterialModule,
     FontAwesomeModule,
-    HttpClientModule
+    // HttpClientModule
   ]
 })
 export class CoreModule { }

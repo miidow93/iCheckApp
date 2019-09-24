@@ -33,14 +33,11 @@ import {
   MatSortModule,
   MatPaginatorModule
 } from '@angular/material';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 
 @NgModule({
-  declarations: [
-    // BrowserAnimationsModule,
-    ],
+  declarations: [],
   imports: [
     CommonModule,
     MatCheckboxModule,

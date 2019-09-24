@@ -1,4 +1,3 @@
-
 <ion-header>
   <ion-toolbar>
     <ion-title>Conducteur</ion-title>
@@ -39,30 +38,30 @@
         <mat-form-field class="col-md-1  col-sm-4 ">
           <input matInput placeholder="Societe" formControlName="societe">
         </mat-form-field>
-        <ion-button class="col-md-4" color="primary" type="submit">Ajouter</ion-button>
+        <ion-button type="submit">Ajouter</ion-button>
       </div>
     </form>
   </div>
-<!--La liste des conducteurs-->
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 " style="width: 100%">
+  <!--La liste des conducteurs-->
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 " style="width: 100%">
     <!-- Position Column -->
     <ng-container matColumnDef="nomcomplet">
       <th mat-header-cell *matHeaderCellDef> NomConducteur </th>
       <td mat-cell *matCellDef="let element"> {{element.nomcomplet}} </td>
     </ng-container>
-  
+
     <!-- Name Column -->
     <ng-container matColumnDef="cin">
       <th mat-header-cell *matHeaderCellDef> CIN </th>
       <td mat-cell *matCellDef="let element"> {{element.cin}} </td>
     </ng-container>
-  
+
     <!-- Weight Column -->
     <ng-container matColumnDef="cnss">
       <th mat-header-cell *matHeaderCellDef> CNSS </th>
       <td mat-cell *matCellDef="let element"> {{element.cnss}} </td>
     </ng-container>
-  
+
     <!-- Symbol Column -->
     <ng-container matColumnDef="assurance">
       <th mat-header-cell *matHeaderCellDef> Assurance </th>
@@ -70,14 +69,14 @@
     </ng-container>
 
     <ng-container matColumnDef="dateValiditeAssurance">
-        <th mat-header-cell *matHeaderCellDef> Date validité assurance </th>
-        <td mat-cell *matCellDef="let element"> {{element.dateValiditeAssurance | date: 'dd-MM-yyyy'}} </td>
-      </ng-container>
-      <ng-container matColumnDef="patente">
-          <th mat-header-cell *matHeaderCellDef> Patente </th>
-          <td mat-cell *matCellDef="let element"> {{element.patente}} </td>
-        </ng-container>
-  
+      <th mat-header-cell *matHeaderCellDef> Date validité assurance </th>
+      <td mat-cell *matCellDef="let element"> {{element.dateValiditeAssurance | date: 'dd-MM-yyyy'}} </td>
+    </ng-container>
+    <ng-container matColumnDef="patente">
+      <th mat-header-cell *matHeaderCellDef> Patente </th>
+      <td mat-cell *matCellDef="let element"> {{element.patente}} </td>
+    </ng-container>
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>

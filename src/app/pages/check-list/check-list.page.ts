@@ -25,7 +25,7 @@ export class CheckListPage implements OnInit {
     // return `http://localhost:4772/${serverPath}`;
   }
 
-  onClick(imageEngin) {
-    console.log(imageEngin);
+  onClick(nomEngin, id) {
+    console.log(nomEngin, id);
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder,  FormGroup, Validators, FormControl, NgForm} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl, NgForm } from '@angular/forms';
 import * as moment from 'moment';
 import { ConducteurService } from 'src/app/core/services/conducteur/conducteur.service';
 import { MatTableDataSource } from '@angular/material';
@@ -10,29 +10,29 @@ import { MatTableDataSource } from '@angular/material';
   styleUrls: ['./conducteur.page.scss'],
 })
 export class ConducteurPage implements OnInit {
-  
-  displayedColumns: string[] = ['nomcomplet','cin','cnss','assurance','dateValiditeAssurance','patente'];
+
+  displayedColumns: string[] = ['nomcomplet', 'cin', 'cnss', 'assurance', 'dateValiditeAssurance', 'patente'];
   dataSource = new MatTableDataSource();
-  conducteurForm:FormGroup;
+  conducteurForm: FormGroup;
   societeControl = new FormControl();
-  constructor(private service:ConducteurService,
-              private formbuilder:FormBuilder) {}
+  constructor(private service: ConducteurService,
+              private formbuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.getAllCondicteur();
+    this.getAllConducteur();
     this.conducteurForm = this.formbuilder.group({
-      nomcomplet:['',Validators.required],
-      cin:['',Validators.required],
-      cnss:['',Validators.required],
-      assurance:['',Validators.required],
-      dateValiditeAssurance:[{value:moment().format('DD/MM/YYYY')},Validators.required],
-      patente:['',Validators.required  ],
-      societe: ['',Validators.required],
-      
+      nomcomplet: ['', Validators.required],
+      cin: ['', Validators.required],
+      cnss: ['', Validators.required],
+      assurance: ['', Validators.required],
+      dateValiditeAssurance: [{ value: moment().format('DD/MM/YYYY') }, Validators.required],
+      patente: ['', Validators.required],
+      societe: ['', Validators.required],
+
     });
   }
   // Recuperation de la liste des conducteurs
-  getAllCondicteur(){
+  getAllConducteur() {
     this.service.getAllConducteur().subscribe((data: any[]) => {
       this.dataSource = new MatTableDataSource(data);
     });
@@ -42,12 +42,11 @@ export class ConducteurPage implements OnInit {
     this.conducteurForm.reset();
   }
   // Ajouter un conducteur
-  Addconducteur(data : NgForm){
+  Addconducteur(data: NgForm) {
     console.log(data);
     this.service.AddConducteur(data).subscribe(res => {
-      this.getAllCondicteur(); 
+      this.getAllConducteur();
       this.resetform();
-    }
-    )
+    });
   }
 }

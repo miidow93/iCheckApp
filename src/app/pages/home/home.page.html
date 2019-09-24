@@ -1,10 +1,33 @@
 <div class="ion-page" main>
-<ion-header>
-  <ion-toolbar>
-    <ion-title>home</ion-title>
-  </ion-toolbar>
-</ion-header>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>home</ion-title>
+    </ion-toolbar>
+  </ion-header>
 </div>
 <ion-content>
-  test
+  <!-- <div [formGroup]="form">
+    <label [attr.for]="question.key">{{question.label}}</label>
+
+    <div [ngSwitch]="question.controlType">
+
+      <input *ngSwitchCase="'textbox'" [formControlName]="question.key" [id]="question.key" [type]="question.type">
+
+      <select [id]="question.key" *ngSwitchCase="'dropdown'" [formControlName]="question.key">
+        <option *ngFor="let opt of question.options" [value]="opt.key">{{opt.value}}</option>
+      </select>
+
+    </div>
+
+    <div class="errorMessage" *ngIf="!isValid">{{question.label}} is required</div> 
+    <ng-container [ngSwitch]="question.controlType">
+      <div class="d-flex">
+        <div *ngFor="let option of question['options']; let i=index" [formArrayName]="question.key"
+          class="custom-control custom-checkbox">
+          <input type="checkbox" [formControlName]="i" class="custom-control-input" />
+          <label for="{{question.key +'_'+ option.key}}" class="custom-control-label">{{option.key}}</label>
+        </div>
+      </div>
+    </ng-container>
+  </div>-->
 </ion-content>

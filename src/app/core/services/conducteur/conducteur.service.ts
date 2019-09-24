@@ -9,10 +9,10 @@ const API = Constants.api + 'conducteurs/';
 export class ConducteurService {
 
   constructor(private http: HttpClient) { }
-  getAllConducteur(){
+  getAllConducteur() {
     return this.http.get<any>(`${API}`);
   }
-  AddConducteur(data){
-    return this.http.post(`${API}postev`,data);
+  AddConducteur(data) {
+    return this.http.post(`${API}postev`, data);
   }
 }

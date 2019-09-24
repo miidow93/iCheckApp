@@ -1,0 +1,13 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>check-list</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+<ion-content>
+  <div>
+    <app-dynamic-form  *ngIf="questions && questions.length > 0" [questions]="questions"></app-dynamic-form>
+  </div>
+  
+</ion-content><div>
+  
