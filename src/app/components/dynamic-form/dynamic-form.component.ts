@@ -10,7 +10,7 @@ import { QuestionControlService } from 'src/app/shared/services/question-control
   providers: [QuestionControlService]
 })
 export class DynamicFormComponent implements OnInit {
-
+  dir = 'rtl';
   @Input() questions: QuestionBase<any>[] = [];
   form: FormGroup;
   payLoad = '';

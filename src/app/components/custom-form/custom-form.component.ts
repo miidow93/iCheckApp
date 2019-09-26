@@ -9,23 +9,22 @@ import { QuestionService } from 'src/app/shared/services/question.service';
 })
 export class CustomFormComponent implements OnInit {
 
-   // AppComponent
+  // AppComponent
 
-   questions: any[];
+  questions: any[];
 
-   constructor(private service: QuestionService) {
-     // this.questions = service.getQuestions();
-     // service.getQuestions();
-   }
- 
- 
-   async ngOnInit() {
-     // await this.service.getQuestionsFromAPI().then(responses => console.log('Attelage OnInit: ', responses));
-     await this.service.getQuestionsFromAPI('grueAuxiliaire').then(async qsc => {
-       console.log('CustomForm: ', qsc[0]);
-       this.questions = qsc;
-     });
-     
-   }
+  constructor(private service: QuestionService) {
+    // this.questions = service.getQuestions();
+    // service.getQuestions();
+  }
+
+
+  async ngOnInit() {
+    // await this.service.getQuestionsFromAPI().then(responses => console.log('Attelage OnInit: ', responses));
+    await this.service.getQuestionsFromAPI('manuscopique').then(async qsc => {
+      console.log('CustomForm: ', qsc[0]);
+      this.questions = qsc;
+    });
+  }
 
 }

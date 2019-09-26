@@ -17,7 +17,7 @@ export class QuestionService {
   constructor(private http: HttpClient) { }
   // TODO: get from a remote source of question metadata
   // TODO: make asynchronous
-  getQuestions() {
+  /*getQuestions() {
     this.http.get('../assets/checkList/manuscopique.json').subscribe(text => {
       // console.log(text);
       console.log(Object.keys(text['Surveillance en nature de l\'état général du véhicule']));
@@ -45,7 +45,7 @@ export class QuestionService {
 
     });
     return this.questions;
-  }
+  }*/
 
   async getQuestionsFromAPI(engin) {
     // tslint:disable-next-line:no-shadowed-variable
@@ -79,9 +79,9 @@ export class QuestionService {
         ],
         order: 3
       });*/
-      this.questions.push(checkbox1);
-      this.questions.push(checkbox2);
       this.questions.push(checkbox3);
+      this.questions.push(checkbox2);
+      this.questions.push(checkbox1);
       // this.questions.push(dropDown);
       console.log('Questions Service: ', this.questions.length);
     });

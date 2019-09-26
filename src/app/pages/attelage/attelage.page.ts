@@ -22,11 +22,11 @@ export class AttelagePage implements OnInit {
 
   async ngOnInit() {
     // await this.service.getQuestionsFromAPI().then(responses => console.log('Attelage OnInit: ', responses));
-    await this.service.getQuestionsFromAPI().then(async qsc => {
+    /*await this.service.getQuestionsFromAPI().then(async qsc => {
       console.log('Attelage Page: ', qsc[0]);
       this.questions = qsc;
     });
-    console.log('Test: ', this.questions[0]);
+    console.log('Test: ', this.questions[0]);*/
   }
 
 

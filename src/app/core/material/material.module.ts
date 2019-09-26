@@ -34,6 +34,7 @@ import {
   MatPaginatorModule
 } from '@angular/material';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { BidiModule } from '@angular/cdk/bidi';
 
 
 @NgModule({
@@ -70,7 +71,8 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    MatMomentDateModule
+    MatMomentDateModule,
+    BidiModule
   ],
   exports: [
     MatCheckboxModule,
@@ -103,7 +105,8 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    MatMomentDateModule
+    MatMomentDateModule,
+    BidiModule
   ]
 })
 export class MaterialModule { }

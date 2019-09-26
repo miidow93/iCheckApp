@@ -9,6 +9,7 @@ import { FormGroup } from '@angular/forms';
 })
 export class DynamicFormQuestionComponent implements OnInit {
 
+  dir = 'rtl';
   constructor() {}
 
   @Input() question: QuestionBase<any>;
