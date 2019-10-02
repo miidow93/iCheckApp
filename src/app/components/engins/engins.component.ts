@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { CheckListService } from 'src/app/core/services/check-list/check-list.service';
 import { Conducteur } from 'src/app/shared/models/conducteur';
-import { Constants } from 'src/app/shared/constants';
-import { EnginService } from 'src/app/core/services/engin/engin.service';
 import { Engin } from 'src/app/shared/models/engin';
+import { CheckListService } from 'src/app/core/services/check-list/check-list.service';
+import { EnginService } from 'src/app/core/services/engin/engin.service';
+import { Constants } from 'src/app/shared/constants';
 
 @Component({
-  selector: 'app-check-list',
-  templateUrl: './check-list.page.html',
-  styleUrls: ['./check-list.page.scss'],
+  selector: 'app-engins',
+  templateUrl: './engins.component.html',
+  styleUrls: ['./engins.component.scss'],
 })
-export class CheckListPage implements OnInit {
+export class EnginsComponent implements OnInit {
 
   conducteur: Conducteur;
   engins: Engin[];

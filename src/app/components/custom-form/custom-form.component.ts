@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { QuestionService } from 'src/app/shared/services/question.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { QuestionService } from 'src/app/shared/services/question.service';
 export class CustomFormComponent implements OnInit {
 
   // AppComponent
-
+  @Input() engin = '';
   questions: any[];
 
   constructor(private service: QuestionService) {
@@ -21,7 +21,7 @@ export class CustomFormComponent implements OnInit {
 
   async ngOnInit() {
     // await this.service.getQuestionsFromAPI().then(responses => console.log('Attelage OnInit: ', responses));
-    await this.service.getQuestionsFromAPI('manuscopique').then(async qsc => {
+    await this.service.getQuestionsFromAPI(this.engin).then(async qsc => {
       console.log('CustomForm: ', qsc[0]);
       this.questions = qsc;
     });

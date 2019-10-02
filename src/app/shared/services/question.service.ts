@@ -79,9 +79,9 @@ export class QuestionService {
         ],
         order: 3
       });*/
-      this.questions.push(checkbox3);
-      this.questions.push(checkbox2);
       this.questions.push(checkbox1);
+      this.questions.push(checkbox2);
+      this.questions.push(checkbox3);
       // this.questions.push(dropDown);
       console.log('Questions Service: ', this.questions.length);
     });

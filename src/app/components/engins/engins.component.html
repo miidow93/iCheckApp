@@ -1,0 +1,11 @@
+<ion-content>
+  <ion-grid>
+    <ion-row class="row justify-content-center">
+      <ion-col *ngFor="let item of engins" size="5" class="">
+        <a button [routerLink]="['/checklist', item.nomEngin]">
+          <img [src]="createImagePath(item.imageEngin)" class="img-thumbnail" />
+        </a>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

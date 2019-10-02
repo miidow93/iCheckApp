@@ -16,7 +16,7 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -27,11 +27,25 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "~bootstrap/dist/css/bootstrap.min.css";
 
-
-
 @import "~bootstrap/scss/_functions";
 @import "~bootstrap/scss/_variables";
 @import "~bootstrap/scss/bootstrap";
 
+ion-header ion-toolbar {
+  // background-color: #f5cd1b !important;
+  --background: #f5cd1b;
+}
 
-
+/*ion-menu {
+  ion-content {
+    ion-list {
+        background-color: #42413c;
+      ion-item {
+          --background: #42413c;
+          // --border-style: none;
+          --background-hover: rgba(255, 255, 204, 1)
+      }
+    }
+    --background: #42413c;
+  }
+}*/

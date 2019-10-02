@@ -21,9 +21,19 @@ import { HomePageModule } from './pages/home/home.module';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 import { DynamicFormQuestionComponent } from './components/dynamic-form-question/dynamic-form-question.component';
 import { CustomFormComponent } from './components/custom-form/custom-form.component';
+import { CheckListComponent } from './components/check-list/check-list.component';
+import { EnginsComponent } from './components/engins/engins.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  declarations: [AppComponent, CustomFormComponent, DynamicFormComponent, DynamicFormQuestionComponent],
+  declarations: [
+    AppComponent,
+    CustomFormComponent,
+    DynamicFormComponent,
+    DynamicFormQuestionComponent,
+    CheckListComponent,
+    EnginsComponent
+  ],
   entryComponents: [],
   imports: [
     BrowserModule,
@@ -34,6 +44,7 @@ import { CustomFormComponent } from './components/custom-form/custom-form.compon
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgbModule
   ],
   providers: [
     StatusBar,

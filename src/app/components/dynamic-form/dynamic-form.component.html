@@ -1,10 +1,11 @@
 <div>
-  <form (ngSubmit)="onSubmit()" [formGroup]="form" *ngIf="form">
+  <form (ngSubmit)="onSubmit(form.value)" [formGroup]="form" *ngIf="form">
 
     <span class="form-row justify-content-center">
-      <!-- <img src="../../../assets/shapes.svg" class="mx-auto d-block" style="margin-top: 2%;" /> -->
       <!-- <img src="../../../assets/shapes.svg" class="mx-auto d-block" style="margin-top: 2%;"/> -->
       <!-- <app-dynamic-form-question [question]="questions[0]" [form]="form"></app-dynamic-form-question>-->
+
+      <img [src]="createImagePath(imageEngin)" class="mt-2 mr-3" />
 
       <mat-vertical-stepper style="margin-top: 2%; margin-left: 3%;" #stepper [dir]="dir">
         <mat-step *ngFor="let question of questions; let i=index;" [stepControl]="question">
@@ -13,18 +14,27 @@
             <app-dynamic-form-question [question]="question" [form]="form">
             </app-dynamic-form-question>
             <div dir="ltr">
-              <button mat-raised-button matStepperPrevious *ngIf="i == 1 || i == 2">Back</button>
-              <button mat-raised-button matStepperNext *ngIf="i == 0 || i == 1"
-                [ngClass]="{'ml-2': i === 0 || i === 1}">Next</button>
+              <button mat-raised-button matStepperPrevious *ngIf="i == 1 || i == 2">Précedent</button>
+              <button mat-raised-button matStepperNext *ngIf="i == 0 || i == 1 || i == 2" class="ml-2">Suivant</button>
             </div>
+          </div>
+        </mat-step>
+        <mat-step [stepControl]="null">
+          <ng-template matStepLabel>تأكيد</ng-template>
+          <div dir="ltr">
+            <ngb-rating [rate]="3.75"></ngb-rating>
+          </div>
+          <div dir="ltr">
+            <button mat-raised-button matStepperPrevious class="mr-2">Précedent</button>
+            <button mat-raised-button class="mr-2" matSepperNext (click)="onSub(form.value)">Envoyer</button>
           </div>
         </mat-step>
       </mat-vertical-stepper>
     </span>
 
-    <div class="form-row">
+    <!-- <div class="form-row">
       <button type="submit" [disabled]="!form.valid">Save</button>
-    </div>
+    </div> -->
   </form>
 
   <!-- <div *ngIf="payLoad" class="form-row">
