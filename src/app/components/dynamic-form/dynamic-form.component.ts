@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { QuestionBase } from 'src/app/shared/forms/question-base';
-import { FormGroup, NgForm } from '@angular/forms';
+import { FormGroup, NgForm, FormBuilder, Validators } from '@angular/forms';
 import { QuestionControlService } from 'src/app/shared/services/question-control.service';
 import { EnginService } from 'src/app/core/services/engin/engin.service';
 import { Constants } from 'src/app/shared/constants';
@@ -18,6 +18,8 @@ export class DynamicFormComponent implements OnInit {
   @Input() questions: QuestionBase<any>[] = [];
   @Input() engin: string = '';
   form: FormGroup;
+  formConducteur: FormGroup;
+  formEngin: FormGroup;
   payLoad = '';
   size = 0;
 
@@ -26,6 +28,7 @@ export class DynamicFormComponent implements OnInit {
   constructor(private qcs: QuestionControlService,
     private enginService: EnginService,
     private checkListService: CheckListService,
+    private formBuilder: FormBuilder,
     config: NgbRatingConfig) {
     config.max = 5;
     config.readonly = false;
@@ -37,6 +40,16 @@ export class DynamicFormComponent implements OnInit {
     console.log('Length: ', this.questions.length);
     // await this.qcs.toFormGroup(this.questions).then(formGroup => this.form = formGroup);
     this.enginService.getEnginsByName(this.engin).subscribe(res => this.imageEngin = res.imageEngin);
+  
+    this.formConducteur = this.formBuilder.group({
+      nomComplet: ['', Validators.required],
+      cin: ['', Validators.required],
+    });
+
+    this.formEngin = this.formBuilder.group({
+      matricule: ['', Validators.required],
+      engin: [{value: this.engin}, Validators.required]
+    });  
   }
 
   onSubmit(form: NgForm) {

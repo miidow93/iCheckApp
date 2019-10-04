@@ -19,6 +19,29 @@
             </div>
           </div>
         </mat-step>
+
+        <mat-step [stepControl]="formConducteur">
+          <ng-template matStepLabel>السائق</ng-template>
+          <div dir="ltr">
+            <ngb-rating [rate]="3.75"></ngb-rating>
+          </div>
+          <div dir="ltr">
+            <button mat-raised-button matStepperPrevious class="mr-2">Précedent</button>
+            <button mat-raised-button class="mr-2" matSepperNext (click)="onSub(form.value)">Envoyer</button>
+          </div>
+        </mat-step>
+
+        <mat-step [stepControl]="formEngin">
+          <ng-template matStepLabel>العربة</ng-template>
+          <div dir="ltr">
+            <ngb-rating [rate]="3.75"></ngb-rating>
+          </div>
+          <div dir="ltr">
+            <button mat-raised-button matStepperPrevious class="mr-2">Précedent</button>
+            <button mat-raised-button class="mr-2" matSepperNext (click)="onSub(form.value)">Envoyer</button>
+          </div>
+        </mat-step>
+
         <mat-step [stepControl]="null">
           <ng-template matStepLabel>تأكيد</ng-template>
           <div dir="ltr">
