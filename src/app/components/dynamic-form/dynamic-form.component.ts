@@ -1,3 +1,4 @@
+import { Observable, BehaviorSubject } from 'rxjs';
 import { Component, OnInit, Input } from '@angular/core';
 import { QuestionBase } from 'src/app/shared/forms/question-base';
 import { FormGroup, NgForm, FormBuilder, Validators } from '@angular/forms';
@@ -6,6 +7,9 @@ import { EnginService } from 'src/app/core/services/engin/engin.service';
 import { Constants } from 'src/app/shared/constants';
 import { CheckListService } from 'src/app/core/services/check-list/check-list.service';
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
+import { ConducteurService } from 'src/app/core/services/conducteur/conducteur.service';
+import { startWith, map } from 'rxjs/operators';
+import { filter } from 'minimatch';
 
 @Component({
   selector: 'app-dynamic-form',
@@ -22,14 +26,18 @@ export class DynamicFormComponent implements OnInit {
   formEngin: FormGroup;
   payLoad = '';
   size = 0;
+  conducteurs = [];
+  nomComplet = new BehaviorSubject<any>(null);
+  imageEngin = '';
 
-  imageEngin: string = '';
+  filteredConducteurs: Observable<any[]>;
 
   constructor(private qcs: QuestionControlService,
-    private enginService: EnginService,
-    private checkListService: CheckListService,
-    private formBuilder: FormBuilder,
-    config: NgbRatingConfig) {
+              private enginService: EnginService,
+              private checkListService: CheckListService,
+              private conducteurService: ConducteurService,
+              private formBuilder: FormBuilder,
+              config: NgbRatingConfig) {
     config.max = 5;
     config.readonly = false;
   }
@@ -40,7 +48,12 @@ export class DynamicFormComponent implements OnInit {
     console.log('Length: ', this.questions.length);
     // await this.qcs.toFormGroup(this.questions).then(formGroup => this.form = formGroup);
     this.enginService.getEnginsByName(this.engin).subscribe(res => this.imageEngin = res.imageEngin);
-  
+
+    this.conducteurService.getAllConducteur().subscribe(res => {
+      this.conducteurs = res;
+      console.log('All Conducteurs', res);
+    });
+
     this.formConducteur = this.formBuilder.group({
       nomComplet: ['', Validators.required],
       cin: ['', Validators.required],
@@ -48,8 +61,14 @@ export class DynamicFormComponent implements OnInit {
 
     this.formEngin = this.formBuilder.group({
       matricule: ['', Validators.required],
-      engin: [{value: this.engin}, Validators.required]
-    });  
+      engin: [{ value: this.engin }, Validators.required]
+    });
+
+
+    /*this.filteredConducteurs = this.formConducteur.controls.cin.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value))
+    );*/
   }
 
   onSubmit(form: NgForm) {
@@ -72,6 +91,21 @@ export class DynamicFormComponent implements OnInit {
   createImagePath(serverPath: string) {
     return `${Constants.serverImg}${serverPath}`;
     // return `http://localhost:4772/${serverPath}`;
+  }
+
+
+  getConducteur(conducteur) {
+    console.log('Selected Option: ', this.conducteurs);
+
+    const cond = this.conducteurs.find(x => x.cin = conducteur);
+    this.nomComplet.next(cond.nomComplet);
+    console.log(this.nomComplet.value);
+  }
+
+  _filter(value: any): any[] {
+    const filterValue = value.toLowerCase();
+    console.log('_filter: ', filterValue);
+    return this.conducteurs.filter(option => option.cin.toLowerCase().includes(filterValue));
   }
 
 }
