@@ -16,30 +16,32 @@
 <ion-content>
   <div class="ion-padding">
     <form [formGroup]="conducteurForm" (ngSubmit)="Addconducteur(conducteurForm.value)">
+        <mat-card class="example-container " >
       <div class="example-container">
-        <mat-form-field class="col-md-4">
+        <mat-form-field class="col-md-12 ">
           <input matInput placeholder="NomConducteur" formControlName="nomcomplet">
         </mat-form-field>
-        <mat-form-field class="col-md-4">
+        <mat-form-field class="col-md-6">
           <input matInput placeholder="CIN" formControlName="cin">
         </mat-form-field>
-        <mat-form-field class="col-md-4">
+        <mat-form-field class="col-md-6">
           <input matInput placeholder="CNSS" formControlName="cnss">
         </mat-form-field>
-        <mat-form-field class="col-md-4">
+        <mat-form-field class="col-md-6">
           <input matInput placeholder="Assurance" formControlName="assurance">
         </mat-form-field>
         <mat-form-field>
           <input type="date" matInput placeholder="Date validité assurance" formControlName="dateValiditeAssurance">
         </mat-form-field>
-        <mat-form-field class="col-md-4">
+        <mat-form-field class="col-md-6">
           <input matInput placeholder="Patente" formControlName="patente">
         </mat-form-field>
-        <mat-form-field class="col-md-1  col-sm-4 ">
+        <mat-form-field class="col-sm-6 ">
           <input matInput placeholder="Societe" formControlName="societe">
-        </mat-form-field>
+        </mat-form-field><br>
         <ion-button type="submit">Ajouter</ion-button>
       </div>
+      </mat-card>
     </form>
   </div>
   <!--La liste des conducteurs-->
@@ -47,7 +49,7 @@
     <!-- Position Column -->
     <ng-container matColumnDef="nomcomplet">
       <th mat-header-cell *matHeaderCellDef> NomConducteur </th>
-      <td mat-cell *matCellDef="let element"> {{element.nomcomplet}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.nomComplet}} </td>
     </ng-container>
 
     <!-- Name Column -->
@@ -76,8 +78,20 @@
       <th mat-header-cell *matHeaderCellDef> Patente </th>
       <td mat-cell *matCellDef="let element"> {{element.patente}} </td>
     </ng-container>
-
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Action</th>
+      <td mat-cell *matCellDef="let row">
+        <button class="form-row justify-content-center" mat-icon-button (click)="onEdit(row)">
+          <mat-icon>Modifier</mat-icon>
+        </button>
+         <!-- <button mat-icon-button color="warn" (click)="onDelete(row.$key)">
+          <mat-icon>delete_outline</mat-icon>
+        </button> -->
+      </td>
+    </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
   </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" [pageSize]="5" showFirstLastButtons></mat-paginator>
 </ion-content>

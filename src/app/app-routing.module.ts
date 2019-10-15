@@ -3,6 +3,8 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { CustomFormComponent } from './components/custom-form/custom-form.component';
 import { CheckListComponent } from './components/check-list/check-list.component';
 import { EnginsComponent } from './components/engins/engins.component';
+import { ConducteurPage } from './pages/conducteur/conducteur.page';
+import { AddEnginsComponent } from './components/add-engins/add-engins.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -17,8 +19,11 @@ const routes: Routes = [
   {
     path: 'checklist/:image', component: CheckListComponent
   },
+  { path:'conducteur',component: ConducteurPage },
+  { path:'engin-add',component:AddEnginsComponent },
   { path: 'engins', component: EnginsComponent },
-  { path: '**', redirectTo: 'home' },
+  { path: '**', redirectTo: 'home' },  { path: 'edit-conducteur', loadChildren: './pages/conducteur/edit-conducteur/edit-conducteur.module#EditConducteurPageModule' },
+
 
   // { path: 'home', loadChildren: './pages/home/home.module#HomePageModule' }
 ];

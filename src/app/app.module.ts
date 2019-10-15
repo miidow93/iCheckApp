@@ -24,6 +24,10 @@ import { CustomFormComponent } from './components/custom-form/custom-form.compon
 import { CheckListComponent } from './components/check-list/check-list.component';
 import { EnginsComponent } from './components/engins/engins.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ConducteurPage } from './pages/conducteur/conducteur.page';
+import { AddEnginsComponent } from './components/add-engins/add-engins.component';
+import { EditEnginsComponent } from './components/edit-engins/edit-engins.component';
+import { EditConducteurPage } from './pages/conducteur/edit-conducteur/edit-conducteur.page';
 
 @NgModule({
   declarations: [
@@ -32,9 +36,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     DynamicFormComponent,
     DynamicFormQuestionComponent,
     CheckListComponent,
-    EnginsComponent
+    EnginsComponent,
+    ConducteurPage,
+    AddEnginsComponent,
+    EditEnginsComponent,
+    EditConducteurPage
   ],
-  entryComponents: [],
+  entryComponents: [EditEnginsComponent,EditConducteurPage],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -46,6 +54,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     NgbModule
   ],
+  
   providers: [
     StatusBar,
     SplashScreen,

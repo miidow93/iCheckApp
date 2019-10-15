@@ -14,5 +14,4 @@ export class CheckListComponent implements OnInit {
   async ngOnInit() {
     this.activatedRoute.params.subscribe(params => this.engin = params['image']);
   }
-
 }

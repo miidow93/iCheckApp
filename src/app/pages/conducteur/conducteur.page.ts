@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, NgForm } from '@angular/forms';
 import * as moment from 'moment';
 import { ConducteurService } from 'src/app/core/services/conducteur/conducteur.service';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource, MatDialogConfig, MatDialog, MatPaginator } from '@angular/material';
+import { DataService } from 'src/app/shared/services/data.service';
+import { EditConducteurPage } from './edit-conducteur/edit-conducteur.page';
 
 @Component({
   selector: 'app-conducteur',
@@ -10,16 +12,17 @@ import { MatTableDataSource } from '@angular/material';
   styleUrls: ['./conducteur.page.scss'],
 })
 export class ConducteurPage implements OnInit {
-
-  displayedColumns: string[] = ['nomcomplet', 'cin', 'cnss', 'assurance', 'dateValiditeAssurance', 'patente'];
+  displayedColumns: string[] = ['nomcomplet', 'cin', 'cnss', 'assurance', 'dateValiditeAssurance', 'patente','actions'];
   dataSource = new MatTableDataSource();
   conducteurForm: FormGroup;
   societeControl = new FormControl();
-  constructor(private service: ConducteurService,
-              private formbuilder: FormBuilder) { }
+  searchKey: string;
+  constructor(private dialog: MatDialog,private service: ConducteurService,
+              private formbuilder: FormBuilder,private conducteurDataService:DataService) { }
+@ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
   ngOnInit() {
-    this.getAllConducteur();
+    this.refresh();
     this.conducteurForm = this.formbuilder.group({
       nomcomplet: ['', Validators.required],
       cin: ['', Validators.required],
@@ -31,11 +34,13 @@ export class ConducteurPage implements OnInit {
 
     });
   }
+  
   // Recuperation de la liste des conducteurs
-  getAllConducteur() {
-    this.service.getAllConducteur().subscribe((data: any[]) => {
-      this.dataSource = new MatTableDataSource(data);
+  refresh() {
+    this.service.getAllConducteur().subscribe((res: any[]) => {
+      this.conducteurDataService.changeConducteurDataSource(res);
     });
+    this.conducteurDataService.currentConducteurDataSource.subscribe(data => {this.dataSource.data = data;this.dataSource.paginator = this.paginator});
   }
   // rénitialisation Form
   resetform() {
@@ -45,8 +50,23 @@ export class ConducteurPage implements OnInit {
   Addconducteur(data: NgForm) {
     console.log(data);
     this.service.AddConducteur(data).subscribe(res => {
-      this.getAllConducteur();
+      this.refresh();
       this.resetform();
     });
+    
   }
+  onEdit(element) {
+    console.log(element);
+    const config = new MatDialogConfig();
+    config.disableClose = true;
+    config.autoFocus = true;
+    config.width = '80%';
+    config.data = element;
+    this.dialog.open(EditConducteurPage, config)
+      .afterClosed().subscribe(res => {
+        console.log('Close: ', res);
+        this.refresh();
+      });
+  }
+  
 }

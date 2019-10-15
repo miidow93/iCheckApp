@@ -3,7 +3,7 @@
     <ion-menu side="start" contentId="main" menuId="first">
       <ion-header>
         <ion-toolbar translucent>
-          <ion-title>i-Check</ion-title>
+          <ion-title>I-Check</ion-title>
         </ion-toolbar>
       </ion-header>
       <ion-content>
@@ -21,6 +21,10 @@
             <ion-label>Conducteur</ion-label>
           </ion-item>
           <ion-item button [routerLink]="['/engins']">
+            <fa-icon [icon]="faTruck" size="2x" slot="start"></fa-icon>
+            <ion-label>Engin(CheckList)</ion-label>
+          </ion-item>
+          <ion-item button [routerLink]="['/engin-add']">
             <fa-icon [icon]="faTruck" size="2x" slot="start"></fa-icon>
             <ion-label>Engin</ion-label>
           </ion-item>
@@ -41,7 +45,7 @@
         <ion-buttons slot="start">
           <ion-menu-button></ion-menu-button>
         </ion-buttons>
-        <ion-title>Home</ion-title>
+        <ion-title>I-Check</ion-title>
       </ion-toolbar>
     </ion-header>
   </div>
