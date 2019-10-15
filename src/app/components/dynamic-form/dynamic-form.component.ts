@@ -6,10 +6,12 @@ import { QuestionControlService } from 'src/app/shared/services/question-control
 import { EnginService } from 'src/app/core/services/engin/engin.service';
 import { Constants } from 'src/app/shared/constants';
 import { CheckListService } from 'src/app/core/services/check-list/check-list.service';
+import { VehiculeService } from 'src/app/core/services/vehicule/vehicule.service';
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 import { ConducteurService } from 'src/app/core/services/conducteur/conducteur.service';
 import { startWith, map } from 'rxjs/operators';
 import { filter } from 'minimatch';
+import { MatAutocompleteSelectedEvent } from '@angular/material';
 
 @Component({
   selector: 'app-dynamic-form',
@@ -18,24 +20,28 @@ import { filter } from 'minimatch';
   providers: [QuestionControlService, NgbRatingConfig]
 })
 export class DynamicFormComponent implements OnInit {
-  dir = 'rtl';
+  
   @Input() questions: QuestionBase<any>[] = [];
   @Input() engin: string = '';
   form: FormGroup;
   formConducteur: FormGroup;
   formEngin: FormGroup;
+  nomComplet = new BehaviorSubject<any>(null);
   payLoad = '';
+  dir = 'rtl';
   size = 0;
   conducteurs = [];
-  nomComplet = new BehaviorSubject<any>(null);
+  vehicules = [];
   imageEngin = '';
 
   filteredConducteurs: Observable<any[]>;
+  filteredVehicules: Observable<any[]>;
 
   constructor(private qcs: QuestionControlService,
               private enginService: EnginService,
               private checkListService: CheckListService,
               private conducteurService: ConducteurService,
+              private vehiculeService: VehiculeService,
               private formBuilder: FormBuilder,
               config: NgbRatingConfig) {
     config.max = 5;
@@ -49,11 +55,7 @@ export class DynamicFormComponent implements OnInit {
     // await this.qcs.toFormGroup(this.questions).then(formGroup => this.form = formGroup);
     this.enginService.getEnginsByName(this.engin).subscribe(res => this.imageEngin = res.imageEngin);
 
-    this.conducteurService.getAllConducteur().subscribe(res => {
-      this.conducteurs = res;
-      console.log('All Conducteurs', res);
-    });
-
+    
     this.formConducteur = this.formBuilder.group({
       nomComplet: ['', Validators.required],
       cin: ['', Validators.required],
@@ -63,12 +65,11 @@ export class DynamicFormComponent implements OnInit {
       matricule: ['', Validators.required],
       engin: [{ value: this.engin }, Validators.required]
     });
+    this.getAllConducteurs();
+    this.getAllVehicules();
+    this.filterInitCond();
 
-
-    /*this.filteredConducteurs = this.formConducteur.controls.cin.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value))
-    );*/
+    /**/
   }
 
   onSubmit(form: NgForm) {
@@ -93,18 +94,40 @@ export class DynamicFormComponent implements OnInit {
     // return `http://localhost:4772/${serverPath}`;
   }
 
+  getAllConducteurs() {
+    this.conducteurService.getAllConducteur().subscribe(res => {
+      this.conducteurs = res;
+      console.log('All Conducteurs', res);
+    });
+  } 
 
-  getConducteur(conducteur) {
-    console.log('Selected Option: ', this.conducteurs);
-
-    const cond = this.conducteurs.find(x => x.cin = conducteur);
-    this.nomComplet.next(cond.nomComplet);
-    console.log(this.nomComplet.value);
+  getAllVehicules() {
+    this.vehiculeService.getAllVehicules(this.engin).subscribe(res => console.log('Vehicules: ', res));
   }
+
+  getConducteur(event: MatAutocompleteSelectedEvent) {
+    console.log('Selected Option: ', event.option.value);
+    console.log(this.conducteurs.find(opt => opt.cin == event.option.value).nomComplet);
+    this.nomComplet.next(this.conducteurs.find(opt => opt.cin == event.option.value).nomComplet);
+    //const cond = this.conducteurs.find(x => x.cin = event.option.value);
+    //console.log(cond);
+    /*const cond = this.conducteurs.filter(x => x.cin = cin);
+    console.log(cond);*/
+    //this.nomComplet.next(cond[0].nomComplet);
+    //console.log(this.nomComplet.value);
+  }
+
+  private filterInitCond() {
+    this.filteredConducteurs = this.formConducteur.controls.cin.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value))
+    );
+  }
+
 
   _filter(value: any): any[] {
     const filterValue = value.toLowerCase();
-    console.log('_filter: ', filterValue);
+    // console.log('_filter: ', filterValue);
     return this.conducteurs.filter(option => option.cin.toLowerCase().includes(filterValue));
   }
 
