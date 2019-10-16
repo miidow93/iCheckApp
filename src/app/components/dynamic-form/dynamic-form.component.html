@@ -22,23 +22,49 @@
 
         <mat-step [stepControl]="formConducteur">
           <ng-template matStepLabel>السائق</ng-template>
-          <div dir="ltr">
-            <ngb-rating [rate]="3.75"></ngb-rating>
+          <div [formGroup]="formConducteur">
+            <diV>
+              <mat-form-field style="text-align: left" dir="ltr">
+                <input type="text" matInput formControlName="cin" placeholder="C.I.N" [matAutocomplete]="cin" />
+              </mat-form-field>
+
+              <mat-autocomplete #cin="matAutocomplete" (optionSelected)="getConducteur($event)">
+                <mat-option *ngFor="let conducteur of (filteredConducteurs | async)" [value]="conducteur.cin">
+                  {{conducteur.cin}}</mat-option>
+              </mat-autocomplete>
+            </diV>
+            <div>
+              <mat-form-field style="text-align: left" dir="ltr">
+                <input type="text" matInput formControlName="nomComplet" placeholder="Nom Complet"
+                  [value]="formConducteur.controls['cin'].value !== '' ? nomComplet.value : ''" />
+              </mat-form-field>
+            </div>
           </div>
+
+
           <div dir="ltr">
             <button mat-raised-button matStepperPrevious class="mr-2">Précedent</button>
-            <button mat-raised-button class="mr-2" matSepperNext (click)="onSub(form.value)">Envoyer</button>
+            <button mat-raised-button class="mr-2" matSepperNext (click)="onSub(form.value)">Suivant</button>
           </div>
         </mat-step>
 
         <mat-step [stepControl]="formEngin">
           <ng-template matStepLabel>العربة</ng-template>
-          <div dir="ltr">
-            <ngb-rating [rate]="3.75"></ngb-rating>
+          <div [formGroup]="formEngin">
+            <diV>
+              <mat-form-field style="text-align: left" dir="ltr">
+                <input type="text" matInput formControlName="matricule" placeholder="Matricule" [matAutocomplete]="matricule" />
+              </mat-form-field>
+
+              <mat-autocomplete #matricule="matAutocomplete" (optionSelected)="getMatricule($event)">
+                <mat-option *ngFor="let vehicule of (filteredVehicules | async)" [value]="vehicule.matricule">
+                  {{vehicule.matricule}}</mat-option>
+              </mat-autocomplete>
+            </diV>
           </div>
           <div dir="ltr">
             <button mat-raised-button matStepperPrevious class="mr-2">Précedent</button>
-            <button mat-raised-button class="mr-2" matSepperNext (click)="onSub(form.value)">Envoyer</button>
+            <button mat-raised-button class="mr-2" matSepperNext (click)="onSub(form.value)">Suivant</button>
           </div>
         </mat-step>
 
