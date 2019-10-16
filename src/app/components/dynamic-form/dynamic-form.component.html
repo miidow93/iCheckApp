@@ -44,7 +44,7 @@
 
           <div dir="ltr">
             <button mat-raised-button matStepperPrevious class="mr-2">Précedent</button>
-            <button mat-raised-button class="mr-2" matSepperNext (click)="onSub(form.value)">Suivant</button>
+            <button mat-raised-button class="mr-2" matSepperNext (click)="onSub(stepper, formConducteur.value, 'conducteur')">Suivant</button>
           </div>
         </mat-step>
 
@@ -56,7 +56,7 @@
                 <input type="text" matInput formControlName="matricule" placeholder="Matricule" [matAutocomplete]="matricule" />
               </mat-form-field>
 
-              <mat-autocomplete #matricule="matAutocomplete" (optionSelected)="getMatricule($event)">
+              <mat-autocomplete #matricule="matAutocomplete">
                 <mat-option *ngFor="let vehicule of (filteredVehicules | async)" [value]="vehicule.matricule">
                   {{vehicule.matricule}}</mat-option>
               </mat-autocomplete>
@@ -64,7 +64,7 @@
           </div>
           <div dir="ltr">
             <button mat-raised-button matStepperPrevious class="mr-2">Précedent</button>
-            <button mat-raised-button class="mr-2" matSepperNext (click)="onSub(form.value)">Suivant</button>
+            <button mat-raised-button class="mr-2" matSepperNext (click)="onSub(stepper, formEngin.value, 'vehicule')">Suivant</button>
           </div>
         </mat-step>
 
@@ -75,7 +75,7 @@
           </div>
           <div dir="ltr">
             <button mat-raised-button matStepperPrevious class="mr-2">Précedent</button>
-            <button mat-raised-button class="mr-2" matSepperNext (click)="onSub(form.value)">Envoyer</button>
+            <button mat-raised-button class="mr-2" matSepperNext (click)="valider()">Envoyer</button>
           </div>
         </mat-step>
       </mat-vertical-stepper>
