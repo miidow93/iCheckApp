@@ -1,16 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
+import { faTruck, faClipboardList, faTruckLoading, faUser } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent  {
 
   constructor(private route: ActivatedRoute, private router: Router) { }
-
-  ngOnInit() {}
+  faTruck = faTruck;
+  faClipboardList = faClipboardList;
+  faTruckLoading = faTruckLoading;
+  faUser = faUser;
 
   goToSynthese() {
     console.log('Test');

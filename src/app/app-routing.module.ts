@@ -3,18 +3,18 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { CustomFormComponent } from './components/custom-form/custom-form.component';
 import { CheckListComponent } from './components/check-list/check-list.component';
 import { EnginsComponent } from './components/engins/engins.component';
-import { ConducteurPage } from './pages/conducteur/conducteur.page';
 import { AddEnginsComponent } from './components/add-engins/add-engins.component';
 import { SyntheseComponent } from './components/synthese/synthese.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { AuthGuard } from './core/guard/auth.guard';
+import { ConducteurComponent } from './components/conducteur/conducteur.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },
   {
     path: 'admin', component: AdminComponent, children: [
-      { path: 'conducteur', component: ConducteurPage, outlet: 'admin', canActivate: [AuthGuard] },
+      { path: 'conducteur', component: ConducteurComponent, outlet: 'admin', canActivate: [AuthGuard]  },
       { path: 'synthese', component: SyntheseComponent, outlet: 'admin', canActivate: [AuthGuard] },
       { path: 'engin', component: AddEnginsComponent , outlet: 'admin', canActivate: [AuthGuard] }
     ]

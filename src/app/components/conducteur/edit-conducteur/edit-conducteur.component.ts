@@ -6,13 +6,15 @@ import { ConducteurService } from 'src/app/core/services/conducteur/conducteur.s
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { DataService } from 'src/app/shared/services/data.service';
 import * as moment from 'moment';
+
 @Component({
   selector: 'app-edit-conducteur',
-  templateUrl: './edit-conducteur.page.html',
-  styleUrls: ['./edit-conducteur.page.scss'],
+  templateUrl: './edit-conducteur.component.html',
+  styleUrls: ['./edit-conducteur.component.scss'],
 })
-export class EditConducteurPage implements OnInit {
+export class EditConducteurComponent implements OnInit {
 
+  
   editConducteurForm: FormGroup;
   fileToUpload;
   matcher = new FormErrorStateMatcher();
@@ -22,7 +24,7 @@ export class EditConducteurPage implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private conducteurService: ConducteurService,
-              private dialogRef: MatDialogRef<EditConducteurPage>,
+              private dialogRef: MatDialogRef<EditConducteurComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
               private conducteurDataService: DataService) { }
 
@@ -51,4 +53,5 @@ export class EditConducteurPage implements OnInit {
   close() {
     this.dialogRef.close();
   }
+
 }
