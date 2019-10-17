@@ -15,6 +15,7 @@ import { MatAutocompleteSelectedEvent } from '@angular/material';
 import { CheckList } from 'src/app/shared/models/checkList';
 import { MatStepper } from '@angular/material/stepper';
 import * as moment from 'moment';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-dynamic-form',
   templateUrl: './dynamic-form.component.html',
@@ -47,6 +48,7 @@ export class DynamicFormComponent implements OnInit {
               private conducteurService: ConducteurService,
               private vehiculeService: VehiculeService,
               private formBuilder: FormBuilder,
+              private router: Router,
               config: NgbRatingConfig) {
     config.max = 5;
     config.readonly = false;
@@ -178,6 +180,7 @@ export class DynamicFormComponent implements OnInit {
     this.formValues.date = moment(new Date()).format('MM/DD/YYYY HH:mm:ss');
     console.log(this.formValues);
     this.checkListService.addCheckList(this.formValues).subscribe(res => console.log(res));
+    this.router.navigate(['engins']);
   }
 
 }

@@ -7,8 +7,10 @@ import { MatTableDataSource } from '@angular/material';
   styleUrls: ['./synthese.component.scss'],
 })
 export class SyntheseComponent implements OnInit {
+  
   displayedColumns: string[] = ['date', 'matricule', 'engin', 'raiting','detail'];
   dataSource = new MatTableDataSource();
+
   constructor() { }
 
   ngOnInit() {}

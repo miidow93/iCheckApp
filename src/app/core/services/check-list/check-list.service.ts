@@ -25,7 +25,7 @@ export class CheckListService {
     return this.http.post(`${API}`, data)
       .pipe(
         tap(_ => this.log('Add CheckList')),
-        catchError(this.handleError('Add CheckList', []))
+        // catchError(this.handleError('Add CheckList', []))
       );
   }
 

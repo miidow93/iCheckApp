@@ -16,20 +16,20 @@ const routes: Routes = [
   {
     path: 'admin', component: AdminComponent, children: [
       { path: 'conducteur', component: ConducteurComponent, outlet: 'admin', canActivate: [AuthGuard] },
-      { path: 'synthese', component: SyntheseComponent, outlet: 'admin', canActivate: [AuthGuard] },
-      { path: 'engin', component: AddEnginsComponent, outlet: 'admin', canActivate: [AuthGuard] }
+      { path: 'synthese', component: SyntheseComponent, outlet: 'admin', canActivate: [AuthGuard] }
+      // { path: 'engin', component: AddEnginsComponent, outlet: 'admin', canActivate: [AuthGuard] }
     ]
   },
   //{ path: 'home', loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule) },
   // { path: 'custom', component: CustomFormComponent },
   {
-    path: 'checklist/:image', component: CheckListComponent, outlet: 'main'
+    path: 'checklist/:image', component: CheckListComponent
   },
   // { path:'conducteur',component: ConducteurPage },
   // { path:'synthese',component: SyntheseComponent},
   // { path:'engin-add',component:AddEnginsComponent },
   {
-    path: 'agent', component: EnginsComponent, canActivate: [AuthGuard]
+    path: 'engins', component: EnginsComponent, canActivate: [AuthGuard]
   },
   { path: '**', redirectTo: 'login' },
   // { path: 'edit-conducteur', loadChildren: './pages/conducteur/edit-conducteur/edit-conducteur.module#EditConducteurPageModule' },
