@@ -9,6 +9,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -28,7 +30,15 @@ import { ConducteurPage } from './pages/conducteur/conducteur.page';
 import { AddEnginsComponent } from './components/add-engins/add-engins.component';
 import { EditEnginsComponent } from './components/edit-engins/edit-engins.component';
 import { EditConducteurPage } from './pages/conducteur/edit-conducteur/edit-conducteur.page';
+import { SyntheseComponent } from './components/synthese/synthese.component';
+import { LoginComponent } from './components/auth/login/login.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { MenuComponent } from './components/admin/menu/menu.component';
+import { JwtModule } from '@auth0/angular-jwt';
 
+export function getToken() {
+  return localStorage.getItem('token');
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +50,12 @@ import { EditConducteurPage } from './pages/conducteur/edit-conducteur/edit-cond
     ConducteurPage,
     AddEnginsComponent,
     EditEnginsComponent,
-    EditConducteurPage
+    EditConducteurPage,
+    SyntheseComponent,
+    LoginComponent,
+    AdminComponent,
+    MenuComponent
+
   ],
   entryComponents: [EditEnginsComponent,EditConducteurPage],
   imports: [
@@ -52,7 +67,16 @@ import { EditConducteurPage } from './pages/conducteur/edit-conducteur/edit-cond
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: getToken,
+        whitelistedDomains: [
+          'http://localhost:4772',
+          'http://192.168.1.105:1020'
+        ]
+      }
+    }),
   ],
   
   providers: [
