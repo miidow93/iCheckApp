@@ -20,8 +20,9 @@ export class AddEnginsComponent implements OnInit {
   previewUrl: any = null;
   matcher = new FormErrorStateMatcher();
   isLoadingResults = false;
-  displayedColumns: string[] = ['id', 'nomEngin', 'matricule', 'image','actions'];
+  displayedColumns: string[] = ['id', 'nomEngin', 'image','actions'];
   dataSource = new MatTableDataSource();
+  
   constructor(private dialog: MatDialog,private formbuilder:FormBuilder,private service:EnginService, private enginDataService:DataService) { }
 
   ngOnInit() {

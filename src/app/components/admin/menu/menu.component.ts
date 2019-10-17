@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { faTruck, faClipboardList, faTruckLoading, faUser } from '@fortawesome/free-solid-svg-icons';
+import { Icons } from 'src/app/shared/icons';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -14,6 +15,11 @@ export class MenuComponent  {
   faClipboardList = faClipboardList;
   faTruckLoading = faTruckLoading;
   faUser = faUser;
+
+
+  conducteurIcon = Icons.conducteurIcon;
+  enginIcon = Icons.enginIcon;
+  syntheseIcon = Icons.syntheseIcon;
 
   goToSynthese() {
     console.log('Test');
