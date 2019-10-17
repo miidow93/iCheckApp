@@ -1,22 +1,22 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ConducteurPage } from './conducteur.page';
+import { ConducteurComponent } from './conducteur.component';
 
-describe('ConducteurPage', () => {
-  let component: ConducteurPage;
-  let fixture: ComponentFixture<ConducteurPage>;
+describe('ConducteurComponent', () => {
+  let component: ConducteurComponent;
+  let fixture: ComponentFixture<ConducteurComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ConducteurPage ],
+      declarations: [ ConducteurComponent ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ConducteurPage);
+    fixture = TestBed.createComponent(ConducteurComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -4,14 +4,15 @@ import * as moment from 'moment';
 import { ConducteurService } from 'src/app/core/services/conducteur/conducteur.service';
 import { MatTableDataSource, MatDialogConfig, MatDialog, MatPaginator } from '@angular/material';
 import { DataService } from 'src/app/shared/services/data.service';
-import { EditConducteurPage } from './edit-conducteur/edit-conducteur.page';
+import { EditConducteurComponent } from './edit-conducteur/edit-conducteur.component';
 
 @Component({
   selector: 'app-conducteur',
-  templateUrl: './conducteur.page.html',
-  styleUrls: ['./conducteur.page.scss'],
+  templateUrl: './conducteur.component.html',
+  styleUrls: ['./conducteur.component.scss'],
 })
-export class ConducteurPage implements OnInit {
+export class ConducteurComponent implements OnInit {
+
   displayedColumns: string[] = ['nomcomplet', 'cin', 'cnss', 'assurance', 'dateValiditeAssurance', 'patente','actions'];
   dataSource = new MatTableDataSource();
   conducteurForm: FormGroup;
@@ -62,11 +63,10 @@ export class ConducteurPage implements OnInit {
     config.autoFocus = true;
     config.width = '80%';
     config.data = element;
-    this.dialog.open(EditConducteurPage, config)
+    this.dialog.open(EditConducteurComponent, config)
       .afterClosed().subscribe(res => {
         console.log('Close: ', res);
         this.refresh();
       });
   }
-  
 }

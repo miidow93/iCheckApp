@@ -16,7 +16,7 @@
               <fa-icon [icon]="faClipboardList" size="2x" slot="start" style="margin-left: 3%"></fa-icon>
               <ion-label>Check List</ion-label>
             </ion-item> -->
-            <ion-item button [routerLink]="['/conducteur']">
+            <ion-item button [routerLink]="[{ outlets: { admin: ['conducteur'] } }]">
               <fa-icon [icon]="faUser" size="2x" slot="start" style="margin-left: 3%"></fa-icon>
               <ion-label>Conducteur</ion-label>
             </ion-item>
@@ -24,7 +24,7 @@
               <fa-icon [icon]="faTruck" size="2x" slot="start"></fa-icon>
               <ion-label>Engin(CheckList)</ion-label>
             </ion-item> -->
-            <ion-item button [routerLink]="['/engin-add']">
+            <ion-item button [routerLink]="[{ outlets: { admin: ['engin'] } }]">
               <fa-icon [icon]="faTruck" size="2x" slot="start"></fa-icon>
               <ion-label>Engin</ion-label>
             </ion-item>
@@ -32,7 +32,7 @@
               <fa-icon [icon]="faTruckLoading" size="2x" slot="start"></fa-icon>
               <ion-label>Attelage</ion-label>
             </ion-item>
-            <ion-item button [routerLink]="['/synthese']">
+            <ion-item button [routerLink]="[{ outlets: { admin: ['synthese'] } }]">
               <fa-icon [icon]="faTruckLoading" size="2x" slot="start"></fa-icon>
               <ion-label>Syntheses de controls</ion-label>
             </ion-item>
@@ -40,7 +40,7 @@
         </ion-content>
       </ion-menu>
       <div style="height: 88vh;">
-        <ion-router-outlet id="main" main></ion-router-outlet>
+        <ion-router-outlet id="main" name="admin" main></ion-router-outlet>
       </div>
   
   

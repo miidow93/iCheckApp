@@ -26,15 +26,15 @@ import { CustomFormComponent } from './components/custom-form/custom-form.compon
 import { CheckListComponent } from './components/check-list/check-list.component';
 import { EnginsComponent } from './components/engins/engins.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ConducteurPage } from './pages/conducteur/conducteur.page';
 import { AddEnginsComponent } from './components/add-engins/add-engins.component';
 import { EditEnginsComponent } from './components/edit-engins/edit-engins.component';
-import { EditConducteurPage } from './pages/conducteur/edit-conducteur/edit-conducteur.page';
 import { SyntheseComponent } from './components/synthese/synthese.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { MenuComponent } from './components/admin/menu/menu.component';
 import { JwtModule } from '@auth0/angular-jwt';
+import { EditConducteurComponent } from './components/conducteur/edit-conducteur/edit-conducteur.component';
+import { ConducteurComponent } from './components/conducteur/conducteur.component';
 
 export function getToken() {
   return localStorage.getItem('token');
@@ -47,17 +47,17 @@ export function getToken() {
     DynamicFormQuestionComponent,
     CheckListComponent,
     EnginsComponent,
-    ConducteurPage,
     AddEnginsComponent,
     EditEnginsComponent,
-    EditConducteurPage,
     SyntheseComponent,
     LoginComponent,
     AdminComponent,
-    MenuComponent
+    MenuComponent,
+    EditConducteurComponent,
+    ConducteurComponent
 
   ],
-  entryComponents: [EditEnginsComponent,EditConducteurPage],
+  entryComponents: [EditEnginsComponent,EditConducteurComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
