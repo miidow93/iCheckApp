@@ -29,6 +29,7 @@ const routes: Routes = [
   // { path:'engin-add',component:AddEnginsComponent },
   {
     path: 'agent', component: EnginsComponent, canActivate: [AuthGuard]},
+    { path: 'login', component: LoginComponent},
   { path: '**', redirectTo: 'login' },
   // { path: 'edit-conducteur', loadChildren: './pages/conducteur/edit-conducteur/edit-conducteur.module#EditConducteurPageModule' },
 
