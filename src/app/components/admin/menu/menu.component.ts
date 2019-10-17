@@ -20,6 +20,7 @@ export class MenuComponent  {
   conducteurIcon = Icons.conducteurIcon;
   enginIcon = Icons.enginIcon;
   syntheseIcon = Icons.syntheseIcon;
+  logoutIcon = Icons.logoutIcon;
 
   goToSynthese() {
     console.log('Test');
@@ -29,5 +30,12 @@ export class MenuComponent  {
   goToEngin() {
     console.log('Engin');
     this.router.navigate([{ outlets: { admin: ['engin'] } }], {relativeTo: this.route});
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
+
+    this.router.navigate(['login']);
   }
 }
