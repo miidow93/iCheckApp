@@ -12,7 +12,9 @@ import { ConducteurService } from 'src/app/core/services/conducteur/conducteur.s
 import { startWith, map } from 'rxjs/operators';
 import { filter } from 'minimatch';
 import { MatAutocompleteSelectedEvent } from '@angular/material';
-
+import { CheckList } from 'src/app/shared/models/checkList';
+import { MatStepper } from '@angular/material/stepper';
+import * as moment from 'moment';
 @Component({
   selector: 'app-dynamic-form',
   templateUrl: './dynamic-form.component.html',
@@ -33,6 +35,8 @@ export class DynamicFormComponent implements OnInit {
   conducteurs = [];
   vehicules = [];
   imageEngin = '';
+
+  formValues: CheckList = new CheckList();
 
   filteredConducteurs: Observable<any[]>;
   filteredVehicules: Observable<any[]>;
@@ -63,30 +67,43 @@ export class DynamicFormComponent implements OnInit {
 
     this.formEngin = this.formBuilder.group({
       matricule: ['', Validators.required],
-      engin: [{ value: this.engin }, Validators.required]
+      engin: [this.engin, Validators.required]
     });
+
     this.getAllConducteurs();
     this.getAllVehicules();
     this.filterInitCond();
+    this.filterInitVehicule();
 
     /**/
   }
 
   onSubmit(form: NgForm) {
     console.log('Values: ', form);
+    this.formValues.catchAll = form;
     // this.payLoad = JSON.stringify(this.form.value);
   }
 
-  onSub(form: NgForm) {
+  onSub(stepper: MatStepper, form: NgForm, type) {
+    if(type === 'conducteur') {
+      this.formValues.conducteur = form;
+    }
+
+    if(type === 'vehicule') {
+      this.formValues.vehicule = form;
+    }
     console.log('Form Values: ', form);
-    const data = {
+    console.log('Type: ', type);
+    stepper.next();
+    console.log('All data: ', this.formValues);
+    /*const data = {
       conducteur: { id: '1', nomComplet: 'biyi' },
-      tracteur: { id: '2', engin: this.engin, matricule: '25879| 12| b' },
+      vehicule: { id: '2', engin: this.engin, matricule: '25879| 12| b' },
       date: new Date().toISOString(),
       catchAll: form
     };
     console.log('CheckList: ', data);
-    this.checkListService.addCheckList(data).subscribe(res => console.log('Add CheckList: ', res));
+    this.checkListService.addCheckList(data).subscribe(res => console.log('Add CheckList: ', res));*/
   }
 
   createImagePath(serverPath: string) {
@@ -102,13 +119,17 @@ export class DynamicFormComponent implements OnInit {
   } 
 
   getAllVehicules() {
-    this.vehiculeService.getAllVehicules(this.engin).subscribe(res => console.log('Vehicules: ', res));
+    this.vehiculeService.getAllVehicules(this.engin).subscribe(res => {
+      console.log('Vehicules: ', res)
+      this.vehicules = res;
+    });
   }
 
   getConducteur(event: MatAutocompleteSelectedEvent) {
     console.log('Selected Option: ', event.option.value);
     console.log(this.conducteurs.find(opt => opt.cin == event.option.value).nomComplet);
     this.nomComplet.next(this.conducteurs.find(opt => opt.cin == event.option.value).nomComplet);
+    this.formConducteur.controls.nomComplet.patchValue(this.nomComplet.value);
     //const cond = this.conducteurs.find(x => x.cin = event.option.value);
     //console.log(cond);
     /*const cond = this.conducteurs.filter(x => x.cin = cin);
@@ -117,18 +138,46 @@ export class DynamicFormComponent implements OnInit {
     //console.log(this.nomComplet.value);
   }
 
+
   private filterInitCond() {
     this.filteredConducteurs = this.formConducteur.controls.cin.valueChanges.pipe(
       startWith(''),
-      map(value => this._filter(value))
+      map(value => this._filterConducteur(value))
     );
   }
 
+  private filterInitVehicule() {
+    this.filteredVehicules = this.formEngin.controls.matricule.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filterVehicule(value))
+    )
+  }
 
-  _filter(value: any): any[] {
+
+  _filterConducteur(value: any): any[] {
     const filterValue = value.toLowerCase();
     // console.log('_filter: ', filterValue);
     return this.conducteurs.filter(option => option.cin.toLowerCase().includes(filterValue));
+  }
+
+  _filterVehicule(value: any): any[] {
+    const filterValue = value.toLowerCase();
+    console.log('_filter: ', filterValue);
+    return this.vehicules.filter(option => option.matricule.includes(filterValue));
+  }
+
+  goBack(stepper: MatStepper) {
+    stepper.previous();
+  }
+
+  goForward(stepper: MatStepper) {
+    stepper.next();
+  }
+
+  valider() {
+    this.formValues.date = moment(new Date()).format('MM/DD/YYYY HH:mm:ss');
+    console.log(this.formValues);
+    this.checkListService.addCheckList(this.formValues).subscribe(res => console.log(res));
   }
 
 }
