@@ -22,7 +22,7 @@ const routes: Routes = [
   //{ path: 'home', loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule) },
   // { path: 'custom', component: CustomFormComponent },
   {
-    path: 'checklist/:image', component: CheckListComponent
+    path: 'checklist/:image', component: CheckListComponent, outlet: 'main'
   },
   // { path:'conducteur',component: ConducteurPage },
   // { path:'synthese',component: SyntheseComponent},
