@@ -32,7 +32,7 @@
               <fa-icon [icon]="faTruckLoading" size="2x" slot="start"></fa-icon>
               <ion-label>Attelage</ion-label>
             </ion-item> -->
-            <ion-item button [routerLink]="[{ outlets: { admin: ['synthese'] } }]">
+            <ion-item button [routerLink]="[{ outlets: { admin: ['synthese'] } }]" >
               <fa-icon [icon]="faTruckLoading" size="2x" slot="start"></fa-icon>
               <ion-label>Syntheses de controls</ion-label>
             </ion-item>
@@ -40,7 +40,7 @@
         </ion-content>
       </ion-menu>
       <div style="height: 88vh;">
-        <router-outlet name="admin"></router-outlet>
+        <ion-router-outlet name="admin"></ion-router-outlet>
       </div>
   
   
