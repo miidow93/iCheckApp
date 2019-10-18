@@ -8,17 +8,6 @@
       <img [src]="createImagePath(imageEngin)" class="mt-2 mr-3" />
 
       <mat-vertical-stepper style="margin-top: 2%; margin-left: 3%;" #stepper [dir]="dir">
-        <mat-step *ngFor="let question of questions; let i=index;" [stepControl]="question">
-          <div [formGroup]="form">
-            <ng-template matStepLabel>{{question.key}}</ng-template>
-            <app-dynamic-form-question [question]="question" [form]="form">
-            </app-dynamic-form-question>
-            <div dir="ltr">
-              <button mat-raised-button matStepperPrevious *ngIf="i == 1 || i == 2">Précedent</button>
-              <button mat-raised-button matStepperNext *ngIf="i == 0 || i == 1 || i == 2" class="ml-2">Suivant</button>
-            </div>
-          </div>
-        </mat-step>
 
         <mat-step [stepControl]="formConducteur">
           <ng-template matStepLabel>السائق</ng-template>
@@ -44,7 +33,8 @@
 
           <div dir="ltr">
             <button mat-raised-button matStepperPrevious class="mr-2">Précedent</button>
-            <button mat-raised-button class="mr-2" matSepperNext (click)="onSub(stepper, formConducteur.value, 'conducteur')">Suivant</button>
+            <button mat-raised-button class="mr-2" matSepperNext
+              (click)="onSub(stepper, formConducteur.value, 'conducteur')">Suivant</button>
           </div>
         </mat-step>
 
@@ -53,7 +43,8 @@
           <div [formGroup]="formEngin">
             <diV>
               <mat-form-field style="text-align: left" dir="ltr">
-                <input type="text" matInput formControlName="matricule" placeholder="Matricule" [matAutocomplete]="matricule" />
+                <input type="text" matInput formControlName="matricule" placeholder="Matricule"
+                  [matAutocomplete]="matricule" />
               </mat-form-field>
 
               <mat-autocomplete #matricule="matAutocomplete">
@@ -64,7 +55,20 @@
           </div>
           <div dir="ltr">
             <button mat-raised-button matStepperPrevious class="mr-2">Précedent</button>
-            <button mat-raised-button class="mr-2" matSepperNext (click)="onSub(stepper, formEngin.value, 'vehicule')">Suivant</button>
+            <button mat-raised-button class="mr-2" matSepperNext
+              (click)="onSub(stepper, formEngin.value, 'vehicule')">Suivant</button>
+          </div>
+        </mat-step>
+
+        <mat-step *ngFor="let question of questions; let i=index;" [stepControl]="question">
+          <div [formGroup]="form">
+            <ng-template matStepLabel>{{question.key}}</ng-template>
+            <app-dynamic-form-question [question]="question" [form]="form">
+            </app-dynamic-form-question>
+            <div dir="ltr">
+              <button mat-raised-button matStepperPrevious *ngIf="i == 1 || i == 2">Précedent</button>
+              <button mat-raised-button matStepperNext *ngIf="i == 0 || i == 1 || i == 2" class="ml-2">Suivant</button>
+            </div>
           </div>
         </mat-step>
 
