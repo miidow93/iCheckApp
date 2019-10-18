@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
+import { CheckListRefService } from 'src/app/core/services/checkListRef/check-list-ref.service';
 
 @Component({
   selector: 'app-synthese',
@@ -8,11 +9,16 @@ import { MatTableDataSource } from '@angular/material';
 })
 export class SyntheseComponent implements OnInit {
   
-  displayedColumns: string[] = ['date', 'matricule', 'engin', 'raiting','detail'];
+  displayedColumns: string[] = ['id', 'date', 'conducteur', 'vehicule', 'engin', 'detail'];
   dataSource = new MatTableDataSource();
 
-  constructor() { }
+  constructor(private checkListRefService: CheckListRefService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.checkListRefService.getAllCheckListRef().subscribe((res: any)   => {
+      console.log(res);
+      this.dataSource.data = res;
+    });
+  }
 
 }

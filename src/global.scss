@@ -49,3 +49,7 @@ ion-header ion-toolbar {
     --background: #42413c;
   }
 }*/
+
+.split-pane-md.split-pane-visible>.split-pane-side {
+  max-width: 22%;
+}
