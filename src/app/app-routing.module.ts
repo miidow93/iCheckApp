@@ -10,6 +10,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { AuthGuard } from './core/guard/auth.guard';
 import { ConducteurComponent } from './components/conducteur/conducteur.component';
 import { AddConducteurComponent } from './components/conducteur/add-conducteur/add-conducteur.component';
+import { DetailsComponent } from './components/details/details.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },
@@ -18,7 +19,8 @@ const routes: Routes = [
     path: 'admin', component: AdminComponent, children: [
       { path: 'conducteur', component: ConducteurComponent, outlet: 'admin', canActivate: [AuthGuard] },
       { path: 'conducteur/new', component: AddConducteurComponent, outlet: 'admin' },
-      { path: 'synthese', component: SyntheseComponent, outlet: 'admin', canActivate: [AuthGuard] }
+      { path: 'synthese', component: SyntheseComponent, outlet: 'admin', canActivate: [AuthGuard] },
+      { path: 'synthese/details/:id', component: DetailsComponent, outlet: 'admin' },
       // { path: 'engin', component: AddEnginsComponent, outlet: 'admin', canActivate: [AuthGuard] }
     ]
   },
