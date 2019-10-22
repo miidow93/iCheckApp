@@ -15,7 +15,6 @@ export class ConducteurComponent implements OnInit {
 
   displayedColumns: string[] = ['nomcomplet', 'cin', 'cnss', 'assurance', 'dateValiditeAssurance', 'patente','actions'];
   dataSource = new MatTableDataSource();
-  conducteurForm: FormGroup;
   societeControl = new FormControl();
   searchKey: string;
   constructor(private dialog: MatDialog,private service: ConducteurService,
@@ -24,16 +23,6 @@ export class ConducteurComponent implements OnInit {
 
   ngOnInit() {
     this.refresh();
-    this.conducteurForm = this.formbuilder.group({
-      nomcomplet: ['', Validators.required],
-      cin: ['', Validators.required],
-      cnss: ['', Validators.required],
-      assurance: ['', Validators.required],
-      dateValiditeAssurance: [{ value: moment().format('DD/MM/YYYY') }, Validators.required],
-      patente: ['', Validators.required],
-      societe: ['', Validators.required],
-
-    });
   }
   
   // Recuperation de la liste des conducteurs
@@ -44,18 +33,9 @@ export class ConducteurComponent implements OnInit {
     this.conducteurDataService.currentConducteurDataSource.subscribe(data => {this.dataSource.data = data;this.dataSource.paginator = this.paginator});
   }
   // rénitialisation Form
-  resetform() {
-    this.conducteurForm.reset();
-  }
+ 
   // Ajouter un conducteur
-  Addconducteur(data: NgForm) {
-    console.log(data);
-    this.service.AddConducteur(data).subscribe(res => {
-      this.refresh();
-      this.resetform();
-    });
-    
-  }
+  
   onEdit(element) {
     console.log(element);
     const config = new MatDialogConfig();

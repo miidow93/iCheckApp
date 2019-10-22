@@ -1,9 +1,9 @@
 <div class="container">
-    <h2 class="mb-2">Modifer un conducteur: {{this.data.id}}</h2>
+    <h2 class="mb-2">Modifier le conducteur avec l'ID: {{this.data.id}}</h2>
     <form [formGroup]="editConducteurForm" (ngSubmit)="onEditSubmit(editConducteurForm)">
       <div class="d-flex form-row justify-content-center">
         <mat-form-field class="w-75">
-          <input matInput placeholder="Veuillez saisir le nom du conducteur" formControlName="nomcomplet"
+          <input matInput placeholder="Veuillez saisir le nom du conducteur" formControlName="nomComplet"
             name="nomcomplet">
         </mat-form-field>
         <mat-form-field class="w-75">

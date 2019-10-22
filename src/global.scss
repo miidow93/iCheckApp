@@ -50,6 +50,11 @@ ion-header ion-toolbar {
   }
 }*/
 
+.split-pane-side {
+  // max-width: 80% !important;
+  max-width: inherit;
+}
+
 .split-pane-md.split-pane-visible>.split-pane-side {
-  max-width: 22%;
+  max-width: 22% !important;
 }

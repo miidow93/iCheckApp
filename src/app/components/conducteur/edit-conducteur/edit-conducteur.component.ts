@@ -14,7 +14,7 @@ import * as moment from 'moment';
 })
 export class EditConducteurComponent implements OnInit {
 
-  
+
   editConducteurForm: FormGroup;
   fileToUpload;
   matcher = new FormErrorStateMatcher();
@@ -23,33 +23,34 @@ export class EditConducteurComponent implements OnInit {
   previewUrl: any = null;
 
   constructor(private formBuilder: FormBuilder,
-              private conducteurService: ConducteurService,
-              private dialogRef: MatDialogRef<EditConducteurComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any,
-              private conducteurDataService: DataService) { }
+    private conducteurService: ConducteurService,
+    private dialogRef: MatDialogRef<EditConducteurComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private conducteurDataService: DataService) { }
 
   ngOnInit() {
     this.conducteurDataService.currentConducteurDataSource.subscribe();
-    
+    console.log('date assurance: ', this.data.dateValiditeAssurance);
     this.editConducteurForm = this.formBuilder.group({
-      nomcomplet: ['', Validators.required],
-      cin: ['', Validators.required],
-      cnss: ['', Validators.required],
-      assurance: ['', Validators.required],
-      dateValiditeAssurance: [{ value: moment().format('DD/MM/YYYY') }, Validators.required],
-      patente: ['', Validators.required],
-      societe: ['', Validators.required],
+      nomComplet: [this.data.nomComplet, Validators.required],
+      cin: [this.data.cin, Validators.required],
+      cnss: [this.data.cnss, Validators.required],
+      assurance: [this.data.assurance, Validators.required],
+      dateValiditeAssurance: [{ value: moment(this.data.dateValiditeAssurance).format('DD/MM/YYYY') }, Validators.required],
+      patente: [this.data.patente, Validators.required],
+      societe: [this.data.societe, Validators.required],
     });
   }
 
   onEditSubmit(form) {
-       this.conducteurService.updateConducteur(this.data.id, form.value).subscribe(async res => {
+    this.conducteurService.updateConducteur(this.data.id, form.value).subscribe(async res => {
       await this.conducteurService.getAllConducteur().pipe(take(1)).toPromise().then(data => this.conducteurDataService.changeConducteurDataSource(data));
     });
     this.editConducteurForm.reset();
     this.dialogRef.close();
     // this.dialogRef.afterClosed().subscribe(res => this.updateDataSource());
   }
+
   close() {
     this.dialogRef.close();
   }

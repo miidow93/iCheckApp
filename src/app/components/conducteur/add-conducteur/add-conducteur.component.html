@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Conducteur</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <div class="ion-padding">
+    <h2>Ajouter un conducteur</h2>
+    <form [formGroup]="conducteurForm" (ngSubmit)="Addconducteur(conducteurForm.value)">
+      <mat-card class="example-container ">
+        <div class="example-container">
+          <mat-form-field class="col-md-12 ">
+            <input matInput placeholder="Nom Conducteur" formControlName="nomComplet">
+          </mat-form-field>
+          <mat-form-field class="col-md-6">
+            <input matInput placeholder="CIN" formControlName="cin">
+          </mat-form-field>
+          <mat-form-field class="col-md-6">
+            <input matInput placeholder="CNSS" formControlName="cnss">
+          </mat-form-field>
+          <mat-form-field class="col-md-6">
+            <input matInput placeholder="Assurance" formControlName="assurance">
+          </mat-form-field>
+          <mat-form-field>
+            <input type="date" matInput placeholder="Date validité assurance" formControlName="dateValiditeAssurance">
+          </mat-form-field>
+          <mat-form-field class="col-md-6">
+            <input matInput placeholder="Patente" formControlName="patente">
+          </mat-form-field>
+          <mat-form-field class="col-sm-6 ">
+            <input matInput placeholder="Societe" formControlName="societe">
+          </mat-form-field><br>
+          <ion-button type="submit">Ajouter</ion-button>
+        </div>
+      </mat-card>
+    </form>
+  </div>
+</ion-content>
