@@ -12,6 +12,8 @@ import { ConducteurComponent } from './components/conducteur/conducteur.componen
 import { AddConducteurComponent } from './components/conducteur/add-conducteur/add-conducteur.component';
 import { DetailsComponent } from './components/details/details.component';
 import { CheckListConducteurComponent } from './components/check-list-conducteur/check-list-conducteur.component';
+import { CheckListEquipementComponent } from './components/check-list-equipement/check-list-equipement.component';
+import { CheckListEnginComponent } from './components/check-list-engin/check-list-engin.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },
@@ -26,6 +28,8 @@ const routes: Routes = [
     ]
   },
   { path: 'checklistConducteur', component:CheckListConducteurComponent},
+  { path: 'checklistEquipement', component:CheckListEquipementComponent},
+  { path: 'checklistEngin', component:CheckListEnginComponent},
   { path: 'checklist/:image', component: CheckListComponent },
   { path: 'engins', component: EnginsComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: 'login' },
