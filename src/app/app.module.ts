@@ -29,6 +29,7 @@ import { EditConducteurComponent } from './components/conducteur/edit-conducteur
 import { ConducteurComponent } from './components/conducteur/conducteur.component';
 import { AddConducteurComponent } from './components/conducteur/add-conducteur/add-conducteur.component';
 import { DetailsComponent } from './components/details/details.component';
+import { CheckListConducteurComponent } from './components/check-list-conducteur/check-list-conducteur.component';
 
 export function getToken() {
   return localStorage.getItem('token');
@@ -50,7 +51,8 @@ export function getToken() {
     EditConducteurComponent,
     ConducteurComponent,
     AddConducteurComponent,
-    DetailsComponent
+    DetailsComponent,
+    CheckListConducteurComponent
   ],
   entryComponents: [EditEnginsComponent,EditConducteurComponent],
   imports: [
