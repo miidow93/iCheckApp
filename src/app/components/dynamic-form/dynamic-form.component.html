@@ -10,7 +10,9 @@
       <mat-vertical-stepper style="margin-top: 2%; margin-left: 3%;" #stepper [dir]="dir">
 
         <mat-step [stepControl]="formConducteur">
-          <ng-template matStepLabel>السائق</ng-template>
+          <ng-template matStepLabel>
+            <h4>السائق</h4>
+          </ng-template>
           <div [formGroup]="formConducteur">
             <diV>
               <mat-form-field style="text-align: left" dir="ltr">
@@ -32,14 +34,16 @@
 
 
           <div dir="ltr">
-            <button mat-raised-button matStepperPrevious class="mr-2">Précedent</button>
+            <!-- <button mat-raised-button matStepperPrevious class="mr-2">Précedent</button> -->
             <button mat-raised-button class="mr-2" matSepperNext
               (click)="onSub(stepper, formConducteur.value, 'conducteur')">Suivant</button>
           </div>
         </mat-step>
 
         <mat-step [stepControl]="formEngin">
-          <ng-template matStepLabel>العربة</ng-template>
+          <ng-template matStepLabel>
+            <h4>العربة</h4>
+          </ng-template>
           <div [formGroup]="formEngin">
             <diV>
               <mat-form-field style="text-align: left" dir="ltr">
@@ -62,18 +66,22 @@
 
         <mat-step *ngFor="let question of questions; let i=index;" [stepControl]="question">
           <div [formGroup]="form">
-            <ng-template matStepLabel>{{question.key}}</ng-template>
+            <ng-template matStepLabel>
+              <h4>{{question.key}}</h4>
+            </ng-template>
             <app-dynamic-form-question [question]="question" [form]="form">
             </app-dynamic-form-question>
             <div dir="ltr">
-              <button mat-raised-button matStepperPrevious *ngIf="i == 1 || i == 2">Précedent</button>
-              <button mat-raised-button matStepperNext *ngIf="i == 0 || i == 1 || i == 2" class="ml-2">Suivant</button>
+              <button mat-raised-button matStepperPrevious>Précedent</button>
+              <button mat-raised-button matStepperNext class="ml-2">Suivant</button>
             </div>
           </div>
         </mat-step>
 
         <mat-step [stepControl]="null">
-          <ng-template matStepLabel>تأكيد</ng-template>
+          <ng-template matStepLabel>
+            <h4>تأكيد</h4>
+          </ng-template>
           <div dir="ltr">
             <ngb-rating [rate]="3.75"></ngb-rating>
           </div>

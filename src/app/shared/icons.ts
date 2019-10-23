@@ -4,5 +4,7 @@ export enum Icons {
     enginIcon = './assets/icon/construction.svg',
     vehiculeIcon = './assets/icon/delivery-truck.svg',
     syntheseIcon = './assets/icon/synthese.svg',
-    logoutIcon = './assets/icon/logout.svg'
+    logoutIcon = './assets/icon/logout.svg',
+    statsIcon = './assets/icon/analytics.svg',
+    dashboardIcon = './assets/icon/ui.svg'
 }

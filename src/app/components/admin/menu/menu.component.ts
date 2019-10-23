@@ -8,9 +8,9 @@ import { Icons } from 'src/app/shared/icons';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
 })
-export class MenuComponent  {
+export class MenuComponent {
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(private route: ActivatedRoute, private router: Router) {}
   faTruck = faTruck;
   faClipboardList = faClipboardList;
   faTruckLoading = faTruckLoading;
@@ -22,15 +22,17 @@ export class MenuComponent  {
   enginIcon = Icons.enginIcon;
   syntheseIcon = Icons.syntheseIcon;
   logoutIcon = Icons.logoutIcon;
+  statsIcon = Icons.statsIcon;
+  dashboardIcon = Icons.dashboardIcon;
 
   goToSynthese() {
     console.log('Test');
-    this.router.navigate([{ outlets: { admin: ['synthese'] } }], {relativeTo: this.route});
+    this.router.navigate([{ outlets: { admin: ['synthese'] } }], { relativeTo: this.route });
   }
 
   goToEngin() {
     console.log('Engin');
-    this.router.navigate([{ outlets: { admin: ['engin'] } }], {relativeTo: this.route});
+    this.router.navigate([{ outlets: { admin: ['engin'] } }], { relativeTo: this.route });
   }
 
   logout() {

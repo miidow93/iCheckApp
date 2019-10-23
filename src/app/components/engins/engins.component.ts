@@ -4,6 +4,8 @@ import { Engin } from 'src/app/shared/models/engin';
 import { CheckListService } from 'src/app/core/services/check-list/check-list.service';
 import { EnginService } from 'src/app/core/services/engin/engin.service';
 import { Constants } from 'src/app/shared/constants';
+import { Icons } from 'src/app/shared/icons';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-engins',
@@ -14,8 +16,8 @@ export class EnginsComponent implements OnInit {
 
   conducteur: Conducteur;
   engins: Engin[];
-  constructor(private checkListService: CheckListService, private enginService: EnginService) { }
-
+  constructor(private checkListService: CheckListService, private enginService: EnginService,private router:Router) { }
+  logoutIcon = Icons.logoutIcon;
   ngOnInit() {
     this.enginService.getEngins().subscribe(res => { this.engins = res; console.log(res); });
   }
@@ -27,5 +29,10 @@ export class EnginsComponent implements OnInit {
 
   onClick(nomEngin, id) {
     console.log(nomEngin, id);
+  }
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
+    this.router.navigate(['login']);
   }
 }
