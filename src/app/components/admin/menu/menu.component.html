@@ -53,7 +53,7 @@
       </ion-toolbar>
     </ion-header>
     <ion-content>
-      <ion-list lines="none">
+      <!-- <ion-list lines="none">
         <ion-item button [routerLink]="[{ outlets: { admin: ['dashboard'] } }]">
           <ion-icon class="big" slot="start" [src]="dashboardIcon"></ion-icon>
           <ion-label>Dashboard</ion-label>
@@ -79,7 +79,48 @@
           <ion-icon class="big" slot="start" [src]="logoutIcon"></ion-icon>
           <ion-label>Logout</ion-label>
         </ion-item>
-      </ion-list>
+      </ion-list> -->
+
+      <div *ngFor="let p of pages">
+        <ion-menu-toggle *ngIf="p.url">
+          <ion-item [routerLink]="p.url" routerDirection="root" routerLinkActive="active">
+            <ion-label>{{ p.title }}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-item button *ngIf="p.url; else childrenItem" [routerLink]="[{ outlets: { admin: [p.url] } }]"
+          (click)="p.open = !p.open"
+          [class.active-parent]="p.open" detail="false">
+          <ion-icon class="big" [src]="p.icon" slot="start"></ion-icon>
+          <ion-icon slot="end" name="arrow-dropright" *ngIf="p.children?.length > 0 && !p.open" ></ion-icon>
+          <ion-icon slot="end" name="arrow-dropdown" *ngIf="p.children?.length > 0 && p.open"></ion-icon>
+          <ion-label>{{ p.title }}</ion-label>
+        </ion-item>
+
+        <ion-list *ngIf="p.open">
+          <!-- <ion-menu-toggle> -->
+            <ion-item button class="sub-item"
+              *ngFor="let sub of p.children" 
+              (click)="navigateTo(sub.url)"
+              routerDirection="root" 
+              routerLinkActive="active">
+              <ion-label>{{ sub.title }}</ion-label>
+            </ion-item>
+          <!-- </ion-menu-toggle> -->
+        </ion-list>
+
+        <ng-template #childrenItem>
+            <ion-item button
+            (click)="p.open = !p.open"
+            [class.active-parent]="p.open" detail="false">
+            <ion-icon class="big" [src]="p.icon" slot="start"></ion-icon>
+            <ion-icon slot="end" name="arrow-dropright" *ngIf="p.children?.length > 0 && !p.open" ></ion-icon>
+            <ion-icon slot="end" name="arrow-dropdown" *ngIf="p.open"></ion-icon>
+            <ion-label>{{ p.title }}</ion-label>
+          </ion-item>
+        </ng-template>
+        
+      </div>
     </ion-content>
   </ion-menu>
 

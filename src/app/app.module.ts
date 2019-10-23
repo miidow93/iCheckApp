@@ -27,6 +27,8 @@ import { MenuComponent } from './components/admin/menu/menu.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { EditConducteurComponent } from './components/conducteur/edit-conducteur/edit-conducteur.component';
 import { ConducteurComponent } from './components/conducteur/conducteur.component';
+import { AddConducteurComponent } from './components/conducteur/add-conducteur/add-conducteur.component';
+import { DetailsComponent } from './components/details/details.component';
 
 export function getToken() {
   return localStorage.getItem('token');
@@ -46,8 +48,9 @@ export function getToken() {
     AdminComponent,
     MenuComponent,
     EditConducteurComponent,
-    ConducteurComponent
-
+    ConducteurComponent,
+    AddConducteurComponent,
+    DetailsComponent
   ],
   entryComponents: [EditEnginsComponent,EditConducteurComponent],
   imports: [

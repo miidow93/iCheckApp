@@ -25,6 +25,52 @@ export class MenuComponent {
   statsIcon = Icons.statsIcon;
   dashboardIcon = Icons.dashboardIcon;
 
+
+
+  pages = [
+    {
+      title: 'Dashboard',
+      url: 'dashboard',
+      icon: Icons.dashboardIcon
+    }, 
+    {
+      title: 'Synthèse de controle',
+      url: 'synthese',
+      icon: Icons.syntheseIcon
+    }, 
+    {
+      title: 'Conducteurs',
+      icon: Icons.conducteurIcon,
+      children: [
+        {
+          title: 'Nouveau',
+          url: 'conducteur/new'
+        },
+        {
+          title: 'Liste des conducteurs',
+          url: 'conducteur'
+        }
+      ]
+    },
+    {
+      title: 'Vehicules',
+      icon: Icons.vehiculeIcon,
+      children: [
+        {
+          title: 'Nouveau',
+          url: 'vehicule/new'
+        },
+        {
+          title: 'Liste des vehicules',
+          url: 'vehicules'
+        }
+      ]
+    }
+  ];
+
+
+
+
   goToSynthese() {
     console.log('Test');
     this.router.navigate([{ outlets: { admin: ['synthese'] } }], { relativeTo: this.route });
@@ -33,6 +79,11 @@ export class MenuComponent {
   goToEngin() {
     console.log('Engin');
     this.router.navigate([{ outlets: { admin: ['engin'] } }], { relativeTo: this.route });
+  }
+
+  navigateTo(url) {
+    console.log(url);
+    this.router.navigate([{ outlets: { admin: url } }], { relativeTo: this.route });
   }
 
   logout() {

@@ -9,6 +9,8 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { AuthGuard } from './core/guard/auth.guard';
 import { ConducteurComponent } from './components/conducteur/conducteur.component';
+import { AddConducteurComponent } from './components/conducteur/add-conducteur/add-conducteur.component';
+import { DetailsComponent } from './components/details/details.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },
@@ -16,21 +18,14 @@ const routes: Routes = [
   {
     path: 'admin', component: AdminComponent, children: [
       { path: 'conducteur', component: ConducteurComponent, outlet: 'admin', canActivate: [AuthGuard] },
-      { path: 'synthese', component: SyntheseComponent, outlet: 'admin', canActivate: [AuthGuard] }
+      { path: 'conducteur/new', component: AddConducteurComponent, outlet: 'admin' },
+      { path: 'synthese', component: SyntheseComponent, outlet: 'admin', canActivate: [AuthGuard] },
+      { path: 'synthese/details/:id', component: DetailsComponent, outlet: 'admin' },
       // { path: 'engin', component: AddEnginsComponent, outlet: 'admin', canActivate: [AuthGuard] }
     ]
   },
-  //{ path: 'home', loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule) },
-  // { path: 'custom', component: CustomFormComponent },
-  {
-    path: 'checklist/:image', component: CheckListComponent
-  },
-  // { path:'conducteur',component: ConducteurPage },
-  // { path:'synthese',component: SyntheseComponent},
-  // { path:'engin-add',component:AddEnginsComponent },
-  {
-    path: 'engins', component: EnginsComponent, canActivate: [AuthGuard]
-  },
+  { path: 'checklist/:image', component: CheckListComponent },
+  { path: 'engins', component: EnginsComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: 'login' },
   // { path: 'edit-conducteur', loadChildren: './pages/conducteur/edit-conducteur/edit-conducteur.module#EditConducteurPageModule' },
 
