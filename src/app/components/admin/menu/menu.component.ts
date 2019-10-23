@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { faTruck, faClipboardList, faTruckLoading, faUser } from '@fortawesome/free-solid-svg-icons';
@@ -15,6 +15,7 @@ export class MenuComponent {
   faClipboardList = faClipboardList;
   faTruckLoading = faTruckLoading;
   faUser = faUser;
+  role;
 
 
   conducteurIcon = Icons.conducteurIcon;

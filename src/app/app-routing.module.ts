@@ -11,6 +11,7 @@ import { AuthGuard } from './core/guard/auth.guard';
 import { ConducteurComponent } from './components/conducteur/conducteur.component';
 import { AddConducteurComponent } from './components/conducteur/add-conducteur/add-conducteur.component';
 import { DetailsComponent } from './components/details/details.component';
+import { CheckListConducteurComponent } from './components/check-list-conducteur/check-list-conducteur.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },
@@ -24,6 +25,7 @@ const routes: Routes = [
       // { path: 'engin', component: AddEnginsComponent, outlet: 'admin', canActivate: [AuthGuard] }
     ]
   },
+  { path: 'checklistConducteur', component:CheckListConducteurComponent},
   { path: 'checklist/:image', component: CheckListComponent },
   { path: 'engins', component: EnginsComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: 'login' },

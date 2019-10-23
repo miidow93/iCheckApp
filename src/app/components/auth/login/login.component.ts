@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
             if (res.role === 'admin' ) {
               this.router.navigate(['admin']);
             } else {
-              this.router.navigate(['agent']);
+              this.router.navigate(['engins']);
             }
           }
         }
