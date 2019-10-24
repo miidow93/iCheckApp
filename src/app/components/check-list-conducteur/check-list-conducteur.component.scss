@@ -1,2 +1,100 @@
-.container{
+.button1 {
+  position: absolute;
+  left: 540px;
+  top: 157px;
+}
+
+.button2 {
+  position: absolute;
+  left: 540px;
+  top: 40px;
+}
+
+.button3 {
+  position: absolute;
+  left: 925px;
+  top: 25px;
+}
+
+.button4 {
+  position: absolute;
+  left: 910px;
+  top: 115px;
+}
+
+.button5 {
+  position: absolute;
+  left: 910px;
+  top: 240px;
+}
+
+.image {
+  //   position: absolute;
+  //   left: 620px;
+  min-width: 25%;
+  max-width: 30%;
+}
+
+// .container {
+//   position: relative;
+//   padding-top: 31.875%;
+//   height: 0;
+//   background: url("../../../assets/images/Concucteur.jpg") 0 0 no-repeat;
+//   background-size: cover;
+// }
+
+h4 {
+  position: absolute;
+  top: 70.5%;
+  left: 34%;
+  color: white;
+  margin: 0;
+  font-size: 1.4vw;
+}
+
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+/* Bottom left text */
+.bottom-left {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+  color: red;
+}
+
+/* Top left text */
+.top-left {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  color: red;
+}
+
+/* Top right text */
+.top-right {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  color: red;
+}
+
+/* Bottom right text */
+.bottom-right {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+  color: red;
+}
+
+/* Centered text */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: red;
 }

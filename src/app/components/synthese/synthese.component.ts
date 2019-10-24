@@ -29,9 +29,10 @@ export class SyntheseComponent implements OnInit {
   }
 
   showDetails(element) {
-    const url = `synthese/details/${element.idCheckListRef}`;
-    console.log(url);
-    this.router.navigate(['', { outlets: { admin: ['details', element.idCheckListRef] } }], { relativeTo: this.activatedRoute });
+    // const url = `synthese/details/${element.idCheckListRef}`;
+    // console.log(url);
+    // this.router.navigate(['admin', { outlets: { admin: ['synthese', element.idCheckListRef] } }], { relativeTo: this.activatedRoute });
+    this.router.navigateByUrl(`/admin/(admin:synthese/${element.idCheckListRef}`);
     console.log('Element: ', element);
     console.log(this.activatedRoute)
   }
