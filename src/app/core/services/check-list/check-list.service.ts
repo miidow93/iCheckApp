@@ -3,6 +3,7 @@ import { Constants } from 'src/app/shared/constants';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { CheckList } from 'src/app/shared/models/checkList';
 
 const API = Constants.api + 'checkList';
 
@@ -18,6 +19,14 @@ export class CheckListService {
       .pipe(
         tap(_ => this.log('Get All CheckList')),
         catchError(this.handleError('Get All CheckList', []))
+      );
+  }
+
+  getCheckListByID(id): Observable<CheckList[]> {
+    return this.http.get<CheckList[]>(`${API}/${id}`)
+      .pipe(
+        tap(_ => this.log('Get CheckList By ID')),
+        catchError(this.handleError('Get CheckList By ID', []))
       );
   }
 

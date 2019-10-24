@@ -32,6 +32,9 @@ import { DetailsComponent } from './components/details/details.component';
 import { CheckListConducteurComponent } from './components/check-list-conducteur/check-list-conducteur.component';
 import { CheckListEquipementComponent } from './components/check-list-equipement/check-list-equipement.component';
 import { CheckListEnginComponent } from './components/check-list-engin/check-list-engin.component';
+import { CiterneComponent } from './components/attelages/citerne/citerne.component';
+import { BenneComponent } from './components/attelages/benne/benne.component';
+import { PlateauComponent } from './components/attelages/plateau/plateau.component';
 
 export function getToken() {
   return localStorage.getItem('token');
@@ -56,7 +59,10 @@ export function getToken() {
     DetailsComponent,
     CheckListConducteurComponent,
     CheckListEquipementComponent,
-    CheckListEnginComponent
+    CheckListEnginComponent,
+    BenneComponent,
+    CiterneComponent,
+    PlateauComponent
   ],
   entryComponents: [EditEnginsComponent,EditConducteurComponent],
   imports: [

@@ -14,6 +14,9 @@ import { DetailsComponent } from './components/details/details.component';
 import { CheckListConducteurComponent } from './components/check-list-conducteur/check-list-conducteur.component';
 import { CheckListEquipementComponent } from './components/check-list-equipement/check-list-equipement.component';
 import { CheckListEnginComponent } from './components/check-list-engin/check-list-engin.component';
+import { BenneComponent } from './components/attelages/benne/benne.component';
+import { CiterneComponent } from './components/attelages/citerne/citerne.component';
+import { PlateauComponent } from './components/attelages/plateau/plateau.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },
@@ -23,10 +26,13 @@ const routes: Routes = [
       { path: 'conducteur', component: ConducteurComponent, outlet: 'admin', canActivate: [AuthGuard] },
       { path: 'conducteur/new', component: AddConducteurComponent, outlet: 'admin' },
       { path: 'synthese', component: SyntheseComponent, outlet: 'admin', canActivate: [AuthGuard] },
-      { path: 'synthese/details/:id', component: DetailsComponent, outlet: 'admin' },
+      { path: 'synthese/:id', component: DetailsComponent, outlet: 'admin' },
       // { path: 'engin', component: AddEnginsComponent, outlet: 'admin', canActivate: [AuthGuard] }
     ]
   },
+  { path: 'benne', component:BenneComponent},
+  { path: 'citerne', component:CiterneComponent},
+  { path: 'plateau', component:PlateauComponent},
   { path: 'checklistConducteur', component:CheckListConducteurComponent},
   { path: 'checklistEquipement', component:CheckListEquipementComponent},
   { path: 'checklistEngin', component:CheckListEnginComponent},
