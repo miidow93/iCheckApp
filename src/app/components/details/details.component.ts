@@ -24,34 +24,47 @@ export class DetailsComponent implements OnInit {
       this.checkListService.getCheckListByID(param.id).subscribe(checklist => {
         console.log('Checklist: ', checklist);
         if (checklist) {
-          this.questionService.getQuestionsFromAPI(checklist.vehicule.engin).then(res => {
+          this.questionService.getQuestionsFromAPI(checklist['vehicule'].engin).then(res => {
             console.log('Question: ', res);
             let controle1 = 'مراقبة عينية للحالة العامة للعربة الرافعة';
             let controle2 = 'مراقبة عمل الآلية';
             let controle3 = 'مراقبة مكان التدخل';
 
             res.forEach(element => {
-              console.log(checklist.catchAll[controle1]);
-              element.options.forEach(opt => {
+              if (element.key === controle1) {
+                console.log(checklist['catchAll'][controle1]);
+                this.keys1 = this.arrayToJson(element['options'], checklist['catchAll'][controle1]);
+                console.log('Keys 1: ', this.keys1);
+              }
+              if (element.key === controle2) {
+                console.log(checklist['catchAll'][controle2]);
+                this.keys2 = this.arrayToJson(element['options'], checklist['catchAll'][controle2]);
+                console.log('Keys 2: ', this.keys2);
+              }
+              if (element.key === controle3) {
+                console.log(checklist['catchAll'][controle3]);
+                this.keys3 = this.arrayToJson(element['options'], checklist['catchAll'][controle3]);
+                console.log('Keys 3: ', this.keys3);
+              }
 
-                /*if (element.label === 'Surveillance en nature de l\'état général du véhicule') {
-                  let test = {key: opt.key, value: checklist.}
-                  this.keys1.push(opt.key);
-                }
-                if (element.label === 'Suivi du travail du mécanisme') {
-                  this.keys2.push(opt.key);
-                }
-                if (element.label === 'Surveiller le lieu de l\'intervention') {
-                  this.keys3.push(opt.key);
-                }*/
-              });
-              // console.log('Keys: ', keys1);
             });
           });
         }
       })
     });
 
+  }
+
+
+  arrayToJson(options: any = [], values: any = []): any[] {
+    let index = 0;
+    let keys = [];
+    options.forEach(elt => {
+      let js = {key: elt.key, value: values[index]};
+      keys.push(js);
+      index++;
+    });
+    return keys;
   }
 
 }
