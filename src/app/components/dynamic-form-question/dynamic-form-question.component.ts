@@ -17,7 +17,7 @@ export class DynamicFormQuestionComponent implements OnInit {
   get isValid() { return this.form.controls[this.question.key].valid; }
 
   ngOnInit() {
-    console.log('DynamicFormQuestionComponent: ', this.question);
+    // console.log('DynamicFormQuestionComponent: ', this.question);
     // console.log('Form: ', this.form);
   }
 }

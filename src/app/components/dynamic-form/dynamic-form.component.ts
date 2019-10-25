@@ -55,9 +55,9 @@ export class DynamicFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('DynamicFormComponent', this.questions);
+    // console.log('DynamicFormComponent', this.questions);
     this.form = this.qcs.toFormGroup(this.questions);
-    console.log('Length: ', this.questions.length);
+    // console.log('Length: ', this.questions.length);
     // await this.qcs.toFormGroup(this.questions).then(formGroup => this.form = formGroup);
     this.enginService.getEnginsByName(this.engin).subscribe(res => this.imageEngin = res.imageEngin);
 
@@ -178,6 +178,7 @@ export class DynamicFormComponent implements OnInit {
 
   valider() {
     this.formValues.date = moment(new Date()).format('MM/DD/YYYY HH:mm:ss');
+    this.formValues.site = localStorage.getItem('site');
     console.log(this.formValues);
     this.checkListService.addCheckList(this.formValues).subscribe(res => console.log(res));
     this.router.navigate(['engins']);

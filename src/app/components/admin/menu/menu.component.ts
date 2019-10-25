@@ -65,6 +65,10 @@ export class MenuComponent {
           url: 'vehicules'
         }
       ]
+    }, 
+    {
+      title: 'Logout',
+      icon: Icons.logoutIcon
     }
   ];
 
@@ -89,7 +93,7 @@ export class MenuComponent {
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('role');
-
+    console.log('Logout');
     this.router.navigate(['login']);
   }
 }
