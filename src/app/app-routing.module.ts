@@ -17,6 +17,8 @@ import { CheckListEnginComponent } from './components/check-list-engin/check-lis
 import { BenneComponent } from './components/attelages/benne/benne.component';
 import { CiterneComponent } from './components/attelages/citerne/citerne.component';
 import { PlateauComponent } from './components/attelages/plateau/plateau.component';
+import { GrueMobileComponent } from './components/attelages/grue-mobile/grue-mobile.component';
+import { MiniPelleComponent } from './components/attelages/mini-pelle/mini-pelle.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },
@@ -33,6 +35,8 @@ const routes: Routes = [
   { path: 'benne', component:BenneComponent},
   { path: 'citerne', component:CiterneComponent},
   { path: 'plateau', component:PlateauComponent},
+  { path: 'gruemobile',component:GrueMobileComponent},
+  { path: 'minipelle',component:MiniPelleComponent},
   { path: 'checklistConducteur', component:CheckListConducteurComponent},
   { path: 'checklistEquipement', component:CheckListEquipementComponent},
   { path: 'checklistEngin', component:CheckListEnginComponent},

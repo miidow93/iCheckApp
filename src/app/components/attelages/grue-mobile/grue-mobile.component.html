@@ -1,0 +1,24 @@
+
+<div class="row justify-content-center">
+  <form [formGroup]="formConducteur" class="example-form">
+    <mat-form-field class="example-full-width">
+      <input type="text" matInput formControlName="cin" placeholder="C.I.N Conducteur" />
+    </mat-form-field>&nbsp;&nbsp;
+    <mat-form-field class="example-full-width">
+      <input type="text" matInput formControlName="nom" placeholder="Nom Conducteur" />
+    </mat-form-field>&nbsp;&nbsp;
+    <mat-form-field class="example-full-width">
+      <input type="text" matInput formControlName="matricule" placeholder="Matricule Engin" />
+    </mat-form-field>
+  </form>
+</div>
+<span style="float: left;">
+  <img class="image2" src="../../../../assets/images/grueMobile.jpg">
+  <!-- <button mat-mini-fab color="warn" class="button1"></button>
+   <button mat-mini-fab color="warn" class="button2"></button>
+  <button mat-mini-fab color="warn" class="button3"></button>
+  <button mat-mini-fab color="warn" class="button4"></button>
+  <button mat-mini-fab color="warn" class="button5"></button> -->
+</span>
+<app-check-list-conducteur></app-check-list-conducteur>
+<app-check-list-equipement></app-check-list-equipement>

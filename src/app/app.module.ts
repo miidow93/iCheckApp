@@ -35,6 +35,8 @@ import { CheckListEnginComponent } from './components/check-list-engin/check-lis
 import { CiterneComponent } from './components/attelages/citerne/citerne.component';
 import { BenneComponent } from './components/attelages/benne/benne.component';
 import { PlateauComponent } from './components/attelages/plateau/plateau.component';
+import { GrueMobileComponent } from './components/attelages/grue-mobile/grue-mobile.component';
+import { MiniPelleComponent } from './components/attelages/mini-pelle/mini-pelle.component';
 
 export function getToken() {
   return localStorage.getItem('token');
@@ -62,7 +64,9 @@ export function getToken() {
     CheckListEnginComponent,
     BenneComponent,
     CiterneComponent,
-    PlateauComponent
+    PlateauComponent,
+    GrueMobileComponent,
+    MiniPelleComponent
   ],
   entryComponents: [EditEnginsComponent,EditConducteurComponent],
   imports: [
