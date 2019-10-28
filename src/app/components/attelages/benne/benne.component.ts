@@ -34,12 +34,12 @@ export class BenneComponent implements OnInit {
   values = [];
 
   constructor(private formBuilder: FormBuilder,
-    private dataService: DataService,
-    private enginService: EnginService,
-    private checkListService: CheckListService,
-    private conducteurService: ConducteurService,
-    private vehiculeService: VehiculeService, 
-    private router: Router) { }
+              private dataService: DataService,
+              private enginService: EnginService,
+              private checkListService: CheckListService,
+              private conducteurService: ConducteurService,
+              private vehiculeService: VehiculeService, 
+              private router: Router) { }
 
   ngOnInit() {
     this.dataService.currentConducteurCheckList.subscribe(res => {
@@ -80,7 +80,7 @@ export class BenneComponent implements OnInit {
     this.formValues.site = localStorage.getItem('site');
     this.formValues.conducteur = { cin: form['cin'], nomComplet: form['nomComplet'] };
     this.formValues.vehicule = { matricule: form['matricule'], engin: 'Benne' };
-    this.formValues.catchAll = { checklistConducteur: Object.values(this.conducteurCheckList), 
+    this.formValues.catchAll = { checklistConducteur: Object.values(this.conducteurCheckList),
       checklistEquipement: Object.values(this.equipementCheckList),
       checklistEngin: Object.values(this.enginCheckList),
       checklistAttelage: Object.values(this.values)

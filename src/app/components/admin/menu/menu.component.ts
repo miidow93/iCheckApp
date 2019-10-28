@@ -68,7 +68,8 @@ export class MenuComponent {
     }, 
     {
       title: 'Logout',
-      icon: Icons.logoutIcon
+      icon: Icons.logoutIcon,
+      url: 'logout'
     }
   ];
 
