@@ -96,12 +96,12 @@
           <ion-label>{{ p.title }}</ion-label>
         </ion-item>
 
-        <!-- <ion-list *ngIf="p.open">
+        <ion-list *ngIf="p.open">
           <ion-item button class="sub-item" *ngFor="let sub of p.children" (click)="navigateTo(sub.url)"
             routerDirection="root" routerLinkActive="active">
             <ion-label>{{ sub.title }}</ion-label>
           </ion-item>
-        </ion-list> -->
+        </ion-list>
 
         <ng-template #childrenItem>
           <ion-item button (click)="p.open = !p.open" [class.active-parent]="p.open" detail="false">
@@ -112,12 +112,12 @@
           </ion-item>
         </ng-template>
 
-        <ng-template #logoutTemplate>
+        <!-- <ng-template #logoutTemplate>
           <ion-item button (click)="logout()">
             <ion-icon class="big" [src]="p.icon" slot="start"></ion-icon>
             <ion-label>{{ p.title }}</ion-label>
           </ion-item>
-        </ng-template>
+        </ng-template> -->
 
 
       </div>
