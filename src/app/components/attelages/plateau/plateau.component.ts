@@ -60,7 +60,6 @@ export class PlateauComponent implements OnInit {
     this.values['b24'] = false;
     this.values['b25'] = false;
     this.values['b26'] = false;
-    this.values['b27'] = false;
 
     this.formConducteur = this.formBuilder.group({
       cin: ['', Validators.required],
@@ -78,7 +77,7 @@ export class PlateauComponent implements OnInit {
     this.formValues.date = moment(new Date()).format('MM/DD/YYYY HH:mm:ss');
     this.formValues.site = localStorage.getItem('site');
     this.formValues.conducteur = { cin: form['cin'], nomComplet: form['nomComplet'] };
-    this.formValues.vehicule = { matricule: form['matricule'], engin: 'Benne' };
+    this.formValues.vehicule = { matricule: form['matricule'], engin: 'Plateau' };
     this.formValues.catchAll = { checklistConducteur: Object.values(this.conducteurCheckList),
       checklistEquipement: Object.values(this.equipementCheckList),
       checklistEngin: Object.values(this.enginCheckList),
