@@ -1,5 +1,8 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-title>Details</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -15,9 +18,9 @@
         </ion-row>
 
         <ion-row>
-            <ion-col>ID: {{checkListValues?.id }}</ion-col>
-            <ion-col>CIN: {{checkListValues?.conducteur.cin }}</ion-col>
-            <ion-col>Matricule: {{checkListValues?.vehicule.matricule }}</ion-col>
+          <ion-col>ID: {{checkListValues?.id }}</ion-col>
+          <ion-col>CIN: {{checkListValues?.conducteur.cin }}</ion-col>
+          <ion-col>Matricule: {{checkListValues?.vehicule.matricule }}</ion-col>
         </ion-row>
       </ion-grid>
     </div>
