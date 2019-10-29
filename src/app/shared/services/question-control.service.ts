@@ -12,10 +12,10 @@ export class QuestionControlService {
 
   toFormGroup(questions: QuestionBase<any>[]) {
     let group: any = {};
-    console.log('QuestionControlService: ', questions);
-    console.log('Question', questions);
+    // console.log('QuestionControlService: ', questions);
+    // console.log('Question', questions);
     questions.forEach(question => {
-      console.log('QuestionType: ', question.controlType);
+      // console.log('QuestionType: ', question.controlType);
       if (question.controlType === 'checkbox') {
         // tslint:disable-next-line:no-string-literal
         group[question.key] = this.buildCheckBoxArray(question['options']);
@@ -29,7 +29,7 @@ export class QuestionControlService {
 
   buildCheckBoxArray(itemsArr): any {
     const arr = itemsArr.map(item => {
-      console.log('Item CheckBox: ', item);
+      // console.log('Item CheckBox: ', item);
       return new FormControl(item.value);
     });
     return new FormArray(arr);

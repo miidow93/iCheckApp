@@ -28,6 +28,7 @@ export class CustomFormComponent implements OnInit {
       this.questions = qsc;
     });
   }
+  
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('role');

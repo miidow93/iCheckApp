@@ -1,3 +1,13 @@
 <ion-content>
-  <app-custom-form [engin]="engin"></app-custom-form>
+  <!-- <app-custom-form [engin]="engin"></app-custom-form> -->
+  <ng-container *ngIf="engin === 'Benne'">
+    <app-benne></app-benne>
+  </ng-container>
+  <ng-container *ngIf="engin === 'Plateau'">
+    <app-plateau></app-plateau>
+  </ng-container>
+  <ng-container *ngIf="engin === 'Citerne'">
+    <app-citerne></app-citerne>
+  </ng-container>
+
 </ion-content>

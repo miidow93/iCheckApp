@@ -25,9 +25,9 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {
     path: 'admin', component: AdminComponent, children: [
-      { path: 'conducteur', component: ConducteurComponent, outlet: 'admin', canActivate: [AuthGuard] },
+      { path: 'conducteur', component: ConducteurComponent, outlet: 'admin'/*, canActivate: [AuthGuard]*/ },
       { path: 'conducteur/new', component: AddConducteurComponent, outlet: 'admin' },
-      { path: 'synthese', component: SyntheseComponent, outlet: 'admin', canActivate: [AuthGuard] },
+      { path: 'synthese', component: SyntheseComponent, outlet: 'admin'/*, canActivate: [AuthGuard]*/ },
       { path: 'synthese/:id', component: DetailsComponent, outlet: 'admin' },
       // { path: 'engin', component: AddEnginsComponent, outlet: 'admin', canActivate: [AuthGuard] }
     ]
