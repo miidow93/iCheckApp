@@ -34,7 +34,7 @@ export class BenneComponent implements OnInit {
   conducteurs = [];
   vehicules = [];
   values = [];
-  currentRate = 8;
+  currentRate = 3;
 
   constructor(config: NgbRatingConfig,
               private formBuilder: FormBuilder,
