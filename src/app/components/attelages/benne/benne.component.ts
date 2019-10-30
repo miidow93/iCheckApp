@@ -11,11 +11,13 @@ import { MatAutocompleteSelectedEvent } from '@angular/material';
 import { CheckList } from 'src/app/shared/models/checkList';
 import * as moment from 'moment';
 import { Router } from '@angular/router';
+import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-benne',
   templateUrl: './benne.component.html',
   styleUrls: ['./benne.component.scss'],
+  providers: [NgbRatingConfig]
 })
 export class BenneComponent implements OnInit {
 
@@ -32,14 +34,18 @@ export class BenneComponent implements OnInit {
   conducteurs = [];
   vehicules = [];
   values = [];
+  currentRate = 8;
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(config: NgbRatingConfig,
+              private formBuilder: FormBuilder,
               private dataService: DataService,
-              private enginService: EnginService,
               private checkListService: CheckListService,
               private conducteurService: ConducteurService,
               private vehiculeService: VehiculeService, 
-              private router: Router) { }
+              private router: Router) { 
+                config.max = 5;
+                config.readonly = true;
+              }
 
   ngOnInit() {
     this.dataService.currentConducteurCheckList.subscribe(res => {
