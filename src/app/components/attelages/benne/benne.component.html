@@ -23,9 +23,7 @@
       <mat-option *ngFor="let vehicule of (filteredVehicules | async)" [value]="vehicule.matricule">
         {{vehicule.matricule}}</mat-option>
     </mat-autocomplete>
-    <div>
-      <ngb-rating [(rate)]="currentRate"></ngb-rating>
-    </div>
+    <!-- <ngb-rating [(rate)]="currentRate"></ngb-rating> -->
     <button mat-raised-button type="submit">Envoyer</button>
   </form>
 </div>
