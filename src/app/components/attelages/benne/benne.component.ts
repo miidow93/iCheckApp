@@ -82,6 +82,10 @@ export class BenneComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
+    if(!form.valid) {
+      return;
+    }
+    
     this.formValues.date = moment(new Date()).format('MM/DD/YYYY HH:mm:ss');
     this.formValues.site = localStorage.getItem('site');
     this.formValues.conducteur = { cin: form['cin'], nomComplet: form['nomComplet'] };
