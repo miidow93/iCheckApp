@@ -17,14 +17,14 @@ import { CheckListEnginComponent } from './components/check-list-engin/check-lis
 import { BenneComponent } from './components/attelages/benne/benne.component';
 import { CiterneComponent } from './components/attelages/citerne/citerne.component';
 import { PlateauComponent } from './components/attelages/plateau/plateau.component';
-import { GrueMobileComponent } from './components/attelages/grue-mobile/grue-mobile.component';
-import { MiniPelleComponent } from './components/attelages/mini-pelle/mini-pelle.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   {
     path: 'admin', component: AdminComponent, children: [
+      { path: 'dashboard', component: DashboardComponent, outlet: 'admin' },
       { path: 'conducteur', component: ConducteurComponent, outlet: 'admin'/*, canActivate: [AuthGuard]*/ },
       { path: 'conducteur/new', component: AddConducteurComponent, outlet: 'admin' },
       { path: 'synthese', component: SyntheseComponent, outlet: 'admin'/*, canActivate: [AuthGuard]*/ },
@@ -35,8 +35,6 @@ const routes: Routes = [
   { path: 'benne', component:BenneComponent},
   { path: 'citerne', component:CiterneComponent},
   { path: 'plateau', component:PlateauComponent},
-  { path: 'gruemobile',component:GrueMobileComponent},
-  { path: 'minipelle',component:MiniPelleComponent},
   { path: 'checklistConducteur', component:CheckListConducteurComponent},
   { path: 'checklistEquipement', component:CheckListEquipementComponent},
   { path: 'checklistEngin', component:CheckListEnginComponent},

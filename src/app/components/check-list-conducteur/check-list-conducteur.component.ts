@@ -28,22 +28,11 @@ export class CheckListConducteurComponent implements OnInit {
     // console.log(button.classList);
     if (button.classList.contains('isNotActive')) {
       button.classList.replace('isNotActive', 'isActive');
-      const js = { key: buttonID, value: true };
       this.values[`${buttonID}`] = true;
-      // if (!this.values.find(x => x.key === js.key)) {
-      //   this.values.push(js);
-      // }
-      // console.log('Is Active: ', this.values);
     } else {
       if (button.classList.contains('isActive')) {
         button.classList.replace('isActive', 'isNotActive');
-        const js = { key: buttonID, value: false };
-
-        // if (this.values.find(x => x.key === js.key)) {
-        //   this.values.push(js);
-        // }
         this.values[`${buttonID}`] = false;
-        // console.log('Is Not Active: ', this.values);
       }
     }
     this.dataService.changeConducteurCheckList(this.values);

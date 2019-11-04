@@ -15,37 +15,7 @@ export class QuestionService {
   options: [];
 
   constructor(private http: HttpClient) { }
-  // TODO: get from a remote source of question metadata
-  // TODO: make asynchronous
-  /*getQuestions() {
-    this.http.get('../assets/checkList/manuscopique.json').subscribe(text => {
-      // console.log(text);
-      console.log(Object.keys(text['Surveillance en nature de l\'état général du véhicule']));
-
-      const checkbox1 = new CheckboxQuestion({
-        key: 'etatGeneral',
-        label: 'Surveillance en nature de l\'état général du véhicule',
-        options: this.arrayToForm(text)
-      });
-      const dropDown = new DropdownQuestion({
-        controlType: 'choice',
-        key: 'brave',
-        label: 'Bravery Rating',
-        options: [
-          { key: 'solid', value: 'Solid' },
-          { key: 'great', value: 'Great' },
-          { key: 'good', value: 'Good' },
-          { key: 'unproven', value: 'Unproven' }
-        ],
-        order: 3
-      });
-
-      this.questions.push(checkbox1);
-      this.questions.push(dropDown);
-
-    });
-    return this.questions;
-  }*/
+  
 
   async getQuestionsFromAPI(engin) {
     // tslint:disable-next-line:no-shadowed-variable
@@ -87,54 +57,57 @@ export class QuestionService {
     });
 
     return this.questions;
-
-
-
-
-
-    /*.pipe(
-      map(text => {
-        console.log(Object.keys(text['Surveillance en nature de l\'état général du véhicule']));
-
-        const checkbox1 = new CheckboxQuestion({
-          key: 'etatGeneral',
-          label: 'Surveillance en nature de l\'état général du véhicule',
-          options: this.arrayToForm(text)
-        });
-        const dropDown = new DropdownQuestion({
-          controlType: 'choice',
-          key: 'brave',
-          label: 'Bravery Rating',
-          options: [
-            { key: 'solid', value: 'Solid' },
-            { key: 'great', value: 'Great' },
-            { key: 'good', value: 'Good' },
-            { key: 'unproven', value: 'Unproven' }
-          ],
-          order: 3
-        });
-
-        this.questions.push(checkbox1);
-        this.questions.push(dropDown);
-      }));*/
-
   }
 
+  async getQuestionsForAttelages(engin) {
+    // tslint:disable-next-line:no-shadowed-variable
+    await this.http.get(`../assets/checkList/${engin}.json`).pipe(take(1)).toPromise().then(async (res) => {
+      console.log('Service: ', res);
+      const checkbox1 = new CheckboxQuestion({
+        key: 'مراقبة الحالة العامة للسائق',
+        label: 'Surveiller l\'état général du conducteur',
+        options: this.arrayToForm(res['checklistConducteur'])
+      });
+      const checkbox2 = new CheckboxQuestion({
+        key: 'مراقبة حالة المعدات',
+        label: 'Surveillance de l\'état de l\'équipement',
+        options: this.arrayToForm(res['checklistEquipement'])
+      });
+      const checkbox3 = new CheckboxQuestion({
+        key: 'مراقبة الحالة العامة للعربة',
+        label: 'Surveiller l\'état général du véhicule',
+        options: this.arrayToForm(res['checklistEngin'])
+      });
 
+      const checkbox4 = new CheckboxQuestion({
+        key: 'مراقبة الحالة العامة للعربة المجرورة',
+        label: 'Surveiller l\'état général du véhicule remorqué',
+        options: this.arrayToForm(res['checklistAttelage'])
+      });
 
+      this.questions.push(checkbox1);
+      this.questions.push(checkbox2);
+      this.questions.push(checkbox3);
+      this.questions.push(checkbox4);
+      console.log('Questions Service: ', this.questions.length);
+    });
+
+    return this.questions;
+  }
 
   arrayToForm(group) {
+    // console.log('Group:', group);
     // tslint:disable-next-line:prefer-const
     let opts = [];
     const keys = Object.values(group);
     // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < keys.length; i++) {
       opts[i] = { key: keys[i], value: false };
-      // console.log('Keys:', opt);
+     
       // options.push(opt);
     }
-
-    console.log(opts);
+    
+    // console.log(opts);
     return opts;
   }
 }
