@@ -11,9 +11,9 @@
     </mat-autocomplete>
 
     <mat-form-field style="text-align: left" dir="ltr" class="mr-2">
-        <input type="text" matInput formControlName="nomComplet" placeholder="Nom Complet"
-          [value]="formConducteur.controls['cin'].value !== '' ? nomComplet.value : ''" />
-      </mat-form-field>
+      <input type="text" matInput formControlName="nomComplet" placeholder="Nom Complet"
+        [value]="formConducteur.controls['cin'].value !== '' ? nomComplet.value : ''" />
+    </mat-form-field>
 
     <mat-form-field style="text-align: left" dir="ltr" class="mr-2">
       <input type="text" matInput formControlName="matricule" placeholder="Matricule" [matAutocomplete]="matricule" />
@@ -23,6 +23,7 @@
       <mat-option *ngFor="let vehicule of (filteredVehicules | async)" [value]="vehicule.matricule">
         {{vehicule.matricule}}</mat-option>
     </mat-autocomplete>
+    <!-- <ngb-rating [(rate)]="currentRate"></ngb-rating> -->
     <button mat-raised-button type="submit">Envoyer</button>
   </form>
 </div>
@@ -37,4 +38,5 @@
   <button mat-mini-fab id="b26" (click)="check(26)" class="button4 isNotActive"></button>
   <button mat-mini-fab id="b27" (click)="check(27)" class="button5 isNotActive"></button>
 </span>
+
 <!-- </div> -->

@@ -25,13 +25,30 @@
       </ion-grid>
     </div>
 
-    <div class="borderBox">
+    <!-- <div class="borderBox">
       <mat-list *ngFor="let question of questions" [dir]="dir">
         <h2 class="form-row justify-content-start mr-2">{{question.key}}</h2>
         <mat-list-item *ngFor="let option of question['options']">
           <mat-checkbox class="example-margin" [checked]="option.value" disabled>
             {{option.key}}
           </mat-checkbox>
+        </mat-list-item>
+      </mat-list> -->
+      
+    <div class="borderBox">
+      <mat-list *ngFor="let question of questions" [dir]="dir">
+        <h2 class="form-row justify-content-start mr-2">{{question.key}}</h2>
+        <mat-list-item *ngFor="let option of question['options']">
+            <span *ngIf="option.value == true ">
+                <button  md-raised-button class="btn btn-success background-button" 
+                disabled><span class="checked">✓</span></button>&nbsp;&nbsp;
+            <span style="font-size: 25px;">{{option.key}}</span>
+          </span>
+          <span *ngIf="option.value == false ">
+              <button  md-raised-button class="btn btn-danger background-button"
+              disabled><span class="notChecked">X</span></button>&nbsp;&nbsp;
+          <span style="font-size: 25px;">{{option.key}}</span>
+        </span>
           <!-- <div style="display: inline;">
                 <button mat-mini-fab [ngClass]="{greenButton: option.value, redButton: !option.value}"></button>
                 <label>{{option.key}}</label>
@@ -41,6 +58,7 @@
       <button mat-raised-button class="mt-2 mb-2"
         style="position: relative; left: 50%; transform: translateX(-50%);">Imprimer</button>
     </div>
+    
 
   </div>
 </ion-content>
