@@ -33,12 +33,12 @@ const routes: Routes = [
       // { path: 'engin', component: AddEnginsComponent, outlet: 'admin', canActivate: [AuthGuard] }
     ]
   },
-  { path: 'benne', component: BenneComponent },
-  { path: 'citerne', component: CiterneComponent },
-  { path: 'plateau', component: PlateauComponent },
-  { path: 'checklistConducteur', component: CheckListConducteurComponent },
-  { path: 'checklistEquipement', component: CheckListEquipementComponent },
-  { path: 'checklistEngin', component: CheckListEnginComponent },
+  { path: 'benne', component:BenneComponent},
+  { path: 'citerne', component:CiterneComponent},
+  { path: 'plateau', component:PlateauComponent},
+  { path: 'checklistConducteur', component:CheckListConducteurComponent},
+  { path: 'checklistEquipement', component:CheckListEquipementComponent},
+  { path: 'checklistEngin', component:CheckListEnginComponent},
   { path: 'checklist/:image', component: CheckListComponent },
   { path: 'engins', component: EnginsComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: 'login' },
