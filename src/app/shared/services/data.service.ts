@@ -21,31 +21,65 @@ export class DataService {
   private equipementCheckList = new BehaviorSubject<any[]>([]);
   currentEquipementCheckList = this.equipementCheckList.asObservable();
 
+  private ratingCheckList = new BehaviorSubject<number>(0);
+  currentRatingCheckList = this.ratingCheckList.asObservable();
+
+  private conducteurRating = new BehaviorSubject<number>(0);
+  currentConducteurRating = this.conducteurRating.asObservable();
+
+  private equipementRating = new BehaviorSubject<number>(0);
+  currentEquipementRating = this.equipementRating.asObservable();
+
+  private enginRating = new BehaviorSubject<number>(0);
+  currentEnginRating = this.enginRating.asObservable();
+
+  private vehiculeRating = new BehaviorSubject<number>(0);
+  currentVehiculeRating = this.vehiculeRating.asObservable();
 
   constructor() { }
 
   changeEnginDataSource(data) {
-    console.log('Engin Data Service: ', data);
+    // console.log('Engin Data Service: ', data);
     this.enginDataSource.next([...data]);
   }
   
   changeConducteurDataSource(data) {
-    console.log('conducteur Data Service: ', data);
+    // console.log('conducteur Data Service: ', data);
     this.conducteurDataSource.next([...data]);
   }
 
   changeConducteurCheckList(data) {
-    console.log('Conducteur CheckList: ', data);
+    // console.log('Conducteur CheckList: ', data);
     this.conducteurCheckList.next(data);
   }
 
   changeEnginCheckList(data) {
-    console.log('Engin CheckList: ', data);
+    // console.log('Engin CheckList: ', data);
     this.enginCheckList.next(data);
   }
 
   changeEquipementCheckList(data) {
-    console.log('Equipement CheckList: ', data);
+    // console.log('Equipement CheckList: ', data);
     this.equipementCheckList.next(data);
+  }
+
+  changeRatingCheckList(data) {
+    this.ratingCheckList.next(data);
+  }
+
+  changeConducteurRating(data) {
+    this.conducteurRating.next(data);
+  }
+
+  changeEquipementRating(data) {
+    this.equipementRating.next(data);
+  }
+
+  changeEnginRating(data) {
+    this.enginRating.next(data);
+  }
+
+  changeVehiculeRating(data) {
+    this.vehiculeRating.next(data);
   }
 }

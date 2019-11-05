@@ -10,7 +10,7 @@ import { Icons } from 'src/app/shared/icons';
 })
 export class MenuComponent {
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(private route: ActivatedRoute, private router: Router) { }
   faTruck = faTruck;
   faClipboardList = faClipboardList;
   faTruckLoading = faTruckLoading;
@@ -32,12 +32,17 @@ export class MenuComponent {
       title: 'Dashboard',
       url: 'dashboard',
       icon: Icons.dashboardIcon
-    }, 
+    },
     {
       title: 'Synthèse de controle',
       url: 'synthese',
       icon: Icons.syntheseIcon
-    }, 
+    },
+    {
+      title: 'Historiques des camions',
+      url: 'history',
+      icon: Icons.historyIcon
+    },
     {
       title: 'Conducteurs',
       icon: Icons.conducteurIcon,
@@ -52,7 +57,7 @@ export class MenuComponent {
         }
       ]
     },
-    {
+    /*{
       title: 'Vehicules',
       icon: Icons.vehiculeIcon,
       children: [
@@ -65,7 +70,7 @@ export class MenuComponent {
           url: 'vehicules'
         }
       ]
-    }, 
+    }, */
     {
       title: 'Logout',
       icon: Icons.logoutIcon,

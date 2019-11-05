@@ -4,5 +4,7 @@ export class CheckList {
     vehicule: any;
     date: any;
     site: any;
+    rating: any;
+    etat: boolean;
     catchAll: any;
 }

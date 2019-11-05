@@ -9,7 +9,8 @@ import { DataService } from 'src/app/shared/services/data.service';
 export class CheckListEquipementComponent implements OnInit {
 
   values = [];
-  
+  equipementRating = 0;
+
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
@@ -20,6 +21,7 @@ export class CheckListEquipementComponent implements OnInit {
     this.values['b10'] = false;
     this.dataService.currentEquipementCheckList.subscribe();
     this.dataService.changeEquipementCheckList(this.values);
+    this.dataService.currentEquipementRating.subscribe();
   }
 
   check(id) {
@@ -30,11 +32,14 @@ export class CheckListEquipementComponent implements OnInit {
     if (button.classList.contains('isNotActive')) {
       button.classList.replace('isNotActive', 'isActive');
       this.values[`${buttonID}`] = true;
-
+      this.equipementRating++;
+      this.dataService.changeEquipementRating(this.equipementRating);
     } else {
       if (button.classList.contains('isActive')) {
         button.classList.replace('isActive', 'isNotActive');
         this.values[`${buttonID}`] = false;
+        --this.equipementRating;
+        this.dataService.changeEquipementRating(this.equipementRating);
       }
     }
     this.dataService.changeEquipementCheckList(this.values);

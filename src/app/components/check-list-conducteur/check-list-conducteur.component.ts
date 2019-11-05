@@ -9,6 +9,7 @@ import { DataService } from 'src/app/shared/services/data.service';
 export class CheckListConducteurComponent implements OnInit {
 
   values = [];
+  conducteurRating = 0;
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
@@ -18,8 +19,14 @@ export class CheckListConducteurComponent implements OnInit {
     this.values['b4'] = false;
     this.values['b5'] = false;
     this.dataService.currentConducteurCheckList.subscribe();
+    this.dataService.currentConducteurRating.subscribe();
     this.dataService.changeConducteurCheckList(this.values);
   }
+
+  filter = (obj, predicate) =>
+    Object.keys(obj)
+      .filter(key => predicate(obj[key]))
+      .reduce((res, key) => Object.assign(res, { [key]: obj[key] }), []);
 
   test(id) {
     console.log(id);
@@ -29,12 +36,23 @@ export class CheckListConducteurComponent implements OnInit {
     if (button.classList.contains('isNotActive')) {
       button.classList.replace('isNotActive', 'isActive');
       this.values[`${buttonID}`] = true;
+      this.conducteurRating++;
+      console.log('Conducteur Rating: ', this.conducteurRating);
+      this.dataService.changeConducteurRating(this.conducteurRating);
+      // this.dataService.changeRatingCheckList(Math.round(this.values.filter(x => x === true).length))
     } else {
       if (button.classList.contains('isActive')) {
         button.classList.replace('isActive', 'isNotActive');
         this.values[`${buttonID}`] = false;
+        this.conducteurRating--;
+        console.log('Conducteur Rating: ', this.conducteurRating);
+        this.dataService.changeConducteurRating(this.conducteurRating);
       }
     }
     this.dataService.changeConducteurCheckList(this.values);
+  }
+
+  arrayOfValues(values: []) {
+
   }
 }

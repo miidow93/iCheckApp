@@ -9,6 +9,7 @@ import { DataService } from 'src/app/shared/services/data.service';
 export class CheckListEnginComponent implements OnInit {
 
   values = [];
+  enginRating = 0;
 
   constructor(private dataService: DataService) { }
 
@@ -27,6 +28,7 @@ export class CheckListEnginComponent implements OnInit {
     this.values['b22'] = false;
     this.dataService.currentEnginCheckList.subscribe();
     this.dataService.changeEnginCheckList(this.values);
+    this.dataService.currentEnginRating.subscribe();
   }
 
   check(id) {
@@ -37,11 +39,14 @@ export class CheckListEnginComponent implements OnInit {
     if (button.classList.contains('isNotActive')) {
       button.classList.replace('isNotActive', 'isActive');
       this.values[`${buttonID}`] = true;
-
+      this.enginRating++;
+      this.dataService.changeEnginRating(this.enginRating);
     } else {
       if (button.classList.contains('isActive')) {
         button.classList.replace('isActive', 'isNotActive');
         this.values[`${buttonID}`] = false;
+        this.enginRating--;
+        this.dataService.changeEnginRating(this.enginRating);
       }
     }
     this.dataService.changeEnginCheckList(this.values);

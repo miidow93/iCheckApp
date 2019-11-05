@@ -6,5 +6,6 @@ export enum Icons {
     syntheseIcon = './assets/icon/synthese.svg',
     logoutIcon = './assets/icon/logout.svg',
     statsIcon = './assets/icon/analytics.svg',
-    dashboardIcon = './assets/icon/ui.svg'
+    dashboardIcon = './assets/icon/ui.svg',
+    historyIcon = './assets/icon/schedule.svg'
 }
