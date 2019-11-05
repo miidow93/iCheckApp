@@ -38,6 +38,7 @@ import { PlateauComponent } from './components/attelages/plateau/plateau.compone
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
+import { HistoryComponent } from './components/history/history.component';
 
 export function getToken() {
   return localStorage.getItem('token');
@@ -66,7 +67,8 @@ export function getToken() {
     BenneComponent,
     CiterneComponent,
     PlateauComponent,
-    DashboardComponent
+    DashboardComponent,
+    HistoryComponent
   ],
   entryComponents: [EditEnginsComponent,EditConducteurComponent],
   imports: [

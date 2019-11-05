@@ -5,13 +5,11 @@ import { Constants } from 'src/app/shared/constants';
 @Injectable({
   providedIn: 'root'
 })
-export class CheckListRefService {
+export class BloquageService {
 
   constructor(private http: HttpClient) { }
 
-  getAllCheckListRef() {
-    return this.http.get(`${Constants.api}checklistrefs`);
+  getBolckedEngins() {
+    return this.http.get(`${Constants.api}blockages`);
   }
-
-  
 }

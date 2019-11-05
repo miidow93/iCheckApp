@@ -18,6 +18,7 @@ import { BenneComponent } from './components/attelages/benne/benne.component';
 import { CiterneComponent } from './components/attelages/citerne/citerne.component';
 import { PlateauComponent } from './components/attelages/plateau/plateau.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { HistoryComponent } from './components/history/history.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },
@@ -30,6 +31,7 @@ const routes: Routes = [
       { path: 'conducteur/new', component: AddConducteurComponent, outlet: 'admin' },
       { path: 'synthese', component: SyntheseComponent, outlet: 'admin'/*, canActivate: [AuthGuard]*/ },
       { path: 'synthese/:id', component: DetailsComponent, outlet: 'admin' },
+      { path: 'history', component: HistoryComponent, outlet: 'admin' },
       // { path: 'engin', component: AddEnginsComponent, outlet: 'admin', canActivate: [AuthGuard] }
     ]
   },

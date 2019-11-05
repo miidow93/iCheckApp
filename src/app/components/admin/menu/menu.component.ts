@@ -39,7 +39,7 @@ export class MenuComponent {
       icon: Icons.syntheseIcon
     },
     {
-      title: 'Historiques des camions',
+      title: 'Historiques des camions suspendus',
       url: 'history',
       icon: Icons.historyIcon
     },

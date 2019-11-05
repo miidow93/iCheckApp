@@ -32,14 +32,19 @@ export class CiterneComponent implements OnInit {
   conducteurs = [];
   vehicules = [];
   values = [];
+  totalRate = 0;
+  equipementRate = 0;
+  enginRate = 0;
+  conducteurRate = 0;
+  citerneRate = 0;
 
   constructor(private formBuilder: FormBuilder,
-              private dataService: DataService,
-              private enginService: EnginService,
-              private checkListService: CheckListService,
-              private conducteurService: ConducteurService,
-              private vehiculeService: VehiculeService, 
-              private router: Router) { }
+    private dataService: DataService,
+    private enginService: EnginService,
+    private checkListService: CheckListService,
+    private conducteurService: ConducteurService,
+    private vehiculeService: VehiculeService,
+    private router: Router) { }
 
   ngOnInit() {
     this.dataService.currentConducteurCheckList.subscribe(res => {
@@ -55,6 +60,40 @@ export class CiterneComponent implements OnInit {
     this.dataService.currentEquipementCheckList.subscribe(res => {
       console.log('Equipement Subscribe', this.equipementCheckList);
       this.equipementCheckList = res;
+    });
+
+    this.dataService.currentConducteurRating.subscribe(res => {
+      console.log('Conducteur Rating subscribe: ', res);
+      this.conducteurRate = res;
+      const rate = (this.conducteurRate + this.enginRate + this.equipementRate + this.citerneRate) / 27;
+      this.dataService.changeRatingCheckList(rate);
+    });
+
+    this.dataService.currentEnginRating.subscribe(res => {
+      console.log('Engin Rating subscribe: ', res);
+      this.enginRate = res;
+      const rate = (this.conducteurRate + this.enginRate + this.equipementRate + this.citerneRate) / 27;
+      this.dataService.changeRatingCheckList(rate);
+    });
+
+    this.dataService.currentEquipementRating.subscribe(res => {
+      console.log('Equipement Rating subscribe: ', res);
+      this.equipementRate = res;
+      const rate = (this.conducteurRate + this.enginRate + this.equipementRate + this.citerneRate) / 27;
+      this.dataService.changeRatingCheckList(rate);
+    });
+
+    this.dataService.currentVehiculeRating.subscribe(res => {
+      console.log('Vehicule Rating subscribe: ', res);
+      this.citerneRate = res;
+      const rate = (this.conducteurRate + this.enginRate + this.equipementRate + this.citerneRate) / 27;
+      this.dataService.changeRatingCheckList(rate);
+    });
+
+    this.dataService.currentRatingCheckList.subscribe(res => {
+      console.log('Rating checklist Subscribe: ', (res * 100).toFixed(2));
+      this.totalRate = parseFloat((res * 100).toFixed(2));
+      console.log('rate: ', this.totalRate);
     });
 
     this.values['b23'] = false;
@@ -81,10 +120,13 @@ export class CiterneComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     this.formValues.date = moment(new Date()).format('MM/DD/YYYY HH:mm:ss');
+    this.formValues.rating = this.totalRate;
     this.formValues.site = localStorage.getItem('site');
+    this.formValues.etat = this.totalRate < 40 ? true : false;
     this.formValues.conducteur = { cin: form['cin'], nomComplet: form['nomComplet'] };
     this.formValues.vehicule = { matricule: form['matricule'], engin: 'Benne' };
-    this.formValues.catchAll = { checklistConducteur: Object.values(this.conducteurCheckList), 
+    this.formValues.catchAll = {
+      checklistConducteur: Object.values(this.conducteurCheckList),
       checklistEquipement: Object.values(this.equipementCheckList),
       checklistEngin: Object.values(this.enginCheckList),
       checklistAttelage: Object.values(this.values)
@@ -102,11 +144,14 @@ export class CiterneComponent implements OnInit {
     if (button.classList.contains('isNotActive')) {
       button.classList.replace('isNotActive', 'isActive');
       this.values[`${buttonID}`] = true;
-
+      this.citerneRate++;
+      this.dataService.changeVehiculeRating(this.citerneRate);
     } else {
       if (button.classList.contains('isActive')) {
         button.classList.replace('isActive', 'isNotActive');
         this.values[`${buttonID}`] = false;
+        this.citerneRate--;
+        this.dataService.changeVehiculeRating(this.citerneRate);
       }
     }
     console.log('Values: ', this.values);
