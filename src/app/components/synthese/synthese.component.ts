@@ -1,11 +1,10 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import { CheckListRefService } from 'src/app/core/services/checkListRef/check-list-ref.service';
-import { QuestionService } from 'src/app/shared/services/question.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import * as moment from  'moment';
-import { faFilter, faSyncAlt  } from '@fortawesome/free-solid-svg-icons';
+import { faFilter, faSyncAlt, faBan, faCircle  } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -15,19 +14,20 @@ import { faFilter, faSyncAlt  } from '@fortawesome/free-solid-svg-icons';
 })
 export class SyntheseComponent implements OnInit, AfterViewInit {
   
-  displayedColumns: string[] = ['id', 'date', 'conducteur', 'vehicule', 'engin', 'detail'];
+  displayedColumns: string[] = ['id', 'date', 'conducteur', 'vehicule', 'engin', 'etat', 'rating', 'action'];
   dataSource = new MatTableDataSource();
   dateEntree = new FormControl(moment());
   dateSortie = new FormControl(moment());
   faFilter = faFilter;
   faSyncAlt = faSyncAlt;
+  faBan = faBan;
+  faCircle = faCircle;
   data = [];
 
   oldDataSource;
   de; ds;
   
   constructor(private checkListRefService: CheckListRefService, 
-            private questionService: QuestionService,
             private router: Router,
             private activatedRoute: ActivatedRoute) { }
 
@@ -101,5 +101,9 @@ export class SyntheseComponent implements OnInit, AfterViewInit {
 
   refresh() {
     this.dataSource.data = this.oldDataSource;
+  }
+
+  blocked(element, operation) {
+    console.log(`Element: ${element}, operation: ${operation}`);
   }
 }
