@@ -12,6 +12,9 @@ export class DataService {
   private conducteurDataSource = new BehaviorSubject<any[]>([]);
   currentConducteurDataSource = this.conducteurDataSource.asObservable();
 
+  private blockageDataSource = new BehaviorSubject<any[]>([]);
+  currentBlockageDataSource = this.blockageDataSource.asObservable();
+
   private conducteurCheckList = new BehaviorSubject<any[]>([]);
   currentConducteurCheckList = this.conducteurCheckList.asObservable();
 
@@ -46,6 +49,11 @@ export class DataService {
   changeConducteurDataSource(data) {
     // console.log('conducteur Data Service: ', data);
     this.conducteurDataSource.next([...data]);
+  }
+
+  changeBlockageDataSource(data) {
+    console.log('blockage Data Service: ', data);
+    this.blockageDataSource.next([...data]);
   }
 
   changeConducteurCheckList(data) {
