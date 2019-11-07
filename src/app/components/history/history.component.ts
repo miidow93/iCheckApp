@@ -9,7 +9,7 @@ import { DataService } from 'src/app/shared/services/data.service';
   styleUrls: ['./history.component.scss'],
 })
 export class HistoryComponent implements OnInit {
-  displayedColumns:string[]=['vehicule','dateBlockage','motif','dateDeblockage','imageUrl'];
+  displayedColumns:string[]=['id','vehicule','dateBlockage','motif','dateDeblockage','imageUrl'];
   dataSource = new MatTableDataSource();
 
   constructor(private blockageService: BloquageService,private blockageDataService:DataService) { }
