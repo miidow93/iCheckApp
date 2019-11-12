@@ -1,6 +1,6 @@
 <!-- <div class="container"> -->
 <div class="row justify-content-center">
-  <form [formGroup]="formConducteur" class="example-form" (ngSubmit)="onSubmit(formConducteur.value)">
+  <form [formGroup]="formConducteur" class="example-form" (ngSubmit)="onSubmit(formConducteur)">
     <mat-form-field style="text-align: left" dir="ltr" class="mr-2">
       <input type="text" matInput formControlName="cin" placeholder="C.I.N" [matAutocomplete]="cin" />
     </mat-form-field>

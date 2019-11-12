@@ -5,11 +5,15 @@ import { Constants } from 'src/app/shared/constants';
 @Injectable({
   providedIn: 'root'
 })
-export class BloquageService {
+export class BlockageService {
 
   constructor(private http: HttpClient) { }
 
   getBolckedEngins() {
     return this.http.get(`${Constants.api}blockages`);
+  }
+
+  updateBlockage(id, data) {
+    return this.http.put(`${Constants.api}blockages/${id}`, data);
   }
 }
