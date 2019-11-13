@@ -15,23 +15,23 @@
             <ion-card>
               <ion-card-header>
                 <ion-card-subtitle>Nombre des camions Controlés</ion-card-subtitle>
-                <ion-card-title>Card Title</ion-card-title>
+                <ion-card-title>0</ion-card-title>
               </ion-card-header>
             </ion-card>
           </ion-col>
           <ion-col size="4">
               <ion-card>
                 <ion-card-header>
-                  <ion-card-subtitle>Nombre des camions Suspendus</ion-card-subtitle>
-                  <ion-card-title>Card Title</ion-card-title>
+                  <ion-card-subtitle>Nombre des camions Suspendus&nbsp;&nbsp;<button class="btn btn-danger" disabled></button></ion-card-subtitle>
+                  <ion-card-title>0</ion-card-title>
                 </ion-card-header>
               </ion-card>
             </ion-col>
             <ion-col size="4">
                 <ion-card>
                   <ion-card-header>
-                    <ion-card-subtitle>Nombre des camions Non Suspendus</ion-card-subtitle>
-                    <ion-card-title>Card Title</ion-card-title>
+                    <ion-card-subtitle>Nombre des camions Non Suspendus&nbsp;&nbsp;<button class="btn btn-success" disabled></button></ion-card-subtitle>
+                    <ion-card-title>0</ion-card-title>
                   </ion-card-header>
                 </ion-card>
               </ion-col>
@@ -53,6 +53,7 @@
               </ion-card-content>
             </ion-card>
           </ion-col>
+          <ion-card>
         <ion-card-content>
         <legend>Synthese mensuel des camions controlé. Mois {{dateStats.value | date: 'MM/yyyy'}}</legend>
               <div class="container Chart">
@@ -62,7 +63,8 @@
                       </canvas>
                   </div>
               </div>
-              </ion-card-content>
+        </ion-card-content>
+      </ion-card>
     </ion-row>
   </ion-grid>
 </ion-content>
