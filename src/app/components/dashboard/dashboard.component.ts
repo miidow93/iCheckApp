@@ -14,6 +14,7 @@ const moment = _moment;
 })
 export class DashboardComponent implements OnInit {
   dateStats = new FormControl(moment());
+  messageLineChart;
   public barChartData: any[];
   public barChartLabels = [];
   public barChartType = 'bar';
@@ -39,6 +40,31 @@ export class DashboardComponent implements OnInit {
     },
   ];
 
+  public lineChartData: any[];
+  public lineChartLabels = [];
+  public lineChartType = 'line';
+  public lineChartLegend = true;
+  public lineChartOptions: ChartOptions = {
+    responsive: true,
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            beginAtZero: true,
+            //stepSize: 1,
+            min: 0
+          }
+        }
+      ]
+    }
+  };
+
+  public lineChartColors: Color[] = [
+    {
+      borderColor: 'Red',
+      backgroundColor: 'rgba(236, 156, 156, 0.2)',
+    },
+  ];
 
   constructor(private statsService:StatsService) { }
 
@@ -73,6 +99,14 @@ export class DashboardComponent implements OnInit {
         this.barChartLabels = this.getChartLabels(res.stats);
       } else {
         alert('Aucune résultat');
+      }
+    });
+    this.statsService.getStatsBlockedByMonth().subscribe((res: any) => {
+      if (res.stats) {
+        this.lineChartData = [{ data: this.getChartData(res.stats), label: 'camions' }];
+        this.lineChartLabels = this.getChartLabels(res.stats);
+      } else {
+        this.messageLineChart = 'Aucun résultat';
       }
     });
   }
