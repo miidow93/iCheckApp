@@ -39,6 +39,17 @@ export class DataService {
   private vehiculeRating = new BehaviorSubject<number>(0);
   currentVehiculeRating = this.vehiculeRating.asObservable();
 
+  private vehiculeID = new BehaviorSubject<number>(0);
+  currentVehiculeID = this.vehiculeID.asObservable();
+
+  private dateBlockage = new BehaviorSubject<Date>(new Date);
+  currentDateBlockage = this.dateBlockage.asObservable();
+
+  private blockageID = new BehaviorSubject<number>(0);
+  currentBlockageID = this.blockageID.asObservable();
+
+  private checkListID = new BehaviorSubject<string>('');
+  currentCheckListID = this.checkListID.asObservable();
   constructor() { }
 
   changeEnginDataSource(data) {
@@ -67,7 +78,7 @@ export class DataService {
   }
 
   changeEquipementCheckList(data) {
-    // console.log('Equipement CheckList: ', data);
+    console.log('Equipement CheckList: ', data);
     this.equipementCheckList.next(data);
   }
 
@@ -89,5 +100,21 @@ export class DataService {
 
   changeVehiculeRating(data) {
     this.vehiculeRating.next(data);
+  }
+
+  changeVehiculeID(id) {
+    this.vehiculeID.next(id);
+  }
+
+  changeDateBlockage(date) {
+    this.dateBlockage.next(date);
+  }
+
+  changeBlockageID(id) {
+    this.blockageID.next(id);
+  }
+
+  changeCheckListID(id) {
+    this.checkListID.next(id);
   }
 }

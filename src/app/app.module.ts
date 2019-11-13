@@ -41,6 +41,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { HistoryComponent } from './components/history/history.component';
 import { UploadComponent } from './components/upload/upload.component';
 import { Camera } from '@ionic-native/camera/ngx';
+import { ChartsModule } from 'ng2-charts';
 
 export function getToken() {
   return localStorage.getItem('token');
@@ -85,6 +86,7 @@ export function getToken() {
     HttpClientModule,
     NgbModule,
     FontAwesomeModule,
+    ChartsModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: getToken,

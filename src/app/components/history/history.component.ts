@@ -20,6 +20,7 @@ export class HistoryComponent implements OnInit {
   ngOnInit() {
     this.getBlockage()
   }
+  
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
