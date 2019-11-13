@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { startWith, map } from 'rxjs/operators';
 import { MatAutocompleteSelectedEvent } from '@angular/material';
+import { Icons } from 'src/app/shared/icons';
 
 @Component({
   selector: 'app-citerne',
@@ -36,6 +37,7 @@ export class CiterneComponent implements OnInit {
   enginRate = 0;
   conducteurRate = 0;
   citerneRate = 0;
+  citerneImg = Icons.citerneImg;
 
   constructor(private formBuilder: FormBuilder,
     private dataService: DataService,

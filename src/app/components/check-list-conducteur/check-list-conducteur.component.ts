@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/shared/services/data.service';
+import { Icons } from 'src/app/shared/icons';
 
 @Component({
   selector: 'app-check-list-conducteur',
@@ -10,6 +11,9 @@ export class CheckListConducteurComponent implements OnInit {
 
   values = [];
   conducteurRating = 0;
+  conducteurImg = Icons.conducteurImg;
+
+
   constructor(private dataService: DataService) { }
 
   ngOnInit() {

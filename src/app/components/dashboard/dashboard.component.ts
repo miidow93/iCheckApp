@@ -91,6 +91,7 @@ export class DashboardComponent implements OnInit {
 
     return labels;
   }
+  
   statsByMonthAndYear() {
 
     this.statsService.getStatsByMonth().subscribe((res: any) => {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/shared/services/data.service';
+import { Icons } from 'src/app/shared/icons';
 
 @Component({
   selector: 'app-check-list-engin',
@@ -10,7 +11,8 @@ export class CheckListEnginComponent implements OnInit {
 
   values = [];
   enginRating = 0;
-
+  enginImg = Icons.enginImg;
+  
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
