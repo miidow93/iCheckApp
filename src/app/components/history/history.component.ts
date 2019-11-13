@@ -20,9 +20,11 @@ export class HistoryComponent implements OnInit {
   ngOnInit() {
     this.getBlockage()
   }
+  
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+
   getBlockage() {
     this.blockageService.getBolckedEngins().subscribe((res: any[]) => {
       this.dataService.changeBlockageDataSource(res);
