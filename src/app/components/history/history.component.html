@@ -6,6 +6,10 @@
   <!--La liste des camions-->
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 mt-2" style="margin: auto; width: 90%">
     <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> id </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
     <ng-container matColumnDef="vehicule">
       <th mat-header-cell *matHeaderCellDef> vehicule </th>
       <td mat-cell *matCellDef="let element"> {{element.idVehiculeNavigation.matricule}} </td>
