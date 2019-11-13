@@ -19,6 +19,7 @@ import { CiterneComponent } from './components/attelages/citerne/citerne.compone
 import { PlateauComponent } from './components/attelages/plateau/plateau.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HistoryComponent } from './components/history/history.component';
+import { UploadComponent } from './components/upload/upload.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },
@@ -35,12 +36,13 @@ const routes: Routes = [
       // { path: 'engin', component: AddEnginsComponent, outlet: 'admin', canActivate: [AuthGuard] }
     ]
   },
-  { path: 'benne', component:BenneComponent},
-  { path: 'citerne', component:CiterneComponent},
-  { path: 'plateau', component:PlateauComponent},
-  { path: 'checklistConducteur', component:CheckListConducteurComponent},
-  { path: 'checklistEquipement', component:CheckListEquipementComponent},
-  { path: 'checklistEngin', component:CheckListEnginComponent},
+  { path: 'benne', component: BenneComponent },
+  { path: 'citerne', component: CiterneComponent },
+  { path: 'plateau', component: PlateauComponent },
+  { path: 'motif', component: UploadComponent },
+  { path: 'checklistConducteur', component: CheckListConducteurComponent },
+  { path: 'checklistEquipement', component: CheckListEquipementComponent },
+  { path: 'checklistEngin', component: CheckListEnginComponent },
   { path: 'checklist/:image', component: CheckListComponent },
   { path: 'engins', component: EnginsComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: 'login' },

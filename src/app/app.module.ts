@@ -39,6 +39,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { HistoryComponent } from './components/history/history.component';
+import { UploadComponent } from './components/upload/upload.component';
+import { Camera } from '@ionic-native/camera/ngx';
 
 export function getToken() {
   return localStorage.getItem('token');
@@ -68,7 +70,8 @@ export function getToken() {
     CiterneComponent,
     PlateauComponent,
     DashboardComponent,
-    HistoryComponent
+    HistoryComponent,
+    UploadComponent
   ],
   entryComponents: [EditEnginsComponent,EditConducteurComponent],
   imports: [
@@ -94,6 +97,7 @@ export function getToken() {
   ],
   
   providers: [
+    Camera,
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }

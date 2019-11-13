@@ -3,7 +3,6 @@ import { FormGroup, Validators, FormBuilder, NgForm } from '@angular/forms';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { CheckList } from 'src/app/shared/models/checkList';
 import { DataService } from 'src/app/shared/services/data.service';
-import { EnginService } from 'src/app/core/services/engin/engin.service';
 import { CheckListService } from 'src/app/core/services/check-list/check-list.service';
 import { ConducteurService } from 'src/app/core/services/conducteur/conducteur.service';
 import { VehiculeService } from 'src/app/core/services/vehicule/vehicule.service';
@@ -94,6 +93,10 @@ export class PlateauComponent implements OnInit {
       console.log('rate: ', this.totalRate);
     });
 
+    this.dataService.currentDateBlockage.subscribe(res => console.log('Date Blockage: ', res));
+    this.dataService.currentVehiculeID.subscribe(res => console.log('Vehicule ID: ', res));
+    this.dataService.currentBlockageID.subscribe(res => console.log('Blockage ID: ', res));
+    this.dataService.currentCheckListID.subscribe(res => console.log('CheckList ID: ', res));
 
     this.values['b23'] = false;
     this.values['b24'] = false;
@@ -113,12 +116,17 @@ export class PlateauComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
+    if (!form.valid) {
+      alert('Veuillez saisir les données.');
+      return;
+    }
+
     this.formValues.date = moment(new Date()).format('MM/DD/YYYY HH:mm:ss');
     this.formValues.rating = this.totalRate;
     this.formValues.site = localStorage.getItem('site');
     this.formValues.etat = this.totalRate < 40 ? true : false;
-    this.formValues.conducteur = { cin: form['cin'], nomComplet: form['nomComplet'] };
-    this.formValues.vehicule = { matricule: form['matricule'], engin: 'Plateau' };
+    this.formValues.conducteur = { cin: form.controls['cin'].value, nomComplet: form.controls['nomComplet'].value };
+    this.formValues.vehicule = { matricule: form.controls['matricule'].value, engin: 'Benne' };
     this.formValues.catchAll = {
       checklistConducteur: Object.values(this.conducteurCheckList),
       checklistEquipement: Object.values(this.equipementCheckList),
@@ -126,8 +134,26 @@ export class PlateauComponent implements OnInit {
       checklistAttelage: Object.values(this.values)
     };
     console.log('Form: ', this.formValues);
-    this.checkListService.addCheckList(this.formValues).subscribe(res => console.log(res));
-    this.router.navigate(['engins']);
+    if (confirm('Etes-vous sûr de vouloir continuer ?')) {
+      this.checkListService.addCheckList(this.formValues).subscribe(res => {
+        console.log('checklist: ', res);
+        // this.dataService.changeDateBlockage(res);
+        this.dataService.changeVehiculeID(res['vehicule']['idVehicule']);
+        this.dataService.changeBlockageID(res['vehicule']['idBlockage']);
+        this.dataService.changeCheckListID(res['id']);
+        this.dataService.changeDateBlockage(moment(new Date(res['date'])).format('MM/DD/YYYY'));
+      });
+
+      if (this.totalRate < 40) {
+        this.router.navigate(['motif']);
+      } else {
+        this.router.navigate(['engins']);
+      }
+
+    } else {
+      return;
+    }
+
   }
 
   check(id) {
