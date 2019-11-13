@@ -115,7 +115,7 @@ export class PlateauComponent implements OnInit {
     this.filterInitVehicule();
   }
 
-  onSubmit(form: NgForm) {
+  onSubmit(form) {
     if (!form.valid) {
       alert('Veuillez saisir les données.');
       return;

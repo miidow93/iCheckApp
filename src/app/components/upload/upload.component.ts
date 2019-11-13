@@ -66,7 +66,7 @@ export class UploadComponent implements OnInit {
     }).catch(err => catchError(err));
   }
 
-  submit(form: NgForm) {
+  submit(form) {
     if(!form.valid && this.image) {
       return;
     }
