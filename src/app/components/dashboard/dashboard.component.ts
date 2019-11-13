@@ -15,6 +15,7 @@ const moment = _moment;
 export class DashboardComponent implements OnInit {
   dateStats = new FormControl(moment());
   messageLineChart;
+  site;
   public barChartData: any[];
   public barChartLabels = [];
   public barChartType = 'bar';
@@ -68,9 +69,12 @@ export class DashboardComponent implements OnInit {
 
   constructor(private statsService:StatsService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.site = localStorage.getItem('site');
+  }
   
   ngAfterViewInit() {
+    
     this.statsByMonthAndYear();
     console.log(this.dateStats);
   }
@@ -102,9 +106,9 @@ export class DashboardComponent implements OnInit {
         alert('Aucune résultat');
       }
     });
-    this.statsService.getStatsBlockedByMonth().subscribe((res: any) => {
+    this.statsService.getStatsBlockedByMonth(this.site).subscribe((res: any) => {
       if (res.stats) {
-        this.lineChartData = [{ data: this.getChartData(res.stats), label: 'camions' }];
+        this.lineChartData = [{ data: this.getChartData(res.stats), label: 'camions Non Conforme' }];
         this.lineChartLabels = this.getChartLabels(res.stats);
       } else {
         this.messageLineChart = 'Aucun résultat';

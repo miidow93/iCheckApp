@@ -19,8 +19,8 @@ export class StatsService {
       catchError(this.handleError('stats by month', []))
     );
   }
-  getStatsBlockedByMonth() {
-    return this.http.get(`${API}/site`)
+  getStatsBlockedByMonth(site) {
+    return this.http.get(`${API}${site}`)
     .pipe(
       tap(_ => this.log('stats by month')),
       catchError(this.handleError('stats by month', []))
