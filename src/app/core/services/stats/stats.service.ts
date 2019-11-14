@@ -37,4 +37,13 @@ export class StatsService {
   private log(message: string) {
     console.log(message);
   }
+  getNumberOfBlocked(){
+    return this.http.get(`${API}/suspendu`);
+  }
+  getNumberOfNotBlocked(){
+    return this.http.get(`${API}/Nonsuspendu`);
+  }
+  getNumberOfControled(){
+    return this.http.get(`${API}/controled`);
+  }
 }

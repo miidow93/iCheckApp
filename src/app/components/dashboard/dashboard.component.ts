@@ -16,6 +16,9 @@ export class DashboardComponent implements OnInit {
   dateStats = new FormControl(moment());
   messageLineChart;
   site;
+  blocked;
+  NotBlocked;
+  Controled;
   public barChartData: any[];
   public barChartLabels = [];
   public barChartType = 'bar';
@@ -66,11 +69,16 @@ export class DashboardComponent implements OnInit {
       backgroundColor: 'rgba(236, 156, 156, 0.2)',
     },
   ];
+  
+ 
 
   constructor(private statsService:StatsService) { }
 
   ngOnInit() {
     this.site = localStorage.getItem('site');
+    this.getNumberOfBlocked();
+    this.getNumberOfNotBlocked();
+    this.getNumberOfControled();
   }
   
   ngAfterViewInit() {
@@ -113,6 +121,21 @@ export class DashboardComponent implements OnInit {
         this.messageLineChart = 'Aucun résultat';
       }
     });
+  }
+  getNumberOfBlocked(){
+    return this.statsService.getNumberOfBlocked().subscribe(res =>
+      this.blocked = res
+      );
+  }
+  getNumberOfNotBlocked(){
+    return this.statsService.getNumberOfNotBlocked().subscribe(
+      res => this.NotBlocked = res
+    );
+  }
+  getNumberOfControled(){
+    return this.statsService.getNumberOfControled().subscribe(
+      res => this.Controled = res
+    )
   }
 }
 
