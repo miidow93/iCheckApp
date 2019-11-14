@@ -19,7 +19,7 @@ export class QuestionService {
 
   async getQuestionsFromAPI(engin) {
     // tslint:disable-next-line:no-shadowed-variable
-    await this.http.get(`../assets/checkList/${engin}.json`).pipe(take(1)).toPromise().then(async (res) => {
+    await this.http.get(`./assets/checkList/${engin}.json`).pipe(take(1)).toPromise().then(async (res) => {
       // console.log('Service: ', res);
       const checkbox1 = new CheckboxQuestion({
         key: 'مراقبة عينية للحالة العامة للعربة الرافعة',
@@ -61,7 +61,7 @@ export class QuestionService {
 
   async getQuestionsForAttelages(engin) {
     // tslint:disable-next-line:no-shadowed-variable
-    await this.http.get(`../assets/checkList/${engin}.json`).pipe(take(1)).toPromise().then(async (res) => {
+    await this.http.get(`./assets/checkList/${engin}.json`).pipe(take(1)).toPromise().then(async (res) => {
       console.log('Service: ', res);
       const checkbox1 = new CheckboxQuestion({
         key: 'مراقبة الحالة العامة للسائق',

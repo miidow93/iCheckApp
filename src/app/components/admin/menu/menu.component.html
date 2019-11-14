@@ -18,7 +18,7 @@
 
         <ng-container *ngIf="p.url !== 'logout'; else childrenItem">
           <ion-item button *ngIf="p.url; else childrenItem" [routerLink]="[{ outlets: { admin: [p.url] } }]"
-            (click)="p.open = !p.open" [class.active-parent]="p.open" detail="false">
+             [class.active-parent]="p.open" detail="false">
             <ion-icon class="big" [src]="p.icon" slot="start"></ion-icon>
             <ion-icon slot="end" name="arrow-dropright" *ngIf="p.children?.length > 0 && !p.open"></ion-icon>
             <ion-icon slot="end" name="arrow-dropdown" *ngIf="p.children?.length > 0 && p.open"></ion-icon>

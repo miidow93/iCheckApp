@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ConducteurService } from 'src/app/core/services/conducteur/conducteur.service';
-import { FormBuilder, Validators, FormGroup, NgForm } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup, NgForm, FormControl } from '@angular/forms';
 import * as moment from 'moment';
 
 @Component({
@@ -11,8 +11,9 @@ import * as moment from 'moment';
 export class AddConducteurComponent implements OnInit {
 
   conducteurForm: FormGroup;
+  dateValiditeAssurance = new FormControl(moment());
 
-  constructor(private service: ConducteurService,
+  constructor(private conducteurService: ConducteurService,
     private formbuilder: FormBuilder) { }
 
   ngOnInit() {
@@ -20,22 +21,38 @@ export class AddConducteurComponent implements OnInit {
       nomComplet: ['', Validators.required],
       cin: ['', Validators.required],
       cnss: ['', Validators.required],
-      assurance: ['', Validators.required],
-      dateValiditeAssurance: [{ value: moment().format('DD/MM/YYYY') }, Validators.required],
-      patente: ['', Validators.required],
-      societe: ['', Validators.required],
+      assurance: [''/*, Validators.required*/],
+      patente: [''/*, Validators.required*/],
+      societe: [''/*, Validators.required*/],
     });
   }
 
-  Addconducteur(data: NgForm) {
-    console.log(data);
-    this.service.AddConducteur(data).subscribe(res => {
+  Addconducteur(form) {
+    if (!form.valid) {
+      console.log('is not valid');
+      return;
+    }
+
+    const data = {
+      nomComplet: form.controls['nomComplet'].value,
+      cin: form.controls['cin'].value,
+      cnss: form.controls['cnss'].value,
+      assurance: form.controls['assurance'].value,
+      patente: form.controls['patente'].value,
+      societe: form.controls['societe'].value,
+      dateValiditeAssurance: moment(this.dateValiditeAssurance.value).format('DD/MM/YYYY')
+    };
+    console.log('Data Conducteur: ', data);
+
+    this.conducteurService.AddConducteur(data).subscribe(res => {
       //this.refresh();
+      console.log('Add Conducteur: ', res);
       this.resetform();
     });
   }
 
   resetform() {
+    this.dateValiditeAssurance.setValue(moment());
     this.conducteurForm.reset();
   }
 }
