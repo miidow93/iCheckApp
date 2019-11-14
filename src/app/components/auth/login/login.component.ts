@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { FormErrorStateMatcher } from 'src/app/core/handlers/form-error-state-matcher';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
+import { Icons } from 'src/app/shared/icons';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
   matcher = new FormErrorStateMatcher();
   isLoadingResults = false;
   message = '';
+  iCheckLogo = Icons.iCheckLogo;
 
   /*, @Inject(LOCALE_ID) public locale: string*/
 

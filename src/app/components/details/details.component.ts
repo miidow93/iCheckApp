@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { QuestionService } from 'src/app/shared/services/question.service';
 import { CheckListService } from 'src/app/core/services/check-list/check-list.service';
 import { QuestionBase } from 'src/app/shared/forms/question-base';
-import { QuestionControlService } from 'src/app/shared/services/question-control.service';
 import { FormGroup } from '@angular/forms';
 
 @Component({

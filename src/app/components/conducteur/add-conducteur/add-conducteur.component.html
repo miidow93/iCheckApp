@@ -10,7 +10,7 @@
 
   <div class="ion-padding">
     <h2>Ajouter un conducteur</h2>
-    <form [formGroup]="conducteurForm" (ngSubmit)="Addconducteur(conducteurForm.value)">
+    <form [formGroup]="conducteurForm" (ngSubmit)="Addconducteur(conducteurForm)">
       <mat-card class="example-container ">
         <div class="example-container">
           <mat-form-field class="col-md-12 ">
@@ -25,16 +25,20 @@
           <mat-form-field class="col-md-6">
             <input matInput placeholder="Assurance" formControlName="assurance">
           </mat-form-field>
-          <mat-form-field>
-            <input type="date" matInput placeholder="Date validité assurance" formControlName="dateValiditeAssurance">
+          <mat-form-field class="col-md-6">
+            <input matInput [matDatepicker]="picker1" name="dateEntree" [formControl]="dateValiditeAssurance">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
           </mat-form-field>
           <mat-form-field class="col-md-6">
             <input matInput placeholder="Patente" formControlName="patente">
           </mat-form-field>
           <mat-form-field class="col-sm-6 ">
             <input matInput placeholder="Societe" formControlName="societe">
-          </mat-form-field><br>
-          <ion-button type="submit">Ajouter</ion-button>
+          </mat-form-field>
+          <div class="form-row justify-content-end">
+            <ion-button type="submit">Ajouter</ion-button>
+          </div>
         </div>
       </mat-card>
     </form>

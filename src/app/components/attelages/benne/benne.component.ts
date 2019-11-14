@@ -11,6 +11,7 @@ import { CheckList } from 'src/app/shared/models/checkList';
 import * as moment from 'moment';
 import { Router } from '@angular/router';
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
+import { Icons } from 'src/app/shared/icons';
 
 @Component({
   selector: 'app-benne',
@@ -38,6 +39,7 @@ export class BenneComponent implements OnInit {
   enginRate = 0;
   conducteurRate = 0;
   benneRate = 0;
+  benneImg = Icons.benneImg;
 
 
   constructor(config: NgbRatingConfig,

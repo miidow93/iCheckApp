@@ -1,4 +1,3 @@
-
 .isActive {
   background-color: green;
 }
@@ -27,7 +26,7 @@ and (orientation : landscape) {}*/
     width: 15px;
     height: 15px;
   }
-  
+
   .button3 {
     // position: absolute;
     // left: 0px;
@@ -43,7 +42,7 @@ and (orientation : landscape) {}*/
     width: 15px;
     height: 15px;
   }
-  
+
   .button5 {
     // position: absolute;
     top: -30px;
@@ -127,7 +126,7 @@ and (orientation : landscape) {}*/
     width: 15px;
     height: 15px;
   }
-  
+
   .button3 {
     // position: absolute;
     // left: 0px;
@@ -143,7 +142,7 @@ and (orientation : landscape) {}*/
     width: 15px;
     height: 15px;
   }
-  
+
   .button5 {
     // position: absolute;
     top: -30px;
@@ -209,6 +208,80 @@ and (orientation : landscape) {}*/
     // width: 50%;
     // justify-content: center;
   }
-  
 }
 
+@media (min-width: 1010px) {
+  .button1 {
+    top: -58px;
+    width: 15px;
+    height: 15px;
+  }
+  .button2 {
+    right: 207px;
+    top: -20px;
+    width: 15px;
+    height: 15px;
+  }
+
+  .button3 {
+    top: -5px;
+    right: 222px;
+    width: 15px;
+    height: 15px;
+  }
+  .button4 {
+    top: 9px;
+    right: 238px;
+    width: 15px;
+    height: 15px;
+  }
+
+  .button5 {
+    top: -30px;
+    right: 484px;
+    width: 15px;
+    height: 15px;
+  }
+  .button6 {
+    top: -10px;
+    right: 498px;
+    width: 15px;
+    height: 15px;
+  }
+  .button7 {
+    top: 3px;
+    right: 523px;
+    width: 15px;
+    height: 15px;
+  }
+  .button8 {
+    left: -82%;
+    top: 68px;
+    width: 15px;
+    height: 15px;
+  }
+
+  .button9 {
+    left: -84.4%;
+    top: 84px;
+    width: 15px;
+    height: 15px;
+  }
+  .button10 {
+    left: 42%;
+    width: 15px;
+    height: 15px;
+  }
+  .button11 {
+    left: 40%;
+    width: 15px;
+    height: 15px;
+  }
+  .button12 {
+    left: 51.4%;
+    top: -13px;
+    // right: 287px;
+    width: 15px;
+    height: 15px;
+  }
+}

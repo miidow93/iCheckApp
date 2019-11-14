@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { startWith, map } from 'rxjs/operators';
 import { MatAutocompleteSelectedEvent } from '@angular/material';
+import { Icons } from 'src/app/shared/icons';
 
 @Component({
   selector: 'app-plateau',
@@ -35,6 +36,7 @@ export class PlateauComponent implements OnInit {
   enginRate = 0;
   conducteurRate = 0;
   plateauRate = 0;
+  plateauImg = Icons.plateauImg;
 
   constructor(private formBuilder: FormBuilder,
     private dataService: DataService,
