@@ -3,8 +3,8 @@ import { MatTableDataSource } from '@angular/material';
 import { CheckListRefService } from 'src/app/core/services/checkListRef/check-list-ref.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl } from '@angular/forms';
-import * as moment from  'moment';
-import { faFilter, faSyncAlt, faBan, faCircle  } from '@fortawesome/free-solid-svg-icons';
+import * as moment from 'moment';
+import { faFilter, faSyncAlt, faBan, faCircle } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -13,7 +13,7 @@ import { faFilter, faSyncAlt, faBan, faCircle  } from '@fortawesome/free-solid-s
   styleUrls: ['./synthese.component.scss'],
 })
 export class SyntheseComponent implements OnInit, AfterViewInit {
-  
+
   displayedColumns: string[] = ['id', 'date', 'conducteur', 'vehicule', 'engin', 'etat', 'rating', 'action'];
   dataSource = new MatTableDataSource();
   dateEntree = new FormControl(moment());
@@ -26,14 +26,14 @@ export class SyntheseComponent implements OnInit, AfterViewInit {
 
   oldDataSource;
   de; ds;
-  
-  constructor(private checkListRefService: CheckListRefService, 
-            private router: Router,
-            private activatedRoute: ActivatedRoute) { }
+
+  constructor(private checkListRefService: CheckListRefService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     console.log('Synthese Init');
-    this.checkListRefService.getAllCheckListRef().subscribe((res: any)   => {
+    this.checkListRefService.getAllCheckListRef().subscribe((res: any) => {
       console.log('CheckListRefs: ', res);
       this.dataSource.data = res;
       this.oldDataSource = this.dataSource.data;
@@ -105,6 +105,11 @@ export class SyntheseComponent implements OnInit, AfterViewInit {
   }
 
   blocked(element, operation) {
+    if (operation === 'lock') {
+      
+    } else {
+      // False
+    }
     console.log(`Element: ${element}, operation: ${operation}`);
   }
 }
