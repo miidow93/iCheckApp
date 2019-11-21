@@ -4,6 +4,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { catchError } from 'rxjs/operators';
 import { DataService } from 'src/app/shared/services/data.service';
 import { BlockageService } from 'src/app/core/services/blockage/blockage.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-upload',
   templateUrl: './upload.component.html',
@@ -20,7 +21,9 @@ export class UploadComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     private camera: Camera,
-    private dataService: DataService, private blockageService: BlockageService) { }
+    private dataService: DataService, 
+    private blockageService: BlockageService,
+    private router: Router) { }
 
   ngOnInit() {
     this.dataService.currentDateBlockage.subscribe(res => {
@@ -39,7 +42,7 @@ export class UploadComponent implements OnInit {
     });
 
     this.dataService.currentCheckListID.subscribe(res => {
-      console.log('Blockage ID: ', res);
+      console.log('CheckList ID: ', res);
       this.checklistID = res;
     });
     
@@ -72,12 +75,21 @@ export class UploadComponent implements OnInit {
     }
 
     const data = {
+      id: this.blockageID,
       motif: form.controls['motif'].value,
       dateBlockage: this.date,
       idCheckList: this.checklistID,
       idVehicule: this.vehiculeID,
-      imageUrl: this.image
+      imageUrl: this.image ? this.image : '' 
     };
+
+    console.log('Blockage Data: ', data);
+
+    this.blockageService.updateBlockage(this.blockageID, data).subscribe(res => {
+      console.log('Update Blockage: ', res);
+      this.router.navigate(['engins']);
+    });
+
   }
 
 }

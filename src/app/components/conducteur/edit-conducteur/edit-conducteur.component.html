@@ -16,8 +16,9 @@
           <input matInput placeholder="Assurance" formControlName="assurance" name="assurance">
         </mat-form-field>
         <mat-form-field class="w-75">
-          <input type="date" matInput placeholder="dateValiditeAssurance" formControlName="dateValiditeAssurance"
-            name="dateValiditeAssurance">
+          <input matInput [matDatepicker]="picker1" name="dateEntree" [formControl]="dateValiditeAssurance">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
         </mat-form-field>
         <mat-form-field class="w-75">
           <input matInput placeholder="Patente" formControlName="patente" name="patente">

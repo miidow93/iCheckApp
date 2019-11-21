@@ -12,7 +12,9 @@ export class BlockageService {
   getBolckedEngins() {
     return this.http.get(`${Constants.api}blockages`);
   }
+
   updateBlockage(id, data) {
     return this.http.put(`${Constants.api}blockages/${id}`, data);
   }
+  
 }
