@@ -29,6 +29,7 @@ export class ConducteurComponent implements OnInit {
   refresh() {
     this.service.getAllConducteur().subscribe((res: any[]) => {
       this.conducteurDataService.changeConducteurDataSource(res);
+      console.log('conducteur',res);
     });
     this.conducteurDataService.currentConducteurDataSource.subscribe(data => {this.dataSource.data = data;this.dataSource.paginator = this.paginator});
   }
