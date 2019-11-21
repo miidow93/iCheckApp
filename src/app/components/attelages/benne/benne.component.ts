@@ -12,6 +12,8 @@ import * as moment from 'moment';
 import { Router } from '@angular/router';
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Icons } from 'src/app/shared/icons';
+import { Platform } from '@ionic/angular';
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 
 @Component({
   selector: 'app-benne',
@@ -48,7 +50,9 @@ export class BenneComponent implements OnInit {
     private checkListService: CheckListService,
     private conducteurService: ConducteurService,
     private vehiculeService: VehiculeService,
-    private router: Router) {
+    private router: Router,
+    private platform: Platform,
+    private screenOrientation: ScreenOrientation) {
     config.max = 5;
     config.readonly = true;
   }
@@ -124,6 +128,18 @@ export class BenneComponent implements OnInit {
     this.getAllVehicules();
     this.filterInitCond();
     this.filterInitVehicule();
+  }
+
+
+  initializeApp() {
+    this.platform.ready().then(res => {
+      if(!this.platform.is('android') || !this.platform.is('tablet')) {
+        console.log('is not a tablet');
+        this.router.navigate(['login']);
+      } else {
+        this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
+      }
+    });
   }
 
   onSubmit(form) {

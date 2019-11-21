@@ -32,8 +32,9 @@ export class SyntheseComponent implements OnInit, AfterViewInit {
             private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    console.log('Synthese Init');
     this.checkListRefService.getAllCheckListRef().subscribe((res: any)   => {
-      console.log(res);
+      console.log('CheckListRefs: ', res);
       this.dataSource.data = res;
       this.oldDataSource = this.dataSource.data;
       this.data = <any[]>this.dataSource.data;
