@@ -20,6 +20,8 @@ import { PlateauComponent } from './components/attelages/plateau/plateau.compone
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HistoryComponent } from './components/history/history.component';
 import { UploadComponent } from './components/upload/upload.component';
+import { UserComponent } from './components/user/user.component';
+import { ListUserComponent } from './components/user/list-user/list-user.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },
@@ -30,6 +32,8 @@ const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent, outlet: 'admin' },
       { path: 'conducteur', component: ConducteurComponent, outlet: 'admin'/*, canActivate: [AuthGuard]*/ },
       { path: 'conducteur/new', component: AddConducteurComponent, outlet: 'admin' },
+      { path: 'user',component: ListUserComponent, outlet : 'admin'},
+      { path : 'user/new', component: UserComponent, outlet : 'admin'},
       { path: 'synthese', component: SyntheseComponent, outlet: 'admin'/*, canActivate: [AuthGuard]*/ },
       { path: 'synthese/:id', component: DetailsComponent, outlet: 'admin' },
       { path: 'history', component: HistoryComponent, outlet: 'admin' },

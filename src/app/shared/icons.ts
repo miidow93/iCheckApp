@@ -9,10 +9,11 @@ export enum Icons {
     checklistIcon = './assets/icon/checklist.svg',
     conducteurIcon = './assets/icon/worker.svg',
     enginIcon = './assets/icon/construction.svg',
-    vehiculeIcon = './assets/icon/delivery-truck.svg',
+    vehiculeIcon = './assets/icon/truck.svg',
     syntheseIcon = './assets/icon/synthese.svg',
     logoutIcon = './assets/icon/logout.svg',
     statsIcon = './assets/icon/analytics.svg',
     dashboardIcon = './assets/icon/ui.svg',
-    historyIcon = './assets/icon/schedule.svg'
+    historyIcon = './assets/icon/schedule.svg',
+    adminIcon = './assets/icon/boss.svg'
 }
