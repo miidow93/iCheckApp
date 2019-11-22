@@ -24,7 +24,7 @@ export class MenuComponent {
   logoutIcon = Icons.logoutIcon;
   statsIcon = Icons.statsIcon;
   dashboardIcon = Icons.dashboardIcon;
-  
+  adminIcon = Icons.adminIcon;
 
 
 
@@ -55,6 +55,20 @@ export class MenuComponent {
         {
           title: 'Liste des conducteurs',
           url: 'conducteur'
+        }
+      ]
+    },
+    {
+      title: 'Gestion des utilisateurs',
+      icon: Icons.adminIcon,
+      children: [
+        {
+          title: 'Nouveau',
+          url: 'user/new'
+        },
+        {
+          title: 'Liste des utilisateurs',
+          url: 'user'
         }
       ]
     },

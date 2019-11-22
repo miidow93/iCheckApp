@@ -14,5 +14,6 @@ export enum Icons {
     logoutIcon = './assets/icon/logout.svg',
     statsIcon = './assets/icon/analytics.svg',
     dashboardIcon = './assets/icon/ui.svg',
-    historyIcon = './assets/icon/schedule.svg'
+    historyIcon = './assets/icon/schedule.svg',
+    adminIcon = './assets/icon/boss.svg'
 }

@@ -42,6 +42,8 @@ import { HistoryComponent } from './components/history/history.component';
 import { UploadComponent } from './components/upload/upload.component';
 import { Camera } from '@ionic-native/camera/ngx';
 import { ChartsModule } from 'ng2-charts';
+import { UserComponent } from './components/user/user.component';
+import { ListUserComponent } from './components/user/list-user/list-user.component';
 
 export function getToken() {
   return localStorage.getItem('token');
@@ -72,7 +74,9 @@ export function getToken() {
     PlateauComponent,
     DashboardComponent,
     HistoryComponent,
-    UploadComponent
+    UploadComponent,
+    UserComponent,
+    ListUserComponent
   ],
   entryComponents: [EditEnginsComponent,EditConducteurComponent],
   imports: [
