@@ -10,28 +10,38 @@
 <ion-content>
     
   <ion-grid>
-    <ion-row>
-        <ion-col size="4">
-            <ion-card>
-              <ion-card-header>
-                <ion-card-subtitle>Nombre des camions Controlés</ion-card-subtitle>
-                <ion-card-title>{{Controled}}</ion-card-title>
+    <ion-row >
+        <ion-title><ion-icon style="zoom:6.0;" [src]="truck"></ion-icon></ion-title>
+        <ion-col size="12" class="row justify-content-center">
+            <ion-title><span  style="font-size: 20px;">Nombre totals des camions Controlés :</span>&nbsp;&nbsp;<span class="badge badge-primary">{{Controled}}</span></ion-title>
+            
+          </ion-col>
+        <ion-col size="4" >
+            <ion-card >
+                <ion-card-header>
+                <ion-card-title>
+                  <span class="badge badge-warning" style="font-size: 12px;">Nombre des camions Controlés par site :</span></ion-card-title>
+                <ion-icon style="zoom:4.0;" [src]="truck"></ion-icon>
+                <ion-card-title *ngFor="let control of controledSite">&nbsp;&nbsp;<span class="badge badge-secondary" >{{control.label}}</span>&nbsp;&nbsp;<span class="badge badge-primary" >{{control.count}}</span></ion-card-title>
               </ion-card-header>
             </ion-card>
           </ion-col>
           <ion-col size="4">
               <ion-card>
                 <ion-card-header>
-                  <ion-card-subtitle>Nombre des camions Suspendus&nbsp;&nbsp;<button class="btn btn-danger" disabled></button></ion-card-subtitle>
-                  <ion-card-title>{{blocked}}</ion-card-title>
+                    <ion-card-title><span class="badge badge-warning" style="font-size: 12px;">Nombre des camions Suspendus par site : </span></ion-card-title>
+                    <ion-icon style="zoom:4.0;" [src]="truck"></ion-icon>
+                  <ion-card-title *ngFor="let block of blockedSite"><span class="badge badge-secondary"> {{block.label}}</span>&nbsp;&nbsp;<span class="badge badge-danger" >{{block.count}}</span></ion-card-title>
+                  
                 </ion-card-header>
               </ion-card>
             </ion-col>
             <ion-col size="4">
                 <ion-card>
-                  <ion-card-header>
-                    <ion-card-subtitle>Nombre des camions Non Suspendus&nbsp;&nbsp;<button class="btn btn-success" disabled></button></ion-card-subtitle>
-                    <ion-card-title>{{NotBlocked}}</ion-card-title>
+                  <ion-card-header >
+                      <ion-card-title><span class="badge badge-warning" style="font-size: 12px;">Nombre des camions Non Suspendus par site :</span></ion-card-title>
+                      <ion-icon style="zoom:4.0;" [src]="truck"></ion-icon>
+                    <ion-card-title *ngFor="let notblock of notBlockedSite"><span class="badge badge-secondary">{{notblock.label}}</span>&nbsp;&nbsp;<span class="badge badge-success" >{{notblock.count}}</span></ion-card-title>
                   </ion-card-header>
                 </ion-card>
               </ion-col>

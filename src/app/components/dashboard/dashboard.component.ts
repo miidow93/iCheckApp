@@ -4,6 +4,7 @@ import { ChartOptions } from 'chart.js';
 import { StatsService } from 'src/app/core/services/stats/stats.service';
 import * as _moment from 'moment';
 import { FormControl } from '@angular/forms';
+import { Icons } from 'src/app/shared/icons';
 const moment = _moment;
 
 
@@ -16,9 +17,13 @@ export class DashboardComponent implements OnInit {
   dateStats = new FormControl(moment());
   messageLineChart;
   site;
+  blockedSite = [];
+  notBlockedSite = [];
+  controledSite = [];
   blocked;
   NotBlocked;
   Controled;
+  truck = Icons.vehiculeIcon;
   public barChartData: any[];
   public barChartLabels = [];
   public barChartType = 'bar';
@@ -73,12 +78,13 @@ export class DashboardComponent implements OnInit {
  
 
   constructor(private statsService:StatsService) { }
-
+  
   ngOnInit() {
     this.site = localStorage.getItem('site');
     this.getNumberOfBlocked();
     this.getNumberOfNotBlocked();
-    this.getNumberOfControled();
+    this.getNumberOfControledSite();
+    this.getNumberOfcontroled();
   }
   
   ngAfterViewInit() {
@@ -124,18 +130,33 @@ export class DashboardComponent implements OnInit {
     });
   }
   getNumberOfBlocked(){
-    return this.statsService.getNumberOfBlocked().subscribe(res =>
-      this.blocked = res
+    return this.statsService.getNumberOfBlocked().subscribe((res:any) =>{
+      for (let i = 0; i < res.stats.length; i++) {
+        this.blockedSite.push(res.stats[i])
+      }}
       );
   }
   getNumberOfNotBlocked(){
     return this.statsService.getNumberOfNotBlocked().subscribe(
-      res => this.NotBlocked = res
+      (res:any) =>{
+        for (let i = 0; i < res.stats.length; i++) {
+          this.notBlockedSite.push(res.stats[i])
+        }
+      } 
     );
   }
-  getNumberOfControled(){
+  getNumberOfControledSite(){
     return this.statsService.getNumberOfControled().subscribe(
-      res => this.Controled = res
+      (res:any) =>{
+        for (let i = 0; i < res.stats.length; i++) {
+          this.controledSite.push(res.stats[i])
+        }
+      } 
+    )
+  }
+  getNumberOfcontroled(){
+    return this.statsService.getControled().subscribe(
+      res=> this.Controled = res
     )
   }
 }

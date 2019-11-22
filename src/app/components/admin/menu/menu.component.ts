@@ -24,6 +24,7 @@ export class MenuComponent {
   logoutIcon = Icons.logoutIcon;
   statsIcon = Icons.statsIcon;
   dashboardIcon = Icons.dashboardIcon;
+  
 
 
 
