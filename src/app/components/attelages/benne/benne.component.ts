@@ -126,6 +126,18 @@ export class BenneComponent implements OnInit {
     this.filterInitVehicule();
   }
 
+
+  /*initializeApp() {
+    this.platform.ready().then(res => {
+      if(!this.platform.is('android') || !this.platform.is('tablet')) {
+        console.log('is not a tablet');
+        this.router.navigate(['login']);
+      } else {
+        this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
+      }
+    });
+  }*/
+
   onSubmit(form) {
     if (!form.valid) {
       alert('Veuillez saisir les données.');

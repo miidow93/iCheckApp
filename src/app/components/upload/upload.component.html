@@ -18,7 +18,10 @@
         <mat-form-field class="w-100 h-50">
           <input matInput placeholder="Motif" formControlName="motif">
         </mat-form-field>
-        <button mat-stroked-button color="warn" (click)="takePicture()">Prendre une photo</button> 
+        <div class="form-row justify-content-end">
+            <button mat-stroked-button class="mr-2" color="warn" (click)="takePicture()">Prendre une photo</button> 
+            <button type="submit" mat-stroked-button>Valider</button>
+        </div>
       </div>
 
       <div>

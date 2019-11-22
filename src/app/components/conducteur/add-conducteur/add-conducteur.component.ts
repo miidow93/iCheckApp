@@ -40,7 +40,7 @@ export class AddConducteurComponent implements OnInit {
       assurance: form.controls['assurance'].value,
       patente: form.controls['patente'].value,
       societe: form.controls['societe'].value,
-      dateValiditeAssurance: moment(this.dateValiditeAssurance.value).format('DD/MM/YYYY')
+      dateValiditeAssurance: moment(this.dateValiditeAssurance.value).format('YYYY/MM/DD')
     };
     console.log('Data Conducteur: ', data);
 
