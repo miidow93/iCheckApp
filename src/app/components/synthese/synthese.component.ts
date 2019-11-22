@@ -1,5 +1,5 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { MatTableDataSource, MatPaginator } from '@angular/material';
 import { CheckListRefService } from 'src/app/core/services/checkListRef/check-list-ref.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl } from '@angular/forms';
@@ -14,6 +14,7 @@ import { faFilter, faSyncAlt, faBan, faCircle } from '@fortawesome/free-solid-sv
 })
 export class SyntheseComponent implements OnInit, AfterViewInit {
 
+  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   displayedColumns: string[] = ['id', 'date', 'conducteur', 'vehicule', 'engin', 'etat', 'rating', 'action'];
   dataSource = new MatTableDataSource();
   dateEntree = new FormControl(moment());
@@ -36,6 +37,7 @@ export class SyntheseComponent implements OnInit, AfterViewInit {
     this.checkListRefService.getAllCheckListRef().subscribe((res: any) => {
       console.log('CheckListRefs: ', res);
       this.dataSource.data = res;
+      this.dataSource.paginator = this.paginator;
       this.oldDataSource = this.dataSource.data;
       this.data = <any[]>this.dataSource.data;
     });
@@ -105,11 +107,19 @@ export class SyntheseComponent implements OnInit, AfterViewInit {
   }
 
   blocked(element, operation) {
-    if (operation === 'lock') {
-      
-    } else {
-      // False
+    const data = {
+      id: element.id,
+      idCheckListRef: element.idCheckListRef,
+      rating: element.rating,
+      date: element.date,
+      idConducteur: element.idConducteur,
+      idVehicule: element.idVehicule, 
+      etat: operation === 'lock' ? true : false
     }
-    console.log(`Element: ${element}, operation: ${operation}`);
+    this.checkListRefService.updateCheckList(data.id, data).subscribe(res => {
+      console.log('Update Checklist ref', res);
+    });
+    // console.log(`Element: , operation: ${operation}`, element);
+    element.etat = operation === 'lock' ? true : false
   }
 }

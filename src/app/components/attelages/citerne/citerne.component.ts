@@ -91,9 +91,9 @@ export class CiterneComponent implements OnInit {
     });
 
     this.dataService.currentRatingCheckList.subscribe(res => {
-      // console.log('Rating checklist Subscribe: ', (res * 100).toFixed(2));
+      console.log('Rating checklist Subscribe: ', (res * 100).toFixed(2));
       this.totalRate = parseFloat((res * 100).toFixed(2));
-      // console.log('rate: ', this.totalRate);
+      console.log('rate: ', this.totalRate);
     });
 
     this.dataService.currentDateBlockage.subscribe(res => console.log('Date Blockage: ', res));

@@ -87,6 +87,9 @@ export class UploadComponent implements OnInit {
 
     this.blockageService.updateBlockage(this.blockageID, data).subscribe(res => {
       console.log('Update Blockage: ', res);
+      this.dataService.changeConducteurRating(0);
+      this.dataService.changeVehiculeRating(0);
+      this.dataService.changeEnginRating(0);
       this.router.navigate(['engins']);
     });
 
