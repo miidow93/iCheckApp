@@ -37,13 +37,13 @@ import { BenneComponent } from './components/attelages/benne/benne.component';
 import { PlateauComponent } from './components/attelages/plateau/plateau.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
 import { HistoryComponent } from './components/history/history.component';
 import { UploadComponent } from './components/upload/upload.component';
 import { Camera } from '@ionic-native/camera/ngx';
 import { ChartsModule } from 'ng2-charts';
 import { UserComponent } from './components/user/user.component';
 import { ListUserComponent } from './components/user/list-user/list-user.component';
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 
 export function getToken() {
   return localStorage.getItem('token');
@@ -104,6 +104,7 @@ export function getToken() {
   
   providers: [
     Camera,
+    ScreenOrientation,
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }

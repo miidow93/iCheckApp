@@ -11,18 +11,21 @@ import { SiteService } from 'src/app/core/services/site/site.service';
 })
 export class UserComponent implements OnInit {
 
-  userForm : FormGroup;
+  userForm: FormGroup;
   roles;
   sites;
-  constructor(private siteService:SiteService,private userService:UserService,private formBuilder:FormBuilder,private roleService:RoleService) { }
+  constructor(private siteService: SiteService,
+    private userService: UserService,
+    private formBuilder: FormBuilder,
+    private roleService: RoleService) { }
 
   ngOnInit() {
     this.userForm = this.formBuilder.group({
-      nomComplet : ['',Validators.required],
-      userName : ['',Validators.required],
-      password : ['',Validators.required],
-      idRole : ['',Validators.required],
-      idSite : ['',Validators.required],
+      nomComplet: ['', Validators.required],
+      userName: ['', Validators.required],
+      password: ['', Validators.required],
+      idRole: ['', Validators.required],
+      idSite: ['', Validators.required],
       // societe:['',Validators.required]
     });
     this.roleService.getRoles().subscribe(res => {
@@ -30,13 +33,13 @@ export class UserComponent implements OnInit {
         this.roles = res;
       }
     });
-    this.siteService.getSites().subscribe(res=>{
-      if(res){
+    this.siteService.getSites().subscribe(res => {
+      if (res) {
         this.sites = res;
       }
     })
   }
-  Adduser(form){
+  Adduser(form) {
     console.log(form.value);
     this.userService.addUsers(form.value).subscribe();
     this.userForm.reset();

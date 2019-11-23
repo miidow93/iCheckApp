@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     // console.log('Locale: ', this.locale);
+    // this.router.navigate(['checklist', 'benne']);
     this.loginForm = this.formBuilder.group({
       username: [null, [Validators.required/*, Validators.minLength(6)*/]],
       password: [null, [Validators.required/*, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,15}$')*/]]

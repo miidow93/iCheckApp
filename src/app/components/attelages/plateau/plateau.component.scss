@@ -1,35 +1,35 @@
 .image2 {
-  margin-top: -150px;
+  //margin-top: -150px;
   height: 220px;
 }
 .button1 {
   //   position: absolute;
   right: 63px;
   top: -43px;
-  width: 12px;
-  height: 12px;
+  width: 15px;
+  height: 15px;
 }
 .button2 {
   //   position: absolute;
   right: 260px;
   top: -20px;
-  width: 12px;
-  height: 12px;
+  width: 15px;
+  height: 15px;
 }
 
 .button3 {
   //   position: absolute;
   right: 362px;
   top: -20px;
-  width: 12px;
-  height: 12px;
+  width: 15px;
+  height: 15px;
 }
 .button4 {
   //   position: absolute;
   right: 454px;
   top: -38px;
-  width: 12px;
-  height: 12px;
+  width: 15px;
+  height: 15px;
 }
 
 .isActive {
@@ -38,4 +38,37 @@
 
 .isNotActive {
   background-color: red;
+}
+
+
+@media only screen and (width: 1280px) { 
+
+  .button1 {
+    right: 12%;
+    top: 33px;
+    width: 15px;
+    height: 15px;
+  }
+  .button2 {
+    //   position: absolute;
+    right: 49%;
+    top: 54px;
+    width: 15px;
+    height: 15px;
+  }
+  
+  .button3 {
+    //   position: absolute;
+    right: 68%;
+    top: 53px;
+    width: 15px;
+    height: 15px;
+  }
+  .button4 {
+    //   position: absolute;
+    right: 85%;
+    top: 33px;
+    width: 15px;
+    height: 15px;
+  }
 }

@@ -25,8 +25,16 @@
     <button mat-raised-button type="submit">Envoyer</button>
   </form>
 </div>
-<app-check-list-engin></app-check-list-engin>
-<app-check-list-conducteur></app-check-list-conducteur>
+<ion-grid>
+    <ion-row>
+      <ion-col size="8">
+        <app-check-list-engin></app-check-list-engin>
+      </ion-col>
+      <ion-col size="4">
+        <app-check-list-conducteur></app-check-list-conducteur>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 <app-check-list-equipement></app-check-list-equipement>
 <span style="float: left;">
   <img class="image2" [src]="plateauImg">

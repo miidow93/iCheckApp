@@ -13,7 +13,7 @@ export class StatsService {
   constructor(private http:HttpClient) { }
 
   getStatsByMonth() {
-    return this.http.get(`${API}/synthese/total`)
+    return this.http.get(`${API}synthese/total`)
     .pipe(
       tap(_ => this.log('stats by month')),
       catchError(this.handleError('stats by month', []))
@@ -38,15 +38,15 @@ export class StatsService {
     console.log(message);
   }
   getNumberOfBlocked(){
-    return this.http.get(`${API}/suspendu`);
+    return this.http.get(`${API}suspendu`);
   }
   getNumberOfNotBlocked(){
-    return this.http.get(`${API}/Nonsuspendu`);
+    return this.http.get(`${API}Nonsuspendu`);
   }
   getNumberOfControled(){
-    return this.http.get(`${API}/controledSite`);
+    return this.http.get(`${API}controledSite`);
   }
   getControled(){
-    return this.http.get(`${API}/controled`);
+    return this.http.get(`${API}controled`);
   }
 }

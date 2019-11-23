@@ -63,7 +63,7 @@ export class UploadComponent implements OnInit {
     this.camera.getPicture(cameraOpt).then((imageData) => {
       let base64Image = 'data:image/jpeg;base64,' + imageData;
       this.image = base64Image;
-      console.log('Image: ', base64Image);
+      console.log('Image: ', this.image);
     }, (err) => {
       console.error(err);
     }).catch(err => catchError(err));

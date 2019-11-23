@@ -285,3 +285,95 @@ and (orientation : landscape) {}*/
     height: 15px;
   }
 }
+
+
+
+@media only screen and (width: 1280px) {
+  /*.button1 {
+    // position: absolute;
+    right: 87px;
+    top: -58px;
+    width: 15px;
+    height: 15px;
+  }
+  .button2 {
+    // position: absolute;
+    right: 207px;
+    top: -20px;
+    width: 15px;
+    height: 15px;
+  }
+
+  .button3 {
+    // position: absolute;
+    // left: 0px;
+    top: -5px;
+    right: 222px;
+    width: 15px;
+    height: 15px;
+  }
+  .button4 {
+    // position: absolute;
+    top: 9px;
+    right: 238px;
+    width: 15px;
+    height: 15px;
+  }
+
+  .button5 {
+    // position: absolute;
+    top: -30px;
+    right: 484px;
+    width: 15px;
+    height: 15px;
+  }
+  .button6 {
+    // position: absolute;
+    top: -10px;
+    right: 498px;
+    width: 15px;
+    height: 15px;
+  }
+  .button7 {
+    // position: absolute;
+    top: 3px;
+    right: 523px;
+    width: 15px;
+    height: 15px;
+  }*/
+  .button8 {
+    left: -78.5%; // -79.5%;
+    top: 69px;
+    width: 12px;
+    height: 12px;
+  }
+  .button9 {
+    left: -80.6%; // -80.6%
+    top: 83px;
+    width: 12px;
+    height: 12px;
+  }
+  .button10 {
+    left: -53%;
+    top: 80px;
+    width: 15px;
+    height: 15px;
+  }
+  .button11 {
+    // left: -46%;
+    // top: 77px;
+    left: -54.7%;
+    top: 103px;
+    width: 15px;
+    height: 15px;
+  }
+  .button12 {
+    left: -43.4%;
+    top: 122px;
+    width: 15px;
+    height: 15px;
+  }
+  .image {
+    height: 230px;
+  }
+}
