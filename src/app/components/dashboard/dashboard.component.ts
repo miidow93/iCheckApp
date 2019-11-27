@@ -23,7 +23,9 @@ export class DashboardComponent implements OnInit {
   blocked;
   NotBlocked;
   Controled;
-  truck = Icons.vehiculeIcon;
+  benneIcon = Icons.benneIcon;
+  plateauIcon = Icons.plateauIcon;
+  citerneIcon = Icons.citerneIcon;
   public barChartData: any[];
   public barChartLabels = [];
   public barChartType = 'bar';
