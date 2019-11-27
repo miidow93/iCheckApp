@@ -33,7 +33,10 @@
 
 ion-header ion-toolbar {
   // background-color: #f5cd1b !important;
-  --background: #f5cd1b;
+  --background: #59d7f0;
+  ion-title {
+    color: white;
+  }
 }
 
 /*ion-menu {
