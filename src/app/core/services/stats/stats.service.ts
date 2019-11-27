@@ -19,6 +19,7 @@ export class StatsService {
       catchError(this.handleError('stats by month', []))
     );
   }
+
   getStatsBlockedByMonth(site) {
     return this.http.get(`${API}${site}`)
     .pipe(
@@ -26,6 +27,16 @@ export class StatsService {
       catchError(this.handleError('stats by month', []))
     );
   }
+
+  getStats() {
+    return this.http.get(`${API}`)
+    .pipe(
+      tap(_ => this.log('get all stats')),
+      catchError(this.handleError('get all stats', []))
+    );
+  }
+
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);

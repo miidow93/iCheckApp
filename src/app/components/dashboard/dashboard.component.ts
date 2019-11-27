@@ -6,6 +6,7 @@ import * as _moment from 'moment';
 import { FormControl } from '@angular/forms';
 import { Icons } from 'src/app/shared/icons';
 import { ToastController } from '@ionic/angular';
+import $ from 'jquery';
 const moment = _moment;
 
 
@@ -18,11 +19,15 @@ export class DashboardComponent implements OnInit {
   dateStats = new FormControl(moment());
   messageLineChart;
   site;
-  blockedSite = [];
-  notBlockedSite = [];
-  controledSite = [];
-  blocked;
-  NotBlocked;
+  // blockedSite = [];
+  // notBlockedSite = [];
+  // controledSite = [];
+  // blocked;
+  // NotBlocked;
+  bennes = { 'blocked': [], 'notBlocked': []};
+  citernes = {};
+  plateaus = {'blocked': [], 'notBlocked': []};
+
   Controled;
   benneIcon = Icons.benneIcon;
   plateauIcon = Icons.plateauIcon;
@@ -89,6 +94,7 @@ export class DashboardComponent implements OnInit {
     this.getNumberOfNotBlocked();
     this.getNumberOfControledSite();
     this.getNumberOfcontroled();
+    this.getAllStats();
   }
 
   ngAfterViewInit() {
@@ -133,26 +139,51 @@ export class DashboardComponent implements OnInit {
       }
     });
   }
+
   getNumberOfBlocked() {
     return this.statsService.getNumberOfBlocked().subscribe((res: any) => {
       console.log('Blocked: ', res);
       for (let i = 0; i < res.stats.length; i++) {
-        this.blockedSite.push(res.stats[i])
+        // this.blockedSite.push(res.stats[i])
       }
     });
   }
+
   getNumberOfNotBlocked() {
     return this.statsService.getNumberOfNotBlocked().subscribe((res: any) => {
       console.log('Not Blocked: ', res);
       for (let i = 0; i < res.stats.length; i++) {
-        this.notBlockedSite.push(res.stats[i])
+        // this.notBlockedSite.push(res.stats[i])
       }
     });
   }
+
+  getAllStats() {
+    this.statsService.getStats().subscribe((res: any) => { 
+      this.bennes = {
+        'blocked': res['blocked'].filter(x => x.type === 'Benne'),
+        'notBlocked': res['notBlocked'].filter(x => x.type === 'Benne')
+      };
+
+      this.plateaus = {
+        'blocked': res['blocked'].filter(x => x.type === 'Plateau'),
+        'notBlocked': res['notBlocked'].filter(x => x.type === 'Plateau')
+      };
+
+      this.citernes = {
+        'blocked': res['blocked'].filter(x => x.type === 'Citerne'),
+        'notBlocked': res['notBlocked'].filter(x => x.type === 'Citerne')
+      }
+      console.log('Get All Stats: ', res);
+      console.log('Benne: ', this.bennes);
+      console.log('Citerne: ', this.citernes);
+     });
+  }
+
   getNumberOfControledSite() {
     return this.statsService.getNumberOfControled().subscribe((res: any) => {
       for (let i = 0; i < res.stats.length; i++) {
-        this.controledSite.push(res.stats[i])
+        // this.controledSite.push(res.stats[i])
       }
     });
   }

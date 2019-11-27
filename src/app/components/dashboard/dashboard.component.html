@@ -22,14 +22,14 @@
       <ion-col size="4">
         <ion-card>
           <ion-card-header>
-            <ion-card-title>
+            <!-- <ion-card-title>
               <span class="badge badge-primary ion-text-wrap" style="font-size: 12px;">Nombre des camions Controlés par
                 site :</span>
-            </ion-card-title>
-            <div class="row">
-              <img class="col-sm-4" [src]="benneIcon">
+            </ion-card-title> -->
+            <div class="row justify-content-end">
+              <!-- <img class="col-sm-4" [src]="benneIcon"> -->
               <img class="col-sm-4" [src]="plateauIcon">
-              <img class="col-sm-4" [src]="citerneIcon">
+              <!-- <img class="col-sm-4" [src]="citerneIcon"> -->
             </div>
             <ion-card-title *ngFor="let control of controledSite">
               <span class="badge badge-secondary mr-2">{{control.label}}</span>
@@ -41,16 +41,16 @@
       <ion-col size="4">
         <ion-card>
           <ion-card-header>
-            <ion-card-title>
+            <!-- <ion-card-title>
               <span class="badge badge-primary ion-text-wrap" style="font-size: 12px;">Nombre des camions Suspendus par
                 site: </span>
-            </ion-card-title>
-            <div class="row">
+            </ion-card-title> -->
+            <div class="row justify-content-end">
               <img class="col-sm-4" [src]="benneIcon">
-              <img class="col-sm-4" [src]="plateauIcon">
-              <img class="col-sm-4" [src]="citerneIcon">
+              <!-- <img class="col-sm-4" [src]="plateauIcon">
+              <img class="col-sm-4" [src]="citerneIcon"> -->
             </div>
-            <ion-card-title *ngFor="let block of blockedSite">
+            <ion-card-title *ngFor="let citerne of citernes; let i = index">
               <span class="badge badge-secondary mr-2">{{block.label}}</span>
               <span class="badge badge-danger">{{block.count}}</span>
             </ion-card-title>
@@ -61,19 +61,20 @@
       <ion-col size="4">
         <ion-card>
           <ion-card-header>
-            <ion-card-title>
+            <!-- <ion-card-title>
               <span class="badge badge-primary ion-text-wrap" style="font-size: 12px;">Nombre des camions Non Suspendus
                 par site:
               </span>
-            </ion-card-title>
-            <div class="row">
-              <img class="col-sm-4" [src]="benneIcon">
-              <img class="col-sm-4" [src]="plateauIcon">
+            </ion-card-title> -->
+            <div class="row justify-content-end">
+              <!-- <img class="col-sm-4" [src]="benneIcon">
+              <img class="col-sm-4" [src]="plateauIcon"> -->
               <img class="col-sm-4" [src]="citerneIcon">
             </div>
-            <ion-card-title *ngFor="let notblock of notBlockedSite"><span
-                class="badge badge-secondary mr-2">{{notblock.label}}</span>
-              <span class="badge badge-success">{{notblock.count}}</span>
+            <ion-card-title *ngFor="let blocked of citernes['blocked']; let notBlocked of citernes['notBlocked'] | async">
+              <span class="badge badge-secondary mr-2">{{blocked.label}}</span>
+              <span class="badge badge-danger">{{blocked.count}}</span>
+              <span class="badge badge-success">{{blocked.label === notBlocked.label ? notBlocked.count : 0}}</span>
             </ion-card-title>
           </ion-card-header>
         </ion-card>
