@@ -5,6 +5,7 @@ import { StatsService } from 'src/app/core/services/stats/stats.service';
 import * as _moment from 'moment';
 import { FormControl } from '@angular/forms';
 import { Icons } from 'src/app/shared/icons';
+import { ToastController } from '@ionic/angular';
 const moment = _moment;
 
 
@@ -76,11 +77,12 @@ export class DashboardComponent implements OnInit {
       backgroundColor: 'rgba(236, 156, 156, 0.2)',
     },
   ];
-  
- 
 
-  constructor(private statsService:StatsService) { }
-  
+
+
+  constructor(private statsService: StatsService,
+    private toastCtrl: ToastController) { }
+
   ngOnInit() {
     this.site = localStorage.getItem('site');
     this.getNumberOfBlocked();
@@ -88,9 +90,9 @@ export class DashboardComponent implements OnInit {
     this.getNumberOfControledSite();
     this.getNumberOfcontroled();
   }
-  
+
   ngAfterViewInit() {
-    
+
     this.statsByMonthAndYear();
     console.log(this.dateStats);
   }
@@ -111,55 +113,64 @@ export class DashboardComponent implements OnInit {
 
     return labels;
   }
-  
-  statsByMonthAndYear() {
 
+  statsByMonthAndYear() {
     this.statsService.getStatsByMonth().subscribe((res: any) => {
       if (res.stats) {
         this.barChartData = [{ data: this.getChartData(res.stats), label: 'Camions' }];
         this.barChartLabels = this.getChartLabels(res.stats);
       } else {
-        alert('Aucune résultat');
+        this.toastAlert('Aucune résultat');
       }
     });
+
     this.statsService.getStatsBlockedByMonth(this.site).subscribe((res: any) => {
       if (res.stats) {
-        this.lineChartData = [{ data: this.getChartData(res.stats), label: 'camions Non Conforme' }];
+        this.lineChartData = [{ data: this.getChartData(res.stats), label: 'Camions Non Conforme' }];
         this.lineChartLabels = this.getChartLabels(res.stats);
       } else {
         this.messageLineChart = 'Aucun résultat';
       }
     });
   }
-  getNumberOfBlocked(){
-    return this.statsService.getNumberOfBlocked().subscribe((res:any) =>{
+  getNumberOfBlocked() {
+    return this.statsService.getNumberOfBlocked().subscribe((res: any) => {
+      console.log('Blocked: ', res);
       for (let i = 0; i < res.stats.length; i++) {
         this.blockedSite.push(res.stats[i])
-      }}
-      );
+      }
+    });
   }
-  getNumberOfNotBlocked(){
-    return this.statsService.getNumberOfNotBlocked().subscribe(
-      (res:any) =>{
-        for (let i = 0; i < res.stats.length; i++) {
-          this.notBlockedSite.push(res.stats[i])
-        }
-      } 
-    );
+  getNumberOfNotBlocked() {
+    return this.statsService.getNumberOfNotBlocked().subscribe((res: any) => {
+      console.log('Not Blocked: ', res);
+      for (let i = 0; i < res.stats.length; i++) {
+        this.notBlockedSite.push(res.stats[i])
+      }
+    });
   }
-  getNumberOfControledSite(){
-    return this.statsService.getNumberOfControled().subscribe(
-      (res:any) =>{
-        for (let i = 0; i < res.stats.length; i++) {
-          this.controledSite.push(res.stats[i])
-        }
-      } 
-    )
+  getNumberOfControledSite() {
+    return this.statsService.getNumberOfControled().subscribe((res: any) => {
+      for (let i = 0; i < res.stats.length; i++) {
+        this.controledSite.push(res.stats[i])
+      }
+    });
   }
-  getNumberOfcontroled(){
-    return this.statsService.getControled().subscribe(
-      res=> this.Controled = res
-    )
+
+  getNumberOfcontroled() {
+    return this.statsService.getControled().subscribe(res => {
+      this.Controled = res;
+    });
+  }
+
+  async toastAlert(msg) {
+    const toast = await this.toastCtrl.create({
+      message: `${msg}`,
+      duration: 2000,
+      color: 'danger'
+    });
+
+    toast.present();
   }
 }
 

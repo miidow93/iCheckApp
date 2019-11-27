@@ -31,7 +31,7 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      if (this.platform.is('android') || this.platform.is('tablet')) {
+      if ((this.platform.is('android') || this.platform.is('tablet')) && !this.platform.is('desktop')) {
         this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
       } 
     });
