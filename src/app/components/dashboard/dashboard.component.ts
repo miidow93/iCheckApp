@@ -6,9 +6,8 @@ import * as _moment from 'moment';
 import { FormControl } from '@angular/forms';
 import { Icons } from 'src/app/shared/icons';
 import { ToastController } from '@ionic/angular';
-import $ from 'jquery';
+import * as __ from 'lodash';
 const moment = _moment;
-
 
 @Component({
   selector: 'app-dashboard',
@@ -24,10 +23,11 @@ export class DashboardComponent implements OnInit {
   // controledSite = [];
   // blocked;
   // NotBlocked;
-  bennes = { 'blocked': [], 'notBlocked': []};
-  citernes = {};
-  plateaus = {'blocked': [], 'notBlocked': []};
-
+  bennes = [];
+  citernes = [];
+  plateaus = { 'blocked': [], 'notBlocked': [] };
+  data = {};
+  all = [];
   Controled;
   benneIcon = Icons.benneIcon;
   plateauIcon = Icons.plateauIcon;
@@ -159,25 +159,71 @@ export class DashboardComponent implements OnInit {
   }
 
   getAllStats() {
-    this.statsService.getStats().subscribe((res: any) => { 
-      this.bennes = {
-        'blocked': res['blocked'].filter(x => x.type === 'Benne'),
-        'notBlocked': res['notBlocked'].filter(x => x.type === 'Benne')
-      };
+    this.statsService.getStats().subscribe((res: any) => {
+      const allData = res['stats'];
+      this.bennes = allData.filter(x => x.type === 'Benne').map(s => {
+        const data = { label: s.label, type: s.type };
+        if (s.etat === 'blocked') {
+          data['blockedCount'] = s.count;
+        } else {
+          data['notBlockedCount'] = s.count;
+        }
+        return data;
+      });
 
-      this.plateaus = {
-        'blocked': res['blocked'].filter(x => x.type === 'Plateau'),
-        'notBlocked': res['notBlocked'].filter(x => x.type === 'Plateau')
-      };
+      this.plateaus = allData.filter(x => x.type === 'Plateau').map(s => {
+        const data = { label: s.label, type: s.type };
+        if (s.etat === 'blocked') {
+          data['blockedCount'] = s.count;
+        } else {
+          data['notBlockedCount'] = s.count;
+        }
+        return data;
+      });
 
-      this.citernes = {
-        'blocked': res['blocked'].filter(x => x.type === 'Citerne'),
-        'notBlocked': res['notBlocked'].filter(x => x.type === 'Citerne')
-      }
+      this.citernes = allData.filter(x => x.type === 'Citerne');
+
+      // const data = res['blocked'].concat(res['notBlocked']);
+
       console.log('Get All Stats: ', res);
-      console.log('Benne: ', this.bennes);
-      console.log('Citerne: ', this.citernes);
-     });
+      const result = this.bennes.filter(x => x.label === 'Oujda').map(s => s).reduce((unique, item) => {
+        console.log('Unique: ', unique);
+        console.log('Item : ', item);
+        return Object.assign({}, unique, item);
+      }, []);
+
+      console.log('Result: ', result);
+      // console.log('Plateaus: ', this.plateaus);
+      console.log('bennes: ', this.bennes);
+      const sorted = this.bennes.sort((a, b) => {
+        const label1 = a.label.toUpperCase();
+        const label2 = b.label.toUpperCase();
+        if (label1 < label2) {
+          return -1;
+        }
+        if (label1 > label2) {
+          return 1;
+        }
+
+        return 0;
+      }).map(s => {
+        this.all.push(s);
+        console.log('Push All: ', this.all);
+        for (let i = 0; i < this.all.length; i++) {
+          if (i !== 0) {
+            if (this.all[i].label === this.all[i-1].label) {
+              this.all[i-1].slice();
+              this.data = { ...this.all[i], ...this.all[i-1] };
+            }
+          }
+        }
+        return this.data;
+      });
+      console.log('Sort: ', sorted);
+      console.log('Citernes: ', this.citernes);
+      console.log('Citernes Sort: ', this.citernes.sort(x => x.label));
+      // console.log('Merge: ', data);
+    });
   }
 
   getNumberOfControledSite() {
