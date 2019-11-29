@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit {
   // blocked;
   // NotBlocked;
   bennes = { 'blocked': [], 'notBlocked': []};
-  citernes = {};
+  citernes = [];
   plateaus = {'blocked': [], 'notBlocked': []};
 
   Controled;
@@ -94,7 +94,7 @@ export class DashboardComponent implements OnInit {
     this.getNumberOfNotBlocked();
     this.getNumberOfControledSite();
     this.getNumberOfcontroled();
-    this.getAllStats();
+    // this.getAllStats();
   }
 
   ngAfterViewInit() {
@@ -153,32 +153,34 @@ export class DashboardComponent implements OnInit {
     return this.statsService.getNumberOfNotBlocked().subscribe((res: any) => {
       console.log('Not Blocked: ', res);
       for (let i = 0; i < res.stats.length; i++) {
-        // this.notBlockedSite.push(res.stats[i])
+        
+        // this.citernes = res;
+        // console.log('NotBlocked :',this.citernes)
       }
     });
   }
 
-  getAllStats() {
-    this.statsService.getStats().subscribe((res: any) => { 
-      this.bennes = {
-        'blocked': res['blocked'].filter(x => x.type === 'Benne'),
-        'notBlocked': res['notBlocked'].filter(x => x.type === 'Benne')
-      };
+  // getAllStats() {
+  //   this.statsService.getStats().subscribe((res: any) => { 
+  //     this.bennes = {
+  //       'blocked': res['blocked'].filter(x => x.type === 'Benne'),
+  //       'notBlocked': res['notBlocked'].filter(x => x.type === 'Benne')
+  //     };
 
-      this.plateaus = {
-        'blocked': res['blocked'].filter(x => x.type === 'Plateau'),
-        'notBlocked': res['notBlocked'].filter(x => x.type === 'Plateau')
-      };
+  //     this.plateaus = {
+  //       'blocked': res['blocked'].filter(x => x.type === 'Plateau'),
+  //       'notBlocked': res['notBlocked'].filter(x => x.type === 'Plateau')
+  //     };
 
-      this.citernes = {
-        'blocked': res['blocked'].filter(x => x.type === 'Citerne'),
-        'notBlocked': res['notBlocked'].filter(x => x.type === 'Citerne')
-      }
-      console.log('Get All Stats: ', res);
-      console.log('Benne: ', this.bennes);
-      console.log('Citerne: ', this.citernes);
-     });
-  }
+  //     this.citernes = {
+  //       'blocked': res['blocked'].filter(x => x.type === 'Citerne'),
+  //       'notBlocked': res['notBlocked'].filter(x => x.type === 'Citerne')
+  //     }
+  //     console.log('Get All Stats: ', res);
+  //     console.log('Benne: ', this.bennes);
+  //     console.log('Citerne: ', this.citernes);
+  //    });
+  // }
 
   getNumberOfControledSite() {
     return this.statsService.getNumberOfControled().subscribe((res: any) => {

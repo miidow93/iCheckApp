@@ -13,12 +13,14 @@
   </ion-header>
 <ion-content>
   <ion-grid>
-    <ion-row class="row justify-content-center" *ngFor="let item of engins">
-      <ion-col size="5">
+    <ion-row class="row justify-content-center">
+        <ion-col *ngFor="let item of engins" class="card col-md-6">
+        <mat-card >
         <a button [routerLink]="['/checklist', item.nomEngin]">
           <img *ngIf="item.nomEngin == 'Benne' || item.nomEngin == 'Citerne' || item.nomEngin == 'Plateau'" [src]="createImagePath(item.imageEngin)" class="img-thumbnail" />
         </a>
-      </ion-col>
+        </mat-card>
+        </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>

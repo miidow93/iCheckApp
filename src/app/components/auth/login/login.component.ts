@@ -4,6 +4,7 @@ import { FormErrorStateMatcher } from 'src/app/core/handlers/form-error-state-ma
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { Icons } from 'src/app/shared/icons';
+// import { Constants } from 'src/app/shared/constants';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,9 @@ import { Icons } from 'src/app/shared/icons';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-
+  img_Holcim = Icons.img_Holcim;
+  // logoVisiteur = constants.img_OurVisitor;
+  // img_Cms = constants.img_Cms;
   loginForm: FormGroup;
   username = '';
   password = '';
@@ -19,6 +22,8 @@ export class LoginComponent implements OnInit {
   isLoadingResults = false;
   message = '';
   iCheckLogo = Icons.iCheckLogo;
+  userIcon = Icons.userIcon;
+  passwordIcon = Icons.passwordIcon;
 
   /*, @Inject(LOCALE_ID) public locale: string*/
 

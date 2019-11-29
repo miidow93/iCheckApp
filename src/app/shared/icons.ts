@@ -4,6 +4,7 @@ export enum Icons {
     plateauImg = './assets/images/plateau.jpg',
     citerneImg = './assets/images/citerne.jpg',
     conducteurImg = './assets/images/Conducteur.jpg',
+    img_Holcim= './assets/images/HOLCIMMAROC.png',
     enginImg = './assets/images/tracteur.jpg',
     equipementImg = './assets/images/equipement.jpg',
     checklistIcon = './assets/icon/checklist.svg',
@@ -17,5 +18,7 @@ export enum Icons {
     statsIcon = './assets/icon/analytics.svg',
     dashboardIcon = './assets/icon/ui.svg',
     historyIcon = './assets/icon/schedule.svg',
-    adminIcon = './assets/icon/boss.svg'
+    adminIcon = './assets/icon/boss.svg',
+    userIcon = './assets/icon/user.svg',
+    passwordIcon = './assets/icon/password.svg'
 }

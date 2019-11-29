@@ -71,10 +71,10 @@
               <img class="col-sm-4" [src]="plateauIcon"> -->
               <img class="col-sm-4" [src]="citerneIcon">
             </div>
-            <ion-card-title *ngFor="let blocked of citernes['blocked']; let notBlocked of citernes['notBlocked'] | async">
+            <ion-card-title *ngFor="let blocked of citernes">
               <span class="badge badge-secondary mr-2">{{blocked.label}}</span>
               <span class="badge badge-danger">{{blocked.count}}</span>
-              <span class="badge badge-success">{{blocked.label === notBlocked.label ? notBlocked.count : 0}}</span>
+              <span class="badge badge-success">{{blocked.type}}</span>
             </ion-card-title>
           </ion-card-header>
         </ion-card>

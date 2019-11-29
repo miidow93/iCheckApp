@@ -8,6 +8,26 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+    <div class="row justify-content-center mt-2">
+        <mat-form-field class="example-full-width">
+          <input matInput [matDatepicker]="picker1" placeholder="Du" name="dateEntree" [formControl]="dateEntree"
+            (ngModelChange)="onChange(dateEntree, 'dateEntree')">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="ml-2">
+          <input matInput [matDatepicker]="picker2" placeholder="Au" name="dateSortie" [formControl]="dateSortie"
+            (ngModelChange)="onChange(dateSortie, 'dateSortie')">
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+        <button class="ml-2" (click)="filtrer()" mat-button>
+          <fa-icon [icon]="faFilter"></fa-icon>
+        </button>
+        <button class="ml-2 btn btn-link" (click)="refresh()" mat-button>
+          <fa-icon [icon]="faSyncAlt"></fa-icon>
+        </button>
+      </div>
   <mat-form-field class="w-100">
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Rechercher">
   </mat-form-field>

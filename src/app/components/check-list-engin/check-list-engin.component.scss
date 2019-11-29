@@ -14,8 +14,8 @@ and (orientation : landscape) {}*/
 @media only screen and (min-width: 600px) {
   .button1 {
     // position: absolute;
-    right: 87px;
-    top: -58px;
+    // right: 87px;
+    // top: -58px;
     width: 15px;
     height: 15px;
   }
@@ -107,15 +107,15 @@ and (orientation : landscape) {}*/
   .image {
     // position: absolute;
     // left: 620px;
-    height: 230px;
-    // width: 50%;
+    height: 300px;
+    width: 100%;
     // justify-content: center;
   }
 }
 
 @media (min-width: 1281px) {
   .button1 {
-    top: -58px;
+    // top: -78px;
     width: 15px;
     height: 15px;
   }
@@ -204,7 +204,7 @@ and (orientation : landscape) {}*/
   .image {
     // position: absolute;
     // left: 620px;
-    height: 230px;
+    height: 330px;
     // width: 50%;
     // justify-content: center;
   }
@@ -212,7 +212,7 @@ and (orientation : landscape) {}*/
 
 @media (min-width: 1010px) {
   .button1 {
-    top: -58px;
+    // top: -58px;
     width: 15px;
     height: 15px;
   }
@@ -374,6 +374,6 @@ and (orientation : landscape) {}*/
     height: 15px;
   }
   .image {
-    height: 230px;
+    height: 330px;
   }
 }

@@ -1,4 +1,27 @@
 /* Structure */
+@media screen and (min-width:10px) and (max-width:1280px) {
+  body{
+    background-image: url("../../../../assets/images/HOLCIM.jpg");
+    opacity: 0.8;
+    background-repeat: no-repeat, repeat;
+    background-size: 1280px ;
+  }
+}
+@media screen and (min-width:1281px) {
+  body{
+}
+}
+.siteTitre{
+  font-size: 3vw;
+  font-family: initial;
+  color: #625750;
+}
+.example-card{
+  background-color: rgb(194, 206, 216);
+  // background-image: url("../../../../assets/images/HOLCIMCONTROL.jpg");
+  // background-size: 500px;
+}
+
 .example-container {
     position: relative;
     padding: 5px;
@@ -11,7 +34,7 @@
   }
   
   .example-full-width {
-    width: 100%;
+    width: 90%;
   }
   
   .example-full-width {
@@ -30,10 +53,11 @@
   
   div {
     &.d-flex {
-      margin-top: 12%;
+      margin-top: 0%;
     }
   }
   
   .message {
     color: red;
   }
+ 
