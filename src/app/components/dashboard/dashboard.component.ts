@@ -23,6 +23,10 @@ export class DashboardComponent implements OnInit {
   // controledSite = [];
   // blocked;
   // NotBlocked;
+<<<<<<< HEAD
+=======
+
+>>>>>>> a0816a3e0f5c1dd7a4677be1a280c88f91bb4c37
   bennes = [];
   citernes = [];
   plateaus = { 'blocked': [], 'notBlocked': [] };
@@ -94,7 +98,7 @@ export class DashboardComponent implements OnInit {
     this.getNumberOfNotBlocked();
     this.getNumberOfControledSite();
     this.getNumberOfcontroled();
-    // this.getAllStats();
+    this.getAllStats();
   }
 
   ngAfterViewInit() {
@@ -160,71 +164,23 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> a0816a3e0f5c1dd7a4677be1a280c88f91bb4c37
   getAllStats() {
     this.statsService.getStats().subscribe((res: any) => {
-      const allData = res['stats'];
-      this.bennes = allData.filter(x => x.type === 'Benne').map(s => {
-        const data = { label: s.label, type: s.type };
-        if (s.etat === 'blocked') {
-          data['blockedCount'] = s.count;
-        } else {
-          data['notBlockedCount'] = s.count;
-        }
-        return data;
-      });
+      console.log('Result: ', res);
+      const allData = res;
+      this.bennes = allData.filter(x => x.type === 'Benne');
 
-      this.plateaus = allData.filter(x => x.type === 'Plateau').map(s => {
-        const data = { label: s.label, type: s.type };
-        if (s.etat === 'blocked') {
-          data['blockedCount'] = s.count;
-        } else {
-          data['notBlockedCount'] = s.count;
-        }
-        return data;
-      });
+      this.plateaus = allData.filter(x => x.type === 'Plateau')
 
       this.citernes = allData.filter(x => x.type === 'Citerne');
 
-      // const data = res['blocked'].concat(res['notBlocked']);
-
-      console.log('Get All Stats: ', res);
-      const result = this.bennes.filter(x => x.label === 'Oujda').map(s => s).reduce((unique, item) => {
-        console.log('Unique: ', unique);
-        console.log('Item : ', item);
-        return Object.assign({}, unique, item);
-      }, []);
-
-      console.log('Result: ', result);
-      // console.log('Plateaus: ', this.plateaus);
+      console.log('Plateaus: ', this.plateaus);
       console.log('bennes: ', this.bennes);
-      const sorted = this.bennes.sort((a, b) => {
-        const label1 = a.label.toUpperCase();
-        const label2 = b.label.toUpperCase();
-        if (label1 < label2) {
-          return -1;
-        }
-        if (label1 > label2) {
-          return 1;
-        }
-
-        return 0;
-      }).map(s => {
-        this.all.push(s);
-        console.log('Push All: ', this.all);
-        for (let i = 0; i < this.all.length; i++) {
-          if (i !== 0) {
-            if (this.all[i].label === this.all[i-1].label) {
-              this.all[i-1].slice();
-              this.data = { ...this.all[i], ...this.all[i-1] };
-            }
-          }
-        }
-        return this.data;
-      });
-      console.log('Sort: ', sorted);
       console.log('Citernes: ', this.citernes);
-      console.log('Citernes Sort: ', this.citernes.sort(x => x.label));
-      // console.log('Merge: ', data);
     });
   }
 
