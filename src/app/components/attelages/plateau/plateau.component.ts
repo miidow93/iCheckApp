@@ -40,6 +40,8 @@ export class PlateauComponent implements OnInit {
   conducteurRate = 0;
   plateauRate = 0;
   plateauImg = Icons.plateauImg;
+  precedentIcon = Icons.precedentIcon;
+  FargeHolcimImg = Icons.FargeHolcimImg;
 
   constructor(private formBuilder: FormBuilder,
     private dataService: DataService,
@@ -164,11 +166,11 @@ export class PlateauComponent implements OnInit {
         this.dataService.changeDateBlockage(moment(new Date(res['date'])).format('MM/DD/YYYY'));
       });
 
-      if (this.totalRate < 40) {
-        this.router.navigate(['motif']);
-      } else {
-        this.router.navigate(['engins']);
-      }
+      // if (this.totalRate < 40) {
+      //   this.router.navigate(['motif']);
+      // } else {
+      //   this.router.navigate(['engins']);
+      // }
 
     } else {
       return;

@@ -48,8 +48,8 @@ export class StatsService {
   private log(message: string) {
     console.log(message);
   }
-  getNumberOfBlocked(){
-    return this.http.get(`${API}suspendu`);
+  getStatusBysite(type){
+    return this.http.get(`${API}suspendu/${type}`);
   }
   getNumberOfNotBlocked(){
     return this.http.get(`${API}Nonsuspendu`);

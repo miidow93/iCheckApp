@@ -49,6 +49,7 @@ const routes: Routes = [
   { path: 'checklistEngin', component: CheckListEnginComponent },
   { path: 'checklist/:image', component: CheckListComponent },
   { path: 'engins', component: EnginsComponent, canActivate: [AuthGuard] },
+  { path: 'synthese/:id', component: DetailsComponent},
   { path: '**', redirectTo: 'login' },
   // { path: 'edit-conducteur', loadChildren: './pages/conducteur/edit-conducteur/edit-conducteur.module#EditConducteurPageModule' },
 

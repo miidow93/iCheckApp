@@ -77,14 +77,14 @@
                 <ng-container *ngIf="element.etat === false">
                   <ion-button color="danger" (click)="blocked(element, 'lock')">
                     <fa-icon [icon]="faBan" class="mr-2"></fa-icon>
-                    <span>Bloquer</span>
+                    <span>NonAutorisé</span>
                   </ion-button>
                 </ng-container>
                 <!-- Blockage -->
                 <ng-container *ngIf="element.etat === true">
                   <ion-button color="success" (click)="blocked(element, 'unlock')">
                     <!-- <fa-icon [icon]="faCircle" class="mr-2"></fa-icon> -->
-                    <span>Débloquer</span>
+                    <span>Autorisé</span>
                   </ion-button>
                 </ng-container>
 

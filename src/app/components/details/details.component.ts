@@ -4,6 +4,7 @@ import { QuestionService } from 'src/app/shared/services/question.service';
 import { CheckListService } from 'src/app/core/services/check-list/check-list.service';
 import { QuestionBase } from 'src/app/shared/forms/question-base';
 import { FormGroup } from '@angular/forms';
+import { Icons } from 'src/app/shared/icons';
 
 @Component({
   selector: 'app-details',
@@ -17,6 +18,7 @@ export class DetailsComponent implements OnInit {
   keys2 = [];
   keys3 = [];
   keys4 = [];
+  precedentIcon = Icons.precedentIcon;
 
   checkListValues;
 
@@ -26,7 +28,7 @@ export class DetailsComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute,
     private questionService: QuestionService,
     private checkListService: CheckListService) { }
-
+str;
   ngOnInit() {
     this.activatedRoute.params.subscribe(param => {
       console.log(param)
@@ -42,7 +44,8 @@ export class DetailsComponent implements OnInit {
             default: this.getQuestionForEngins(checklist); break;
           }
         }
-      })
+      });
+      this.str = localStorage.getItem('role');
     });
 
   }

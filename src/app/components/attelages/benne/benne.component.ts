@@ -21,7 +21,7 @@ import { Icons } from 'src/app/shared/icons';
 })
 export class BenneComponent implements OnInit {
 
-  formConducteur: FormGroup;
+  formConducteur:FormGroup;
   filteredConducteurs: Observable<any[]>;
   filteredVehicules: Observable<any[]>;
   nomComplet = new BehaviorSubject<any>(null);
@@ -40,6 +40,8 @@ export class BenneComponent implements OnInit {
   conducteurRate = 0;
   benneRate = 0;
   benneImg = Icons.benneImg;
+  precedentIcon = Icons.precedentIcon;
+  FargeHolcimImg = Icons.FargeHolcimImg;
 
 
   constructor(config: NgbRatingConfig,
@@ -167,11 +169,11 @@ export class BenneComponent implements OnInit {
         this.dataService.changeDateBlockage(moment(new Date(res['date'])).format('MM/DD/YYYY'));
       });
 
-      if (this.totalRate < 40) {
-        this.router.navigate(['motif']);
-      } else {
-        this.router.navigate(['engins']);
-      }
+      // if (this.totalRate < 40) {
+      //   this.router.navigate(['motif']);
+      // } else {
+      //   this.router.navigate(['engins']);
+      // }
 
     } else {
       return;

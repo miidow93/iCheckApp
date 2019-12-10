@@ -20,5 +20,10 @@ export enum Icons {
     historyIcon = './assets/icon/schedule.svg',
     adminIcon = './assets/icon/boss.svg',
     userIcon = './assets/icon/user.svg',
-    passwordIcon = './assets/icon/password.svg'
+    passwordIcon = './assets/icon/password.svg',
+    precedentIcon = './assets/icon/back.png',
+    FargeHolcimImg = './assets/images/FARGEHOLCIM.png',
+    benneImage = './assets/images/benneImage.png',
+    citerneImage = './assets/images/citerneImage.png',
+    plateauImage = './assets/images/plateauImage.png'
 }

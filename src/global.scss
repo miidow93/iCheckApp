@@ -33,25 +33,25 @@
 
 ion-header ion-toolbar {
   // background-color: #f5cd1b !important;
-  --background: #59d7f0;
+  --background: rgb(0,110,130);
   ion-title {
     color: white;
   }
 }
 
-/*ion-menu {
+ion-menu {
   ion-content {
     ion-list {
-        background-color: #42413c;
+        background-color: rgb(0,110,130);
       ion-item {
-          --background: #42413c;
+          // --background: rgb(0,110,130);
           // --border-style: none;
-          --background-hover: rgba(255, 255, 204, 1)
+          --background-hover: rgb(0,110,130)
       }
     }
-    --background: #42413c;
+    --background:rgb(199, 238, 245);
   }
-}*/
+}
 
 .split-pane-side {
   // max-width: 80% !important;

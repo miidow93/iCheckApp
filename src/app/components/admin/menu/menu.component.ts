@@ -40,7 +40,7 @@ export class MenuComponent {
       icon: Icons.syntheseIcon
     },
     {
-      title: 'Historiques des camions suspendus',
+      title: 'Historiques des camions non autorisé',
       url: 'history',
       icon: Icons.historyIcon
     },

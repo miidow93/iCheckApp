@@ -38,6 +38,8 @@ export class CiterneComponent implements OnInit {
   conducteurRate = 0;
   citerneRate = 0;
   citerneImg = Icons.citerneImg;
+  FargeHolcimImg = Icons.FargeHolcimImg;
+  precedentIcon = Icons.precedentIcon;
 
   constructor(private formBuilder: FormBuilder,
     private dataService: DataService,
@@ -152,11 +154,11 @@ export class CiterneComponent implements OnInit {
         this.dataService.changeDateBlockage(moment(new Date(res['date'])).format('MM/DD/YYYY'));
       });
 
-      if (this.totalRate < 40) {
-        this.router.navigate(['motif']);
-      } else {
-        this.router.navigate(['engins']);
-      }
+      // if (this.totalRate < 40) {
+      //   this.router.navigate(['motif']);
+      // } else {
+      //   this.router.navigate(['engins']);
+      // }
 
     } else {
       return;

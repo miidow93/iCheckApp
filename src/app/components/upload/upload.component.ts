@@ -68,7 +68,6 @@ export class UploadComponent implements OnInit {
       console.error(err);
     }).catch(err => catchError(err));
   }
-
   submit(form) {
     if(!form.valid && this.image) {
       return;

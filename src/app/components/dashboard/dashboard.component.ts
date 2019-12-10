@@ -23,22 +23,15 @@ export class DashboardComponent implements OnInit {
   // controledSite = [];
   // blocked;
   // NotBlocked;
-<<<<<<< HEAD
-  bennes = { 'blocked': [], 'notBlocked': []};
-  citernes = [];
-  plateaus = {'blocked': [], 'notBlocked': []};
-
-=======
   bennes = [];
   citernes = [];
   plateaus = { 'blocked': [], 'notBlocked': [] };
   data = {};
   all = [];
->>>>>>> 8db51ce8b23b08b087b3bab13fff9babf41cf158
   Controled;
-  benneIcon = Icons.benneIcon;
-  plateauIcon = Icons.plateauIcon;
-  citerneIcon = Icons.citerneIcon;
+  benneIcon = Icons.benneImage;
+  plateauIcon = Icons.plateauImage;
+  citerneIcon = Icons.citerneImage;
   public barChartData: any[];
   public barChartLabels = [];
   public barChartType = 'bar';
@@ -148,11 +141,11 @@ export class DashboardComponent implements OnInit {
   }
 
   getNumberOfBlocked() {
-    return this.statsService.getNumberOfBlocked().subscribe((res: any) => {
-      console.log('Blocked: ', res);
-      for (let i = 0; i < res.stats.length; i++) {
-        // this.blockedSite.push(res.stats[i])
-      }
+    return this.statsService.getStatusBysite('benne').subscribe((res: any) => {
+      console.log('benne status: ', res);
+      // for (let i = 0; i < res.stats.length; i++) {
+      //   // this.blockedSite.push(res.stats[i])
+      // }
     });
   }
 
@@ -167,29 +160,6 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-<<<<<<< HEAD
-  // getAllStats() {
-  //   this.statsService.getStats().subscribe((res: any) => { 
-  //     this.bennes = {
-  //       'blocked': res['blocked'].filter(x => x.type === 'Benne'),
-  //       'notBlocked': res['notBlocked'].filter(x => x.type === 'Benne')
-  //     };
-
-  //     this.plateaus = {
-  //       'blocked': res['blocked'].filter(x => x.type === 'Plateau'),
-  //       'notBlocked': res['notBlocked'].filter(x => x.type === 'Plateau')
-  //     };
-
-  //     this.citernes = {
-  //       'blocked': res['blocked'].filter(x => x.type === 'Citerne'),
-  //       'notBlocked': res['notBlocked'].filter(x => x.type === 'Citerne')
-  //     }
-  //     console.log('Get All Stats: ', res);
-  //     console.log('Benne: ', this.bennes);
-  //     console.log('Citerne: ', this.citernes);
-  //    });
-  // }
-=======
   getAllStats() {
     this.statsService.getStats().subscribe((res: any) => {
       const allData = res['stats'];
@@ -257,7 +227,6 @@ export class DashboardComponent implements OnInit {
       // console.log('Merge: ', data);
     });
   }
->>>>>>> 8db51ce8b23b08b087b3bab13fff9babf41cf158
 
   getNumberOfControledSite() {
     return this.statsService.getNumberOfControled().subscribe((res: any) => {

@@ -17,7 +17,7 @@
   color: #625750;
 }
 .example-card{
-  background-color: rgb(194, 206, 216);
+  background-color:rgba(194, 206, 216, 0.62);
   // background-image: url("../../../../assets/images/HOLCIMCONTROL.jpg");
   // background-size: 500px;
 }
@@ -53,7 +53,7 @@
   
   div {
     &.d-flex {
-      margin-top: 0%;
+      margin-top: 5%;
     }
   }
   
