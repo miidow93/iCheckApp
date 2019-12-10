@@ -81,6 +81,7 @@ export class StatsService {
   getNumberOfBlocked() {
     return this.http.get(`${API}suspendu`);
   }
+  
   getNumberOfNotBlocked() {
     return this.http.get(`${API}Nonsuspendu`);
   }

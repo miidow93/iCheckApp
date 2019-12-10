@@ -110,11 +110,12 @@ export class BenneComponent implements OnInit {
     this.dataService.currentBlockageID.subscribe(res => console.log('Blockage ID: ', res));
     this.dataService.currentCheckListID.subscribe(res => console.log('CheckList ID: ', res));
 
-    this.values['b23'] = false;
     this.values['b24'] = false;
     this.values['b25'] = false;
     this.values['b26'] = false;
     this.values['b27'] = false;
+    this.values['b28'] = false;
+
 
     this.formConducteur = this.formBuilder.group({
       cin: ['', Validators.required],

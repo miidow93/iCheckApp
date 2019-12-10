@@ -103,7 +103,7 @@ export class CiterneComponent implements OnInit {
     this.dataService.currentBlockageID.subscribe(res => console.log('Blockage ID: ', res));
     this.dataService.currentCheckListID.subscribe(res => console.log('CheckList ID: ', res));
 
-    this.values['b23'] = false;
+    // this.values['b23'] = false;
     this.values['b24'] = false;
     this.values['b25'] = false;
     this.values['b26'] = false;
@@ -170,9 +170,10 @@ export class CiterneComponent implements OnInit {
     console.log(id);
     const buttonID = `b${id}`;
     const button = document.getElementById(buttonID);
-    // console.log(button.classList);
+    console.log('Class List: ', button.classList);
     if (button.classList.contains('isNotActive')) {
       button.classList.replace('isNotActive', 'isActive');
+      console.log('Class List 2: ', button.classList);
       this.values[`${buttonID}`] = true;
       this.citerneRate++;
       this.dataService.changeVehiculeRating(this.citerneRate);
