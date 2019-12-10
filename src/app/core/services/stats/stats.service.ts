@@ -73,13 +73,13 @@ export class StatsService {
   private log(message: string) {
     console.log(message);
   }
-<<<<<<< HEAD
-  getStatusBysite(type){
+
+  getStatusBysite(type) {
     return this.http.get(`${API}suspendu/${type}`);
-=======
+  }
+  
   getNumberOfBlocked() {
     return this.http.get(`${API}suspendu`);
->>>>>>> a0816a3e0f5c1dd7a4677be1a280c88f91bb4c37
   }
   getNumberOfNotBlocked() {
     return this.http.get(`${API}Nonsuspendu`);

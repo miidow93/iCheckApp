@@ -23,10 +23,6 @@ export class DashboardComponent implements OnInit {
   // controledSite = [];
   // blocked;
   // NotBlocked;
-<<<<<<< HEAD
-=======
-
->>>>>>> a0816a3e0f5c1dd7a4677be1a280c88f91bb4c37
   bennes = [];
   citernes = [];
   plateaus = { 'blocked': [], 'notBlocked': [] };
@@ -163,11 +159,7 @@ export class DashboardComponent implements OnInit {
       }
     });
   }
-
-<<<<<<< HEAD
-=======
-
->>>>>>> a0816a3e0f5c1dd7a4677be1a280c88f91bb4c37
+  
   getAllStats() {
     this.statsService.getStats().subscribe((res: any) => {
       console.log('Result: ', res);
