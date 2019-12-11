@@ -13,7 +13,6 @@ export class ConducteurService {
   constructor(private http: HttpClient) { }
   
   getAllConducteur() {
-    console.log(`${API}`);
     return this.http.get<any>(`${API}`);
   }
 

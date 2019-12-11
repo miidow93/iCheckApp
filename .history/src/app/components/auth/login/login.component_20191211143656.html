@@ -1,5 +1,5 @@
-
-<body></body><!--
+<!--
+<body></body>
 <div class="jumbotron text-center clearfix" style="background:transparent !important; margin-bottom:0; padding:10px;">
         <div class="float-left">
           <img src="{{ img_Holcim }}" alt="La Farge Holcim Maroc" height="60">
@@ -105,26 +105,27 @@
 				<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--desktop kt-grid--ver-desktop kt-grid--hor-tablet-and-mobile">
 
 					<!--begin::Aside-->
-					<div class="kt-grid__item kt-grid__item--order-tablet-and-mobile-2 kt-grid kt-grid--hor kt-login__aside" style="background-image: url(../../../../assets/images/bg-4.jpg);">
+					<div class="kt-grid__item kt-grid__item--order-tablet-and-mobile-2 kt-grid kt-grid--hor kt-login__aside" style="background-image: url(../assets/media//bg/bg-4.jpg);">
 						<div class="kt-grid__item">
 							<a href="#" class="kt-login__logo">
-								<img  src="{{ iCheckLogo }}" style="width: 30%;">
+								<img  src="{{ img_Holcim }}">
 							</a>
 						</div>
 						<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver">
-							<div class="kt-grid__item kt-grid__item--middle" >
-								<h3 class="kt-login__title">Bienvenue sur iCheck!</h3>
-								<h4 class="kt-login__subtitle" >Veuillez saisir
-                                    votre email ou identifiant et votre mot de passe Pour accéder sur iCheck .</h4>
+							<div class="kt-grid__item kt-grid__item--middle">
+								<h3 class="kt-login__title">Welcome to Metronic!</h3>
+								<h4 class="kt-login__subtitle">The ultimate Bootstrap & Angular 6 admin theme framework for next generation web apps.</h4>
 							</div>
 						</div>
 						<div class="kt-grid__item">
 							<div class="kt-login__info">
-								<div class="kt-login__copyright"> © 2019 
-									Réalisé par <a>ADH Engeenirng</a>
+								<div class="kt-login__copyright">
+									&copy 2018 Metronic
 								</div>
 								<div class="kt-login__menu">
-
+									<a href="#" class="kt-link">Privacy</a>
+									<a href="#" class="kt-link">Legal</a>
+									<a href="#" class="kt-link">Contact</a>
 								</div>
 							</div>
 						</div>
@@ -137,7 +138,8 @@
 
 						<!--begin::Head-->
 						<div class="kt-login__head">
-							
+							<span class="kt-login__signup-label">Don't have an account yet?</span>&nbsp;&nbsp;
+							<a href="#" class="kt-link kt-login__signup-link">Sign Up!</a>
 						</div>
 
 						<!--end::Head-->
@@ -148,41 +150,24 @@
 							<!--begin::Signin-->
 							<div class="kt-login__form">
 								<div class="kt-login__title">
-									<h3>Authentification</h3>
+									<h3>Sign In</h3>
 								</div>
 
 								<!--begin::Form-->
-								<form class="kt-form"  novalidate="novalidate" [formGroup]="loginForm" (ngSubmit)="onFormSubmit(loginForm.value)">
+								<form class="kt-form" action="" novalidate="novalidate">
 									<div class="form-group">
-
-                                            <mat-form-field style="width: 100%;" >
-                                                    <input matInput class="form-control" type="text" placeholder="Identifiant" formControlName="username"
-                                                        [errorStateMatcher]="matcher" >
-                                                    <mat-error>
-                                                        <span *ngIf="!loginForm.get('username').valid && loginForm.get('username').touched">Veuillez saisir
-                                                            votre email ou pseudo</span>
-                                                    </mat-error>
-                                                </mat-form-field>
-
-                                                <mat-form-field style="width: 100%;">
-                                                        <input matInput class="form-control" type="password" placeholder="Mot de passe" formControlName="password"
-                                                            [errorStateMatcher]="matcher">
-                                                        <mat-error>
-                                                            <span *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">Veuillez saisir
-                                                                votre mote de passe</span>
-                                                        </mat-error>
-                                                    </mat-form-field>
-                                                   
-                                                    <div *ngIf="message" class="form-row justify-content-center message">{{message}}</div>
+										<input class="form-control" type="text" placeholder="Email" name="email" autocomplete="off">
 									</div>
+									<div class="form-group">
+										<input class="form-control" type="password" placeholder="Password" name="password">
+									</div>
+
 									<!--begin::Action-->
 									<div class="kt-login__actions">
 										<a href="#" class="kt-link kt-login__link-forgot">
-                                   
+											Forgot Password ?
 										</a>
-                                        <div class="form-row justify-content-center">
-                                                <button type="submit" [disabled]="!loginForm.valid"  id="kt_login_signin_submit" class="btn btn-primary btn-elevate kt-login__btn-primary">Se connecter</button>
-                                            </div>
+										<button id="kt_login_signin_submit" class="btn btn-primary btn-elevate kt-login__btn-primary">Sign In</button>
 									</div>
 
 									<!--end::Action-->
@@ -194,7 +179,7 @@
 								<div class="kt-login__divider">
 									<div class="kt-divider">
 										<span></span>
-										<span>OU</span>
+										<span>OR</span>
 										<span></span>
 									</div>
 								</div>
@@ -202,9 +187,17 @@
 								<!--end::Divider-->
 
 								<!--begin::Options-->
-								<div class="kt-login__options" style="width: 30%; margin-left: 35%;">
-									<a href="#" class="btn btn-danger kt-btn" >
-										<i class="fab fa-google" ></i>
+								<div class="kt-login__options">
+									<a href="#" class="btn btn-primary kt-btn">
+										<i class="fab fa-facebook-f"></i>
+										Facebook
+									</a>
+									<a href="#" class="btn btn-info kt-btn">
+										<i class="fab fa-twitter"></i>
+										Twitter
+									</a>
+									<a href="#" class="btn btn-danger kt-btn">
+										<i class="fab fa-google"></i>
 										Google
 									</a>
 								</div>
@@ -276,7 +269,7 @@
 	</body>
 
 	<!-- end::Body -->
-
+</html>
 
 
 

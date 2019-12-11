@@ -1,5 +1,5 @@
-
-<body></body><!--
+<!--
+<body></body>
 <div class="jumbotron text-center clearfix" style="background:transparent !important; margin-bottom:0; padding:10px;">
         <div class="float-left">
           <img src="{{ img_Holcim }}" alt="La Farge Holcim Maroc" height="60">
@@ -120,7 +120,7 @@
 						</div>
 						<div class="kt-grid__item">
 							<div class="kt-login__info">
-								<div class="kt-login__copyright"> © 2019 
+								<div class="kt-login__copyright"> © 2018 
 									Réalisé par <a>ADH Engeenirng</a>
 								</div>
 								<div class="kt-login__menu">
@@ -152,37 +152,20 @@
 								</div>
 
 								<!--begin::Form-->
-								<form class="kt-form"  novalidate="novalidate" [formGroup]="loginForm" (ngSubmit)="onFormSubmit(loginForm.value)">
+								<form class="kt-form" action="" novalidate="novalidate">
 									<div class="form-group">
-
-                                            <mat-form-field style="width: 100%;" >
-                                                    <input matInput class="form-control" type="text" placeholder="Identifiant" formControlName="username"
-                                                        [errorStateMatcher]="matcher" >
-                                                    <mat-error>
-                                                        <span *ngIf="!loginForm.get('username').valid && loginForm.get('username').touched">Veuillez saisir
-                                                            votre email ou pseudo</span>
-                                                    </mat-error>
-                                                </mat-form-field>
-
-                                                <mat-form-field style="width: 100%;">
-                                                        <input matInput class="form-control" type="password" placeholder="Mot de passe" formControlName="password"
-                                                            [errorStateMatcher]="matcher">
-                                                        <mat-error>
-                                                            <span *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">Veuillez saisir
-                                                                votre mote de passe</span>
-                                                        </mat-error>
-                                                    </mat-form-field>
-                                                   
-                                                    <div *ngIf="message" class="form-row justify-content-center message">{{message}}</div>
+										<input class="form-control" type="text" placeholder="Email" name="email" autocomplete="off">
 									</div>
+									<div class="form-group">
+										<input class="form-control" type="password" placeholder="Mot de passe :" name="password">
+									</div>
+
 									<!--begin::Action-->
 									<div class="kt-login__actions">
 										<a href="#" class="kt-link kt-login__link-forgot">
-                                   
+											
 										</a>
-                                        <div class="form-row justify-content-center">
-                                                <button type="submit" [disabled]="!loginForm.valid"  id="kt_login_signin_submit" class="btn btn-primary btn-elevate kt-login__btn-primary">Se connecter</button>
-                                            </div>
+										<button id="kt_login_signin_submit" class="btn btn-primary btn-elevate kt-login__btn-primary">Connection</button>
 									</div>
 
 									<!--end::Action-->
@@ -202,8 +185,8 @@
 								<!--end::Divider-->
 
 								<!--begin::Options-->
-								<div class="kt-login__options" style="width: 30%; margin-left: 35%;">
-									<a href="#" class="btn btn-danger kt-btn" >
+								<div class="kt-login__options">
+									<a href="#" class="btn btn-danger kt-btn" style="width: 30%; margin-left: 35%;">
 										<i class="fab fa-google" ></i>
 										Google
 									</a>

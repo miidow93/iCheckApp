@@ -37,15 +37,9 @@
               },
               {
                 "input": "src/global.scss"
-              },
-              "src/assets/style.bundle.css",
-              "src/assets/login-v1.default.css",
-              "node_modules/roboto-fontface/css/roboto/roboto-fontface.css"
+              }
             ],
-            "scripts": [
-              "node_modules/jquery/dist/jquery.min.js",
-              "src/assets/login-v1.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {

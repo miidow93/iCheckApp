@@ -1,5 +1,5 @@
 export enum Icons {
-    iCheckLogo = './assets/icon/i-check.png',
+    iCheckLogo = './assets/icon/Icheck-Logo.png',
     benneImg = './assets/images/benne.jpg',
     plateauImg = './assets/images/plateau.jpg',
     citerneImg = './assets/images/citerne.jpg',
