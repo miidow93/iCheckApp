@@ -61,8 +61,8 @@
       <br>
     <div class="borderBox" style="background-color: white;">
       <mat-list *ngFor="let question of questions" [dir]="dir">
-        <h2 class="form-row justify-content-start mr-2" style="padding: 2%;">{{question.key}}</h2>
-        <mat-list-item *ngFor="let option of question['options']" style="padding-right: 5%;" >
+        <h2 class="form-row justify-content-start mr-2">{{question.key}}</h2>
+        <mat-list-item *ngFor="let option of question['options']" style="padding: 10%;">
             <span *ngIf="option.value == true ">
                 <button  md-raised-button class="btn btn-success background-button" 
                 disabled><span class="checked">✓</span></button>&nbsp;&nbsp;
@@ -79,11 +79,8 @@
               </div> -->
         </mat-list-item>
       </mat-list>
-
-        <button mat-raised-button class="btn btn-info" (click)="onPrintInvoice(element)"
-        style="margin-right: 1%;position: relative; left: 50%; background:rgb(0,110,130);transform: translateX(-50%);">Imprimer <i class="fa fa-print" style="font-size:25px"></i></button>
-        <br>
-        <br>
+      <button mat-raised-button class="mt-2 mb-2"
+        style="position: relative; left: 50%; transform: translateX(-50%);">Imprimer</button>
     </div>
     
 
