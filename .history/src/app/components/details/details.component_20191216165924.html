@@ -62,7 +62,7 @@
     <div class="borderBox" style="background-color: white;">
       
       <button mat-raised-button class="btn btn-info" (click)="onPrintInvoice(element)"
-      style="margin-right: 1%;position: relative;  background:rgb(0,110,130);transform: translateX(-50%); float: left; margin-left: 8%;margin-top: 2.5%;">Imprimer <i class="fa fa-print" style="font-size:25px"></i></button>
+      style="margin-right: 1%;position: relative;  background:rgb(0,110,130);transform: translateX(-50%); float: left; padding: ;">Imprimer <i class="fa fa-print" style="font-size:25px"></i></button>%
       <mat-list *ngFor="let question of questions" [dir]="dir">
         <h2 class="form-row justify-content-start mr-2" style="padding: 2%;">{{question.key}}</h2>
         <mat-list-item *ngFor="let option of question['options']" style="padding-right: 5%;" >
