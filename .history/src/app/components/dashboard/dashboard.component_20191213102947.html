@@ -1,0 +1,136 @@
+<!--<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Dashboard</ion-title>
+  </ion-toolbar>
+</ion-header>-->
+
+
+<ion-content>
+<p style="margin: 1%;font-size: 15px;">Dashboard</p>
+
+  <ion-grid style="margin: 3%;">
+    <ion-row>
+      <!-- <ion-title>
+        <ion-icon style="zoom:6.0;" [src]="truck"></ion-icon>
+      </ion-title> -->
+      <ion-col size="12" class="row justify-content-center" style="padding: 1%;">
+        <ion-title>
+          <span style="font-size: 20px; padding: 1%; " class="mr-2">Nombre totals des camions Controlés :</span>
+       
+          <span class="badge badge-primary">{{Controled}}</span></ion-title>
+          
+      </ion-col>
+
+      <div class="card card-stats" style="background-color: white;">
+        <div class="card-header card-header-info card-header-icon">
+          <div class="card-icon">
+            <img class="col-sm-2" [src]="plateauIcon">
+          </div>
+          <p class="card-category">Used Space</p>
+          <h3 class="card-title">49/50
+            <small>GB</small>
+          </h3>
+        </div>
+
+      </div>
+
+      <ion-col size="4">
+        <ion-card>
+          <ion-card-header>
+            <!-- <ion-card-title>
+              <span class="badge badge-primary ion-text-wrap" style="font-size: 12px;">Nombre des camions Suspendus par
+                site: </span>
+            </ion-card-title> -->
+            <div class="row justify-content-end">
+              <img class="col-sm-4" [src]="benneIcon">
+              <!-- <img class="col-sm-4" [src]="plateauIcon">
+              <img class="col-sm-4" [src]="citerneIcon"> -->
+            </div>
+            <ion-card-title>
+              <ion-grid>
+                <ion-row *ngFor="let benne of bennes">
+                  <ion-col size="6">
+                    <span class="badge badge-secondary">{{benne.label | uppercase | slice:0:3}}</span>
+                  </ion-col>
+                  <ion-col size="6">
+                    <span class="badge badge-danger mr-1">{{benne.blockedCount ? benne.blockedCount : 0}}</span>
+                    <span class="badge badge-success">{{benne.notBlockedCount ? benne.notBlockedCount : 0}}</span>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card-title>
+
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col size="4">
+        <ion-card>
+          <ion-card-header>
+            <!-- <ion-card-title>
+              <span class="badge badge-primary ion-text-wrap" style="font-size: 12px;">Nombre des camions Non Suspendus
+                par site:
+              </span>
+            </ion-card-title> -->
+            <div class="row justify-content-end">
+              <!-- <img class="col-sm-4" [src]="benneIcon">
+              <img class="col-sm-4" [src]="plateauIcon"> -->
+              <img class="col-sm-4" [src]="citerneIcon">
+            </div>
+            <ion-card-title>
+              <ion-grid>
+                <ion-row *ngFor="let citerne of citernes">
+                  <ion-col size="6">
+                    <span class="badge badge-secondary">{{citerne.label | uppercase | slice:0:3}}</span>
+                  </ion-col>
+                  <ion-col size="6">
+                    <span class="badge badge-danger mr-2">{{citerne.blockedCount ? citerne.blockedCount : 0}}</span>
+                    <span
+                      class="badge badge-success">{{citerne.notBlockedCount ? citerne.notBlockedCount : 0}}</span>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+
+
+            </ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col size="12">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Synthese mensuel des camions bloqué. Mois {{dateStats.value | date: 'MM/yyyy'}}
+            </ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            <div>
+              <canvas baseChart *ngIf="lineChartData && lineChartData.length > 0" [datasets]="lineChartData"
+                [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors"
+                [legend]="lineChartLegend" [chartType]="lineChartType">
+              </canvas>
+              <div *ngIf="messageLineChart">
+                {{messageLineChart}}
+              </div>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-card>
+        <ion-card-content>
+          <legend>Synthese mensuel des camions controlé. Mois {{dateStats.value | date: 'MM/yyyy'}}</legend>
+          <div class="container Chart">
+            <div class="float-center">
+              <canvas baseChart *ngIf="barChartData && barChartData.length > 0" [datasets]="barChartData"
+                [labels]="barChartLabels" [options]="barChartOptions" [colors]="barChartColors"
+                [legend]="barChartLegend" [chartType]="barChartType">
+              </canvas>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </ion-row>
+  </ion-grid>
+</ion-content>
