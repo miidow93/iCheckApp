@@ -110,10 +110,20 @@
 
 
 
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="margin-left: 40%;">Synthése de controle</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
 
 
 <ion-content class="ion-padding">
-  <p style="font-size: 15px;">Synthése de controle</p>
+  <!--<p style="font-size: 15px;"></p>-->
 
 
 <div style="padding-left: 5%; padding-right: 5%;">
@@ -201,15 +211,15 @@
           <!-- Déblockage -->
           <ng-container *ngIf="element.etat === false">
             <button class="btn btn-outline-danger" color="danger" (click)="blocked(element, 'lock')" style="margin-right: 8px">
-              <i class="fa fa-ban" aria-hidden="true"></i>
-              
+              <fa-icon [icon]="faBan" class="mr-2"></fa-icon>
+              Autorisé
             </button>
           </ng-container>
           <!-- Blockage -->
           <ng-container *ngIf="element.etat === true" >
-            <button class="btn btn-success" (click)="blocked(element, 'unlock')" style="margin-right: 7px">
-              <i class="fa fa-check" aria-hidden="true" ></i>
-             
+            <button class="btn btn-success" (click)="blocked(element, 'unlock')" style="margin-right: 12px">
+              <i class="fa fa-check" aria-hidden="true"></i>
+              Autorisé
             </button>
           </ng-container>
 
