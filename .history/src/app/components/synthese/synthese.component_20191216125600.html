@@ -204,13 +204,13 @@
           </ng-container>
           <!-- Blockage -->
           <ng-container *ngIf="element.etat === true" >
-            <button class="btn btn-success" (click)="blocked(element, 'unlock')" style="margin-right: 12px">
+            <button class="btn btn-success" (click)="blocked(element, 'unlock')" style="margin-right: 11px">
               <i class="fa fa-check" aria-hidden="true"></i>
               Autorisé
             </button>
           </ng-container>
 
-          <button (click)="showDetails(element)"  class="btn btn-info" style="background-color: rgb(0,110,130);">Détails</button>
+          <ion-button (click)="showDetails(element)">Détails</ion-button>
         </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

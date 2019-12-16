@@ -197,20 +197,20 @@
         <td mat-cell *matCellDef="let element">
           <!-- Déblockage -->
           <ng-container *ngIf="element.etat === false">
-            <button class="btn btn-outline-danger" color="danger" (click)="blocked(element, 'lock')" style="margin-right: 8px">
+            <button class="btn btn-outline-danger" color="danger" (click)="blocked(element, 'lock')">
               <fa-icon [icon]="faBan" class="mr-2"></fa-icon>
               Autorisé
             </button>
           </ng-container>
           <!-- Blockage -->
-          <ng-container *ngIf="element.etat === true" >
-            <button class="btn btn-success" (click)="blocked(element, 'unlock')" style="margin-right: 12px">
+          <ng-container *ngIf="element.etat === true" style="margin-right: 3%;">
+            <button class="btn btn-success" (click)="blocked(element, 'unlock')">
               <i class="fa fa-check" aria-hidden="true"></i>
               Autorisé
             </button>
           </ng-container>
 
-          <button (click)="showDetails(element)"  class="btn btn-info" style="background-color: rgb(0,110,130);">Détails</button>
+          <ion-button (click)="showDetails(element)">Détails</ion-button>
         </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

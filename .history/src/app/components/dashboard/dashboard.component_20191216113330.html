@@ -62,7 +62,7 @@
               <ion-grid>
                 <ion-row *ngFor="let benne of bennes">
                   <ion-col size="6">
-                    <span class="badge badge-info" style="width: 40px;background-color: rgb(0,110,130);">{{benne.label | uppercase | slice:0:3}}</span>
+                    <span class="badge badge-info" style="width: 40px;">{{benne.label | uppercase | slice:0:3}}</span>
                   </ion-col>
                   <ion-col size="6">
                     <span class="badge badge-danger " style="width: 40px;margin: 3%;">{{benne.blockedCount ? benne.blockedCount : 0}}</span>
