@@ -10,6 +10,10 @@ export class SiteService {
 
   constructor(private http:HttpClient) { }
   getSites(){
-    return this.http.get(`${API}`)
+    return this.http.get(`${API}`);
+  }
+
+  getAllSites() {
+    return this.http.get(`${API}all`);
   }
 }

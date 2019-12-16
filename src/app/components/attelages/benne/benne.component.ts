@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Validators, FormGroup, FormBuilder, NgForm } from '@angular/forms';
 import { DataService } from 'src/app/shared/services/data.service';
 import { CheckListService } from 'src/app/core/services/check-list/check-list.service';
@@ -6,7 +6,7 @@ import { ConducteurService } from 'src/app/core/services/conducteur/conducteur.s
 import { VehiculeService } from 'src/app/core/services/vehicule/vehicule.service';
 import { startWith, map } from 'rxjs/operators';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { MatAutocompleteSelectedEvent } from '@angular/material';
+import { MatAutocompleteSelectedEvent, MatStepper } from '@angular/material';
 import { CheckList } from 'src/app/shared/models/checkList';
 import * as moment from 'moment';
 import { Router } from '@angular/router';
@@ -20,7 +20,7 @@ import { Icons } from 'src/app/shared/icons';
   providers: [NgbRatingConfig]
 })
 export class BenneComponent implements OnInit {
-
+  @ViewChild(MatStepper, {static: false}) stepper: MatStepper;
   formConducteur:FormGroup;
   filteredConducteurs: Observable<any[]>;
   filteredVehicules: Observable<any[]>;
@@ -250,5 +250,10 @@ export class BenneComponent implements OnInit {
     console.log(this.conducteurs.find(opt => opt.cin == event.option.value).nomComplet);
     this.nomComplet.next(this.conducteurs.find(opt => opt.cin == event.option.value).nomComplet);
     this.formConducteur.controls.nomComplet.patchValue(this.nomComplet.value);
+  }
+
+  completed() {
+    console.log('Completed');
+    this.stepper.selected.completed = true;
   }
 }

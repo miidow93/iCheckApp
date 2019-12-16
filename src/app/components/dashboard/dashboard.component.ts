@@ -7,6 +7,8 @@ import { FormControl } from '@angular/forms';
 import { Icons } from 'src/app/shared/icons';
 import { ToastController } from '@ionic/angular';
 import * as __ from 'lodash';
+import { SiteService } from 'src/app/core/services/site/site.service';
+import { take } from 'rxjs/operators';
 const moment = _moment;
 
 @Component({
@@ -25,7 +27,7 @@ export class DashboardComponent implements OnInit {
   // NotBlocked;
   bennes = [];
   citernes = [];
-  plateaus = { 'blocked': [], 'notBlocked': [] };
+  plateaus = [];
   data = {};
   all = [];
   Controled;
@@ -86,6 +88,7 @@ export class DashboardComponent implements OnInit {
 
 
   constructor(private statsService: StatsService,
+    private siteService: SiteService,
     private toastCtrl: ToastController) { }
 
   ngOnInit() {
@@ -153,26 +156,32 @@ export class DashboardComponent implements OnInit {
     return this.statsService.getNumberOfNotBlocked().subscribe((res: any) => {
       console.log('Not Blocked: ', res);
       for (let i = 0; i < res.stats.length; i++) {
-        
+
         // this.citernes = res;
         // console.log('NotBlocked :',this.citernes)
       }
     });
   }
-  
+
   getAllStats() {
-    this.statsService.getStats().subscribe((res: any) => {
+    this.statsService.getStats().subscribe(async (res: any) => {
       console.log('Result: ', res);
-      const allData = res;
-      this.bennes = allData.filter(x => x.type === 'Benne');
+      await this.siteService.getAllSites().pipe(take(1)).toPromise().then((sites: any) => {
+        console.log('Sites: ', sites);
+        this.bennes = this.mergeCustomizerBenne(sites, res, 'Benne');
+        // this.citernes = this.mergeCustomizerCiterne(sites, res, 'Citerne');
+        // this.plateaus = this.mergeCustomizerPlateau(sites, res, 'Plateau')
+      });
+      // const allData = res;
+      // this.bennes = allData.filter(x => x.type === 'Benne');
 
-      this.plateaus = allData.filter(x => x.type === 'Plateau')
+      // this.plateaus = allData.filter(x => x.type === 'Plateau')
 
-      this.citernes = allData.filter(x => x.type === 'Citerne');
+      // this.citernes = allData.filter(x => x.type === 'Citerne');
 
-      console.log('Plateaus: ', this.plateaus);
-      console.log('bennes: ', this.bennes);
-      console.log('Citernes: ', this.citernes);
+      // console.log('Plateaus: ', this.plateaus);
+      // console.log('bennes: ', this.bennes);
+      // console.log('Citernes: ', this.citernes);
     });
   }
 
@@ -198,6 +207,60 @@ export class DashboardComponent implements OnInit {
     });
 
     toast.present();
+  }
+
+  mergeCustomizerBenne(site, stats, type) {
+    const vals = site;
+    vals.forEach(async elt => {
+      elt.type = type;
+      const found = await stats.find(x => x.label == elt.label && x.type == type);
+      if (found) {
+        elt.notBlockedCount = found.notBlockedCount ? found.notBlockedCount : 0;
+        elt.blockedCount = found.blockedCount ? found.blockedCount : 0;
+      } else {
+        elt.notBlockedCount = 0;
+        elt.blockedCount = 0;
+      }
+      return elt;
+    });
+    console.log('Vals: ', vals);
+    return vals;
+  }
+
+  mergeCustomizerCiterne(sites, stats, type) {
+    const vals = sites;
+    vals.forEach(async elt => {
+      elt.type = type;
+      const found = await stats.find(x => x.label == elt.label && x.type == type);
+      if (found) {
+        elt.notBlockedCount = found.notBlockedCount ? found.notBlockedCount : 0;
+        elt.blockedCount = found.blockedCount ? found.blockedCount : 0;
+      } else {
+        elt.notBlockedCount = 0;
+        elt.blockedCount = 0;
+      }
+      return elt;
+    });
+    console.log('Vals: ', vals);
+    return vals;
+  }
+
+  mergeCustomizerPlateau(sites, stats, type) {
+    const vals = sites;
+    vals.forEach(async elt => {
+      elt.type = type;
+      const found = await stats.find(x => x.label == elt.label && x.type == type);
+      if (found) {
+        elt.notBlockedCount = found.notBlockedCount ? found.notBlockedCount : 0;
+        elt.blockedCount = found.blockedCount ? found.blockedCount : 0;
+      } else {
+        elt.notBlockedCount = 0;
+        elt.blockedCount = 0;
+      }
+      return elt;
+    });
+    console.log('Vals: ', vals);
+    return vals;
   }
 }
 

@@ -54,7 +54,8 @@
   <mat-step>
     <ng-template matStepLabel>Engin العربة</ng-template>
     <app-check-list-engin></app-check-list-engin>
-    <div style="float: right;">
+    <div class="form-row justify-content-end">
+      <button class="btn btn-primary mr-2" matStepperPrevious>Précédent</button>
       <button class="btn btn-primary" matStepperNext>Suivant</button>
     </div>
   </mat-step>
@@ -69,16 +70,16 @@
       <button mat-mini-fab id="b27" (click)="check(27)" class="button4 isNotActive"></button>
       <button mat-mini-fab id="b28" (click)="check(28)" class="button5 isNotActive"></button>
     </span>
-    <div style="float: right;">
-      <button class="btn btn-primary" matStepperPrevious>Précédent</button>&nbsp;&nbsp;
-      <button class="btn btn-primary" matStepperNext>Suivant</button>
+    <div class="form-row justify-content-end">
+      <button class="btn btn-primary mr-2" matStepperPrevious>Précédent</button>
+      <button class="btn btn-primary" (click)="completed()" matStepperNext>Suivant</button>
     </div>
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Conducteur السائق</ng-template>
     <app-check-list-conducteur></app-check-list-conducteur>
-    <div style="float: right;">
-      <button class="btn btn-primary" matStepperPrevious>Précédent</button>&nbsp;&nbsp;
+    <div class="form-row justify-content-end">
+      <button class="btn btn-primary mr-2" matStepperPrevious>Précédent</button>
       <button class="btn btn-primary" matStepperNext>Suivant</button>
 
     </div>
@@ -86,8 +87,8 @@
   <mat-step>
     <ng-template matStepLabel>Equipement المعدات المرفقة</ng-template>
     <app-check-list-equipement></app-check-list-equipement>
-    <div style="float: right;">
-      <button class="btn btn-primary" matStepperPrevious>Précédent</button>&nbsp;&nbsp;
+    <div class="form-row justify-content-end">
+      <button class="btn btn-primary mr-2" matStepperPrevious>Précédent</button>
       <button class="btn btn-primary" (click)="onSubmit(formConducteur)" mat-raised-button
               type="submit" matStepperNext>Suivant</button>
 
