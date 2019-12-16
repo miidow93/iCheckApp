@@ -1,0 +1,275 @@
+<!--
+<body></body>
+<div class="jumbotron text-center clearfix" style="background:transparent !important; margin-bottom:0; padding:10px;">
+        <div class="float-left">
+          <img src="{{ img_Holcim }}" alt="La Farge Holcim Maroc" height="60">
+        </div>
+        <!-- <span class="siteTitre">Hotel Royal Mansour</span> -->
+<!--    
+      </div>
+<div class="d-flex justify-content-center">
+     <div class="example-loading-shade" *ngIf="isLoadingResults">
+        <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    </div> 
+    <mat-card class="example-card justify-content-center">
+            <span class="row justify-content-center"><img [src]="iCheckLogo" style="width: 150px;"></span>
+            <mat-card >
+        <form [formGroup]="loginForm" (ngSubmit)="onFormSubmit(loginForm.value)">
+                <ion-icon class="big" [src]="userIcon" slot="start"></ion-icon>&nbsp;&nbsp;
+            <mat-form-field class="example-full-width">
+                <input matInput type="email" placeholder="Identifiant" formControlName="username"
+                    [errorStateMatcher]="matcher">
+                <mat-error>
+                    <span *ngIf="!loginForm.get('username').valid && loginForm.get('username').touched">Veuillez saisir
+                        votre email ou pseudo</span>
+                </mat-error>
+            </mat-form-field>
+            <ion-icon class="big" [src]="passwordIcon" slot="start"></ion-icon>&nbsp;&nbsp;
+            <mat-form-field class="example-full-width">
+                <input matInput type="password" placeholder="Mot de passe" formControlName="password"
+                    [errorStateMatcher]="matcher">
+                <mat-error>
+                    <span *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">Veuillez saisir
+                        votre mote de passe</span>
+                </mat-error>
+            </mat-form-field>
+            <div *ngIf="message" class="form-row justify-content-center message">{{message}}</div>
+            <div class="form-row justify-content-center">
+                <button type="submit" [disabled]="!loginForm.valid" mat-flat-button color="primary">Se connecter</button>
+            </div>
+        </form>
+    </mat-card>
+    </mat-card>
+</div>
+
+
+
+
+-->
+
+
+
+
+
+
+		<meta charset="utf-8" />
+		<title>Metronic | Login Page v1</title>
+		<meta name="description" content="Login page example">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<!--begin::Fonts -->
+		<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+		<script>
+			WebFont.load({
+                google: {"families":["Poppins:300,400,500,600,700","Roboto:300,400,500,600,700"]},
+                active: function() {
+                    sessionStorage.fonts = true;
+                }
+            });
+        </script>
+
+		<!--end::Fonts -->
+
+		<!--begin::Page Custom Styles(used by this page) -->
+        <link href="../../../../assets/login-v1.default.css" rel="stylesheet" type="text/css" />
+
+		<!--end::Page Custom Styles -->
+
+		<!--begin:: Global Mandatory Vendors -->
+
+		<!--end:: Global Mandatory Vendors -->
+
+		<!--begin:: Global Optional Vendors -->
+
+
+		<!--end:: Global Optional Vendors -->
+
+		<!--begin::Global Theme Styles(used by all pages) -->
+		<link href="../../../../assets/style.bundle.css" rel="stylesheet" type="text/css" />
+
+		<!--end::Global Theme Styles -->
+
+		<!--begin::Layout Skins(used by all pages) -->
+
+		<!--end::Layout Skins -->
+		<!--<link rel="shortcut icon" href="../assets/media/logos/favicon.ico" />-->
+
+	<!-- end::Head -->
+
+	<!-- begin::Body -->
+	<body class="kt-header--fixed kt-header-mobile--fixed kt-subheader--fixed kt-subheader--enabled kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
+
+		<!-- begin:: Page -->
+		<div class="kt-grid kt-grid--ver kt-grid--root">
+			<div class="kt-grid kt-grid--hor kt-grid--root  kt-login kt-login--v1" id="kt_login">
+				<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--desktop kt-grid--ver-desktop kt-grid--hor-tablet-and-mobile">
+
+					<!--begin::Aside-->
+					<div class="kt-grid__item kt-grid__item--order-tablet-and-mobile-2 kt-grid kt-grid--hor kt-login__aside" style="background-image: url(../../../../assets/images/bg-4.jpg);">
+						<div class="kt-grid__item">
+							<a href="#" class="kt-login__logo">
+								<img  src="{{ iCheckLogo }}" style="width: 30%;    margin-top: -15%;
+                                margin-left: -15%;">
+							</a>
+						</div>
+						<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver">
+							<div class="kt-grid__item kt-grid__item--middle" style = "margin-top: -26%;">
+								<h3 class="kt-login__title">Bienvenue sur iCheck!</h3>
+								<h4 class="kt-login__subtitle">Veuillez saisir
+                                    votre email ou pseudo et votre mot de passe</h4>
+							</div>
+						</div>
+						<div class="kt-grid__item">
+							<div class="kt-login__info">
+								<div class="kt-login__copyright"> © 2018 
+									Réalisé par <a>ADH Engeenirng</a>
+								</div>
+								<div class="kt-login__menu">
+
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!--begin::Aside-->
+
+					<!--begin::Content-->
+					<div class="kt-grid__item kt-grid__item--fluid  kt-grid__item--order-tablet-and-mobile-1  kt-login__wrapper">
+
+						<!--begin::Head-->
+						<div class="kt-login__head">
+							
+						</div>
+
+						<!--end::Head-->
+
+						<!--begin::Body-->
+						<div class="kt-login__body">
+
+							<!--begin::Signin-->
+							<div class="kt-login__form">
+								<div class="kt-login__title">
+									<h3>Sign In</h3>
+								</div>
+
+								<!--begin::Form-->
+								<form class="kt-form" action="" novalidate="novalidate">
+									<div class="form-group">
+										<input class="form-control" type="text" placeholder="Email" name="email" autocomplete="off">
+									</div>
+									<div class="form-group">
+										<input class="form-control" type="password" placeholder="Password" name="password">
+									</div>
+
+									<!--begin::Action-->
+									<div class="kt-login__actions">
+										<a href="#" class="kt-link kt-login__link-forgot">
+											Forgot Password ?
+										</a>
+										<button id="kt_login_signin_submit" class="btn btn-primary btn-elevate kt-login__btn-primary">Sign In</button>
+									</div>
+
+									<!--end::Action-->
+								</form>
+
+								<!--end::Form-->
+
+								<!--begin::Divider-->
+								<div class="kt-login__divider">
+									<div class="kt-divider">
+										<span></span>
+										<span>OR</span>
+										<span></span>
+									</div>
+								</div>
+
+								<!--end::Divider-->
+
+								<!--begin::Options-->
+								<div class="kt-login__options">
+									<a href="#" class="btn btn-primary kt-btn">
+										<i class="fab fa-facebook-f"></i>
+										Facebook
+									</a>
+									<a href="#" class="btn btn-info kt-btn">
+										<i class="fab fa-twitter"></i>
+										Twitter
+									</a>
+									<a href="#" class="btn btn-danger kt-btn">
+										<i class="fab fa-google"></i>
+										Google
+									</a>
+								</div>
+
+								<!--end::Options-->
+							</div>
+
+							<!--end::Signin-->
+						</div>
+
+						<!--end::Body-->
+					</div>
+
+					<!--end::Content-->
+				</div>
+			</div>
+		</div>
+
+		<!-- end:: Page -->
+
+		<!-- begin::Global Config(global config for global JS sciprts) -->
+		<script>
+			var KTAppOptions = {
+				"colors": {
+					"state": {
+						"brand": "#5d78ff",
+						"dark": "#282a3c",
+						"light": "#ffffff",
+						"primary": "#5867dd",
+						"success": "#34bfa3",
+						"info": "#36a3f7",
+						"warning": "#ffb822",
+						"danger": "#fd3995"
+					},
+					"base": {
+						"label": ["#c5cbe3", "#a1a8c3", "#3d4465", "#3e4466"],
+						"shape": ["#f0f3ff", "#d9dffa", "#afb4d4", "#646c9a"]
+					}
+				}
+			};
+		</script>
+
+		<!-- end::Global Config -->
+
+		<!--begin:: Global Mandatory Vendors -->
+
+
+		<!--end:: Global Mandatory Vendors -->
+
+		<!--begin:: Global Optional Vendors -->
+
+
+		<!--end:: Global Optional Vendors -->
+
+		<!--begin::Global Theme Bundle(used by all pages) -->
+		
+
+		<!--end::Global Theme Bundle -->
+
+		<!--begin::Page Scripts(used by this page) -->
+		<script src="../../../../assets/login-v1.js" type="text/javascript"></script>
+
+		<!--end::Page Scripts -->
+
+		<!--begin::Global App Bundle(used by all pages) -->
+
+
+		<!--end::Global App Bundle -->
+	</body>
+
+	<!-- end::Body -->
+
+
+
+
+

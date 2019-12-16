@@ -34,6 +34,7 @@ export class DashboardComponent implements OnInit {
   benneIcon = Icons.benneImage;
   plateauIcon = Icons.plateauImage;
   citerneIcon = Icons.citerneImage;
+  sidebar = Icons.sideimage;
   public barChartData: any[];
   public barChartLabels = [];
   public barChartType = 'bar';

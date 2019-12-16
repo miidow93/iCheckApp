@@ -1,0 +1,76 @@
+/* Structure */
+@media screen and (min-width:10px) and (max-width:1280px) {
+  body{
+    background-image: url("../../../../assets/images/HOLCIM.jpg");
+    opacity: 0.8;
+    background-repeat: no-repeat, repeat;
+    background-size: 1280px ;
+  }
+}
+@media screen and (min-width:1281px) {
+  body{
+}
+}
+@font-face {
+  font-family: Poppins;
+  src: url(../../../../assets/Poppins-Regular.otf) format("opentype");
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', 'arial', sans-serif;
+}
+
+
+.siteTitre{
+  font-size: 3vw;
+  font-family: initial;
+  color: #625750;
+}
+.example-card{
+  background-color:rgba(194, 206, 216, 0.62);
+  // background-image: url("../../../../assets/images/HOLCIMCONTROL.jpg");
+  // background-size: 500px;
+}
+
+.example-container {
+    position: relative;
+    padding: 5px;
+  }
+  
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 90%;
+  }
+  
+  .example-full-width {
+    &:nth-last-child {
+      margin-bottom: 10px;
+    }
+  }
+  
+  .button-row {
+    margin: 10px 0;
+  }
+  
+  .mat-flat-button {
+    margin: 5px;
+  }
+  
+  div {
+    &.d-flex {
+      margin-top: 5%;
+    }
+  }
+  
+  .message {
+    color: red;
+  }
+ 

@@ -1,0 +1,42 @@
+<body></body>
+<div class="jumbotron text-center clearfix" style="background:transparent !important; margin-bottom:0; padding:10px;">
+        <div class="float-left">
+          <img src="{{ img_Holcim }}" alt="La Farge Holcim Maroc" height="60">
+        </div>
+        <!-- <span class="siteTitre">Hotel Royal Mansour</span> -->
+       
+      </div>
+<div class="d-flex justify-content-center">
+     <div class="example-loading-shade" *ngIf="isLoadingResults">
+        <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    </div> 
+    <mat-card class="example-card justify-content-center">
+            <span class="row justify-content-center"><img [src]="iCheckLogo" style="width: 150px;"></span>
+            <mat-card >
+        <form [formGroup]="loginForm" (ngSubmit)="onFormSubmit(loginForm.value)">
+                <ion-icon class="big" [src]="userIcon" slot="start"></ion-icon>&nbsp;&nbsp;
+            <mat-form-field class="example-full-width">
+                <input matInput type="email" placeholder="Identifiant" formControlName="username"
+                    [errorStateMatcher]="matcher">
+                <mat-error>
+                    <span *ngIf="!loginForm.get('username').valid && loginForm.get('username').touched">Veuillez saisir
+                        votre email ou pseudo</span>
+                </mat-error>
+            </mat-form-field>
+            <ion-icon class="big" [src]="passwordIcon" slot="start"></ion-icon>&nbsp;&nbsp;
+            <mat-form-field class="example-full-width">
+                <input matInput type="password" placeholder="Mot de passe" formControlName="password"
+                    [errorStateMatcher]="matcher">
+                <mat-error>
+                    <span *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">Veuillez saisir
+                        votre mote de passe</span>
+                </mat-error>
+            </mat-form-field>
+            <div *ngIf="message" class="form-row justify-content-center message">{{message}}</div>
+            <div class="form-row justify-content-center">
+                <button type="submit" [disabled]="!loginForm.valid" mat-flat-button color="primary">Se connecter</button>
+            </div>
+        </form>
+    </mat-card>
+    </mat-card>
+</div>
