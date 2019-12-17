@@ -31,7 +31,7 @@ export class StatsService {
   getStats() {
     return this.http.get(`${API}`)
       .pipe(
-        map((s: any) => {
+        /*map((s: any) => {
           const data = s.stats.map(d => {
             const data = { label: d.label, type: d.type };
             if (d.etat === 'blocked') {
@@ -43,8 +43,9 @@ export class StatsService {
             return data;
           }).reduce((m, o) => {
             console.log('O: ', o);
+            console.log('M: ', m);
             var found = m.find(p => p.label === o.label && p.type === o.type);
-            console.log('Found: ', found);
+            // console.log('Found: ', found);
             if (found) {
               found.blockedCount = 0;
               found.notBlockedCount ? found.notBlockedCount : found.notBlockedCount + (o.notBlockedCount ? o.notBlockedCount : 0);
@@ -55,7 +56,7 @@ export class StatsService {
             return m;
           }, []);
           return data;
-        }),
+        }),*/
         tap(_ => this.log('get all stats')),
         catchError(this.handleError('get all stats', []))
       );

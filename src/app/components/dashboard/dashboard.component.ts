@@ -20,6 +20,7 @@ export class DashboardComponent implements OnInit {
   dateStats = new FormControl(moment());
   messageLineChart;
   site;
+  sites;
   // blockedSite = [];
   // notBlockedSite = [];
   // controledSite = [];
@@ -94,11 +95,12 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.site = localStorage.getItem('site');
+    this.getAllSites();
     this.getNumberOfBlocked();
     this.getNumberOfNotBlocked();
     this.getNumberOfControledSite();
     this.getNumberOfcontroled();
-    this.getAllStats();
+    // this.getAllStats();
   }
 
   ngAfterViewInit() {
@@ -165,14 +167,15 @@ export class DashboardComponent implements OnInit {
   }
 
   getAllStats() {
-    this.statsService.getStats().subscribe(async (res: any) => {
+    this.statsService.getStats().subscribe((res: any) => {
       console.log('Result: ', res);
-      await this.siteService.getAllSites().pipe(take(1)).toPromise().then((sites: any) => {
-        console.log('Sites: ', sites);
-        this.bennes = this.mergeCustomizerBenne(sites, res, 'Benne');
-        // this.citernes = this.mergeCustomizerCiterne(sites, res, 'Citerne');
-        // this.plateaus = this.mergeCustomizerPlateau(sites, res, 'Plateau')
-      });
+      if (this.sites.length > 0) {
+        console.log('Sites 1: ', this.sites);
+        // this.bennes = this.mergeCustomizer(res, 'Benne');
+        // this.citernes = this.mergeCustomizer(res, 'Citerne');
+        // this.plateaus = this.mergeCustomizerBenne(this.sites, res, 'Plateau')
+      }
+
       // const allData = res;
       // this.bennes = allData.filter(x => x.type === 'Benne');
 
@@ -184,6 +187,15 @@ export class DashboardComponent implements OnInit {
       // console.log('bennes: ', this.bennes);
       // console.log('Citernes: ', this.citernes);
     });
+  }
+
+  getAllSites() {
+    this.statsService.getStats().subscribe(res => {
+      console.log('Dashboard Stats: ', res);
+      this.bennes = res["bennes"];
+      this.citernes = res["citernes"];
+      this.plateaus = res["plateaus"];
+    })
   }
 
   getNumberOfControledSite() {
@@ -210,59 +222,6 @@ export class DashboardComponent implements OnInit {
     toast.present();
   }
 
-  mergeCustomizerBenne(site, stats, type) {
-    const vals = site;
-    vals.forEach(async elt => {
-      elt.type = type;
-      const found = await stats.find(x => x.label == elt.label && x.type == type);
-      if (found) {
-        elt.notBlockedCount = found.notBlockedCount ? found.notBlockedCount : 0;
-        elt.blockedCount = found.blockedCount ? found.blockedCount : 0;
-      } else {
-        elt.notBlockedCount = 0;
-        elt.blockedCount = 0;
-      }
-      return elt;
-    });
-    console.log('Vals: ', vals);
-    return vals;
-  }
-
-  mergeCustomizerCiterne(sites, stats, type) {
-    const vals = sites;
-    vals.forEach(async elt => {
-      elt.type = type;
-      const found = await stats.find(x => x.label == elt.label && x.type == type);
-      if (found) {
-        elt.notBlockedCount = found.notBlockedCount ? found.notBlockedCount : 0;
-        elt.blockedCount = found.blockedCount ? found.blockedCount : 0;
-      } else {
-        elt.notBlockedCount = 0;
-        elt.blockedCount = 0;
-      }
-      return elt;
-    });
-    console.log('Vals: ', vals);
-    return vals;
-  }
-
-  mergeCustomizerPlateau(sites, stats, type) {
-    const vals = sites;
-    vals.forEach(async elt => {
-      elt.type = type;
-      const found = await stats.find(x => x.label == elt.label && x.type == type);
-      if (found) {
-        elt.notBlockedCount = found.notBlockedCount ? found.notBlockedCount : 0;
-        elt.blockedCount = found.blockedCount ? found.blockedCount : 0;
-      } else {
-        elt.notBlockedCount = 0;
-        elt.blockedCount = 0;
-      }
-      return elt;
-    });
-    console.log('Vals: ', vals);
-    return vals;
-  }
 }
 
 
