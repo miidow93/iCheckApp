@@ -1,0 +1,145 @@
+<!--
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Utilisateur</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+  
+    <div class="ion-padding">
+      <h2>Ajouter un utilisateur</h2>
+      <form [formGroup]="userForm" (ngSubmit)="Adduser(userForm)">
+        <mat-card class="example-container ">
+          <div class="example-container">
+            <mat-form-field class="col-md-12 ">
+              <input matInput placeholder="Nom Complet" formControlName="nomComplet">
+            </mat-form-field>
+            <mat-form-field class="col-md-12">
+              <input matInput placeholder="User Name" formControlName="userName">
+            </mat-form-field>
+            <mat-form-field class="col-md-12">
+              <input matInput placeholder="password" formControlName="password">
+            </mat-form-field>
+            <mat-form-field class="col-md-6">
+            <mat-label>Choisir un role</mat-label>
+            <mat-select formControlName="idRole">
+              <mat-option *ngFor="let role of roles" [value]="role.id">
+                {{role.libelle}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="col-md-6">
+              <mat-label>Choisir un site</mat-label>
+              <mat-select formControlName="idSite">
+                <mat-option *ngFor="let site of sites" [value]="site.id">
+                  {{site.libelle}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <!-- <mat-form-field class="col-sm-6 ">
+              <input matInput placeholder="Societe" formControlName="societe">
+            </mat-form-field> 
+            <div class="form-row justify-content-end">
+              <ion-button type="submit">Ajouter</ion-button>
+            </div>
+          </div>
+        </mat-card>
+      </form>
+    </div>
+  </ion-content>
+
+
+-->
+
+<ion-content class="ion-padding">
+  <p style="font-size: 15px;">Historiques des camions suspendus</p>
+
+
+  <div style="padding-left: 5%; padding-right: 5%; padding-top: 5%;">
+
+
+    <div class="col-md-14">
+      <div class="card">
+        <div class="card-header card-header-info" style="background: rgb(0, 110, 130);">
+          <h4 class="card-title">Ajouter un utilisateur</h4>
+          <p class="card-category">Remplissez le formulaire</p>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="userForm" (ngSubmit)="Adduser(userForm)">
+            <div class="row">
+              <div class="col-md-8">
+                <div>
+                  <mat-form-field class="w-100">
+                    <input matInput placeholder="Nom Complet" formControlName="nomComplet">
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <div>
+                    <mat-form-field class="w-100">
+                      <input matInput placeholder="User Name" formControlName="userName">
+                    </mat-form-field>
+                  </div>
+                  <div>
+                    <mat-form-field>
+                      <input matInput placeholder="password" formControlName="password">
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <div>
+                    <mat-form-field>
+                      <mat-label>Choisir un site</mat-label>
+                      <mat-select formControlName="idSite">
+                        <mat-option *ngFor="let site of sites" [value]="site.id">
+                          {{site.libelle}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <mat-form-field style="width: 40%;">
+                <mat-label>Choisir un role</mat-label>
+                <mat-select formControlName="idRole">
+                  <mat-option *ngFor="let role of roles" [value]="role.id">
+                    {{role.libelle}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div mat-dialog-actions class="form-row justify-content-end mb-2">
+          <button type="submit" mat-button class="btn btn-info" style="background: rgb(0, 110, 130);">Ajouter</button>
+        </div>
+        <div class="clearfix"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  </div>
+</ion-content>
