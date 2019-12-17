@@ -78,14 +78,13 @@
                 </div>
               </div>
 
-              <div class="col-md-8">
+              <div class="col-md-5">
                 <div class="form-group">
                   <div>
                     <mat-form-field class="w-100">
-                      <input matInput placeholder="Nom d'utilisateur" formControlName="userName">
+                      <input matInput placeholder="User Name" formControlName="userName">
                     </mat-form-field>
                   </div>
-                  
                 </div>
               </div>
             </div>
@@ -94,12 +93,12 @@
                 <div class="form-group">
                   <div>
                     <mat-form-field>
-                      <input matInput placeholder="Mot de passe" style="width: 100%;" formControlName="password">
+                      <input matInput placeholder="password" formControlName="password">
                     </mat-form-field>
                   </div>
                 </div>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-6">
                 <div class="form-group">
                   <div>
                     <mat-form-field>
@@ -117,9 +116,9 @@
 
             </div>
             <div class="row">
-              <div class="col-md-8">
+              <div class="col-md-12">
                 <div class="form-group">
-                  <mat-form-field style="width: 100%;">
+                  <mat-form-field style="width: 40%;">
                     <mat-label>Choisir un role</mat-label>
                     <mat-select formControlName="idRole">
                       <mat-option *ngFor="let role of roles" [value]="role.id">

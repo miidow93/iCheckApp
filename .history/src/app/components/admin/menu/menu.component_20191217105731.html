@@ -98,7 +98,7 @@
 
 <div class="wrapper ">
   <div class="sidebar" data-color="azure" data-background-color="white"
-  style=" background: linear-gradient(rgb(255, 255, 255),rgba(255, 255, 255, 0.8)), url('https://demos.creative-tim.com/material-dashboard/assets/img/sidebar-3.jpg'); background-repeat: no-repeat;background-size: cover;"
+  style=" background: linear-gradient(rgb(255, 255, 255),rgba(255, 255, 255, 0.71)), url('https://demos.creative-tim.com/material-dashboard/assets/img/sidebar-3.jpg'); background-repeat: no-repeat;background-size: cover;"
   data-image="C:\Users\EC\Desktop\app-dataconsignation-master\src\assets\images\sidebar-3.jpg">
       <!--
        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
@@ -112,27 +112,27 @@
       </div>
       <div class="sidebar-wrapper">
           <ul class="nav">
-              <li class="nav-item" [routerLink]="[{ outlets: { admin: ['dashboard'] } }]"  routerLinkActive="active" style="width: 105%;">
+              <li class="nav-item" [routerLink]="[{ outlets: { admin: ['dashboard'] } }]"  routerLinkActive="active">
                   <a class="nav-link" [routerLink]="[{ outlets: { admin: ['dashboard'] } }]">
                       <i class="material-icons">dashboard</i>
                       <p>Tableau de bord</p>
                   </a>
               </li>
-              <li class="nav-item " [routerLink]="[{ outlets: { admin: ['synthese'] } }]" routerLinkActive="active" style="width: 105%;">
+              <li class="nav-item " [routerLink]="[{ outlets: { admin: ['synthese'] } }]" routerLinkActive="active">
                   <a class="nav-link" [routerLink]="[{ outlets: { admin: ['synthese'] } }]">
-                      <i class="material-icons">content_paste</i>
+                      <i class="material-icons">notifications</i>
                       <p>Synthèse de controle</p>
                   </a>
               </li>
-              <li class="nav-item " [routerLink]="[{ outlets: { admin: ['history'] } }]" routerLinkActive="active" style="width: 105%;">
+              <li class="nav-item " [routerLink]="[{ outlets: { admin: ['history'] } }]" routerLinkActive="active">
                   <a class="nav-link" [routerLink]="[{ outlets: { admin: ['history'] } }]">
-                      <i class="material-icons">history</i>
+                      <i class="material-icons">library_books</i>
                       <p>Historiques des camions </p>
                   </a>
               </li>
-              <li class="nav-item " [routerLink]="[{ outlets: { admin: ['user'] } }]" routerLinkActive="active" style="width: 105%;">
+              <li class="nav-item " [routerLink]="[{ outlets: { admin: ['user'] } }]" routerLinkActive="active">
                   <a class="nav-link" [routerLink]="[{ outlets: { admin: ['user'] } }]">
-                      <i class="material-icons">supervised_user_circle</i>
+                      <i class="material-icons">person</i>
                       <p>Gestion des utilisateurs</p>
                   </a>
               </li>
@@ -140,6 +140,18 @@
                   <a class="nav-link" >
                       <i class="material-icons">bubble_chart</i>
                       <p>Service</p>
+                  </a>
+              </li>
+              <li class="nav-item "  routerLinkActive="active">
+                  <a class="nav-link" >
+                      <i class="material-icons">content_paste</i>
+                      <p>categorie</p>
+                  </a>
+              </li>
+              <li class="nav-item "  routerLinkActive="active">
+                  <a class="nav-link" >
+                      <i class="material-icons">language</i>
+                      <p>secteur</p>
                   </a>
               </li>
               <li class="nav-item active-pro ">

@@ -1,4 +1,3 @@
-<!--
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
@@ -33,12 +32,12 @@
   <mat-form-field class="w-100">
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Rechercher">
   </mat-form-field>
-  <!--La liste des camions--><!--
+  <!--La liste des camions-->
   <div class="mat-elevation-z8 mt-2">
 
 
     <table mat-table [dataSource]="dataSource" style="margin: auto; width: 90%">
-  
+      <!-- Position Column -->
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef> id </th>
         <td mat-cell *matCellDef="let element"> {{element.id}} </td>
@@ -48,19 +47,19 @@
         <td mat-cell *matCellDef="let element"> {{element.idVehiculeNavigation?.matricule}} </td>
       </ng-container>
 
-   
+      <!-- Name Column -->
       <ng-container matColumnDef="dateBlockage">
         <th mat-header-cell *matHeaderCellDef> date de blockage </th>
         <td mat-cell *matCellDef="let element"> {{element.dateBlockage | date: 'dd/MM/yyyy-HH:MM'}} </td>
       </ng-container>
 
-
+      <!-- Weight Column -->
       <ng-container matColumnDef="motif">
         <th mat-header-cell *matHeaderCellDef> Motif </th>
         <td mat-cell *matCellDef="let element"> {{element.motif}} </td>
       </ng-container>
 
-     
+      <!-- Symbol Column -->
       <ng-container matColumnDef="dateDeblockage">
         <th mat-header-cell *matHeaderCellDef> date de deblockage </th>
         <td mat-cell *matCellDef="let element"> {{element.dateDeblockage | date: 'dd/MM/yyyy-HH:MM'}} </td>
@@ -81,7 +80,7 @@
 
 
 
--->
+
 
 
 
