@@ -51,7 +51,7 @@
 
         </ng-template>
 
-        <!-- <ng-template #logoutTemplate>
+         <ng-template #logoutTemplate>
           <ion-item button (click)="logout()">
             <ion-icon class="big" [src]="p.icon" slot="start"></ion-icon>
             <ion-label>{{ p.title }}</ion-label>
@@ -130,10 +130,10 @@
                       <p>Historiques des camions </p>
                   </a>
               </li>
-              <li class="nav-item " routerLinkActive="active">
-                  <a class="nav-link" >
+              <li class="nav-item " [routerLink]="[{ outlets: { admin: ['user'] } }]" routerLinkActive="active">
+                  <a class="nav-link" [routerLink]="[{ outlets: { admin: ['user'] } }]">
                       <i class="material-icons">person</i>
-                      <p>Demandeur</p>
+                      <p>Gestion des utilisateurs</p>
                   </a>
               </li>
               <li class="nav-item "  routerLinkActive="active">
