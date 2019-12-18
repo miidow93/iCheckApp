@@ -33,7 +33,7 @@
             </div>
             <hr class="section-break-5" />
             <ion-card-title>
-              <ion-grid  style="margin-left: 20%;">
+              <ion-grid style="margin-left:10%">
                 <ion-row *ngFor="let plateau of plateaus">
                   <ion-col size="6">
                     <span class="badge badge-info" style="width: 40px;background-color: rgb(0,110,130);">{{plateau.label | uppercase | slice:0:3}}</span>
@@ -58,7 +58,7 @@
             </div>
             <ion-card-title>
               <hr class="section-break-5" />
-              <ion-grid style="margin-left: 20%;">
+              <ion-grid>
                 <ion-row *ngFor="let benne of bennes">
                   <ion-col size="6">
                     <span class="badge badge-info"
@@ -83,9 +83,9 @@
             <div class="row justify-content-end">
               <img class="col-sm-4" [src]="citerneIcon">
             </div>
-            <hr class="section-break-5" style="padding-bottom: 2.7%;"/>
+            <hr class="section-break-5" />
             <ion-card-title>
-              <ion-grid style="margin-left: 20%;">
+              <ion-grid>
                 <ion-row *ngFor="let citerne of citernes">
                   <ion-col size="6">
                     <span class="badge badge-info" style="width: 40px;background-color: rgb(0,110,130); ">{{citerne.label | uppercase | slice:0:3}}</span>
