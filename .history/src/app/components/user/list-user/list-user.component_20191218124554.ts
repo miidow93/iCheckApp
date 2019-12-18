@@ -34,7 +34,8 @@ export class ListUserComponent implements OnInit {
     this.userDataService.currentUserDataSource.subscribe(data => { this.dataSource.data = data; this.dataSource.paginator = this.paginator });
   }
 
-  navigateTo() {
+  navigateTo(url) {
+    console.log('Url: ', url);
     this.route.navigate(['admin', { outlets: { admin: 'user/new' } }]);
   }
 

@@ -35,7 +35,7 @@ export class ListUserComponent implements OnInit {
   }
 
   navigateTo() {
-    this.route.navigate(['admin', { outlets: { admin: 'user/new' } }]);
+    this.route.navigate([{ outlets: { admin: 'user/new' } }], { relativeTo: this.activatedRoute });
   }
 
 }
