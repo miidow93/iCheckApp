@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormGroup, Validators, FormBuilder, NgForm } from '@angular/forms';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { CheckList } from 'src/app/shared/models/checkList';
@@ -19,6 +19,7 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
   selector: 'app-plateau',
   templateUrl: './plateau.component.html',
   styleUrls: ['./plateau.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class PlateauComponent implements OnInit {
 
