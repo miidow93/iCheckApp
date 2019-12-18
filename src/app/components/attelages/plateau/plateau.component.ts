@@ -17,7 +17,7 @@ import { Icons } from 'src/app/shared/icons';
   selector: 'app-plateau',
   templateUrl: './plateau.component.html',
   styleUrls: ['./plateau.component.scss'],
-  encapsulation: ViewEncapsulation.None
+
 })
 export class PlateauComponent implements OnInit {
 
@@ -179,21 +179,23 @@ export class PlateauComponent implements OnInit {
   }
 
   check(id) {
-    console.log(id);
+    // console.log(id);
     const buttonID = `b${id}`;
     const button = document.getElementById(buttonID);
-    // console.log(button.classList);
+    console.log('1: ',button.classList);
     if (button.classList.contains('isNotActive')) {
       button.classList.replace('isNotActive', 'isActive');
       this.values[`${buttonID}`] = true;
       this.plateauRate++;
       this.dataService.changeVehiculeRating(this.plateauRate);
+      console.log('2 :',button.classList);
     } else {
       if (button.classList.contains('isActive')) {
         button.classList.replace('isActive', 'isNotActive');
         this.values[`${buttonID}`] = false;
         this.plateauRate--;
         this.dataService.changeVehiculeRating(this.plateauRate);
+        console.log('3 :',button.classList);
       }
     }
     console.log('Values: ', this.values)

@@ -16,7 +16,7 @@
   <img [src]="FargeHolcimImg" class="farge">
   <mat-horizontal-stepper labelPosition="bottom" #stepper>
     <mat-step [stepControl]="formConducteur">
-      <ng-template matStepLabel>Conducteur السائق</ng-template>
+      <ng-template matStepLabel>Infos</ng-template>
       <div class="container">
         <form [formGroup]="formConducteur" class="example-form" (ngSubmit)="onSubmit(formConducteur)">
 
@@ -53,7 +53,7 @@
       </div>
     </mat-step>
     <mat-step [stepControl]="formConducteur">
-      <ng-template matStepLabel>Engin العربة</ng-template>
+      <ng-template matStepLabel>Engin 1 العربة</ng-template>
       <app-check-list-engin></app-check-list-engin>
       <div style="float: right;">
         <button class="btn btn-primary" matStepperPrevious>Précédent</button>&nbsp;&nbsp;
@@ -61,7 +61,7 @@
       </div>
     </mat-step>
     <mat-step [stepControl]="formConducteur">
-      <ng-template matStepLabel>Engin العربة</ng-template>
+      <ng-template matStepLabel>Engin 2 العربة</ng-template>
       <span class="form-row justify-content-center">
         <img class="image2" [src]="plateauImg">
         <button mat-mini-fab id="b24" (click)="check(24)" class="button1 isNotActive"></button>
@@ -93,6 +93,7 @@
     </mat-step>
 
     <mat-step [stepControl]="formConducteur">
+      <ng-template matStepLabel>Motif</ng-template>
       <app-upload></app-upload>
     </mat-step>
 

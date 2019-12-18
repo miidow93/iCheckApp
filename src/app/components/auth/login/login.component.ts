@@ -3,8 +3,6 @@ import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { FormErrorStateMatcher } from 'src/app/core/handlers/form-error-state-matcher';
 import { Router } from '@angular/router';
 import { Icons } from 'src/app/shared/icons';
-import { AuthService } from 'angularx-social-login';
-import { FacebookLoginProvider, GoogleLoginProvider } from 'angularx-social-login';
 import { AuthServices } from 'src/app/core/services/auth/auth.service';
 // import { Constants } from 'src/app/shared/constants';
 
@@ -31,7 +29,7 @@ export class LoginComponent implements OnInit {
 
   /*, @Inject(LOCALE_ID) public locale: string*/
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthServices, private authServ: AuthService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthServices) { }
 
   ngOnInit() {
     // console.log('Locale: ', this.locale);
@@ -65,26 +63,5 @@ export class LoginComponent implements OnInit {
         }
       }, err => console.log('Error: ', err));
   }
-  logInWithGoogle(platform: string): void {
-    platform = GoogleLoginProvider.PROVIDER_ID;
-    //Sign In and get user Info using authService that we just injected
-    this.authServ.signIn(platform).then(
-      (response) => {
-        //Get all user details
-        console.log(platform + ' logged in user data is= ', response);
-        //Take the details we need and store in an array
-        this.userData.push({
-          UserId: response.id,
-          Provider: response.provider,
-          FirstName: response.firstName,
-          LastName: response.lastName,
-          EmailAddress: response.email,
-          PictureUrl: response.photoUrl
-        });
-      },
-      (error) => {
-        console.log(error);
-        this.resultMessage = error;
-      });
-  }
+  
 }
