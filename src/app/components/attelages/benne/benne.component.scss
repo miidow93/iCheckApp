@@ -47,9 +47,12 @@
 .isNotActive {
   background-color: red;
 }
-.farge{
+.farge {
   height: 185px;
   width: 100%;
   opacity: 0.7;
+}
 
+ion-content {
+  --ion-background-color: inherit;
 }

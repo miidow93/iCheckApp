@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Validators, FormGroup, FormBuilder, NgForm } from '@angular/forms';
 import { DataService } from 'src/app/shared/services/data.service';
 import { CheckListService } from 'src/app/core/services/check-list/check-list.service';
@@ -17,7 +17,8 @@ import { Icons } from 'src/app/shared/icons';
   selector: 'app-benne',
   templateUrl: './benne.component.html',
   styleUrls: ['./benne.component.scss'],
-  providers: [NgbRatingConfig]
+  providers: [NgbRatingConfig],
+  encapsulation: ViewEncapsulation.None
 })
 export class BenneComponent implements OnInit {
   @ViewChild(MatStepper, {static: false}) stepper: MatStepper;

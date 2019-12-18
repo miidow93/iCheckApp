@@ -11,8 +11,6 @@ import * as moment from 'moment';
 import { startWith, map } from 'rxjs/operators';
 import { MatAutocompleteSelectedEvent } from '@angular/material';
 import { Icons } from 'src/app/shared/icons';
-import { Platform } from '@ionic/angular';
-import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 
 
 @Component({

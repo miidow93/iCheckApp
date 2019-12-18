@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormGroup, Validators, FormBuilder, NgForm } from '@angular/forms';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { CheckList } from 'src/app/shared/models/checkList';
@@ -16,6 +16,7 @@ import { Icons } from 'src/app/shared/icons';
   selector: 'app-citerne',
   templateUrl: './citerne.component.html',
   styleUrls: ['./citerne.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class CiterneComponent implements OnInit {
 
