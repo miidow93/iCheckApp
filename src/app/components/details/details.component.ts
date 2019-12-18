@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { QuestionService } from 'src/app/shared/services/question.service';
 import { CheckListService } from 'src/app/core/services/check-list/check-list.service';
 import { QuestionBase } from 'src/app/shared/forms/question-base';
@@ -27,7 +27,7 @@ export class DetailsComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
     private questionService: QuestionService,
-    private checkListService: CheckListService) { }
+    private checkListService: CheckListService,private router:Router) { }
 str;
   ngOnInit() {
     this.activatedRoute.params.subscribe(param => {
@@ -46,8 +46,12 @@ str;
         }
       });
       this.str = localStorage.getItem('role');
+      console.log("str :",this.str)
     });
 
+  }
+  NavigatToEngins(){
+    this.router.navigate(['engins']);
   }
 
   getQuestionForAttelage(checklist) {

@@ -33,7 +33,7 @@ const routes: Routes = [
       { path: 'conducteur', component: ConducteurComponent, outlet: 'admin'/*, canActivate: [AuthGuard]*/ },
       { path: 'conducteur/new', component: AddConducteurComponent, outlet: 'admin' },
       { path: 'user',component: ListUserComponent, outlet : 'admin'},
-      { path : 'user/new', component: UserComponent, outlet : 'admin'},
+      { path : 'user2', component: UserComponent, outlet : 'admin'},
       { path: 'synthese', component: SyntheseComponent, outlet: 'admin'/*, canActivate: [AuthGuard]*/ },
       { path: 'synthese/:id', component: DetailsComponent, outlet: 'admin' },
       { path: 'history', component: HistoryComponent, outlet: 'admin' },
