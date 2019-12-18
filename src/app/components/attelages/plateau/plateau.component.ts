@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormGroup, Validators, FormBuilder, NgForm } from '@angular/forms';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { CheckList } from 'src/app/shared/models/checkList';
@@ -11,14 +11,13 @@ import * as moment from 'moment';
 import { startWith, map } from 'rxjs/operators';
 import { MatAutocompleteSelectedEvent } from '@angular/material';
 import { Icons } from 'src/app/shared/icons';
-import { Platform } from '@ionic/angular';
-import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 
 
 @Component({
   selector: 'app-plateau',
   templateUrl: './plateau.component.html',
   styleUrls: ['./plateau.component.scss'],
+
 })
 export class PlateauComponent implements OnInit {
 
@@ -180,21 +179,23 @@ export class PlateauComponent implements OnInit {
   }
 
   check(id) {
-    console.log(id);
+    // console.log(id);
     const buttonID = `b${id}`;
     const button = document.getElementById(buttonID);
-    // console.log(button.classList);
+    console.log('1: ',button.classList);
     if (button.classList.contains('isNotActive')) {
       button.classList.replace('isNotActive', 'isActive');
       this.values[`${buttonID}`] = true;
       this.plateauRate++;
       this.dataService.changeVehiculeRating(this.plateauRate);
+      console.log('2 :',button.classList);
     } else {
       if (button.classList.contains('isActive')) {
         button.classList.replace('isActive', 'isNotActive');
         this.values[`${buttonID}`] = false;
         this.plateauRate--;
         this.dataService.changeVehiculeRating(this.plateauRate);
+        console.log('3 :',button.classList);
       }
     }
     console.log('Values: ', this.values)

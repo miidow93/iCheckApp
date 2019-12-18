@@ -2,8 +2,6 @@ import { NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
-import { GoogleLoginProvider} from 'angularx-social-login';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -46,18 +44,6 @@ import { ChartsModule } from 'ng2-charts';
 import { UserComponent } from './components/user/user.component';
 import { ListUserComponent } from './components/user/list-user/list-user.component';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
-
-let config = new AuthServiceConfig([
-  {
-     id: GoogleLoginProvider.PROVIDER_ID,
-     provider: new GoogleLoginProvider('550124617659-cg31sqh3nakqebqifard3pq84moipa4l.apps.googleusercontent.com')
-  }
-
-]);
-export function provideConfig()
- {
-    return config;
- }
 
 export function getToken() {
   return localStorage.getItem('token');
@@ -114,7 +100,6 @@ export function getToken() {
         ]
       }
     }),
-    SocialLoginModule.initialize(config)
   ],
   
   providers: [
@@ -123,10 +108,7 @@ export function getToken() {
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    {
-      provide: AuthServiceConfig,
-      useFactory: provideConfig
-    }
+    
   ],
   bootstrap: [AppComponent],
   exports: [],
