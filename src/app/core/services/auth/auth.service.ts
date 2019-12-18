@@ -8,7 +8,7 @@ const API = Constants.api + 'auth/';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthServices {
   constructor(private http: HttpClient) { }
 
   login(data) {
