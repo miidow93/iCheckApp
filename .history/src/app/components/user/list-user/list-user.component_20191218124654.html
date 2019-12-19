@@ -55,15 +55,8 @@
 
 
 
-<ion-content >
-  <!-- <p style="font-size: 15px; background-color: red;">Gestion des utilisateurs</p> -->
-<div class="mdl-toolbar">
-  <div class="logo">
-    <ion-title class="ion-padding">
-      Gestion des utilisateurs
-    </ion-title>
-  </div>
-</div>
+<ion-content class="ion-padding">
+  <p style="font-size: 15px;">Gestion des utilisateurs</p>
 
 
 <div style="padding-left: 5%; padding-right: 5%;padding-top: 5%;">
@@ -78,7 +71,7 @@
                             <p class="card-category"  > Liste des utilisateurs :</p> 
                     </div>
                     <div class="col-md-2 float-right">
-                      <button class="btn btn-info"  (click)="navigateTo()"
+                      <button class="btn btn-info"  [routerLink]="['admin',{ outlets: { admin: ['user/new'] } }]"
                        style="border: 1px solid rgb(255, 255, 255);background-color:rgb(0,110,130)">
                        <i class="fa fa-plus" aria-hidden="true"></i>
                            </button>
@@ -95,7 +88,7 @@
 
       <ng-container matColumnDef="username">
         <th mat-header-cell *matHeaderCellDef> Nom d'utilisateur </th>
-        <td mat-cell *matCellDef="let element"> {{element.userName}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.username}} </td>
       </ng-container>
 
       <ng-container matColumnDef="role">
