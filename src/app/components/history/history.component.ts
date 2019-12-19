@@ -7,6 +7,7 @@ import * as moment from 'moment';
 import { faFilter, faSyncAlt, faBan, faCircle } from '@fortawesome/free-solid-svg-icons';
 import { ExcelService } from 'src/app/core/services/excel/excel.service';
 import { saveAs } from 'file-saver/';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-history',
@@ -26,7 +27,10 @@ export class HistoryComponent implements OnInit {
   data = [];
   de; ds;
   oldDataSource;
-  constructor(private blockageService: BlockageService, private dataService: DataService,private excelService: ExcelService) { }
+  constructor(private blockageService: BlockageService, 
+    private dataService: DataService, 
+    private excelService: ExcelService, 
+    private toastCtrl: ToastController) { }
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
@@ -120,16 +124,30 @@ export class HistoryComponent implements OnInit {
     console.log('Test: ', date);
     this.excelService.exportToExcel(date).subscribe(res => {
       console.log('Res: ', res);
-      const blob = new Blob([res], {type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"});
-      const url = window.URL.createObjectURL(blob);
-      const pwa = window.open(url);
-      // const filename = uuid.v4();
-      const filename = 'blockage_' + moment(new Date()).format('DDMMYYYY_hhmmssSSS');
-      saveAs(blob, `${filename}.xlsx`);
-      if(!pwa || pwa.closed || typeof pwa.closed === 'undefined') {
-        alert('Please disable your Pop-up blocker and try again.');
+      if (res.size > 0) {
+        const blob = new Blob([res], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+        const url = window.URL.createObjectURL(blob);
+        const pwa = window.open(url);
+        // const filename = uuid.v4();
+        const filename = 'blockage_' + moment(new Date()).format('DDMMYYYY_hhmmssSSS');
+        saveAs(blob, `${filename}.xlsx`);
+        if (!pwa || pwa.closed || typeof pwa.closed === 'undefined') {
+          alert('Please disable your Pop-up blocker and try again.');
+        }
+      } else {
+        this.toastPresent('Aucune données disponible pour les deux dates.');
       }
+
+      
     });
+  }
+
+  async toastPresent(msg) {
+    const toast = await this.toastCtrl.create({
+      message: msg,
+      duration: 3000
+    });
+    toast.present();
   }
 }
 
