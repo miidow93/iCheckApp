@@ -104,21 +104,18 @@
 -->
 
 
-<ion-content class="ion-padding">
-  <div class="container">
-    <div class="row">
-      <div *ngFor="let item of engins" >
-        <div class="card card-profile">
-          <div class="card-avatar">
-            <img class="img"
-              *ngIf="item.nomEngin == 'Benne' || item.nomEngin == 'Citerne' || item.nomEngin == 'Plateau'"
-              [src]="createImagePath(item.imageEngin)" [routerLink]="['/checklist', item.nomEngin]" />
-          </div>
-          <div class="card-body">
-            <h6 class="card-category text-gray">{{item.nomEngin}}</h6>
-            <a class="btn btn-primary btn-round" [routerLink]="['/checklist', item.nomEngin]"
-              style="background-color: rgb(0,110,130);">Controller</a>
-          </div>
+<ion-content class="ion-padding" style="height: 10000%;">
+  <div class="col-md 4">
+    <div *ngFor="let item of engins" class="card col-md">
+      <div class="card card-profile">
+        <div class="card-avatar">
+          <img class="img" *ngIf="item.nomEngin == 'Benne' || item.nomEngin == 'Citerne' || item.nomEngin == 'Plateau'"
+            [src]="createImagePath(item.imageEngin)" [routerLink]="['/checklist', item.nomEngin]" />
+        </div>
+        <div class="card-body">
+          <h6 class="card-category text-gray">{{item.nomEngin}}</h6>
+          <a class="btn btn-primary btn-round" [routerLink]="['/checklist', item.nomEngin]"
+            style="background-color: rgb(0,110,130);">Controller</a>
         </div>
       </div>
     </div>
