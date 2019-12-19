@@ -18,3 +18,13 @@ table {
 .btnSize {
   width: 7%;
 }
+
+ion-content .mdl-toolbar {
+  .logo ion-title {
+    color: white;
+    white-space: nowrap;
+    font-weight: 400;
+    line-height: 30px;
+  }
+  background: linear-gradient(rgb(0, 110, 130), rgba(0, 110, 130, 0.8));
+}
