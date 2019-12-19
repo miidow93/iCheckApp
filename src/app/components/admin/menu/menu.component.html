@@ -106,7 +106,7 @@
        Tip 2: you can also add an image using data-image tag
       -->
         <div class="logo">
-            <a href="#" class="simple-text logo-normal">
+            <a [routerLink]="[{ outlets: { admin: ['dashboard'] } }]" class="simple-text logo-normal">
                 <!--<img [src]="logodatacons" alt="Lafrage Holcim" style="width: 40%;">-->
                 <ion-title>I-Check</ion-title>
             </a>

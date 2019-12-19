@@ -63,7 +63,25 @@ ion-menu {
   max-width: 22% !important;
 }
 
+ion-content {
+  --ion-background-color: #eee;
+}
 
-ion-content{
-  --ion-background-color:#eee;
+@media (max-width: 991px) {
+  .navbar-toggler span.icon-bar {
+    display: block;
+    position: relative;
+    background: white !important;
+    width: 24px;
+    height: 2px;
+    border-radius: 1px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 991px) {
+  .sidebar::before,
+  off-canvas-sidebar nav .navbar-collapse::before {
+    background-color: inherit !important;
+  }
 }
