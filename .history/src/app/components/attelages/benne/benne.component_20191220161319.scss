@@ -1,49 +1,43 @@
+.image2 {
+  height: 350px;
+  width: 750px;
+}
 .button1 {
   //   position: absolute;
-  right: 48px;
-  top: -113px;
+  right: 139px;
+  top: 58px;
   width: 18px;
   height: 18px;
 }
 .button2 {
   //   position: absolute;
-  right: 359px;
-  top: -102px;
+  right: 131px;
+  top: 106px;
   width: 18px;
   height: 18px;
 }
 
 .button3 {
   //   position: absolute;
-  right: 84px;
-  top: -19px;
+  right: 167px;
+  top: 164px;
   width: 18px;
   height: 18px;
 }
 .button4 {
   //   position: absolute;
-  right: 395px;
-  top: 26px;
+  right: 577px;
+  top: 175px;
   width: 18px;
   height: 18px;
-
 }
 
 .button5 {
   //   position: absolute;
-  right: 119px;
-  top: 121px;
+  right: 615px;
+  top: 90px;
   width: 18px;
   height: 18px;
-
-}
-.image {
-  //   position: sticky;
-  //   left: 620px;
-  height: 390px;
-  margin-left: 94px;
-
-  //   justify-content: center;
 }
 
 .isActive {
@@ -53,3 +47,15 @@
 .isNotActive {
   background-color: rgb(247, 19, 19);
 }
+
+.farge {
+  height: 185px;
+  width: 100%;
+  opacity: 0.7;
+}
+
+ion-content {
+  --ion-background-color: #eee;
+}
+
+
