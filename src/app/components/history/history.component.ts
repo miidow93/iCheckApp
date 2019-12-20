@@ -135,17 +135,26 @@ export class HistoryComponent implements OnInit {
         const url = window.URL.createObjectURL(blob);
         const pwa = window.open(url);
         // const filename = uuid.v4();
-        const filename = 'blockage_' + moment(new Date()).format('DDMMYYYY_hhmmssSSS');
+        const filename = 'blockage_' + moment(new Date()).format('DDMMYYYY_hhmmssSSS') + '.xlsx';
         if (this.platform.is('android') || this.platform.is('tablet')) {
-          let filePath = (this.platform.is('android')) ? this.file.externalRootDirectory : this.file.cacheDirectory;
-          this.file.writeFile(filePath, filename + '.xlsx', blob, { replace: true }).then((fileEntry: FileEntry) => {
-            console.log('File Created: ', fileEntry);
-            this.fileOpener.open(fileEntry.toURL(), 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
-              .then(() => console.log('File is opened'))
-              .catch(err => console.error(err));
-          })
+          // let filePath = (this.platform.is('android')) ? this.file.externalRootDirectory : this.file.cacheDirectory;
+          this.file.checkDir(this.file.externalRootDirectory, 'iCheck').then(res => {
+            console.log('Directory exists: ', res);
+            let filePath = (this.platform.is('android')) ? this.file.externalRootDirectory + '/iCheck' : this.file.cacheDirectory;
+            this.createFile(filePath, filename, blob);
+          }).catch(err => {
+            console.log('Directory doesn\'t exists', JSON.stringify(err));
+            this.file.createDir(this.file.externalRootDirectory, 'iCheck', false).then(res => {
+              console.log('Directory created: ', res);
+              let filePath = this.file.externalRootDirectory + '/iCheck';
+              this.createFile(filePath, filename, blob);
+            }).catch(err => {
+              console.log('Cannot create the directory: ', JSON.stringify(err));
+            });
+          });
+          
         } else {
-          saveAs(blob, `${filename}.xlsx`);
+          saveAs(blob, `${filename}`);
           if (!pwa || pwa.closed || typeof pwa.closed === 'undefined') {
             alert('Please disable your Pop-up blocker and try again.');
           }
@@ -164,6 +173,18 @@ export class HistoryComponent implements OnInit {
       duration: 3000
     });
     toast.present();
+  }
+
+  createFile(filePath, filename, blob) {
+    console.log('Create File path: ', filePath);
+    console.log('Create File name: ', name);
+    console.log('Create File blob: ', blob);
+    this.file.writeFile(filePath, filename + '.xlsx', blob, { replace: true }).then((fileEntry: FileEntry) => {
+      console.log('File Created: ', fileEntry);
+      this.fileOpener.open(fileEntry.toURL(), 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+        .then(() => console.log('File is opened'))
+        .catch(err => console.error(err));
+    });
   }
 }
 
