@@ -1,16 +1,16 @@
-<ion-header>
+<!-- <ion-header>
     <ion-toolbar>
         <ion-title>Contrôle visuelle des camions : Citerne
             <button mat-raised-button  button [routerLink]="['/engins']" style="width:7%;float: right;">
               <img style="height: 20px;"  [src]="precedentIcon">
-                <!-- <ion-label>Logout</ion-label> -->
+                <!-- <ion-label>Logout</ion-label> 
             </button>
         </ion-title>
   
     </ion-toolbar>
   
-  </ion-header>
-  <img [src]="FargeHolcimImg" class="farge">
+  </ion-header> -->
+  <!-- <img [src]="FargeHolcimImg" class="farge"> -->
   <mat-horizontal-stepper labelPosition="bottom" #stepper>
       <mat-step [stepControl]="formConducteur">
           <ng-template matStepLabel>Conducteur السائق</ng-template>
@@ -46,7 +46,7 @@
           </form>
         </div>
         <div style="float: right;">
-        <button class="btn btn-primary" matStepperNext>Suivant</button>
+        <button [disabled]="!formConducteur.valid" class="btn btn-primary" matStepperNext>Suivant</button>
       </div>
       </mat-step>
       <mat-step [stepControl]="formConducteur">
