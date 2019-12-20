@@ -1,101 +1,100 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Contrôle visuelle des camions : Plateau
-      <button mat-raised-button button [routerLink]="['/engins']" style="width:7%;float: right;">
-        <img style="height: 20px;" [src]="precedentIcon">
-        <!-- <ion-label>Logout</ion-label> -->
-      </button>
-    </ion-title>
-
-  </ion-toolbar>
-
-</ion-header>
-<ion-content>
+<button  mat-button style="font-size: 16px; font-weight: 400;padding: 1%;" (click)='NavigatToEngins()'>
+  <i style="font-size: 25px;padding: 5%;color: rgb(0,110,130) ;" class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+  
+  </button>
 
 
-  <img [src]="FargeHolcimImg" class="farge">
-  <mat-horizontal-stepper labelPosition="bottom" #stepper>
-    <mat-step [stepControl]="formConducteur">
-      <ng-template matStepLabel>Infos</ng-template>
-      <div class="container">
-        <form [formGroup]="formConducteur" class="example-form" (ngSubmit)="onSubmit(formConducteur)">
-
-          <mat-form-field style="text-align: left" dir="ltr" class="col-md-12">
-            <input type="text" matInput formControlName="cin" placeholder="C.I.N" [matAutocomplete]="cin" />
-          </mat-form-field>
-
-          <mat-autocomplete #cin="matAutocomplete" (optionSelected)="getConducteur($event)">
-            <mat-option *ngFor="let conducteur of (filteredConducteurs | async)" [value]="conducteur.cin">
-              {{conducteur.cin}}</mat-option>
-          </mat-autocomplete>
-
-          <mat-form-field style="text-align: left" dir="ltr" class="col-md-12">
-            <input type="text" matInput formControlName="nomComplet" placeholder="Nom Complet"
-              [value]="formConducteur.controls['cin'].value !== '' ? nomComplet.value : ''" />
-          </mat-form-field>
-
-          <mat-form-field style="text-align: left" dir="ltr" class="col-md-12">
-            <input type="text" matInput formControlName="matricule" placeholder="Matricule"
-              [matAutocomplete]="matricule" />
-          </mat-form-field>
-
-          <mat-autocomplete #matricule="matAutocomplete">
-            <mat-option *ngFor="let vehicule of (filteredVehicules | async)" [value]="vehicule.matricule">
-              {{vehicule.matricule}}</mat-option>
-          </mat-autocomplete>
-          <!-- <ngb-rating [(rate)]="currentRate"></ngb-rating> -->
-          <!-- <button class="btn btn-success" mat-raised-button type="submit">Envoyer</button> -->
-
-        </form>
-      </div>
-      <div style="float: right;">
-        <button class="btn btn-primary" matStepperNext>Suivant</button>
-      </div>
-    </mat-step>
-    <mat-step [stepControl]="formConducteur">
-      <ng-template matStepLabel>Engin 1 العربة</ng-template>
-      <app-check-list-engin></app-check-list-engin>
-      <div style="float: right;">
-        <button class="btn btn-primary" matStepperPrevious>Précédent</button>&nbsp;&nbsp;
-        <button class="btn btn-primary" matStepperNext>Suivant</button>
-      </div>
-    </mat-step>
-    <mat-step [stepControl]="formConducteur">
-      <ng-template matStepLabel>Engin 2 العربة</ng-template>
-      <span class="form-row justify-content-center">
-        <img class="image2" [src]="plateauImg">
-        <button mat-mini-fab id="b24" (click)="check(24)" class="button1 isNotActive"></button>
-        <button mat-mini-fab id="b25" (click)="check(25)" class="button2 isNotActive"></button>
-        <button mat-mini-fab id="b26" (click)="check(26)" class="button3 isNotActive"></button>
-        <button mat-mini-fab id="b27" (click)="check(27)" class="button4 isNotActive"></button>
-      </span>
-      <div style="float: right;">
-        <button class="btn btn-primary" matStepperPrevious>Précédent</button>&nbsp;&nbsp;
-        <button class="btn btn-primary" matStepperNext>Suivant</button>
-      </div>
-    </mat-step>
-    <mat-step [stepControl]="formConducteur">
-      <ng-template matStepLabel>Conducteur السائق</ng-template>
-      <app-check-list-conducteur></app-check-list-conducteur>
-      <div style="float: right;">
-        <button class="btn btn-primary" matStepperPrevious>Précédent</button>&nbsp;&nbsp;
-        <button class="btn btn-primary" matStepperNext>Suivant</button>
-      </div>
-    </mat-step>
-    <mat-step [stepControl]="formConducteur">
-      <ng-template matStepLabel>Equipement المعدات المرفقة</ng-template>
-      <app-check-list-equipement></app-check-list-equipement>
-      <div style="float: right;">
-        <button class="btn btn-primary" matStepperPrevious>Précédent</button>&nbsp;&nbsp;
-        <button class="btn btn-primary" (click)="onSubmit(formConducteur)" mat-raised-button type="submit"
-          matStepperNext>Suivant</button>
-      </div>
-    </mat-step>
-
-    <mat-step [stepControl]="formConducteur">
-      <ng-template matStepLabel>Motif</ng-template>
-      <app-upload></app-upload>
-    </mat-step>
-
-  </mat-horizontal-stepper>
-</ion-content>
+<div style="padding-left: 10%;padding-right: 10%; padding-top: 2%;" >
+  <div class="card" style="height: 650px;">
+    <div class="card-header card-header-info"  style="background: rgb(0,110,130);">
+      <h4 class="card-title">Contrôle visuelle des camions</h4>
+      <p class="card-category">Plateau</p>
+    </div>
+    <div class="card-body">
+  
+  
+  
+      <mat-horizontal-stepper labelPosition="bottom" #stepper>
+        <mat-step [stepControl]="formConducteur">
+          <ng-template matStepLabel>Conducteur السائق</ng-template>
+          <div class="container" style="margin-top: 3%;">
+            <form [formGroup]="formConducteur" class="example-form" (ngSubmit)="onSubmit(formConducteur)">
+              <mat-form-field style="text-align: left" dir="ltr" class="col-md-10">
+                <input type="text" matInput formControlName="cin" placeholder="C.I.N" [matAutocomplete]="cin" />
+              </mat-form-field>
+              <mat-autocomplete #cin="matAutocomplete" (optionSelected)="getConducteur($event)">
+                <mat-option *ngFor="let conducteur of (filteredConducteurs | async)" [value]="conducteur.cin">
+                  {{conducteur.cin}}</mat-option>
+              </mat-autocomplete>
+              <mat-form-field style="text-align: left" dir="ltr" class="col-md-10">
+                <input type="text" matInput formControlName="nomComplet" placeholder="Nom Complet"
+                  [value]="formConducteur.controls['cin'].value !== '' ? nomComplet.value : ''" />
+              </mat-form-field>
+      
+              <mat-form-field style="text-align: left" dir="ltr" class="col-md-10">
+                <input type="text" matInput formControlName="matricule" placeholder="Matricule"
+                  [matAutocomplete]="matricule" />
+              </mat-form-field>
+      
+              <mat-autocomplete #matricule="matAutocomplete">
+                <mat-option *ngFor="let vehicule of (filteredVehicules | async)" [value]="vehicule.matricule">
+                  {{vehicule.matricule}}</mat-option>
+              </mat-autocomplete>
+              <!-- <ngb-rating [(rate)]="currentRate"></ngb-rating> -->
+              <!-- <button class="btn btn-success" mat-raised-button type="submit">Envoyer</button> -->
+      
+            </form>
+          </div>
+          <div style="float: right; margin-top: 10%;">
+            <button style="background-color: rgb(0,110,130);" class="btn btn-primary" [disabled]="!formConducteur.valid" matStepperNext>Suivant</button>
+          </div>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Engin العربة</ng-template>
+          <app-check-list-engin></app-check-list-engin>
+          <div style=" margin-top: 6.5%;">
+            <button mat-button style="float: left;" matStepperPrevious>Précédent</button>
+            <button class="btn btn-primary"  style="background-color: rgb(0,110,130);float: right;" matStepperNext>Suivant</button>
+          </div>
+        </mat-step>
+        <mat-step [stepControl]="formConducteur">
+          <ng-template matStepLabel>Engin 2 العربة</ng-template>
+          <span class="form-row justify-content-center">
+            <img class="image2" [src]="plateauImg">
+            <button mat-mini-fab id="b24" (click)="check(24)" class="button1 isNotActive"></button>
+            <button mat-mini-fab id="b25" (click)="check(25)" class="button2 isNotActive"></button>
+            <button mat-mini-fab id="b26" (click)="check(26)" class="button3 isNotActive"></button>
+            <button mat-mini-fab id="b27" (click)="check(27)" class="button4 isNotActive"></button>
+          </span>
+          <div style=" margin-top: 3.5%;">
+            <button mat-button style="float: left;" matStepperPrevious>Précédent</button>
+            <button class="btn btn-primary" (click)="completed()" style="background-color: rgb(0,110,130);float: right;" matStepperNext>Suivant</button>
+          </div>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Conducteur السائق</ng-template>
+          <app-check-list-conducteur></app-check-list-conducteur>
+          <div style=" margin-top: 3.5%;">
+            <button mat-button style="float: left;" matStepperPrevious>Précédent</button>
+            <button class="btn btn-primary"  style="background-color: rgb(0,110,130);float: right;" matStepperNext>Suivant</button>
+          </div>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Equipement المعدات المرفقة</ng-template>
+          <div style="padding-top: 8%;">
+            <app-check-list-equipement></app-check-list-equipement>
+          </div>
+             <div style=" padding-top: 10.5%;">
+                 <button mat-button style="float: left;" matStepperPrevious>Précédent</button>
+                 <button class="btn btn-primary" (click)="onSubmit(formConducteur)" style="background-color: rgb(0,110,130);float: right;" matStepperNext>Suivant</button>
+               </div>
+        </mat-step>
+        <mat-step [stepControl]="formConducteur">
+          <app-upload></app-upload>
+        </mat-step>
+      </mat-horizontal-stepper>
+  
+  
+    </div>
+  </div>
+  </div>

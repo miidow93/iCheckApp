@@ -18,7 +18,7 @@ import { Icons } from 'src/app/shared/icons';
   templateUrl: './benne.component.html',
   styleUrls: ['./benne.component.scss'],
   providers: [NgbRatingConfig],
-  encapsulation: ViewEncapsulation.None
+  // encapsulation: ViewEncapsulation.None
 })
 export class BenneComponent implements OnInit {
   @ViewChild(MatStepper, {static: false}) stepper: MatStepper;
@@ -205,6 +205,9 @@ export class BenneComponent implements OnInit {
     // this.dataService.changeEquipementCheckList(this.values);
   }
 
+  NavigatToEngins(){
+    this.router.navigate(['engins']);
+  }
   getAllConducteurs() {
     this.conducteurService.getAllConducteur().subscribe(res => {
       this.conducteurs = res;

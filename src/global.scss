@@ -92,3 +92,8 @@ ion-content {
     background-color: inherit !important;
   }
 }
+
+.mat-horizontal-stepper-header{
+  pointer-events: none !important;
+}
+

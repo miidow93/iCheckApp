@@ -16,7 +16,7 @@ import { Icons } from 'src/app/shared/icons';
   selector: 'app-citerne',
   templateUrl: './citerne.component.html',
   styleUrls: ['./citerne.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  // encapsulation: ViewEncapsulation.None
 })
 export class CiterneComponent implements OnInit {
 
@@ -128,7 +128,7 @@ export class CiterneComponent implements OnInit {
 
   onSubmit(form) {
     if (!form.valid) {
-      alert('Veuillez saisir les données.');
+      alert('Veuillez saisir les données du conducteur.');
       return;
     }
 
@@ -195,6 +195,10 @@ export class CiterneComponent implements OnInit {
       this.conducteurs = res;
       console.log('All Conducteurs', res);
     });
+  }
+
+  NavigatToEngins(){
+    this.router.navigate(['engins']);
   }
 
   getAllVehicules() {
