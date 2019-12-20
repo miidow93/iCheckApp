@@ -44,6 +44,9 @@ import { ChartsModule } from 'ng2-charts';
 import { UserComponent } from './components/user/user.component';
 import { ListUserComponent } from './components/user/list-user/list-user.component';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
+import { FileTransfer } from '@ionic-native/file-transfer/ngx';
+import { File } from '@ionic-native/file/ngx';
+import { FileOpener } from '@ionic-native/file-opener/ngx';
 
 export function getToken() {
   return localStorage.getItem('token');
@@ -108,7 +111,9 @@ export function getToken() {
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    
+    File,
+    FileTransfer,
+    FileOpener
   ],
   bootstrap: [AppComponent],
   exports: [],
