@@ -7,7 +7,10 @@ import * as moment from 'moment';
 import { faFilter, faSyncAlt, faBan, faCircle } from '@fortawesome/free-solid-svg-icons';
 import { ExcelService } from 'src/app/core/services/excel/excel.service';
 import { saveAs } from 'file-saver/';
-import { ToastController } from '@ionic/angular';
+import { ToastController, Platform } from '@ionic/angular';
+import { File, FileEntry } from '@ionic-native/file/ngx';
+import { FileTransfer } from '@ionic-native/file-transfer/ngx';
+import { FileOpener } from '@ionic-native/file-opener/ngx';
 
 @Component({
   selector: 'app-history',
@@ -27,10 +30,13 @@ export class HistoryComponent implements OnInit {
   data = [];
   de; ds;
   oldDataSource;
-  constructor(private blockageService: BlockageService, 
-    private dataService: DataService, 
-    private excelService: ExcelService, 
-    private toastCtrl: ToastController) { }
+  constructor(private blockageService: BlockageService,
+    private file: File,
+    private fileTransfer: FileTransfer,
+    private fileOpener: FileOpener,
+    private excelService: ExcelService,
+    private toastCtrl: ToastController,
+    private platform: Platform) { }
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
@@ -130,15 +136,25 @@ export class HistoryComponent implements OnInit {
         const pwa = window.open(url);
         // const filename = uuid.v4();
         const filename = 'blockage_' + moment(new Date()).format('DDMMYYYY_hhmmssSSS');
-        saveAs(blob, `${filename}.xlsx`);
-        if (!pwa || pwa.closed || typeof pwa.closed === 'undefined') {
-          alert('Please disable your Pop-up blocker and try again.');
+        if (this.platform.is('android') || this.platform.is('tablet')) {
+          let filePath = (this.platform.is('android')) ? this.file.externalRootDirectory : this.file.cacheDirectory;
+          this.file.writeFile(filePath, filename + '.xlsx', blob, { replace: true }).then((fileEntry: FileEntry) => {
+            console.log('File Created: ', fileEntry);
+            this.fileOpener.open(fileEntry.toURL(), 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+              .then(() => console.log('File is opened'))
+              .catch(err => console.error(err));
+          })
+        } else {
+          saveAs(blob, `${filename}.xlsx`);
+          if (!pwa || pwa.closed || typeof pwa.closed === 'undefined') {
+            alert('Please disable your Pop-up blocker and try again.');
+          }
         }
+
+
       } else {
         this.toastPresent('Aucune données disponible pour les deux dates.');
       }
-
-      
     });
   }
 
