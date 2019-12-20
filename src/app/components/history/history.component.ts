@@ -19,7 +19,7 @@ import { FileOpener } from '@ionic-native/file-opener/ngx';
 })
 export class HistoryComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'vehicule', 'dateBlockage', 'motif', 'dateDeblockage', 'imageUrl'];
+  displayedColumns: string[] = ['id', 'vehicule', 'dateBlockage', 'motif', 'dateDeblockage'];
   dataSource = new MatTableDataSource();
   dateEntree = new FormControl(moment());
   dateSortie = new FormControl(moment());

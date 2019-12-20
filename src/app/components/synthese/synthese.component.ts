@@ -122,4 +122,7 @@ export class SyntheseComponent implements OnInit, AfterViewInit {
     // console.log(`Element: , operation: ${operation}`, element);
     element.etat = operation === 'lock' ? true : false
   }
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 }

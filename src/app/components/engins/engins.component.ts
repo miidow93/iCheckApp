@@ -140,4 +140,7 @@ export class EnginsComponent implements OnInit {
     localStorage.removeItem('role');
     this.router.navigate(['login']);
   }
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 }

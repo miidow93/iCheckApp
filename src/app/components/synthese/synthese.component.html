@@ -142,6 +142,9 @@
       <button class="ml-2 btn btn-link" (click)="refresh()" mat-button>
         <fa-icon [icon]="faSyncAlt"></fa-icon>
       </button>
+      <mat-form-field class="w-40">
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Rechercher">
+      </mat-form-field>
     </div>
     <div class="mat-elevation-z8">
       <div class="card">
