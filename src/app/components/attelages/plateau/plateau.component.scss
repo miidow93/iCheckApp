@@ -48,6 +48,38 @@
 
 }
 
+@media only screen and (width: 1280px) { 
+
+  .button1 {
+    right: 10%;
+    top: 162px;
+    width: 25px;
+    height: 25px;
+  }
+  .button2 {
+    //   position: absolute;
+    right: 41%;
+    top: 191px;
+    width: 25px;
+    height: 25px;
+  }
+  
+  .button3 {
+    //   position: absolute;
+    right: 57%;
+    top: 191px;
+    width: 25px;
+    height: 25px;
+  }
+  .button4 {
+    //   position: absolute;
+    right: 72%;
+    top: 163px;
+    width: 25px;
+    height: 25px;
+  }
+}
+
 ion-content {
   --ion-background-color: #eee;
 }

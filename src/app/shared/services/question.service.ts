@@ -17,7 +17,7 @@ export class QuestionService {
   constructor(private http: HttpClient) { }
   
 
-  async getQuestionsFromAPI(engin) {
+  /*async getQuestionsFromAPI(engin) {
     // tslint:disable-next-line:no-shadowed-variable
     await this.http.get(`./assets/checkList/${engin}.json`).pipe(take(1)).toPromise().then(async (res) => {
       // console.log('Service: ', res);
@@ -37,18 +37,7 @@ export class QuestionService {
         label: 'Surveiller le lieu de l\'intervention',
         options: this.arrayToForm(res['Surveiller le lieu de l\'intervention'])
       });
-      /*const dropDown = new DropdownQuestion({
-        controlType: 'choice',
-        key: 'brave',
-        label: 'Bravery Rating',
-        options: [
-          { key: 'solid', value: 'Solid' },
-          { key: 'great', value: 'Great' },
-          { key: 'good', value: 'Good' },
-          { key: 'unproven', value: 'Unproven' }
-        ],
-        order: 3
-      });*/
+      
       this.questions.push(checkbox1);
       this.questions.push(checkbox2);
       this.questions.push(checkbox3);
@@ -57,7 +46,7 @@ export class QuestionService {
     });
 
     return this.questions;
-  }
+  }*/
 
   async getQuestionsForAttelages(engin) {
     // tslint:disable-next-line:no-shadowed-variable

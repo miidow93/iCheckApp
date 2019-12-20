@@ -54,3 +54,39 @@
 .isNotActive {
   background-color: rgb(247, 19, 19);
 }
+
+@media only screen and (width: 1280px) {
+  .button1 {
+    
+    right: 7.5%;
+    top: 158px;
+    width: 22px;
+    height: 22px;
+  }
+  .button2 {
+    right: 22%;
+    top: 158px;
+    width: 22px;
+    height: 22px;
+  }
+  
+  .button3 {
+    right: 38.8%;
+    top: 158px;
+    width: 22px;
+    height: 22px;
+  }
+  .button4 {
+    right: 53.8%;
+    top: 158px;
+    width: 22px;
+    height: 22px;
+  }
+  
+  .button5 {
+    right: 67.9%;
+    top: 158px;
+    width: 22px;
+    height: 22px;
+  }
+}

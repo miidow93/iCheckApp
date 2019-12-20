@@ -19,7 +19,7 @@ export class DetailsComponent implements OnInit {
   keys3 = [];
   keys4 = [];
   precedentIcon = Icons.precedentIcon;
-
+  str;
   checkListValues;
 
   @Input() questions: QuestionBase<any>[] = [];
@@ -28,7 +28,6 @@ export class DetailsComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute,
     private questionService: QuestionService,
     private checkListService: CheckListService,private router:Router) { }
-str;
   ngOnInit() {
     this.activatedRoute.params.subscribe(param => {
       console.log(param)
@@ -41,7 +40,7 @@ str;
             case 'Benne': this.getQuestionForAttelage(checklist); break;
             case 'Citerne': this.getQuestionForAttelage(checklist); break;
             case 'Plateau': this.getQuestionForAttelage(checklist); break;
-            default: this.getQuestionForEngins(checklist); break;
+            // default: this.getQuestionForEngins(checklist); break;
           }
         }
       });
@@ -93,7 +92,7 @@ str;
     });
   }
 
-  getQuestionForEngins(checklist) {
+  /*getQuestionForEngins(checklist) {
     this.questionService.getQuestionsFromAPI(checklist['vehicule'].engin).then(res => {
       this.questions = res;
       console.log('Res: ', res);
@@ -123,7 +122,7 @@ str;
         console.log('Question ', this.questions);
       });
     });
-  }
+  }*/
   
   arrayToJson(options: any = [], values: any = []): any[] {
     let index = 0;

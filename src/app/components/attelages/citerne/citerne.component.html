@@ -1,4 +1,3 @@
-
 <!-- <ion-header>
   <ion-toolbar>
     <ion-title>Contrôle visuelle des camions : Benne
@@ -19,22 +18,22 @@
 <!-- </div> -->
 
 
-<button  mat-button style="font-size: 16px; font-weight: 400;padding: 1%;" (click)='NavigatToEngins()'>
+<button mat-button style="font-size: 16px; font-weight: 400;padding: 1%;" (click)='NavigatToEngins()'>
   <i style="font-size: 25px;padding: 5%;color: rgb(0,110,130) ;" class="fa fa-arrow-circle-left" aria-hidden="true"></i>
-  
-  </button>
+
+</button>
 
 
-<div style="padding-left: 10%;padding-right: 10%; padding-top: 2%;" >
+<div style="padding-left: 10%;padding-right: 10%; padding-top: 2%;">
   <div class="card" style="height: 650px;">
-    <div class="card-header card-header-info"  style="background: rgb(0,110,130);">
+    <div class="card-header card-header-info" style="background: rgb(0,110,130);">
       <h4 class="card-title">Contrôle visuelle des camions</h4>
       <p class="card-category">Citerne</p>
     </div>
     <div class="card-body">
-  
-  
-  
+
+
+
       <mat-horizontal-stepper labelPosition="bottom" #stepper>
         <mat-step [stepControl]="formConducteur">
           <ng-template matStepLabel>Conducteur السائق</ng-template>
@@ -51,23 +50,24 @@
                 <input type="text" matInput formControlName="nomComplet" placeholder="Nom Complet"
                   [value]="formConducteur.controls['cin'].value !== '' ? nomComplet.value : ''" />
               </mat-form-field>
-      
+
               <mat-form-field style="text-align: left" dir="ltr" class="col-md-10">
                 <input type="text" matInput formControlName="matricule" placeholder="Matricule"
                   [matAutocomplete]="matricule" />
               </mat-form-field>
-      
+
               <mat-autocomplete #matricule="matAutocomplete">
                 <mat-option *ngFor="let vehicule of (filteredVehicules | async)" [value]="vehicule.matricule">
                   {{vehicule.matricule}}</mat-option>
               </mat-autocomplete>
               <!-- <ngb-rating [(rate)]="currentRate"></ngb-rating> -->
               <!-- <button class="btn btn-success" mat-raised-button type="submit">Envoyer</button> -->
-      
+
             </form>
           </div>
           <div style="float: right; margin-top: 10%;">
-            <button style="background-color: rgb(0,110,130);" class="btn btn-primary" [disabled]="!formConducteur.valid" matStepperNext>Suivant</button>
+            <button style="background-color: rgb(0,110,130);" class="btn btn-primary" [disabled]="!formConducteur.valid"
+              matStepperNext>Suivant</button>
           </div>
         </mat-step>
         <mat-step>
@@ -75,11 +75,12 @@
           <app-check-list-engin></app-check-list-engin>
           <div style=" margin-top: 6.5%;">
             <button mat-button style="float: left;" matStepperPrevious>Précédent</button>
-            <button class="btn btn-primary"  style="background-color: rgb(0,110,130);float: right;" matStepperNext>Suivant</button>
+            <button class="btn btn-primary" style="background-color: rgb(0,110,130);float: right;"
+              matStepperNext>Suivant</button>
           </div>
         </mat-step>
-          <mat-step>
-            <ng-template matStepLabel>Engin العربة</ng-template>
+        <mat-step>
+          <ng-template matStepLabel>Engin العربة</ng-template>
           <span class="form-row justify-content-center">
             <img class="image2" [src]="citerneImg">
             <button mat-mini-fab id="b24" (click)="check(24)" class="button1 isNotActive"></button>
@@ -90,12 +91,13 @@
             <button mat-mini-fab id="b29" (click)="check(29)" class="button6 isNotActive"></button>
             <button mat-mini-fab id="b30" (click)="check(30)" class="button7 isNotActive"></button>
             <button mat-mini-fab id="b31" (click)="check(31)" class="button8 isNotActive"></button>
-        <!--<button mat-mini-fab id="b31" (click)="check(31)" class="button9 isNotActive"></button> -->
+            <button mat-mini-fab id="b32" (click)="check(32)" class="button9 isNotActive"></button>
           </span>
           <!-- <button class="btn btn-primary" mat-button matStepperNext>Next</button> -->
           <div style=" margin-top: 3.5%;">
             <button mat-button style="float: left;" matStepperPrevious>Précédent</button>
-            <button class="btn btn-primary" (click)="completed()" style="background-color: rgb(0,110,130);float: right;" matStepperNext>Suivant</button>
+            <button class="btn btn-primary" (click)="completed()" style="background-color: rgb(0,110,130);float: right;"
+              matStepperNext>Suivant</button>
           </div>
         </mat-step>
         <mat-step>
@@ -103,7 +105,8 @@
           <app-check-list-conducteur></app-check-list-conducteur>
           <div style=" margin-top: 3.5%;">
             <button mat-button style="float: left;" matStepperPrevious>Précédent</button>
-            <button class="btn btn-primary"  style="background-color: rgb(0,110,130);float: right;" matStepperNext>Suivant</button>
+            <button class="btn btn-primary" style="background-color: rgb(0,110,130);float: right;"
+              matStepperNext>Suivant</button>
           </div>
         </mat-step>
         <mat-step>
@@ -111,17 +114,18 @@
           <div style="padding-top: 8%;">
             <app-check-list-equipement></app-check-list-equipement>
           </div>
-             <div style=" padding-top: 10.5%;">
-                 <button mat-button style="float: left;" matStepperPrevious>Précédent</button>
-                 <button class="btn btn-primary" (click)="onSubmit(formConducteur)" style="background-color: rgb(0,110,130);float: right;" matStepperNext>Suivant</button>
-               </div>
+          <div style=" padding-top: 10.5%;">
+            <button mat-button style="float: left;" matStepperPrevious>Précédent</button>
+            <button class="btn btn-primary" (click)="onSubmit(formConducteur)"
+              style="background-color: rgb(0,110,130);float: right;" matStepperNext>Suivant</button>
+          </div>
         </mat-step>
         <mat-step [stepControl]="formConducteur">
           <app-upload></app-upload>
         </mat-step>
       </mat-horizontal-stepper>
-  
-  
+
+
     </div>
   </div>
-  </div>
+</div>

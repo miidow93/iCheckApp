@@ -16,7 +16,7 @@
   
       <mat-horizontal-stepper labelPosition="bottom" #stepper>
         <mat-step [stepControl]="formConducteur">
-          <ng-template matStepLabel>Conducteur السائق</ng-template>
+          <ng-template matStepLabel>Infos</ng-template>
           <div class="container" style="margin-top: 3%;">
             <form [formGroup]="formConducteur" class="example-form" (ngSubmit)="onSubmit(formConducteur)">
               <mat-form-field style="text-align: left" dir="ltr" class="col-md-10">
@@ -50,7 +50,7 @@
           </div>
         </mat-step>
         <mat-step>
-          <ng-template matStepLabel>Engin العربة</ng-template>
+          <ng-template matStepLabel>Engin 1 العربة</ng-template>
           <app-check-list-engin></app-check-list-engin>
           <div style=" margin-top: 6.5%;">
             <button mat-button style="float: left;" matStepperPrevious>Précédent</button>
