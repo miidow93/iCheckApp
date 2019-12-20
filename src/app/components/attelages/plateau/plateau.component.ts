@@ -249,5 +249,8 @@ export class PlateauComponent implements OnInit {
     this.nomComplet.next(this.conducteurs.find(opt => opt.cin == event.option.value).nomComplet);
     this.formConducteur.controls.nomComplet.patchValue(this.nomComplet.value);
   }
+  NavigatToEngins(){
+    this.router.navigate(['engins']);
+  }
 
 }
