@@ -5,6 +5,8 @@ import { catchError } from 'rxjs/operators';
 import { DataService } from 'src/app/shared/services/data.service';
 import { BlockageService } from 'src/app/core/services/blockage/blockage.service';
 import { Router } from '@angular/router';
+import { MatRadioChange, MatRadioButton } from '@angular/material';
+
 @Component({
   selector: 'app-upload',
   templateUrl: './upload.component.html',
@@ -18,10 +20,12 @@ export class UploadComponent implements OnInit {
   vehiculeID;
   blockageID;
   checklistID;
+  etats = [{ etat: 'Bloquer' }, { etat: 'Débloquer' }];
+
 
   constructor(private formBuilder: FormBuilder,
     private camera: Camera,
-    private dataService: DataService, 
+    private dataService: DataService,
     private blockageService: BlockageService,
     private router: Router) { }
 
@@ -45,11 +49,12 @@ export class UploadComponent implements OnInit {
       console.log('CheckList ID: ', res);
       this.checklistID = res;
     });
-    
+
     this.motifForm = this.formBuilder.group({
-      motif: ['', Validators.required]
+      motif: ['', Validators.required],
+      etat: ['', Validators.required]
     });
-    
+
   }
 
   takePicture() {
@@ -69,7 +74,7 @@ export class UploadComponent implements OnInit {
     }).catch(err => catchError(err));
   }
   submit(form) {
-    if(!form.valid && this.image) {
+    /*if (!form.valid && this.image) {
       return;
     }
 
@@ -79,7 +84,7 @@ export class UploadComponent implements OnInit {
       dateBlockage: this.date,
       idCheckList: this.checklistID,
       idVehicule: this.vehiculeID,
-      imageUrl: this.image ? this.image : '' 
+      imageUrl: this.image ? this.image : ''
     };
 
     console.log('Blockage Data: ', data);
@@ -90,7 +95,18 @@ export class UploadComponent implements OnInit {
       this.dataService.changeVehiculeRating(0);
       this.dataService.changeEnginRating(0);
       this.router.navigate(['engins']);
-    });
+    });*/
+    console.log('Form: ', form);
+
+  }
+
+  onChange(mrChange: MatRadioChange) {
+
+    console.log('Change: ', mrChange.value);
+    let mrButton: MatRadioButton = mrChange.source;
+    console.log(mrButton.name);
+    console.log(mrButton.checked);
+    console.log(mrButton.inputId);
 
   }
 
