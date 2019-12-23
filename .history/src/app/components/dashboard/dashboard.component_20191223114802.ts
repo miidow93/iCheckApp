@@ -11,7 +11,6 @@ import { SiteService } from 'src/app/core/services/site/site.service';
 import { take } from 'rxjs/operators';
 import { EnginService } from 'src/app/core/services/engin/engin.service';
 import { Engin } from 'src/app/shared/models/engin';
-import { Constants } from 'src/app/shared/constants';
 const moment = _moment;
 
 @Component({
@@ -65,7 +64,6 @@ export class DashboardComponent implements OnInit {
     },
   ];
 
-
   public lineChartData: any[];
   public lineChartLabels = [];
   public lineChartType = 'line';
@@ -115,10 +113,7 @@ export class DashboardComponent implements OnInit {
     this.statsByMonthAndYear();
     console.log(this.dateStats);
   }
-  createImagePath(serverPath: string) {
-    return `${Constants.serverImg}${serverPath}`;
-    // return `http://localhost:4772/${serverPath}`;
-  }
+
   getChartData(stats) {
     let data = [];
     stats.forEach(element => {

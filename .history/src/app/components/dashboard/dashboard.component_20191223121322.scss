@@ -81,3 +81,19 @@ ion-content .mdl-toolbar {
 }
 
 
+#container {
+  column-count: 3;
+  -moz-column-count: 3;
+  -webkit-column-count: 3;
+  width: 100%;
+}
+.item {
+  background: red;
+}
+
+.item, .dummy {
+  display: inline-block;
+  height: 250px;
+  margin-bottom: 20px;
+  width: 100%;
+}

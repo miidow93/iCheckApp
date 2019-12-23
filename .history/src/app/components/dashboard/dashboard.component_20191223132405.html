@@ -133,39 +133,19 @@
             </div>
             <hr class="section-break-5" style="padding-bottom: 2.7%;" />
             <ion-card-title>
-              <ion-grid>
-                <ion-col>
-                  <ion-row>
-                    <ion-col>
-                      <ion-row *ngFor="let citerne of citernes  |  slice:0:4">
-                        <ion-col size="6">
-                          <span class="badge badge-info"
-                            style="width: 40px;background-color: rgb(0,110,130); ">{{citerne.label | uppercase | slice:0:3}}</span>
-                        </ion-col>
-                        <ion-col size="6">
-                          <span class="badge badge-danger"
-                            style="width: 40px;margin: 1%;">{{citerne.blockedCount ? citerne.blockedCount : 0}}</span>
-                          <span class="badge badge-success"
-                            style="width: 40px;">{{citerne.notBlockedCount ? citerne.notBlockedCount : 0}}</span>
-                        </ion-col>
-                      </ion-row>
-                    </ion-col>
-                    <ion-col>
-                      <ion-row *ngFor="let citerne of citernes  |  slice:4:100">
-                        <ion-col size="6">
-                          <span class="badge badge-info"
-                            style="width: 40px;background-color: rgb(0,110,130); ">{{citerne.label | uppercase | slice:0:3}}</span>
-                        </ion-col>
-                        <ion-col size="6">
-                          <span class="badge badge-danger"
-                            style="width: 40px;margin: 1%;">{{citerne.blockedCount ? citerne.blockedCount : 0}}</span>
-                          <span class="badge badge-success"
-                            style="width: 40px;">{{citerne.notBlockedCount ? citerne.notBlockedCount : 0}}</span>
-                        </ion-col>
-                      </ion-row>
-                    </ion-col>
-                  </ion-row>
-                </ion-col>
+              <ion-grid style="margin-left: 20%;">
+                <ion-row *ngFor="let citerne of citernes">
+                  <ion-col size="6">
+                    <span class="badge badge-info"
+                      style="width: 40px;background-color: rgb(0,110,130); ">{{citerne.label | uppercase | slice:0:3}}</span>
+                  </ion-col>
+                  <ion-col size="6">
+                    <span class="badge badge-danger"
+                      style="width: 40px;margin: 1%;">{{citerne.blockedCount ? citerne.blockedCount : 0}}</span>
+                    <span class="badge badge-success"
+                      style="width: 40px;">{{citerne.notBlockedCount ? citerne.notBlockedCount : 0}}</span>
+                  </ion-col>
+                </ion-row>
               </ion-grid>
             </ion-card-title>
           </ion-card-header>
