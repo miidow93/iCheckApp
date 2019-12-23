@@ -39,14 +39,14 @@
         <ion-card style="padding: 5%;" class="shadow p-3 mb-5 bg-white rounded">
           <ion-card-header>
             <div class="row justify-content-end">
-              <img class="col-sm-4" [src]="plateauIcon" >
+              <img class="col-sm-4" [src]="plateauIcon">
             </div>
             <hr class="section-break-5" />
             <ion-card-title>
               <ion-grid>
                 <ion-row>
                   <ion-col>
-                    <ion-row *ngFor="let plateau of plateaus |  slice:0:4" style="width:250%" >
+                    <ion-row *ngFor="let plateau of plateaus |  slice:0:4" style="width: 200%;">
                       <ion-col size="2">
                         <span class="badge badge-info"
                           style="width: 40px;background-color: rgb(0,110,130);">{{plateau.label | uppercase | slice:0:3}}</span>
@@ -60,7 +60,7 @@
                     </ion-row>
                   </ion-col>
                   <ion-col>
-                    <ion-row *ngFor="let plateau of plateaus |  slice:4:100"  style="width:250%">
+                    <ion-row *ngFor="let plateau of plateaus |  slice:4:100" style="width: 200%;">
                       <ion-col size="2">
                         <span class="badge badge-info"
                           style="width: 40px;background-color: rgb(0,110,130);">{{plateau.label | uppercase | slice:0:3}}</span>
@@ -90,12 +90,12 @@
               <ion-grid>
                 <ion-row>
                   <ion-col>
-                    <ion-row *ngFor="let benne of bennes |  slice:0:4"  style="width:250%">
-                      <ion-col size="2">
+                    <ion-row *ngFor="let benne of bennes |  slice:0:4">
+                      <ion-col size="6">
                         <span class="badge badge-info "
                           style="width: 40px;background-color: rgb(0,110,130); ">{{benne.label | uppercase | slice:0:3}}</span>
                       </ion-col>
-                      <ion-col size="3">
+                      <ion-col size="6">
                         <span class="badge badge-danger "
                           style="width: 40px;margin: 1%;">{{benne.blockedCount ? benne.blockedCount : 0}}</span>
                         <span class="badge badge-success "
@@ -105,12 +105,12 @@
                   </ion-col>
                   <ion-col>
 
-                    <ion-row *ngFor="let benne of bennes |  slice:4:100"  style="width:250%">
-                      <ion-col size="2">
+                    <ion-row *ngFor="let benne of bennes |  slice:4:100">
+                      <ion-col size="6">
                         <span class="badge badge-info "
                           style="width: 40px;background-color: rgb(0,110,130); ">{{benne.label | uppercase | slice:0:3}}</span>
                       </ion-col>
-                      <ion-col size="3">
+                      <ion-col size="6">
                         <span class="badge badge-danger "
                           style="width: 40px;margin: 1%;">{{benne.blockedCount ? benne.blockedCount : 0}}</span>
                         <span class="badge badge-success "
@@ -131,18 +131,18 @@
             <div class="row justify-content-end">
               <img class="col-sm-4" [src]="citerneIcon">
             </div>
-            <hr class="section-break-5"  />
+            <hr class="section-break-5" style="padding-bottom: 2.7%;" />
             <ion-card-title>
               <ion-grid>
                 <ion-col>
                   <ion-row>
                     <ion-col>
-                      <ion-row *ngFor="let citerne of citernes  |  slice:0:4"  style="width:250%">
-                        <ion-col size="2">
+                      <ion-row *ngFor="let citerne of citernes  |  slice:0:4">
+                        <ion-col size="6">
                           <span class="badge badge-info"
                             style="width: 40px;background-color: rgb(0,110,130); ">{{citerne.label | uppercase | slice:0:3}}</span>
                         </ion-col>
-                        <ion-col size="3">
+                        <ion-col size="6">
                           <span class="badge badge-danger"
                             style="width: 40px;margin: 1%;">{{citerne.blockedCount ? citerne.blockedCount : 0}}</span>
                           <span class="badge badge-success"
@@ -151,12 +151,12 @@
                       </ion-row>
                     </ion-col>
                     <ion-col>
-                      <ion-row *ngFor="let citerne of citernes  |  slice:4:100"  style="width:250%" >
-                        <ion-col size="2">
+                      <ion-row *ngFor="let citerne of citernes  |  slice:4:100">
+                        <ion-col size="6">
                           <span class="badge badge-info"
                             style="width: 40px;background-color: rgb(0,110,130); ">{{citerne.label | uppercase | slice:0:3}}</span>
                         </ion-col>
-                        <ion-col size="3">
+                        <ion-col size="6">
                           <span class="badge badge-danger"
                             style="width: 40px;margin: 1%;">{{citerne.blockedCount ? citerne.blockedCount : 0}}</span>
                           <span class="badge badge-success"
@@ -171,29 +171,8 @@
           </ion-card-header>
         </ion-card>
       </ion-col>
-      <ion-col size="6">
-      <ion-card class="shadow p-3 mb-5 bg-white rounded">
-        <ion-card-header>
-          <ion-card-title style="margin-bottom: 11%;">
-            <span style="font-size: 17px; font-weight: 400;
-              color: #3c4858; " class="mr-2">Synthese Général des camions </span>
-          </ion-card-title>
 
-
-        </ion-card-header>
-        <ion-card-content>
-          <div class="container Chart">
-            <div class="float-center">
-              <canvas baseChart *ngIf="DoughnutChartData && DoughnutChartData.length > 0" [datasets]="DoughnutChartData"
-                [labels]="DoughnutChartLabels" [colors]="DoughnutChartColors"
-                [legend]="DoughnutChartLegend" [chartType]="DoughnutChartType">
-              </canvas>
-            </div>
-          </div>
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
-      <ion-col size="6">
+      <ion-col size="12">
         <ion-card style="padding: 2%;" class="shadow p-3 mb-5 bg-white rounded">
           <ion-card-header>
             <ion-card-title>
@@ -218,21 +197,21 @@
           </ion-card-content>
         </ion-card>
       </ion-col>
-    </ion-row>
-    <ion-card class="shadow p-3 mb-5 bg-white rounded">
-      <ion-card-content>
-        <legend style="font-size: 15px; font-weight: 400;
-        color: #3c4858; " class="mr-2">Synthese mensuel des camions controlé. Mois
-          {{dateStats.value | date: 'MM/yyyy'}}</legend>
-        <div class="container Chart">
-          <div class="float-center">
-            <canvas baseChart *ngIf="barChartData && barChartData.length > 0" [datasets]="barChartData"
-              [labels]="barChartLabels" [options]="barChartOptions" [colors]="barChartColors"
-              [legend]="barChartLegend" [chartType]="barChartType">
-            </canvas>
+      <ion-card class="shadow p-3 mb-5 bg-white rounded">
+        <ion-card-content>
+          <legend style="font-size: 15px; font-weight: 400;
+          color: #3c4858; " class="mr-2">Synthese mensuel des camions controlé. Mois
+            {{dateStats.value | date: 'MM/yyyy'}}</legend>
+          <div class="container Chart">
+            <div class="float-center">
+              <canvas baseChart *ngIf="barChartData && barChartData.length > 0" [datasets]="barChartData"
+                [labels]="barChartLabels" [options]="barChartOptions" [colors]="barChartColors"
+                [legend]="barChartLegend" [chartType]="barChartType">
+              </canvas>
+            </div>
           </div>
-        </div>
-      </ion-card-content>
-    </ion-card>
+        </ion-card-content>
+      </ion-card>
+    </ion-row>
   </ion-grid>
 </ion-content>

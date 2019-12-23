@@ -8,8 +8,9 @@ import { Icons } from 'src/app/shared/icons';
 import { ToastController } from '@ionic/angular';
 import * as __ from 'lodash';
 import { SiteService } from 'src/app/core/services/site/site.service';
+import { take } from 'rxjs/operators';
+import { EnginService } from 'src/app/core/services/engin/engin.service';
 import { Engin } from 'src/app/shared/models/engin';
-import { Constants } from 'src/app/shared/constants';
 const moment = _moment;
 
 @Component({
@@ -63,7 +64,6 @@ export class DashboardComponent implements OnInit {
     },
   ];
 
-
   public lineChartData: any[];
   public lineChartLabels = [];
   public lineChartType = 'line';
@@ -82,7 +82,6 @@ export class DashboardComponent implements OnInit {
       ]
     }
   };
-  
 
   public lineChartColors: Color[] = [
     {
@@ -91,52 +90,21 @@ export class DashboardComponent implements OnInit {
     },
   ];
 
-  public DoughnutChartData: any[];
-  public DoughnutChartLabels = [];
-  public DoughnutChartType = 'doughnut';
-  public DoughnutChartLegend = true;
-  public DoughnutChartOptions: ChartOptions = {
-    responsive: true,
-    animation: {
-      animateScale: true,
-      animateRotate: true
-    },
-    scales: {
-      yAxes: [
-        {
-          ticks: {
-            beginAtZero: true,
-            //stepSize: 1,
-            min: 0
-          }
-        }
-      ]
-    }
-  };
-  
-
-  public DoughnutChartColors: Color[] = [
-    {
-      borderColor: ['rgba(236, 156, 156, 0.7)','rgba(172, 236, 156, 0.7)'],
-      backgroundColor: ['rgba(236, 156, 156, 0.7)','rgba(172, 236, 156, 0.7)'],
-    },
-  ];
 
 
   constructor(private statsService: StatsService,
     private siteService: SiteService,
     private toastCtrl: ToastController,
-   ) { }
+    private enginService: EnginService,) { }
 
   ngOnInit() {
- 
+    this.enginService.getEngins().subscribe(res => { this.engins = res; console.log(res); });
     this.site = localStorage.getItem('site');
     this.getAllSites();
     this.getNumberOfBlocked();
     this.getNumberOfNotBlocked();
     this.getNumberOfControledSite();
     this.getNumberOfcontroled();
-    this.statsNbrTotal();
     // this.getAllStats();
   }
 
@@ -145,10 +113,7 @@ export class DashboardComponent implements OnInit {
     this.statsByMonthAndYear();
     console.log(this.dateStats);
   }
-  createImagePath(serverPath: string) {
-    return `${Constants.serverImg}${serverPath}`;
-    // return `http://localhost:4772/${serverPath}`;
-  }
+
   getChartData(stats) {
     let data = [];
     stats.forEach(element => {
@@ -165,6 +130,7 @@ export class DashboardComponent implements OnInit {
 
     return labels;
   }
+
   statsByMonthAndYear() {
     this.statsService.getStatsByMonth().subscribe((res: any) => {
       if (res.stats) {
@@ -259,17 +225,6 @@ export class DashboardComponent implements OnInit {
     });
 
     toast.present();
-  }
-
-  statsNbrTotal() {
-    this.statsService.getNbrTotal().subscribe((res: any) => {
-      if (res.nonAutoriser && res.autoriser) {
-        this.DoughnutChartData = [{ data: [this.getChartData(res.nonAutoriser),this.getChartData(res.autoriser)] }];
-        this.DoughnutChartLabels = [this.getChartLabels(res.nonAutoriser),this.getChartLabels(res.autoriser)];
-      }else {
-        this.toastAlert('Aucune résultat');
-      }
-    });
   }
 
 }

@@ -82,7 +82,6 @@ export class DashboardComponent implements OnInit {
       ]
     }
   };
-  
 
   public lineChartColors: Color[] = [
     {
@@ -91,36 +90,6 @@ export class DashboardComponent implements OnInit {
     },
   ];
 
-  public DoughnutChartData: any[];
-  public DoughnutChartLabels = [];
-  public DoughnutChartType = 'doughnut';
-  public DoughnutChartLegend = true;
-  public DoughnutChartOptions: ChartOptions = {
-    responsive: true,
-    animation: {
-      animateScale: true,
-      animateRotate: true
-    },
-    scales: {
-      yAxes: [
-        {
-          ticks: {
-            beginAtZero: true,
-            //stepSize: 1,
-            min: 0
-          }
-        }
-      ]
-    }
-  };
-  
-
-  public DoughnutChartColors: Color[] = [
-    {
-      borderColor: ['rgba(236, 156, 156, 0.7)','rgba(172, 236, 156, 0.7)'],
-      backgroundColor: ['rgba(236, 156, 156, 0.7)','rgba(172, 236, 156, 0.7)'],
-    },
-  ];
 
 
   constructor(private statsService: StatsService,
@@ -136,7 +105,6 @@ export class DashboardComponent implements OnInit {
     this.getNumberOfNotBlocked();
     this.getNumberOfControledSite();
     this.getNumberOfcontroled();
-    this.statsNbrTotal();
     // this.getAllStats();
   }
 
@@ -165,6 +133,7 @@ export class DashboardComponent implements OnInit {
 
     return labels;
   }
+
   statsByMonthAndYear() {
     this.statsService.getStatsByMonth().subscribe((res: any) => {
       if (res.stats) {
@@ -259,17 +228,6 @@ export class DashboardComponent implements OnInit {
     });
 
     toast.present();
-  }
-
-  statsNbrTotal() {
-    this.statsService.getNbrTotal().subscribe((res: any) => {
-      if (res.nonAutoriser && res.autoriser) {
-        this.DoughnutChartData = [{ data: [this.getChartData(res.nonAutoriser),this.getChartData(res.autoriser)] }];
-        this.DoughnutChartLabels = [this.getChartLabels(res.nonAutoriser),this.getChartLabels(res.autoriser)];
-      }else {
-        this.toastAlert('Aucune résultat');
-      }
-    });
   }
 
 }
