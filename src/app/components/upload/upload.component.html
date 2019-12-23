@@ -5,7 +5,7 @@
 </ion-header> -->
 <div class="container">
   <form [formGroup]="motifForm" (ngSubmit)="submit(motifForm)">
-      <label id="example-radio-group-label">Bloquer ou Débloquer la véhicule</label>
+      <label id="example-radio-group-label">Autoriser ou Non autoriser le véhicule</label>
       <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" (change)="onChange($event)" formControlName="etat">
       <mat-radio-button class="example-radio-button" *ngFor="let item of etats" [value]="item.etat">
         {{item.etat}}

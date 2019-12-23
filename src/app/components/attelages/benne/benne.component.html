@@ -110,11 +110,12 @@
           <div class="form-row justify-content-end">
             <button class="btn btn-primary mr-2" matStepperPrevious>Précédent</button>
             <button class="btn btn-primary" (click)="onSubmit(formConducteur)" mat-raised-button
-                    type="submit" matStepperNext>Suivant</button>
+                    type="submit">Suivant</button>
       
           </div>
         </mat-step>
         <mat-step [stepControl]="formConducteur">
+          <ng-template matStepLabel>أخذ صورة للعربة</ng-template>
           <app-upload></app-upload>
         </mat-step>
       </mat-horizontal-stepper>

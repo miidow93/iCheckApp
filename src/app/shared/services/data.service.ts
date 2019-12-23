@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { scan } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
+  // DataSource
   private enginDataSource = new BehaviorSubject<any[]>([]);
   currentEnginDataSource = this.enginDataSource.asObservable();
 
@@ -18,11 +20,21 @@ export class DataService {
   private blockageDataSource = new BehaviorSubject<any[]>([]);
   currentBlockageDataSource = this.blockageDataSource.asObservable();
 
+  // Checklist
   private conducteurCheckList = new BehaviorSubject<any[]>([]);
   currentConducteurCheckList = this.conducteurCheckList.asObservable();
 
   private enginCheckList = new BehaviorSubject<any[]>([]);
   currentEnginCheckList = this.enginCheckList.asObservable();
+
+  private benneCheckList = new BehaviorSubject<any[]>([]);
+  currentBenneCheckList = this.benneCheckList.asObservable();
+
+  private plateauCheckList = new BehaviorSubject<any[]>([]);
+  currentPlateauCheckList = this.plateauCheckList.asObservable();
+
+  private citerneCheckList = new BehaviorSubject<any[]>([]);
+  currentCiterneCheckList = this.citerneCheckList.asObservable();
 
   private equipementCheckList = new BehaviorSubject<any[]>([]);
   currentEquipementCheckList = this.equipementCheckList.asObservable();
@@ -30,6 +42,8 @@ export class DataService {
   private ratingCheckList = new BehaviorSubject<number>(0);
   currentRatingCheckList = this.ratingCheckList.asObservable();
 
+
+  // Rating
   private conducteurRating = new BehaviorSubject<number>(0);
   currentConducteurRating = this.conducteurRating.asObservable();
 
@@ -42,6 +56,7 @@ export class DataService {
   private vehiculeRating = new BehaviorSubject<number>(0);
   currentVehiculeRating = this.vehiculeRating.asObservable();
 
+  // IDs
   private vehiculeID = new BehaviorSubject<number>(0);
   currentVehiculeID = this.vehiculeID.asObservable();
 
@@ -53,19 +68,28 @@ export class DataService {
 
   private checkListID = new BehaviorSubject<string>('');
   currentCheckListID = this.checkListID.asObservable();
+
+
+  private checkList = new BehaviorSubject<any>(null);
+  currentCheckList = this.checkList.asObservable();
+
+  public allDataChecklist = this.checkList.pipe(
+    scan((acc, curr) => Object.assign({}, acc, curr), {})
+  );
+
   constructor() { }
 
   changeEnginDataSource(data) {
     // console.log('Engin Data Service: ', data);
     this.enginDataSource.next([...data]);
   }
-  
+
   changeConducteurDataSource(data) {
     // console.log('conducteur Data Service: ', data);
     this.conducteurDataSource.next([...data]);
   }
 
-  changeUserDataSource(data){
+  changeUserDataSource(data) {
     this.userDataSource.next([...data]);
   }
 
@@ -85,8 +109,19 @@ export class DataService {
   }
 
   changeEquipementCheckList(data) {
-    console.log('Equipement CheckList: ', data);
     this.equipementCheckList.next(data);
+  }
+
+  changeBenneCheckList(data) {
+    this.benneCheckList.next(data);
+  }
+
+  changePlateauCheckList(data) {
+    this.plateauCheckList.next(data);
+  }
+
+  changeCiterneCheckList(data) {
+    this.citerneCheckList.next(data);
   }
 
   changeRatingCheckList(data) {
@@ -123,5 +158,10 @@ export class DataService {
 
   changeCheckListID(id) {
     this.checkListID.next(id);
+  }
+
+  changeCheckList(data) {
+    console.log('Change Checklist: ', data);
+    this.checkList.next(data);
   }
 }

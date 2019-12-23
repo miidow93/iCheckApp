@@ -6,6 +6,8 @@ import { DataService } from 'src/app/shared/services/data.service';
 import { BlockageService } from 'src/app/core/services/blockage/blockage.service';
 import { Router } from '@angular/router';
 import { MatRadioChange, MatRadioButton } from '@angular/material';
+import { CheckListService } from 'src/app/core/services/check-list/check-list.service';
+import { UploadService } from 'src/app/core/services/upload/upload.service';
 
 @Component({
   selector: 'app-upload',
@@ -20,17 +22,27 @@ export class UploadComponent implements OnInit {
   vehiculeID;
   blockageID;
   checklistID;
-  etats = [{ etat: 'Bloquer' }, { etat: 'Débloquer' }];
+  checklist;
+  imagesBase = [];
+  etats = [{ etat: 'Autoriser' }, { etat: 'Non autoriser' }];
 
 
   constructor(private formBuilder: FormBuilder,
     private camera: Camera,
     private dataService: DataService,
-    private blockageService: BlockageService,
+    private checkListService: CheckListService,
+    private uploadService: UploadService,
     private router: Router) { }
 
   ngOnInit() {
-    this.dataService.currentDateBlockage.subscribe(res => {
+    this.dataService.allDataChecklist.subscribe(res => {
+      this.checklist = res;
+      console.log('Checklist Infos All: ', res);
+    });
+
+    this.dataService.changeCheckList({ etat: false });
+
+   /* this.dataService.currentDateBlockage.subscribe(res => {
       console.log('Date Blockage: ', res);
       this.date = res;
     });
@@ -48,7 +60,7 @@ export class UploadComponent implements OnInit {
     this.dataService.currentCheckListID.subscribe(res => {
       console.log('CheckList ID: ', res);
       this.checklistID = res;
-    });
+    });*/
 
     this.motifForm = this.formBuilder.group({
       motif: ['', Validators.required],
@@ -66,19 +78,23 @@ export class UploadComponent implements OnInit {
     };
 
     this.camera.getPicture(cameraOpt).then((imageData) => {
+      console.log('Image Data: ', imageData);
       let base64Image = 'data:image/jpeg;base64,' + imageData;
       this.image = base64Image;
-      console.log('Image: ', this.image);
+      /*this.uploadService.upload(this.image).subscribe(res => {
+        console.log('Path: ', res);
+      });*/
     }, (err) => {
       console.error(err);
     }).catch(err => catchError(err));
   }
+
   submit(form) {
-    /*if (!form.valid && this.image) {
+    if (!form.valid) {
       return;
     }
 
-    const data = {
+    /*const data = {
       id: this.blockageID,
       motif: form.controls['motif'].value,
       dateBlockage: this.date,
@@ -97,17 +113,28 @@ export class UploadComponent implements OnInit {
       this.router.navigate(['engins']);
     });*/
     console.log('Form: ', form);
+    this.dataService.changeCheckList({ motif: form.controls['motif'].value });
+    this.dataService.changeCheckList({ image: '' });
+    if (confirm('Etes-vous sûr de vouloir continuer ?')) {
+      console.log('checklist: ', this.checklist);
+      this.checkListService.addCheckList(this.checklist).subscribe(res => {
+        console.log('checklist: ', res);
+      });
 
+    }
   }
 
   onChange(mrChange: MatRadioChange) {
-
     console.log('Change: ', mrChange.value);
+    if (mrChange.value === 'Autoriser') {
+      this.dataService.changeCheckList({ etat: false });
+    } else {
+      this.dataService.changeCheckList({ etat: true });
+    }
     let mrButton: MatRadioButton = mrChange.source;
     console.log(mrButton.name);
     console.log(mrButton.checked);
     console.log(mrButton.inputId);
-
   }
 
 }
