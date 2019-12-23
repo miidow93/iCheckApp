@@ -129,10 +129,9 @@ export class CiterneComponent implements OnInit {
 
   onSubmit(form) {
     if (!form.valid) {
-      alert('Veuillez saisir les données du conducteur.');
+      alert('Veuillez saisir les données du conducteur!');
       return;
     }
-
     this.formValues.date = moment(new Date()).format('MM/DD/YYYY HH:mm:ss');
     this.formValues.rating = this.totalRate;
     this.formValues.site = localStorage.getItem('site');

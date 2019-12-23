@@ -23,10 +23,10 @@ export class CustomFormComponent implements OnInit {
 
   async ngOnInit() {
     // await this.service.getQuestionsFromAPI().then(responses => console.log('Attelage OnInit: ', responses));
-    await this.service.getQuestionsFromAPI(this.engin).then(async qsc => {
+    /*await this.service.getQuestionsFromAPI(this.engin).then(async qsc => {
       console.log('CustomForm: ', qsc[0]);
       this.questions = qsc;
-    });
+    });*/
   }
   
   logout() {
