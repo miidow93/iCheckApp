@@ -113,6 +113,7 @@ export class CiterneComponent implements OnInit {
     this.values['b29'] = false;
     this.values['b30'] = false;
     this.values['b31'] = false;
+    this.values['b32'] = false;
 
     this.formConducteur = this.formBuilder.group({
       cin: ['', Validators.required],

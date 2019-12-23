@@ -80,13 +80,83 @@
   background-color: rgb(247, 19, 19);
 }
 
-.farge{
+.farge {
   height: 185px;
   width: 100%;
   opacity: 0.7;
-
 }
 
 ion-content {
   --ion-background-color: #eee;
+}
+
+@media only screen and (width: 1280px) {
+  .button1 {
+    // position: absolute;
+    right: 21%;
+    top: 14px;
+    width: 22px;
+    height: 22px;
+  }
+  .button2 {
+    // position: absolute;
+    right: 54.6%;
+    top: 32px;
+    width: 22px;
+    height: 22px;
+  }
+
+  .button3 {
+    // position: absolute;
+    // left: 0px;
+    right: 67px;
+    top: 55px;
+    width: 22px;
+    height: 22px;
+  }
+  .button4 {
+    // position: absolute;
+    right: 83px;
+    top: 90px;
+    width: 22px;
+    height: 22px;
+  }
+
+  .button5 {
+    // position: absolute;
+    top: 170px;
+    right: 100px;
+    width: 22px;
+    height: 22px;
+  }
+  .button6 {
+    // position: absolute;
+    top: 230px;
+    right: 697px;
+    width: 22px;
+    height: 22px;
+  }
+  .button7 {
+    // position: absolute;
+    top: 200px;
+    right: 714px;
+    width: 22px;
+    height: 22px;
+  }
+  .button8 {
+    // position: absolute;
+    // left: 0px;
+    top: 170px;
+    right: 732px;
+    width: 22px;
+    height: 22px;
+  }
+  .button9 {
+    // position: absolute;
+    // left: 0px;
+    top: -34px;
+    right: 522px;
+    width: 22px;
+    height: 22px;
+  }
 }
