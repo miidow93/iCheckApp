@@ -177,6 +177,7 @@ export class DashboardComponent implements OnInit {
 
     this.statsService.getStatsBlockedByMonth(this.site).subscribe((res: any) => {
       if (res.stats) {
+        console.log('line chart stats : ',res.stats);
         this.lineChartData = [{ data: this.getChartData(res.stats), label: 'Camions Non Conforme' }];
         this.lineChartLabels = this.getChartLabels(res.stats);
       } else {

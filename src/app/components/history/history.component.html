@@ -90,7 +90,7 @@
   <h5 style="padding: 1%;
   color: #000000cc;
   font-weight: 350;
-  font-family: roboto;">Historiques des camions Non autorisé</h5>
+  font-family: roboto;">Historiques des camions</h5>
 
 
   <div style="padding-left: 5%; padding-right: 5%; padding-top: 3%;">
@@ -119,13 +119,12 @@
     </mat-form-field>
     </div>
     
-    <div class="mat-elevation-z8">
+    <div class="mat-elevation-z8 mt-3" >
       <div class="card">
         <div class="card-header card-header-primary" style="background:rgb(0,110,130); ">
           <div class="row">
             <div class="col-md-10">
-              <h4 class="card-title">Historique des camions non autorisé</h4>
-              <p class="card-category"> Liste des camions :</p>
+              <h4 class="card-title">Benne :</h4>
             </div>
             <div class="col-md-2 float-right">
               <button class="btn btn-info" (click)="exporter()"
@@ -137,7 +136,119 @@
         </div>
         <div class="card-body">
           <div class="table-responsive">
-            <table mat-table [dataSource]="dataSource" matSort class="table  table-hover ">
+            <table mat-table [dataSource]="dataSourceBenne" matSort class="table  table-hover ">
+
+              <!-- Position Column -->
+              <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> id </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+              </ng-container>
+              <ng-container matColumnDef="vehicule">
+                <th mat-header-cell *matHeaderCellDef> vehicule </th>
+                <td mat-cell *matCellDef="let element"> {{element.idVehiculeNavigation?.matricule}} </td>
+              </ng-container>
+
+              <!-- Name Column -->
+              <ng-container matColumnDef="dateBlockage">
+                <th mat-header-cell *matHeaderCellDef> date de blockage </th>
+                <td mat-cell *matCellDef="let element"> {{element.dateBlockage | date: 'dd/MM/yyyy-HH:MM'}} </td>
+              </ng-container>
+
+              <!-- Weight Column -->
+              <ng-container matColumnDef="motif">
+                <th mat-header-cell *matHeaderCellDef> Motif </th>
+                <td mat-cell *matCellDef="let element"> {{element.motif}} </td>
+              </ng-container>
+
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="dateDeblockage">
+                <th mat-header-cell *matHeaderCellDef> date de deblockage </th>
+                <td mat-cell *matCellDef="let element"> {{element.dateDeblockage | date: 'dd/MM/yyyy-HH:MM'}} </td>
+              </ng-container>
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+
+    <div class="mat-elevation-z8 mt-3">
+      <div class="card">
+        <div class="card-header card-header-primary" style="background:rgb(0,110,130); ">
+          <div class="row">
+            <div class="col-md-10">
+              <h4 class="card-title">Citerne : </h4>
+            </div>
+            <div class="col-md-2 float-right">
+              <button class="btn btn-info" (click)="exporter()"
+                style="border: 1px solid rgb(255, 255, 255);background-color:rgb(0,110,130)">
+                <i class="fa fa-download" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table mat-table [dataSource]="dataSourceCiterne" matSort class="table  table-hover ">
+
+              <!-- Position Column -->
+              <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> id </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+              </ng-container>
+              <ng-container matColumnDef="vehicule">
+                <th mat-header-cell *matHeaderCellDef> vehicule </th>
+                <td mat-cell *matCellDef="let element"> {{element.idVehiculeNavigation?.matricule}} </td>
+              </ng-container>
+
+              <!-- Name Column -->
+              <ng-container matColumnDef="dateBlockage">
+                <th mat-header-cell *matHeaderCellDef> date de blockage </th>
+                <td mat-cell *matCellDef="let element"> {{element.dateBlockage | date: 'dd/MM/yyyy-HH:MM'}} </td>
+              </ng-container>
+
+              <!-- Weight Column -->
+              <ng-container matColumnDef="motif">
+                <th mat-header-cell *matHeaderCellDef> Motif </th>
+                <td mat-cell *matCellDef="let element"> {{element.motif}} </td>
+              </ng-container>
+
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="dateDeblockage">
+                <th mat-header-cell *matHeaderCellDef> date de deblockage </th>
+                <td mat-cell *matCellDef="let element"> {{element.dateDeblockage | date: 'dd/MM/yyyy-HH:MM'}} </td>
+              </ng-container>
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+
+    <div class="mat-elevation-z8 mt-3">
+      <div class="card">
+        <div class="card-header card-header-primary" style="background:rgb(0,110,130); ">
+          <div class="row">
+            <div class="col-md-10">
+              <h4 class="card-title">Plateau : </h4>
+            </div>
+            <div class="col-md-2 float-right">
+              <button class="btn btn-info" (click)="exporter()"
+                style="border: 1px solid rgb(255, 255, 255);background-color:rgb(0,110,130)">
+                <i class="fa fa-download" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table mat-table [dataSource]="dataSourcePlateau" matSort class="table  table-hover ">
 
               <!-- Position Column -->
               <ng-container matColumnDef="id">
