@@ -53,10 +53,6 @@ export class DetailsComponent implements OnInit {
     this.router.navigate(['engins']);
   }
 
-  NavigatToSynthese(){
-    this.router.navigate(['admin', { outlets: { admin: 'synthese' } }]);
-  }
-
   getQuestionForAttelage(checklist) {
     this.questionService.getQuestionsForAttelages(checklist['vehicule'].engin).then(res => {
       this.questions = res;

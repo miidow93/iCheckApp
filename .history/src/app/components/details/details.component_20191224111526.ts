@@ -54,7 +54,7 @@ export class DetailsComponent implements OnInit {
   }
 
   NavigatToSynthese(){
-    this.router.navigate(['admin', { outlets: { admin: 'synthese' } }]);
+    this.router.navigate(['synthese']);
   }
 
   getQuestionForAttelage(checklist) {

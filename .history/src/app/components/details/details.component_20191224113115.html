@@ -1,20 +1,17 @@
+<div *ngIf="str == 'agent'">
+  <button mat-button style="font-size: 16px; font-weight: 400;padding: 1%;" (click)='NavigatToEngins()'>
+    <i style="font-size: 25px;padding: 5%;color: rgb(0,110,130) ;" class="fa fa-arrow-circle-left"
+      aria-hidden="true"></i>
+  </button>
+</div>
 
+<div *ngIf="str != 'agent'">
+  <button mat-button style="font-size: 16px; font-weight: 400;padding: 1%;" (click)='NavigatToSynthese()'>
+    <i style="font-size: 25px;padding: 5%;color: rgb(0,110,130) ;" class="fa fa-arrow-circle-left"
+      aria-hidden="true"></i>
+  </button>
+</div>
 <ion-content>
-
-  <div *ngIf="str == 'agent'">
-    <button mat-button style="font-size: 16px; font-weight: 400;padding: 1%;" (click)='NavigatToEngins()'>
-      <i style="font-size: 25px;padding: 5%;color: rgb(0,110,130) ;" class="fa fa-arrow-circle-left"
-        aria-hidden="true"></i>
-    </button>
-  </div>
-  
-  <div *ngIf="str != 'agent'">
-    <button mat-button style="font-size: 16px; font-weight: 400;padding: 1%;" (click)='NavigatToSynthese()'>
-      <i style="font-size: 25px;padding: 5%;color: rgb(0,110,130) ;" class="fa fa-arrow-circle-left"
-        aria-hidden="true"></i>
-    </button>
-  </div>
-  
   <div style="padding: 0%;
   padding-left: 5%;
   padding-right: 5%;
