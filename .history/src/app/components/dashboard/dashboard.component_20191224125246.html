@@ -39,19 +39,6 @@
         <ion-card style="padding: 5%;" class="shadow p-3 mb-5 bg-white rounded">
           <ion-card-header>
             <div class="row justify-content-end">
-              <button *ngIf="countplateus>0" type="button" class="btn btn-info btn-sm"  style="background: rgb(0,110,130);border-radius: 28px;margin-right: 42%;">
-                Total <span class="badge badge-light" style="    margin-left: 21%;
-                font-size: larger;">{{countplateus}}</span>
-                <span class="sr-only">unread messages</span>
-              </button>
-
-              <button *ngIf="countplateus==null" type="button" class="btn btn-info btn-sm"  style="background: rgb(0,110,130);border-radius: 28px;margin-right: 42%;">
-                Total <span class="badge badge-light" style="    margin-left: 21%;
-                font-size: larger;">0</span>
-                <span class="sr-only">unread messages</span>
-              </button>
-
-
               <img class="col-sm-4" [src]="plateauIcon" >
             </div>
             <hr class="section-break-5" />
@@ -97,19 +84,11 @@
           <ion-card-header>
             <div class="row justify-content-end">
 
-              <button type="button" *ngIf="countbenne>0" class="btn btn-info btn-sm"  style="background: rgb(0,110,130);border-radius: 28px;margin-right: 42%;">
+              <button type="button" class="btn btn-info btn-sm"  style="background: rgb(0,110,130);border-radius: 28px;margin-right: 42%;">
                 Total <span class="badge badge-light" style="    margin-left: 21%;
-                font-size: larger;">{{countbenne}}</span>
+                font-size: inherit;">{{countbenne}}</span>
                 <span class="sr-only">unread messages</span>
               </button>
-
-
-              <button *ngIf="countbenne==null" type="button" class="btn btn-info btn-sm"  style="background: rgb(0,110,130);border-radius: 28px;margin-right: 42%;">
-                Total <span class="badge badge-light" style="    margin-left: 21%;
-                font-size: larger;">0</span>
-                <span class="sr-only">unread messages</span>
-              </button>
-
               <img class="col-sm-4" [src]="benneIcon">
             </div>
             <ion-card-title>
@@ -156,20 +135,6 @@
         <ion-card style="padding: 5%;" class="shadow p-3 mb-5 bg-white rounded">
           <ion-card-header>
             <div class="row justify-content-end">
-              <button *ngIf="countciternes>0" type="button" class="btn btn-info btn-sm"  style="background: rgb(0,110,130);border-radius: 28px;margin-right: 42%;">
-                Total <span class="badge badge-light" style="    margin-left: 21%;
-                font-size: larger;">{{countciternes}}</span>
-                <span class="sr-only">unread messages</span>
-              </button>
-
-              
-
-              <button *ngIf="countciternes==null" type="button" class="btn btn-info btn-sm"  style="background: rgb(0,110,130);border-radius: 28px;margin-right: 42%;">
-                Total <span class="badge badge-light" style="    margin-left: 21%;
-                font-size: larger;">0</span>
-                <span class="sr-only">unread messages</span>
-              </button>
-
               <img class="col-sm-4" [src]="citerneIcon">
             </div>
             <hr class="section-break-5"  />
