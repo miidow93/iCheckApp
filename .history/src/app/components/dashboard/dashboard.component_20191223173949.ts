@@ -59,7 +59,7 @@ export class DashboardComponent implements OnInit {
   public barChartColors: Color[] = [
     {
       borderColor: 'black',
-      backgroundColor: 'rgb(0, 110, 130)',
+      backgroundColor: '#eedd41',
     },
   ];
 

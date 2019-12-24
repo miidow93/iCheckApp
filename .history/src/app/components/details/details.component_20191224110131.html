@@ -94,9 +94,9 @@
                   <i class="fa fa-times" aria-hidden="true" style="font-size: 25px;color:red"></i>&nbsp;&nbsp;
                   <span>{{option.key}}</span>
                 </span>
-              </mat-list-item>
 
-                <mat-list-item *ngFor="let option of question['options'] |  slice:6:8" style="padding-right: 5%;">
+
+                <mat-list-item *ngFor="let option of question['options'] |  slice:4:8" style="padding-right: 5%;">
                   <span *ngIf="option.value == true ">
                     <!--
                    <button  md-raised-button class="btn btn-success background-button" 
@@ -165,7 +165,7 @@
 
 
 
-              <mat-list-item *ngFor="let option of question['options'] |  slice:4:6" style="padding-right: 5%;">
+              <mat-list-item *ngFor="let option of question['options'] |  slice:2:6" style="padding-right: 5%;">
                 <span *ngIf="option.value == true ">
                   <!--
                      <button  md-raised-button class="btn btn-success background-button" 
@@ -206,7 +206,7 @@
               </mat-list-item>
 
 
-            </div>
+            
           </div>
         </div>
 
