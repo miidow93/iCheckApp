@@ -1,6 +1,6 @@
 export enum Constants {
-    // api = 'http://192.168.1.10:5000/api/',
-    // serverImg = 'http://192.168.1.10:5000/'
+    // api = 'http://192.168.1.12:5000/api/',
+    // serverImg = 'http://192.168.1.12:5000/'
 
     api = 'http://localhost:2229/api/',
     serverImg = 'http://localhost:2229/',

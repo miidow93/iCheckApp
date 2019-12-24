@@ -177,7 +177,6 @@ export class DashboardComponent implements OnInit {
 
     this.statsService.getStatsBlockedByMonth(this.site).subscribe((res: any) => {
       if (res.stats) {
-        console.log('line chart stats : ',res.stats);
         this.lineChartData = [{ data: this.getChartData(res.stats), label: 'Camions Non Conforme' }];
         this.lineChartLabels = this.getChartLabels(res.stats);
       } else {
@@ -229,29 +228,18 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  countbenneBlock;
-  countciternesBlock;
-  countplateausBlock;
-  countbenneNotBlock;
-  countciternesNotBlock;
-  countplateausNotBlock;
+  countbenne;
+  countciternes;
+  countplateus
   getAllSites() {
     this.statsService.getStats().subscribe(res => {
       console.log('Dashboard Stats: ', res);
-      //Benne
       this.bennes = res["bennes"];
-      this.countbenneBlock = res["bennes"].map(x=> x.blockedCount).reduce((o,i)=>o+i);
-      this.countbenneNotBlock = res["bennes"].map(x => x.notBlockedCount).reduce((o,i)=>o+i);
-      console.log('NotBlockedBenne : ',this.countbenneNotBlock);
-      //citerne
+      this.countbenne = this.bennes.length;
       this.citernes = res["citernes"];
-      console.log('Citerne count :',res["citernes"].map(x=>x.blockedCount).reduce((o,i)=>o+i))
-      this.countciternesBlock = res["citernes"].map(x=>x.blockedCount).reduce((o,i)=>o+i);
-      this.countciternesNotBlock = res["citernes"].map(x => x.notBlockedCount).reduce((o,i)=>o+i);
-      //Plateau
+      this.countciternes = this.citernes.length;
       this.plateaus = res["plateaus"];
-      this.countplateausBlock = res["plateaus"].map(x=>x.blockedCount).reduce((o,i)=>o+i);
-      this.countplateausNotBlock = res["plateaus"].map(x => x.notBlockedCount).reduce((o,i)=>o+i);
+      this.countplateus = this.countplateus.length;
     })
   }
 
