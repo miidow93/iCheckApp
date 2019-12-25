@@ -4,15 +4,22 @@
   </ion-toolbar>
 </ion-header> -->
 <div class="container">
-    <form [formGroup]="motifForm" (ngSubmit)="submit(motifForm)">
-      <div>
-        <mat-form-field class="w-100 h-50">
-          <input matInput placeholder="Motif" formControlName="motif">
-        </mat-form-field>
-        <div class="form-row justify-content-end">
-            <button mat-stroked-button class="mr-2" color="warn" (click)="takePicture()">Prendre une photo</button> 
-            <button type="submit" class="btn btn-success" mat-stroked-button>envoyer</button>
-        </div>
+  <form [formGroup]="motifForm" (ngSubmit)="submit(motifForm)">
+      <label id="example-radio-group-label">Autoriser ou Non autoriser le véhicule</label>
+      <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" (change)="onChange($event)" formControlName="etat">
+      <mat-radio-button class="example-radio-button" *ngFor="let item of etats" [value]="item.etat">
+        {{item.etat}}
+      </mat-radio-button>
+    </mat-radio-group>
+    <div>
+      <mat-form-field class="w-100 h-50">
+        <input matInput placeholder="Motif" formControlName="motif">
+      </mat-form-field>
+
+      <div class="form-row justify-content-end">
+        <button mat-stroked-button class="mr-2" color="warn" (click)="takePicture()">Prendre une photo</button>
+        <button type="submit" class="btn btn-primary" style="background-color: rgb(0,110,130);float: right;">Envoyer</button>
       </div>
-    </form>
- </div>
+    </div>
+  </form>
+</div>

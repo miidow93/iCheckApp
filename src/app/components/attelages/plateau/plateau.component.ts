@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
 import { FormGroup, Validators, FormBuilder, NgForm } from '@angular/forms';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { CheckList } from 'src/app/shared/models/checkList';
@@ -9,7 +9,7 @@ import { VehiculeService } from 'src/app/core/services/vehicule/vehicule.service
 import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { startWith, map } from 'rxjs/operators';
-import { MatAutocompleteSelectedEvent } from '@angular/material';
+import { MatAutocompleteSelectedEvent, MatStepper } from '@angular/material';
 import { Icons } from 'src/app/shared/icons';
 
 
@@ -20,6 +20,7 @@ import { Icons } from 'src/app/shared/icons';
 
 })
 export class PlateauComponent implements OnInit {
+  @ViewChild(MatStepper, {static: false}) stepper: MatStepper;
 
   formConducteur: FormGroup;
   filteredConducteurs: Observable<any[]>;
@@ -156,7 +157,9 @@ export class PlateauComponent implements OnInit {
       checklistAttelage: Object.values(this.values)
     };
     console.log('Form: ', this.formValues);
-    if (confirm('Etes-vous sûr de vouloir continuer ?')) {
+    this.dataService.changeCheckList(this.formValues);
+    this.stepper.next();
+    /*if (confirm('Etes-vous sûr de vouloir continuer ?')) {
       this.checkListService.addCheckList(this.formValues).subscribe(res => {
         console.log('checklist: ', res);
         // this.dataService.changeDateBlockage(res);
@@ -174,7 +177,7 @@ export class PlateauComponent implements OnInit {
 
     } else {
       return;
-    }
+    }*/
 
   }
 
@@ -249,8 +252,14 @@ export class PlateauComponent implements OnInit {
     this.nomComplet.next(this.conducteurs.find(opt => opt.cin == event.option.value).nomComplet);
     this.formConducteur.controls.nomComplet.patchValue(this.nomComplet.value);
   }
+  
   NavigatToEngins(){
     this.router.navigate(['engins']);
+  }
+
+  completed() {
+    console.log('Completed');
+    this.stepper.selected.completed = true;
   }
 
 }

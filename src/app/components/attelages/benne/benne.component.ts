@@ -105,7 +105,7 @@ export class BenneComponent implements OnInit {
       this.totalRate = parseFloat((res * 100).toFixed(2));
       console.log('rate: ', this.totalRate);
     });
-
+    this.dataService.allDataChecklist.subscribe();
     this.dataService.currentDateBlockage.subscribe(res => console.log('Date Blockage: ', res));
     this.dataService.currentVehiculeID.subscribe(res => console.log('Vehicule ID: ', res));
     this.dataService.currentBlockageID.subscribe(res => console.log('Blockage ID: ', res));
@@ -151,7 +151,6 @@ export class BenneComponent implements OnInit {
     this.formValues.date = moment(new Date()).format('MM/DD/YYYY HH:mm:ss');
     this.formValues.rating = this.totalRate;
     this.formValues.site = localStorage.getItem('site');
-    this.formValues.etat = this.totalRate < 40 ? true : false;
     this.formValues.conducteur = { cin: form.controls['cin'].value, nomComplet: form.controls['nomComplet'].value };
     this.formValues.vehicule = { matricule: form.controls['matricule'].value, engin: 'Benne' };
     this.formValues.catchAll = {
@@ -161,25 +160,18 @@ export class BenneComponent implements OnInit {
       checklistAttelage: Object.values(this.values)
     };
     console.log('Form: ', this.formValues);
-    if (confirm('Etes-vous sûr de vouloir continuer ?')) {
-      this.checkListService.addCheckList(this.formValues).subscribe(res => {
-        console.log('checklist: ', res);
+    this.dataService.changeCheckList(this.formValues);
+    this.stepper.next();
+    /*
         // this.dataService.changeDateBlockage(res);
         this.dataService.changeVehiculeID(res['vehicule']['idVehicule']);
         this.dataService.changeBlockageID(res['vehicule']['idBlockage']);
         this.dataService.changeCheckListID(res['id']);
         this.dataService.changeDateBlockage(moment(new Date(res['date'])).format('MM/DD/YYYY'));
       });
-
-      // if (this.totalRate < 40) {
-      //   this.router.navigate(['motif']);
-      // } else {
-      //   this.router.navigate(['engins']);
-      // }
-
     } else {
       return;
-    }
+    }*/
 
   }
 
@@ -202,7 +194,7 @@ export class BenneComponent implements OnInit {
       }
     }
     console.log('Values: ', this.values)
-    // this.dataService.changeEquipementCheckList(this.values);
+    // this.dataService.changeBenneCheckList(this.values);
   }
 
   NavigatToEngins(){
@@ -260,4 +252,5 @@ export class BenneComponent implements OnInit {
     console.log('Completed');
     this.stepper.selected.completed = true;
   }
+
 }

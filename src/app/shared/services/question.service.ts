@@ -49,6 +49,7 @@ export class QuestionService {
   }*/
 
   async getQuestionsForAttelages(engin) {
+    this.questions = [];
     // tslint:disable-next-line:no-shadowed-variable
     await this.http.get(`./assets/checkList/${engin}.json`).pipe(take(1)).toPromise().then(async (res) => {
       console.log('Service: ', res);
