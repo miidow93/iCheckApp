@@ -116,8 +116,8 @@
           </div>
           <div style=" padding-top: 10.5%;">
             <button mat-button style="float: left;" matStepperPrevious>Précédent</button>
-            <button class="btn btn-primary" (click)="onSubmit(formConducteur)"
-              style="background-color: rgb(0,110,130);float: right;" matStepperNext>Suivant</button>
+            <button class="btn btn-primary"
+              style="background-color: rgb(0,110,130);float: right;" (click)="onSubmit(formConducteur)" matStepperNext>Suivant</button>
           </div>
         </mat-step>
         <mat-step [stepControl]="formConducteur">

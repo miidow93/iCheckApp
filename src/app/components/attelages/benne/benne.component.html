@@ -107,15 +107,14 @@
         <mat-step>
           <ng-template matStepLabel>Equipement المعدات المرفقة</ng-template>
           <app-check-list-equipement></app-check-list-equipement>
-          <div class="form-row justify-content-end">
-            <button class="btn btn-primary mr-2" matStepperPrevious>Précédent</button>
-            <button class="btn btn-primary" (click)="onSubmit(formConducteur)" mat-raised-button
-                    type="submit">Suivant</button>
-      
+
+          <div style=" margin-top: 20.5%;">
+            <button mat-button style="float: left;" matStepperPrevious>Précédent</button>
+            <button class="btn btn-primary" (click)="onSubmit(formConducteur)"  style="background-color: rgb(0,110,130);float: right;" matStepperNext>Suivant</button>
           </div>
         </mat-step>
         <mat-step [stepControl]="formConducteur">
-          <ng-template matStepLabel>أخذ صورة للعربة</ng-template>
+          <ng-template matStepLabel>اخذ صورة للعربة</ng-template>
           <app-upload></app-upload>
         </mat-step>
       </mat-horizontal-stepper>

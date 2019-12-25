@@ -92,4 +92,8 @@ export class StatsService {
   getControled() {
     return this.http.get(`${API}controled`);
   }
+
+  getNbrTotal(){
+    return this.http.get(`${API}NbrTotal`);
+  }
 }

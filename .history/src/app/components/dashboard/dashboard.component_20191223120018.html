@@ -1,0 +1,180 @@
+<!--<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Dashboard</ion-title>
+  </ion-toolbar>
+</ion-header>-->
+
+
+<ion-content>
+  <div class="mdl-toolbar">
+    <div class="logo">
+      <ion-title class="ion-padding" style="    font-weight: 350;
+      color: #000000ba;
+      font-size: 19px;">
+        Dashboard
+      </ion-title>
+    </div>
+  </div>
+
+  <ion-grid style="margin: 3%;">
+    <ion-row>
+      <!-- <ion-title>
+        <ion-icon style="zoom:6.0;" [src]="truck"></ion-icon>
+      </ion-title> -->
+      <ion-col size="12" class="row justify-content-center" style="padding: 1%;">
+        <ion-title>
+          <span style="font-size: 17px; padding: 1%;font-weight: 400;
+          color: #3c4858; " class="mr-2">Nombre totals des camions Controlés :</span>
+
+          <span class="badge badge-info" style="background-color: rgb(0,110,130);">{{Controled}}</span></ion-title>
+
+      </ion-col>
+
+
+      <div class="container">
+        <div class="row" >
+          <div>
+            <div class="card card-profile">
+              <div class="card-avatar">
+                <img class="img" [src]="plateauIcon" />
+              </div>
+              <div class="card-body" *ngFor="let plateau of plateaus">
+                  <span class="badge badge-info">{{plateau.label | uppercase | slice:0:3}}</span>
+                  <span class="badge badge-danger "
+                   >{{plateau.blockedCount ? plateau.blockedCount : 0}}</span>
+                  <span class="badge badge-success"
+                    >{{plateau.notBlockedCount ? plateau.notBlockedCount : 0}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+
+      
+<!--
+      <ion-col size="4">
+        <ion-card style="padding: 5%;" class="shadow p-3 mb-5 bg-white rounded">
+          <ion-card-header>
+            <div class="row justify-content-end">
+              <img class="col-sm-4" [src]="plateauIcon">
+            </div>
+            <hr class="section-break-5" />
+            <ion-card-title>
+              <ion-grid  style="margin-left: 20%;">
+                <ion-row *ngFor="let plateau of plateaus">
+                  <ion-col size="6">
+                    <span class="badge badge-info" style="width: 40px;background-color: rgb(0,110,130);">{{plateau.label | uppercase | slice:0:3}}</span>
+                  </ion-col>
+                  <ion-col size="6">
+                    <span class="badge badge-danger "
+                      style="width: 40px;margin: 3%;">{{plateau.blockedCount ? plateau.blockedCount : 0}}</span>
+                    <span class="badge badge-success"
+                      style="width: 40px;">{{plateau.notBlockedCount ? plateau.notBlockedCount : 0}}</span>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>-->
+      <ion-col size="4">
+        <ion-card style="padding: 5%;" class="shadow p-3 mb-5 bg-white rounded">
+          <ion-card-header>
+            <div class="row justify-content-end">
+              <img class="col-sm-4" [src]="benneIcon">
+            </div>
+            <ion-card-title>
+              <hr class="section-break-5" />
+              <ion-grid style="margin-left: 20%;">
+                <ion-row *ngFor="let benne of bennes">
+                  <ion-col size="6">
+                    <span class="badge badge-info"
+                      style="width: 40px;background-color: rgb(0,110,130);">{{benne.label | uppercase | slice:0:3}}</span>
+                  </ion-col>
+                  <ion-col size="6">
+                    <span class="badge badge-danger "
+                      style="width: 40px;margin: 3%;">{{benne.blockedCount ? benne.blockedCount : 0}}</span>
+                    <span class="badge badge-success"
+                      style="width: 40px;">{{benne.notBlockedCount ? benne.notBlockedCount : 0}}</span>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+
+      <ion-col size="4">
+        <ion-card style="padding: 5%;" class="shadow p-3 mb-5 bg-white rounded">
+          <ion-card-header>
+            <div class="row justify-content-end">
+              <img class="col-sm-4" [src]="citerneIcon">
+            </div>
+            <hr class="section-break-5" style="padding-bottom: 2.7%;"/>
+            <ion-card-title>
+              <ion-grid style="margin-left: 20%;">
+                <ion-row *ngFor="let citerne of citernes">
+                  <ion-col size="6">
+                    <span class="badge badge-info" style="width: 40px;background-color: rgb(0,110,130); ">{{citerne.label | uppercase | slice:0:3}}</span>
+                  </ion-col>
+                  <ion-col size="6">
+                    <span class="badge badge-danger"
+                      style="width: 40px;margin: 3%;">{{citerne.blockedCount ? citerne.blockedCount : 0}}</span>
+                    <span class="badge badge-success"
+                      style="width: 40px;">{{citerne.notBlockedCount ? citerne.notBlockedCount : 0}}</span>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+
+      <ion-col size="12">
+        <ion-card style="padding: 2%;" class="shadow p-3 mb-5 bg-white rounded">
+          <ion-card-header>
+            <ion-card-title>
+              <span style="font-size: 17px; font-weight: 400;
+                color: #3c4858; " class="mr-2">Synthese mensuel des camions Non Autorisé. Mois
+                {{dateStats.value | date: 'MM/yyyy'}}</span>
+            </ion-card-title>
+
+
+          </ion-card-header>
+          <br>
+          <ion-card-content>
+            <div>
+              <canvas baseChart *ngIf="lineChartData && lineChartData.length > 0" [datasets]="lineChartData"
+                [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors"
+                [legend]="lineChartLegend" [chartType]="lineChartType">
+              </canvas>
+              <div *ngIf="messageLineChart">
+                {{messageLineChart}}
+              </div>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-card class="shadow p-3 mb-5 bg-white rounded">
+        <ion-card-content>
+          <legend style="font-size: 15px; font-weight: 400;
+          color: #3c4858; " class="mr-2">Synthese mensuel des camions controlé. Mois
+            {{dateStats.value | date: 'MM/yyyy'}}</legend>
+          <div class="container Chart">
+            <div class="float-center">
+              <canvas baseChart *ngIf="barChartData && barChartData.length > 0" [datasets]="barChartData"
+                [labels]="barChartLabels" [options]="barChartOptions" [colors]="barChartColors"
+                [legend]="barChartLegend" [chartType]="barChartType">
+              </canvas>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </ion-row>
+  </ion-grid>
+</ion-content>

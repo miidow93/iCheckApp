@@ -144,7 +144,7 @@ export class BenneComponent implements OnInit {
 
   onSubmit(form) {
     if (!form.valid) {
-      alert('Veuillez saisir les données.');
+      alert('Veuillez saisir les données du conducteur!');
       return;
     }
 
@@ -162,9 +162,7 @@ export class BenneComponent implements OnInit {
     console.log('Form: ', this.formValues);
     this.dataService.changeCheckList(this.formValues);
     this.stepper.next();
-    /*if (confirm('Etes-vous sûr de vouloir continuer ?')) {
-      this.checkListService.addCheckList(this.formValues).subscribe(res => {
-        console.log('checklist: ', res);
+    /*
         // this.dataService.changeDateBlockage(res);
         this.dataService.changeVehiculeID(res['vehicule']['idVehicule']);
         this.dataService.changeBlockageID(res['vehicule']['idBlockage']);

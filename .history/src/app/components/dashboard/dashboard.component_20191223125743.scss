@@ -1,0 +1,83 @@
+$body-color: slategray;
+$body-text-size: 1.6rem;
+$break-color: rgb(200, 200, 200);
+$page-color: snow;
+$shadow-color: rgba(0, 0, 0, .15);
+$outline-color: rgba(0, 0, 0, .1);
+$text-color: lighten(black, 30%);
+
+.left-style {
+  float: left;
+  width: 45%;
+}
+.right-style {
+  float: right;
+  width: 45%;
+}
+
+.card-data {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.section-break-5 {
+  background-color: transparent;
+  border: 0;
+  border-top: 1px solid $break-color;
+  display: block;
+  height: 0;
+  margin: 1rem auto 1rem;
+  text-align: center;
+  width: 50%;
+
+  &:before {
+    background-color: $page-color;
+    color: darken($break-color, 20%);
+    display: inline-block;
+    font-size: $body-text-size;
+    left: 50%;
+    letter-spacing: 0;
+    line-height: $body-text-size;
+    text-indent: 0;
+    text-rendering: geometricPrecision;
+    transform: translateY(-65%);
+    width: 15px;
+  }
+}
+
+.card {
+  width: 30%;
+  height: 100px;
+  line-height: 100px;
+  background-color: grey;
+  margin: 10px;
+  color: white;
+//   text-align: center;
+//   vertical-align: middle;
+}
+
+.iconSize {
+  width: 100%;
+  height: 75%;
+}
+
+ion-content .mdl-toolbar {
+  // .logo ion-title {
+  //   color: white;
+  //   white-space: nowrap;
+  //   font-weight: 400;
+  //   line-height: 30px;
+  // }
+  // background: linear-gradient(rgb(0, 110, 130), rgba(0, 110, 130, 0.8));
+  border: 0;
+    font-size: 16px;
+    border-radius: 0;
+    min-height: 50px;
+    background-color: rgb(255, 255, 255);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 5px 15px;
+}
+
+

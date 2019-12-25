@@ -12,6 +12,7 @@ import { FormControl } from '@angular/forms';
 import * as moment from 'moment';
 import { faFilter, faSyncAlt, faBan, faCircle } from '@fortawesome/free-solid-svg-icons';
 import { CheckListRefService } from 'src/app/core/services/checkListRef/check-list-ref.service';
+import { DataService } from 'src/app/shared/services/data.service';
 
 
 @Component({
@@ -39,7 +40,9 @@ export class EnginsComponent implements OnInit {
 
   constructor(private enginService: EnginService,
       private router: Router,
-      private platform: Platform,private checkListRefService: CheckListRefService,
+      private platform: Platform,
+      private checkListRefService: CheckListRefService,
+      private dataService: DataService,
       private activatedRoute: ActivatedRoute) {
         // this.initializeApp();
   }
@@ -56,6 +59,7 @@ export class EnginsComponent implements OnInit {
 
 
   ngOnInit() {
+    this.dataService.allDataChecklist.subscribe();
     this.enginService.getEngins().subscribe(res => { this.engins = res; console.log(res); });
     this.checkListRefService.getAllCheckListRef().subscribe((res: any) => {
       console.log('CheckListRefs: ', res);
@@ -64,6 +68,8 @@ export class EnginsComponent implements OnInit {
       this.oldDataSource = this.dataSource.data;
       this.data = <any[]>this.dataSource.data;
     });
+    
+    
   }
 
   ngAfterViewInit() {

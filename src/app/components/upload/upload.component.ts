@@ -114,11 +114,20 @@ export class UploadComponent implements OnInit {
     });*/
     console.log('Form: ', form);
     this.dataService.changeCheckList({ motif: form.controls['motif'].value });
-    this.dataService.changeCheckList({ image: '' });
+    this.dataService.changeCheckList({ image: this.image != null ? this.image : '' });
+    this.dataService.changeCheckList(
+      {
+        controlleur: {
+          id: localStorage.getItem('id'), 
+          nomComplet: localStorage.getItem('nomComplet'), 
+          username: localStorage.getItem('username')
+        }
+      });
     if (confirm('Etes-vous sûr de vouloir continuer ?')) {
       console.log('checklist: ', this.checklist);
       this.checkListService.addCheckList(this.checklist).subscribe(res => {
         console.log('checklist: ', res);
+        this.router.navigate(['engins']);
       });
 
     }
