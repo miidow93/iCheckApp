@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Constants } from 'src/app/shared/constants';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError, tap, map } from 'rxjs/operators';
 import { CheckList } from 'src/app/shared/models/checkList';
 
 const API = Constants.api + 'checkList';
@@ -49,4 +49,9 @@ export class CheckListService {
   private log(message: string) {
     console.log(message);
   }
+
+  getAllCheckListByType(type){
+    return this.http.get(`${API}/byType/${type}`);
+  }
 }
+ 
