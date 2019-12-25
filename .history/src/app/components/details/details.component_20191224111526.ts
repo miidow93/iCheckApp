@@ -22,15 +22,13 @@ export class DetailsComponent implements OnInit {
   str;
   checkListValues;
 
-  questions: QuestionBase<any>[] = [];
+  @Input() questions: QuestionBase<any>[] = [];
   form: FormGroup;
 
   constructor(private activatedRoute: ActivatedRoute,
     private questionService: QuestionService,
     private checkListService: CheckListService,private router:Router) { }
-
   ngOnInit() {
-    this.questions = [];
     this.activatedRoute.params.subscribe(param => {
       console.log(param)
       this.checkListService.getCheckListByID(param.id).subscribe(checklist => {
@@ -56,7 +54,7 @@ export class DetailsComponent implements OnInit {
   }
 
   NavigatToSynthese(){
-    this.router.navigate(['admin', { outlets: { admin: 'synthese' } }]);
+    this.router.navigate(['synthese']);
   }
 
   getQuestionForAttelage(checklist) {

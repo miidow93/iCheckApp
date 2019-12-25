@@ -20,7 +20,9 @@ import { FileOpener } from '@ionic-native/file-opener/ngx';
 export class HistoryComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'vehicule', 'dateBlockage', 'motif', 'dateDeblockage'];
-  dataSource = new MatTableDataSource();
+  dataSourceBenne = new MatTableDataSource();
+  dataSourceCiterne = new MatTableDataSource();
+  dataSourcePlateau = new MatTableDataSource();
   dateEntree = new FormControl(moment());
   dateSortie = new FormControl(moment());
   faFilter = faFilter;
@@ -29,7 +31,9 @@ export class HistoryComponent implements OnInit {
   faCircle = faCircle;
   data = [];
   de; ds;
-  oldDataSource;
+  oldDataSourceBenne;
+  oldDataSourceCiterne;
+  oldDataSourcePlateau;
   constructor(private blockageService: BlockageService,
     private file: File,
     private fileTransfer: FileTransfer,
@@ -38,10 +42,13 @@ export class HistoryComponent implements OnInit {
     private toastCtrl: ToastController,
     private platform: Platform) { }
 
-  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: false }) paginatorBenne: MatPaginator;
+  @ViewChild(MatPaginator, { static: false }) paginatorCiterne: MatPaginator;
+  @ViewChild(MatPaginator, { static: false }) paginatorPlateau: MatPaginator;
 
   ngOnInit() {
     this.getBlockage()
+    
   }
   ngAfterViewInit() {
     this.de = moment(this.dateEntree.value).format('YYYY-MM-DD') + 'T00:00:00';
@@ -49,15 +56,28 @@ export class HistoryComponent implements OnInit {
   }
 
   applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.dataSourceBenne.filter = filterValue.trim().toLowerCase();
+    this.dataSourceCiterne.filter = filterValue.trim().toLowerCase();
+    this.dataSourcePlateau.filter = filterValue.trim().toLowerCase();
   }
   getBlockage() {
     this.blockageService.getBolckedEngins().subscribe((res: any[]) => {
-      // this.dataService.changeBlockageDataSource(res);
-      this.dataSource.data = res;
-      this.dataSource.paginator = this.paginator
-      this.oldDataSource = this.dataSource.data;
-      this.data = <any[]>this.dataSource.data;
+      // BENNE
+      console.log('Data :',res);
+      this.dataSourceBenne.data = res.filter(x=>x.idVehiculeNavigation.idEnginNavigation.nomEngin === 'Benne');
+      this.dataSourceBenne.paginator = this.paginatorBenne;
+      this.oldDataSourceBenne = this.dataSourceBenne.data;
+      this.data = <any[]>this.dataSourceBenne.data;
+      // CITERNE
+      this.dataSourceCiterne.data = res.filter(x=>x.idVehiculeNavigation.idEnginNavigation.nomEngin === 'Citerne');
+      this.dataSourceCiterne.paginator = this.paginatorCiterne;
+      this.oldDataSourceCiterne = this.dataSourceCiterne.data;
+      this.data = <any[]>this.dataSourceCiterne.data;
+      // PLATEAU
+      this.dataSourcePlateau.data = res.filter(x=>x.idVehiculeNavigation.idEnginNavigation.nomEngin === 'Plateau');
+      this.dataSourcePlateau.paginator = this.paginatorPlateau
+      this.oldDataSourcePlateau = this.dataSourcePlateau.data;
+      this.data = <any[]>this.dataSourcePlateau.data;
     });
     // this.dataService.currentBlockageDataSource.subscribe(data => { 
     //   this.dataSource.data = data; 
@@ -108,22 +128,22 @@ export class HistoryComponent implements OnInit {
   }
 
 
-  filtrer() {
-    console.log('DataSource: ', this.dataSource.data);
-    if (this.de && this.ds) {
-      if (this.de > this.ds) {
-        console.log(this.de);
-        alert('La date d\'entree doit être supérieure à la date de sortie');
-      } else {
-        const filter = this.data.filter(x => x.dateBlockage >= this.de && x.dateBlockage <= this.ds);
-        console.log('filter : ', filter);
-        this.dataSource.data = filter;
-      }
-    }
-  }
-  refresh() {
-    this.dataSource.data = this.oldDataSource;
-  }
+  // filtrer() {
+  //   console.log('DataSource: ', this.dataSource.data);
+  //   if (this.de && this.ds) {
+  //     if (this.de > this.ds) {
+  //       console.log(this.de);
+  //       alert('La date d\'entree doit être supérieure à la date de sortie');
+  //     } else {
+  //       const filter = this.data.filter(x => x.dateBlockage >= this.de && x.dateBlockage <= this.ds);
+  //       console.log('filter : ', filter);
+  //       this.dataSource.data = filter;
+  //     }
+  //   }
+  // }
+  // refresh() {
+  //   this.dataSource.data = this.oldDataSource;
+  // }
   exporter() {
     console.log('Date: ', this.de + ' ' + this.ds);
     const date = { startDate: this.de.toString(), endDate: this.ds.toString() };
