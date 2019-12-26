@@ -20,8 +20,8 @@ import { CheckListService } from 'src/app/core/services/check-list/check-list.se
 })
 export class HistoryComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'vehicule', 'dateBlockage', 'motif', 'dateDeblockage'];
-  displayedColumnsBenne: string[] = ['controlleur','vehicule','conducteur','etat','motif','control1','control2','control3','control4','control5','control6','control7','control8','control9','control10']
+  // displayedColumns: string[] = ['id', 'vehicule', 'dateBlockage', 'motif', 'dateDeblockage'];
+  displayedColumnsBenne: string[] = ['controlleur','site','matricule','type','conducteur','etat','motif','date','control1','control2','control3','control4','control5','control6','control7','control8','control9','control10']
   dataSourceBenne = new MatTableDataSource();
   dataSourceCiterne = new MatTableDataSource();
   dataSourcePlateau = new MatTableDataSource();
@@ -211,7 +211,7 @@ export class HistoryComponent implements OnInit {
   }
 
   getAllcheckByType(){
-    this.check.getAllCheckListByType('Benne').subscribe(
+    this.check.getAllCheckListByType().subscribe(
       ((res : any) =>{
         console.log('Benne Data :',res)
       this.dataSourceBenne.data = res;

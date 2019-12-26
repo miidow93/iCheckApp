@@ -47,6 +47,7 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 import { FileTransfer } from '@ionic-native/file-transfer/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
+import { VehiculeComponent } from './components/vehicule/vehicule.component';
 
 export function getToken() {
   return localStorage.getItem('token');
@@ -79,7 +80,8 @@ export function getToken() {
     HistoryComponent,
     UploadComponent,
     UserComponent,
-    ListUserComponent
+    ListUserComponent,
+    VehiculeComponent
   ],
   entryComponents: [EditEnginsComponent,EditConducteurComponent],
   imports: [

@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from 'src/app/core/services/user/user.service';
 import { RoleService } from 'src/app/core/services/role/role.service';
 import { SiteService } from 'src/app/core/services/site/site.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -17,7 +18,9 @@ export class UserComponent implements OnInit {
   constructor(private siteService: SiteService,
     private userService: UserService,
     private formBuilder: FormBuilder,
-    private roleService: RoleService) { }
+    private roleService: RoleService,
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.userForm = this.formBuilder.group({
@@ -43,6 +46,9 @@ export class UserComponent implements OnInit {
     console.log(form.value);
     this.userService.addUsers(form.value).subscribe();
     this.userForm.reset();
+  }
+  navigateTo(){
+    this.router.navigate(['admin', { outlets: { admin: ['user'] } }]);
   }
 
 }

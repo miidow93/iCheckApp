@@ -141,6 +141,13 @@
                         <p>Gestion des utilisateurs</p>
                     </a>
                 </li>
+                <li class="nav-item" [routerLink]="[{ outlets: { admin: ['vehicule'] } }]" routerLinkActive="active"
+                    style="width: 105%;">
+                    <a class="nav-link" [routerLink]="[{ outlets: { admin: ['vehicule'] } }]">
+                        <i class="material-icons">supervised_user_circle</i>
+                        <p>Gestion des vehicules</p>
+                    </a>
+                </li>
                 <li class="nav-item active-pro ">
                     <a class="nav-link" [routerLink]="[{ outlets: { admin: [logout] } }]" href="javascript:void(0);">
                         <i class="material-icons">unarchive</i>

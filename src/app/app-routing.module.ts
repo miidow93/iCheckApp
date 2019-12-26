@@ -22,6 +22,7 @@ import { HistoryComponent } from './components/history/history.component';
 import { UploadComponent } from './components/upload/upload.component';
 import { UserComponent } from './components/user/user.component';
 import { ListUserComponent } from './components/user/list-user/list-user.component';
+import { VehiculeComponent } from './components/vehicule/vehicule.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },
@@ -37,6 +38,7 @@ const routes: Routes = [
       { path: 'synthese', component: SyntheseComponent, outlet: 'admin'/*, canActivate: [AuthGuard]*/ },
       { path: 'synthese/:id', component: DetailsComponent, outlet: 'admin' },
       { path: 'history', component: HistoryComponent, outlet: 'admin' },
+      { path: 'vehicule', component: VehiculeComponent, outlet: 'admin' },
       // { path: 'engin', component: AddEnginsComponent, outlet: 'admin', canActivate: [AuthGuard] }
     ]
   },
