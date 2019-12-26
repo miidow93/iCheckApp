@@ -25,7 +25,7 @@ export class ListUserComponent implements OnInit {
     this.refresh();
   }
 
-  // Recuperation de la liste des conducteurs
+  // Recuperation de la liste des utilisateurs;
   refresh() {
     this.service.getAllUser().subscribe((res: any[]) => {
       console.log('all Users:', res)

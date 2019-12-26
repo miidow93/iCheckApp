@@ -169,7 +169,7 @@ export class HistoryComponent implements OnInit {
     console.log('Create File path: ', filePath);
     console.log('Create File name: ', name);
     console.log('Create File blob: ', blob);
-    this.file.writeFile(filePath, filename + '.xlsx', blob, { replace: true }).then((fileEntry: FileEntry) => {
+    this.file.writeFile(filePath, filename + '.xlsx', blob).then((fileEntry: FileEntry) => {
       console.log('File Created: ', fileEntry);
       this.fileOpener.open(fileEntry.toURL(), 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
         .then(() => console.log('File is opened'))

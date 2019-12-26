@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import * as moment from 'moment';
 import { EnginService } from 'src/app/core/services/engin/engin.service';
 import { VehiculeService } from 'src/app/core/services/vehicule/vehicule.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class VehiculeComponent implements OnInit {
   engins: any;
   fileData: File = null;
   previewUrl: any = null;
-  constructor(private formBuilder : FormBuilder,private vehiculeService : VehiculeService,private enginService:EnginService) { }
+  constructor(private route:Router,private formBuilder : FormBuilder,private vehiculeService : VehiculeService,private enginService:EnginService) { }
 
   ngOnInit() {
     this.formVehicule = this.formBuilder.group({
@@ -106,5 +107,8 @@ export class VehiculeComponent implements OnInit {
       console.log('Result: ', reader.result);
       console.log('Reader: ', this.previewUrl);
     };
+  }
+  navigateTo(){
+    this.route.navigate(['admin', { outlets: { admin: 'vehicule' } }]);
   }
 }

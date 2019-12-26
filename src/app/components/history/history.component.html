@@ -89,14 +89,13 @@
 
   <div class="mdl-toolbar">
     <div class="logo">
-      <ion-title class="ion-padding" style="font-weight: 350;
-            color: #000000ba;
-            font-size: 19px;">
+      <ion-title class="ion-padding">
         Historiques des camions
       </ion-title>
     </div>
   </div>
-  
+
+
   <div style="padding-left: 5%; padding-right: 5%; padding-top: 3%;">
     <div class="row justify-content-center mt-2">
       <mat-form-field class="example-full-width">
@@ -117,15 +116,15 @@
       <button class="ml-2 btn btn-link" (click)="refresh()" mat-button>
         <fa-icon [icon]="faSyncAlt"></fa-icon>
       </button>
-      
+
       <mat-form-field class="w-40">
-      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Rechercher">
-    </mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Rechercher">
+      </mat-form-field>
     </div>
 
     <!--Tableau Benne-->
-    
-    <div class="mat-elevation-z8 mt-3" >
+
+    <div class="mat-elevation-z8 mt-3">
       <div class="card">
         <div class="card-header card-header-primary" style="background:rgb(0,110,130); ">
           <div class="row">
@@ -143,7 +142,7 @@
         <div class="card-body">
           <div class="table-responsive">
             <table mat-table [dataSource]="dataSourceBenne" matSort class="table table-hover ">
-              
+
               <!-- Position Column -->
               <ng-container matColumnDef="controlleur">
                 <th mat-header-cell *matHeaderCellDef> Controlleur </th>
@@ -190,79 +189,99 @@
 
               <ng-container matColumnDef="control1">
                 <th mat-header-cell *matHeaderCellDef> Casque sec </th>
-                <td mat-cell *matCellDef="let element" >
-                  <i *ngIf="element.checkConducteur[0] == true" class="fa fa-check" aria-hidden="true" style="font-size: 25px;color:rgb(7, 202, 7)"></i>
-                  <i *ngIf="element.checkConducteur[0] == false" class="fa fa-times" aria-hidden="true" style="font-size: 25px;color:red"></i>
+                <td mat-cell *matCellDef="let element">
+                  <i *ngIf="element.checkConducteur[0] == true" class="fa fa-check" aria-hidden="true"
+                    style="font-size: 25px;color:rgb(7, 202, 7)"></i>
+                  <i *ngIf="element.checkConducteur[0] == false" class="fa fa-times" aria-hidden="true"
+                    style="font-size: 25px;color:red"></i>
                 </td>
               </ng-container>
 
               <ng-container matColumnDef="control2">
                 <th mat-header-cell *matHeaderCellDef>Lunette de protection </th>
                 <td mat-cell *matCellDef="let element">
-                  <i *ngIf="element.checkConducteur[1] == true" class="fa fa-check" aria-hidden="true" style="font-size: 25px;color:rgb(7, 202, 7)"></i>
-                  <i *ngIf="element.checkConducteur[1] == false" class="fa fa-times" aria-hidden="true" style="font-size: 25px;color:red"></i>
+                  <i *ngIf="element.checkConducteur[1] == true" class="fa fa-check" aria-hidden="true"
+                    style="font-size: 25px;color:rgb(7, 202, 7)"></i>
+                  <i *ngIf="element.checkConducteur[1] == false" class="fa fa-times" aria-hidden="true"
+                    style="font-size: 25px;color:red"></i>
                 </td>
               </ng-container>
 
               <ng-container matColumnDef="control3">
                 <th mat-header-cell *matHeaderCellDef>Gants de protection</th>
-                <td mat-cell *matCellDef="let element"> 
-                  <i *ngIf="element.checkConducteur[2] == true" class="fa fa-check" aria-hidden="true" style="font-size: 25px;color:rgb(7, 202, 7)"></i>
-                  <i *ngIf="element.checkConducteur[2] == false" class="fa fa-times" aria-hidden="true" style="font-size: 25px;color:red"></i>
+                <td mat-cell *matCellDef="let element">
+                  <i *ngIf="element.checkConducteur[2] == true" class="fa fa-check" aria-hidden="true"
+                    style="font-size: 25px;color:rgb(7, 202, 7)"></i>
+                  <i *ngIf="element.checkConducteur[2] == false" class="fa fa-times" aria-hidden="true"
+                    style="font-size: 25px;color:red"></i>
                 </td>
               </ng-container>
 
               <ng-container matColumnDef="control4">
                 <th mat-header-cell *matHeaderCellDef> Gilet fluorescent</th>
-                <td mat-cell *matCellDef="let element"> 
-                  <i *ngIf="element.checkConducteur[3] == true" class="fa fa-check" aria-hidden="true" style="font-size: 25px;color:rgb(7, 202, 7)"></i>
-                  <i *ngIf="element.checkConducteur[3] == false" class="fa fa-times" aria-hidden="true" style="font-size: 25px;color:red"></i>
+                <td mat-cell *matCellDef="let element">
+                  <i *ngIf="element.checkConducteur[3] == true" class="fa fa-check" aria-hidden="true"
+                    style="font-size: 25px;color:rgb(7, 202, 7)"></i>
+                  <i *ngIf="element.checkConducteur[3] == false" class="fa fa-times" aria-hidden="true"
+                    style="font-size: 25px;color:red"></i>
                 </td>
               </ng-container>
 
               <ng-container matColumnDef="control5">
                 <th mat-header-cell *matHeaderCellDef>Chaussures Sec</th>
-                <td mat-cell *matCellDef="let element"> 
-                  <i *ngIf="element.checkConducteur[4] == true" class="fa fa-check" aria-hidden="true" style="font-size: 25px;color:rgb(7, 202, 7)"></i>
-                  <i *ngIf="element.checkConducteur[4] == false" class="fa fa-times" aria-hidden="true" style="font-size: 25px;color:red"></i>  
+                <td mat-cell *matCellDef="let element">
+                  <i *ngIf="element.checkConducteur[4] == true" class="fa fa-check" aria-hidden="true"
+                    style="font-size: 25px;color:rgb(7, 202, 7)"></i>
+                  <i *ngIf="element.checkConducteur[4] == false" class="fa fa-times" aria-hidden="true"
+                    style="font-size: 25px;color:red"></i>
                 </td>
               </ng-container>
 
               <ng-container matColumnDef="control6">
-                <th mat-header-cell  *matHeaderCellDef>Tableau de bord  </th>
+                <th mat-header-cell *matHeaderCellDef>Tableau de bord </th>
                 <td mat-cell *matCellDef="let element">
-                  <i *ngIf="element.checkEngin[0] == true" class="fa fa-check" aria-hidden="true" style="font-size: 25px;color:rgb(7, 202, 7)"></i>
-                  <i *ngIf="element.checkEngin[0] == false" class="fa fa-times" aria-hidden="true" style="font-size: 25px;color:red"></i>  
+                  <i *ngIf="element.checkEngin[0] == true" class="fa fa-check" aria-hidden="true"
+                    style="font-size: 25px;color:rgb(7, 202, 7)"></i>
+                  <i *ngIf="element.checkEngin[0] == false" class="fa fa-times" aria-hidden="true"
+                    style="font-size: 25px;color:red"></i>
                 </td>
               </ng-container>
 
               <ng-container matColumnDef="control7">
                 <th mat-header-cell *matHeaderCellDef>Ceinture Sec</th>
                 <td mat-cell *matCellDef="let element">
-                  <i *ngIf="element.checkEngin[1] == true" class="fa fa-check" aria-hidden="true" style="font-size: 25px;color:rgb(7, 202, 7)"></i>
-                  <i *ngIf="element.checkEngin[1] == false" class="fa fa-times" aria-hidden="true" style="font-size: 25px;color:red"></i>  
+                  <i *ngIf="element.checkEngin[1] == true" class="fa fa-check" aria-hidden="true"
+                    style="font-size: 25px;color:rgb(7, 202, 7)"></i>
+                  <i *ngIf="element.checkEngin[1] == false" class="fa fa-times" aria-hidden="true"
+                    style="font-size: 25px;color:red"></i>
                 </td>
               </ng-container>
               <ng-container matColumnDef="control8">
                 <th mat-header-cell *matHeaderCellDef> Retriviseur </th>
-                <td mat-cell *matCellDef="let element"> 
-                  <i *ngIf="element.checkEngin[2] == true" class="fa fa-check" aria-hidden="true" style="font-size: 25px;color:rgb(7, 202, 7)"></i>
-                  <i *ngIf="element.checkEngin[2] == false" class="fa fa-times" aria-hidden="true" style="font-size: 25px;color:red"></i>    
+                <td mat-cell *matCellDef="let element">
+                  <i *ngIf="element.checkEngin[2] == true" class="fa fa-check" aria-hidden="true"
+                    style="font-size: 25px;color:rgb(7, 202, 7)"></i>
+                  <i *ngIf="element.checkEngin[2] == false" class="fa fa-times" aria-hidden="true"
+                    style="font-size: 25px;color:red"></i>
                 </td>
               </ng-container>
               <ng-container matColumnDef="control9">
                 <th mat-header-cell *matHeaderCellDef> GPS </th>
-                <td mat-cell *matCellDef="let element"> 
-                  <i *ngIf="element.checkEngin[3] == true" class="fa fa-check" aria-hidden="true" style="font-size: 25px;color:rgb(7, 202, 7)"></i>
-                  <i *ngIf="element.checkEngin[3] == false" class="fa fa-times" aria-hidden="true" style="font-size: 25px;color:red"></i>  
+                <td mat-cell *matCellDef="let element">
+                  <i *ngIf="element.checkEngin[3] == true" class="fa fa-check" aria-hidden="true"
+                    style="font-size: 25px;color:rgb(7, 202, 7)"></i>
+                  <i *ngIf="element.checkEngin[3] == false" class="fa fa-times" aria-hidden="true"
+                    style="font-size: 25px;color:red"></i>
                 </td>
               </ng-container>
 
               <ng-container matColumnDef="control10">
                 <th mat-header-cell *matHeaderCellDef> Roues</th>
-                <td mat-cell *matCellDef="let element"> 
-                  <i *ngIf="element.checkEngin[4] == true" class="fa fa-check" aria-hidden="true" style="font-size: 25px;color:rgb(7, 202, 7)"></i>
-                  <i *ngIf="element.checkEngin[4] == false" class="fa fa-times" aria-hidden="true" style="font-size: 25px;color:red"></i>  
+                <td mat-cell *matCellDef="let element">
+                  <i *ngIf="element.checkEngin[4] == true" class="fa fa-check" aria-hidden="true"
+                    style="font-size: 25px;color:rgb(7, 202, 7)"></i>
+                  <i *ngIf="element.checkEngin[4] == false" class="fa fa-times" aria-hidden="true"
+                    style="font-size: 25px;color:red"></i>
                 </td>
               </ng-container>
               <tr mat-header-row *matHeaderRowDef="displayedColumnsBenne"></tr>
@@ -284,7 +303,7 @@
 
 
 
-    <!-- <div class="mat-elevation-z8 mt-3">
+  <!-- <div class="mat-elevation-z8 mt-3">
       <div class="card">
         <div class="card-header card-header-primary" style="background:rgb(0,110,130); ">
           <div class="row">
@@ -340,7 +359,7 @@
       <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
     </div> -->
 
-    <!-- <div class="mat-elevation-z8 mt-3">
+  <!-- <div class="mat-elevation-z8 mt-3">
       <div class="card">
         <div class="card-header card-header-primary" style="background:rgb(0,110,130); ">
           <div class="row">

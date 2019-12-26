@@ -49,6 +49,7 @@ import { File } from '@ionic-native/file/ngx';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { QrGeneratorComponent } from './components/qr-generator/qr-generator.component';
 import { VehiculeComponent } from './components/vehicule/vehicule.component';
+import { ListVehiculeComponent } from './components/vehicule/list-vehicule/list-vehicule.component';
 
 
 export function getToken() {
@@ -84,7 +85,8 @@ export function getToken() {
     UserComponent,
     ListUserComponent,
     QrGeneratorComponent,
-    VehiculeComponent
+    VehiculeComponent,
+    ListVehiculeComponent
 
   ],
   entryComponents: [EditEnginsComponent,EditConducteurComponent],
