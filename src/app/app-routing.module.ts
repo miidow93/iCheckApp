@@ -23,6 +23,7 @@ import { UploadComponent } from './components/upload/upload.component';
 import { UserComponent } from './components/user/user.component';
 import { ListUserComponent } from './components/user/list-user/list-user.component';
 import { QrGeneratorComponent } from './components/qr-generator/qr-generator.component';
+import { VehiculeComponent } from './components/vehicule/vehicule.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },
@@ -39,19 +40,21 @@ const routes: Routes = [
       { path: 'synthese/:id', component: DetailsComponent, outlet: 'admin' },
       { path: 'history', component: HistoryComponent, outlet: 'admin' },
       { path: 'qr-generator', component: QrGeneratorComponent, outlet: 'admin' },
+      { path: 'vehicule', component: VehiculeComponent, outlet: 'admin' },
+
       // { path: 'engin', component: AddEnginsComponent, outlet: 'admin', canActivate: [AuthGuard] }
     ]
   },
-  { path: 'benne', component: BenneComponent },
+  /*{ path: 'benne', component: BenneComponent },
   { path: 'citerne', component: CiterneComponent },
   { path: 'plateau', component: PlateauComponent },
   { path: 'motif', component: UploadComponent },
   { path: 'checklistConducteur', component: CheckListConducteurComponent },
   { path: 'checklistEquipement', component: CheckListEquipementComponent },
-  { path: 'checklistEngin', component: CheckListEnginComponent },
+  { path: 'checklistEngin', component: CheckListEnginComponent },*/
   { path: 'checklist/:image', component: CheckListComponent },
   { path: 'engins', component: EnginsComponent, canActivate: [AuthGuard] },
-  { path: 'synthese/:id', component: DetailsComponent },
+  // { path: 'synthese/:id', component: DetailsComponent },
   { path: '**', redirectTo: 'login' },
   
 

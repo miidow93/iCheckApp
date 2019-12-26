@@ -20,11 +20,12 @@ import { CheckListService } from 'src/app/core/services/check-list/check-list.se
 })
 export class HistoryComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'vehicule', 'dateBlockage', 'motif', 'dateDeblockage'];
-  displayedColumnsBenne: string[] = ['controlleur','vehicule','conducteur','etat','motif','control1','control2','control3','control4','control5','control6','control7','control8','control9','control10']
+  // displayedColumns: string[] = ['id', 'vehicule', 'dateBlockage', 'motif', 'dateDeblockage'];
+  displayedColumnsBenne: string[] = ['controlleur', 'site', 'matricule', 'type', 'conducteur', 'etat', 'motif',
+    'date', 'control1', 'control2', 'control3'
+    , 'control4', 'control5', 'control6', 'control7', 'control8', 'control9', 'control10'];
   dataSourceBenne = new MatTableDataSource();
-  dataSourceCiterne = new MatTableDataSource();
-  dataSourcePlateau = new MatTableDataSource();
+
   dateEntree = new FormControl(moment());
   dateSortie = new FormControl(moment());
   faFilter = faFilter;
@@ -34,8 +35,7 @@ export class HistoryComponent implements OnInit {
   data = [];
   de; ds;
   oldDataSourceBenne;
-  oldDataSourceCiterne;
-  oldDataSourcePlateau;
+
   constructor(private blockageService: BlockageService,
     private file: File,
     private fileTransfer: FileTransfer,
@@ -43,11 +43,10 @@ export class HistoryComponent implements OnInit {
     private excelService: ExcelService,
     private toastCtrl: ToastController,
     private platform: Platform,
-    private check:CheckListService) { }
+    private check: CheckListService) { }
 
   @ViewChild(MatPaginator, { static: false }) paginatorBenne: MatPaginator;
-  // @ViewChild(MatPaginator, { static: false }) paginatorCiterne: MatPaginator;
-  // @ViewChild(MatPaginator, { static: false }) paginatorPlateau: MatPaginator;
+
 
   ngOnInit() {
     // this.getBlockage();
@@ -60,42 +59,8 @@ export class HistoryComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.dataSourceBenne.filter = filterValue.trim().toLowerCase();
-    this.dataSourceCiterne.filter = filterValue.trim().toLowerCase();
-    this.dataSourcePlateau.filter = filterValue.trim().toLowerCase();
   }
-  getBlockage() {
-    this.blockageService.getBolckedEngins().subscribe((res: any[]) => {
-      // BENNE
-      // console.log('Data :',res);
-      // this.dataSourceBenne.data = res.filter(x=>x.idVehiculeNavigation.idEnginNavigation.nomEngin === 'Benne');
-      // this.dataSourceBenne.paginator = this.paginatorBenne;
-      // this.oldDataSourceBenne = this.dataSourceBenne.data;
-      // this.data = <any[]>this.dataSourceBenne.data;
-      // CITERNE
-      // this.dataSourceCiterne.data = res.filter(x=>x.idVehiculeNavigation.idEnginNavigation.nomEngin === 'Citerne');
-      // this.dataSourceCiterne.paginator = this.paginatorCiterne;
-      // this.oldDataSourceCiterne = this.dataSourceCiterne.data;
-      // this.data = <any[]>this.dataSourceCiterne.data;
-      // PLATEAU
-      // this.dataSourcePlateau.data = res.filter(x=>x.idVehiculeNavigation.idEnginNavigation.nomEngin === 'Plateau');
-      // this.dataSourcePlateau.paginator = this.paginatorPlateau
-      // this.oldDataSourcePlateau = this.dataSourcePlateau.data;
-      // this.data = <any[]>this.dataSourcePlateau.data;
-    });
-    // this.dataService.currentBlockageDataSource.subscribe(data => { 
-    //   this.dataSource.data = data; 
-    //   this.dataSource.paginator = this.paginator
-    //   this.oldDataSource = this.dataSource.data;
-    //   this.data = <any[]>this.dataSource.data;
-    //  })
-    // this.blockageService.getBolckedEngins().subscribe((res: any) => {
-    //   console.log('CheckListRefs: ', res);
-    //   this.dataSource.data = res;
-    //   this.dataSource.paginator = this.paginator;
-    //   this.oldDataSource = this.dataSource.data;
-    //   this.data = <any[]>this.dataSource.data;
-    // });
-  }
+
   onChange(term, event) {
     // console.log('Date: ', term.value);
     if (event === 'dateEntree') {
@@ -106,6 +71,7 @@ export class HistoryComponent implements OnInit {
       console.log('Ds: ', new Date(this.ds) + ' ' + this.ds);
     }
   }
+
   validateDate(date) {
     let result = `${date.value._i.year}`;
     const validateMonth = `${date.value._i.month}`;
@@ -147,6 +113,7 @@ export class HistoryComponent implements OnInit {
   // refresh() {
   //   this.dataSource.data = this.oldDataSource;
   // }
+
   exporter() {
     console.log('Date: ', this.de + ' ' + this.ds);
     const date = { startDate: this.de.toString(), endDate: this.ds.toString() };
@@ -175,7 +142,7 @@ export class HistoryComponent implements OnInit {
               console.log('Cannot create the directory: ', JSON.stringify(err));
             });
           });
-          
+
         } else {
           saveAs(blob, `${filename}`);
           if (!pwa || pwa.closed || typeof pwa.closed === 'undefined') {
@@ -210,22 +177,14 @@ export class HistoryComponent implements OnInit {
     });
   }
 
-  getAllcheckByType(){
+  getAllcheckByType() {
     this.check.getAllCheckListByType().subscribe(
-      ((res : any) =>{
-        console.log('Benne Data :',res)
-      this.dataSourceBenne.data = res;
-      this.dataSourceBenne.paginator = this.paginatorBenne;
-      this.oldDataSourceBenne = this.dataSourceBenne.data;
-      this.data = <any[]>this.dataSourceBenne.data;
-    }
-    ));
-    // this.check.getAllCheckListByType('Citerne').subscribe(
-    //   (res:any[])=> console.log('dataCheckCiterne :',res)
-    //   );
-    // this.check.getAllCheckListByType('Plateau').subscribe(
-    //   (res: any[])=> console.log('dataCheckPlateau :', res)
-    //   );
-  
-}
+      ((res: any) => {
+        console.log('Benne Data :', res)
+        this.dataSourceBenne.data = res;
+        this.dataSourceBenne.paginator = this.paginatorBenne;
+        this.oldDataSourceBenne = this.dataSourceBenne.data;
+        this.data = <any[]>this.dataSourceBenne.data;
+      }));
+  }
 }

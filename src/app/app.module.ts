@@ -48,6 +48,8 @@ import { FileTransfer } from '@ionic-native/file-transfer/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { QrGeneratorComponent } from './components/qr-generator/qr-generator.component';
+import { VehiculeComponent } from './components/vehicule/vehicule.component';
+
 
 export function getToken() {
   return localStorage.getItem('token');
@@ -81,7 +83,9 @@ export function getToken() {
     UploadComponent,
     UserComponent,
     ListUserComponent,
-    QrGeneratorComponent
+    QrGeneratorComponent,
+    VehiculeComponent
+
   ],
   entryComponents: [EditEnginsComponent,EditConducteurComponent],
   imports: [
