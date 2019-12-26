@@ -48,6 +48,7 @@ import { FileTransfer } from '@ionic-native/file-transfer/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { VehiculeComponent } from './components/vehicule/vehicule.component';
+import { ListVehiculeComponent } from './components/vehicule/list-vehicule/list-vehicule.component';
 
 export function getToken() {
   return localStorage.getItem('token');
@@ -81,7 +82,8 @@ export function getToken() {
     UploadComponent,
     UserComponent,
     ListUserComponent,
-    VehiculeComponent
+    VehiculeComponent,
+    ListVehiculeComponent
   ],
   entryComponents: [EditEnginsComponent,EditConducteurComponent],
   imports: [

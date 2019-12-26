@@ -105,5 +105,44 @@ ion-content {
 .btnFloatLeft {
   float: left;
 }
+table {
+  width: 90%;
+  // margin-top: 2%;
+  margin: auto;
+}
+
+.mat-cell,
+.mat-header-cell {
+  text-align: center;
+  // border-right: 0.5px solid rgb(78, 76, 48);
+}
+
+/*table th {
+  background-color: #f5cd1b;
+  // border-color: rgb(78, 76, 48);
+}*/
+
+.btnSize {
+  width: 7%;
+}
+
+ion-content .mdl-toolbar {
+  // .logo ion-title {
+  //   color: white;
+  //   white-space: nowrap;
+  //   font-weight: 400;
+  //   line-height: 30px;
+  // }
+  // background: linear-gradient(rgb(0, 110, 130), rgba(0, 110, 130, 0.8));
+  border: 0;
+    font-size: 16px;
+    border-radius: 0;
+    min-height: 50px;
+    background-color: #006e828f;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 5px 15px;
+}
+
+
 
 
