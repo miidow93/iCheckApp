@@ -11,7 +11,7 @@
 <ion-content>
   <div class="mdl-toolbar">
     <div class="logo">
-      <ion-title class="ion-padding" style="    font-weight: 350;
+      <ion-title class="ion-padding" style="font-weight: 350;
       color: #000000ba;
       font-size: 19px;">
         Tableau De Bord
@@ -39,20 +39,21 @@
         <ion-card style="padding: 5%;" class="shadow p-3 mb-5 bg-white rounded">
           <ion-card-header>
             <div class="row justify-content-end">
-              <button  type="button" class="btn btn-info btn-sm"  style="background: rgb(0,110,130);border-radius: 28px;margin-right: 24%;">
+              <button type="button" class="btn btn-info btn-sm"
+                style="background: rgb(0,110,130);border-radius: 28px;margin-right: 24%;">
                 Plateau <span class="badge badge-danger" style="margin-left: 7%;
                 font-size: larger;">{{countplateausBlock}}</span>
                 <span class="badge badge-success" style="margin-left: 8%;
                 font-size: larger;">{{countplateausNotBlock}}</span>
               </button>
-              <img class="col-sm-4" [src]="plateauIcon" >
+              <img class="col-sm-4" [src]="plateauIcon">
             </div>
             <hr class="section-break-5" />
             <ion-card-title>
               <ion-grid>
                 <ion-row>
                   <ion-col>
-                    <ion-row *ngFor="let plateau of plateaus |  slice:0:4" style="width:250%" >
+                    <ion-row *ngFor="let plateau of plateaus |  slice:0:4" style="width:250%">
                       <ion-col size="2">
                         <span class="badge badge-info"
                           style="width: 40px;background-color: rgb(0,110,130);">{{plateau.label | uppercase | slice:0:3}}</span>
@@ -66,7 +67,7 @@
                     </ion-row>
                   </ion-col>
                   <ion-col>
-                    <ion-row *ngFor="let plateau of plateaus |  slice:4:100"  style="width:250%">
+                    <ion-row *ngFor="let plateau of plateaus |  slice:4:100" style="width:250%">
                       <ion-col size="2">
                         <span class="badge badge-info"
                           style="width: 40px;background-color: rgb(0,110,130);">{{plateau.label | uppercase | slice:0:3}}</span>
@@ -90,7 +91,8 @@
           <ion-card-header>
             <div class="row justify-content-end">
 
-              <button type="button"  class="btn btn-info btn-sm"  style="background: rgb(0,110,130);border-radius: 28px;margin-right: 24%;">
+              <button type="button" class="btn btn-info btn-sm"
+                style="background: rgb(0,110,130);border-radius: 28px;margin-right: 24%;">
                 Benne <span class="badge badge-danger" style=" margin-left: 7%;
                 font-size: larger">{{countbenneBlock}}</span>
                 <span class="badge badge-success" style="margin-left: 8%;
@@ -103,7 +105,7 @@
               <ion-grid>
                 <ion-row>
                   <ion-col>
-                    <ion-row *ngFor="let benne of bennes |  slice:0:4"  style="width:250%">
+                    <ion-row *ngFor="let benne of bennes |  slice:0:4" style="width:250%">
                       <ion-col size="2">
                         <span class="badge badge-info "
                           style="width: 40px;background-color: rgb(0,110,130); ">{{benne.label | uppercase | slice:0:3}}</span>
@@ -118,7 +120,7 @@
                   </ion-col>
                   <ion-col>
 
-                    <ion-row *ngFor="let benne of bennes |  slice:4:100"  style="width:250%">
+                    <ion-row *ngFor="let benne of bennes |  slice:4:100" style="width:250%">
                       <ion-col size="2">
                         <span class="badge badge-info "
                           style="width: 40px;background-color: rgb(0,110,130); ">{{benne.label | uppercase | slice:0:3}}</span>
@@ -142,7 +144,8 @@
         <ion-card style="padding: 5%;" class="shadow p-3 mb-5 bg-white rounded">
           <ion-card-header>
             <div class="row justify-content-end">
-              <button type="button" class="btn btn-info btn-sm"  style="background: rgb(0,110,130);border-radius: 28px;margin-right: 24%;">
+              <button type="button" class="btn btn-info btn-sm"
+                style="background: rgb(0,110,130);border-radius: 28px;margin-right: 24%;">
                 Citerne <span class="badge badge-danger" style="margin-left: 7%;
                 font-size: larger;">{{countciternesBlock}}</span>
                 <span class="badge badge-success" style="margin-left: 8%;
@@ -151,13 +154,13 @@
               </button>
               <img class="col-sm-4" [src]="citerneIcon">
             </div>
-            <hr class="section-break-5"  />
+            <hr class="section-break-5" />
             <ion-card-title>
               <ion-grid>
                 <ion-col>
                   <ion-row>
                     <ion-col>
-                      <ion-row *ngFor="let citerne of citernes  |  slice:0:4"  style="width:250%">
+                      <ion-row *ngFor="let citerne of citernes  |  slice:0:4" style="width:250%">
                         <ion-col size="2">
                           <span class="badge badge-info"
                             style="width: 40px;background-color: rgb(0,110,130); ">{{citerne.label | uppercase | slice:0:3}}</span>
@@ -171,7 +174,7 @@
                       </ion-row>
                     </ion-col>
                     <ion-col>
-                      <ion-row *ngFor="let citerne of citernes  |  slice:4:100"  style="width:250%" >
+                      <ion-row *ngFor="let citerne of citernes  |  slice:4:100" style="width:250%">
                         <ion-col size="2">
                           <span class="badge badge-info"
                             style="width: 40px;background-color: rgb(0,110,130); ">{{citerne.label | uppercase | slice:0:3}}</span>
@@ -192,25 +195,25 @@
         </ion-card>
       </ion-col>
       <ion-col size="6">
-      <ion-card class="shadow p-3 mb-5 bg-white rounded">
-        <ion-card-header>
-          <ion-card-title style="margin-bottom: 8%;">
-            <span style="font-size: 17px; font-weight: 400;
+        <ion-card class="shadow p-3 mb-5 bg-white rounded">
+          <ion-card-header>
+            <ion-card-title style="margin-bottom: 8%;">
+              <span style="font-size: 17px; font-weight: 400;
               color: #3c4858; " class="mr-2">Synthese Général des camions </span>
-          </ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <div class="container Chart">
-            <div class="float-center">
-              <canvas baseChart *ngIf="DoughnutChartData && DoughnutChartData.length > 0" [datasets]="DoughnutChartData"
-                [labels]="DoughnutChartLabels" [colors]="DoughnutChartColors"
-                [legend]="DoughnutChartLegend" [chartType]="DoughnutChartType">
-              </canvas>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <div class="container Chart">
+              <div class="float-center">
+                <canvas baseChart *ngIf="DoughnutChartData && DoughnutChartData.length > 0"
+                  [datasets]="DoughnutChartData" [labels]="DoughnutChartLabels" [colors]="DoughnutChartColors"
+                  [legend]="DoughnutChartLegend" [chartType]="DoughnutChartType">
+                </canvas>
+              </div>
             </div>
-          </div>
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
       <ion-col size="6">
         <ion-card style="padding: 2%;" class="shadow p-3 mb-5 bg-white rounded">
           <ion-card-header>
@@ -245,8 +248,8 @@
         <div class="container Chart">
           <div class="float-center">
             <canvas baseChart *ngIf="barChartData && barChartData.length > 0" [datasets]="barChartData"
-              [labels]="barChartLabels" [options]="barChartOptions" [colors]="barChartColors"
-              [legend]="barChartLegend" [chartType]="barChartType">
+              [labels]="barChartLabels" [options]="barChartOptions" [colors]="barChartColors" [legend]="barChartLegend"
+              [chartType]="barChartType">
             </canvas>
           </div>
         </div>

@@ -22,6 +22,7 @@ import { HistoryComponent } from './components/history/history.component';
 import { UploadComponent } from './components/upload/upload.component';
 import { UserComponent } from './components/user/user.component';
 import { ListUserComponent } from './components/user/list-user/list-user.component';
+import { QrGeneratorComponent } from './components/qr-generator/qr-generator.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },
@@ -37,6 +38,7 @@ const routes: Routes = [
       { path: 'synthese', component: SyntheseComponent, outlet: 'admin'/*, canActivate: [AuthGuard]*/ },
       { path: 'synthese/:id', component: DetailsComponent, outlet: 'admin' },
       { path: 'history', component: HistoryComponent, outlet: 'admin' },
+      { path: 'qr-generator', component: QrGeneratorComponent, outlet: 'admin' },
       // { path: 'engin', component: AddEnginsComponent, outlet: 'admin', canActivate: [AuthGuard] }
     ]
   },
@@ -51,6 +53,8 @@ const routes: Routes = [
   { path: 'engins', component: EnginsComponent, canActivate: [AuthGuard] },
   { path: 'synthese/:id', component: DetailsComponent },
   { path: '**', redirectTo: 'login' },
+  
+
   // { path: 'edit-conducteur', loadChildren: './pages/conducteur/edit-conducteur/edit-conducteur.module#EditConducteurPageModule' },
 
 

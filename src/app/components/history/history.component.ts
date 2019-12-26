@@ -211,7 +211,7 @@ export class HistoryComponent implements OnInit {
   }
 
   getAllcheckByType(){
-    this.check.getAllCheckListByType('Benne').subscribe(
+    this.check.getAllCheckListByType().subscribe(
       ((res : any) =>{
         console.log('Benne Data :',res)
       this.dataSourceBenne.data = res;
