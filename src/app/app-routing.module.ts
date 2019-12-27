@@ -15,6 +15,7 @@ import { UserComponent } from './components/user/user.component';
 import { ListUserComponent } from './components/user/list-user/list-user.component';
 import { VehiculeComponent } from './components/vehicule/vehicule.component';
 import { ListVehiculeComponent } from './components/vehicule/list-vehicule/list-vehicule.component';
+import { EditVehiculeComponent } from './components/vehicule/edit-vehicule/edit-vehicule.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },
