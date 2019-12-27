@@ -23,4 +23,7 @@ export class VehiculeService {
   addVehicule(data){
     return this.http.post(`${API}`,data);
   }
+  updateVehicule(id, data) {
+    return this.http.put(`${API}/${id}`,data);
+  }
 }

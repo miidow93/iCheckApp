@@ -53,6 +53,8 @@ import { ListVehiculeComponent } from './components/vehicule/list-vehicule/list-
 import { NgxPrintModule } from 'ngx-print';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { EditVehiculeComponent } from './components/vehicule/edit-vehicule/edit-vehicule.component';
+
 
 
 export function getToken() {
@@ -89,10 +91,13 @@ export function getToken() {
     ListUserComponent,
     QrGeneratorComponent,
     VehiculeComponent,
-    ListVehiculeComponent
+    ListVehiculeComponent,
+    EditVehiculeComponent
 
   ],
-  entryComponents: [EditEnginsComponent, EditConducteurComponent],
+
+  entryComponents: [EditEnginsComponent,EditConducteurComponent,EditVehiculeComponent],
+
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
