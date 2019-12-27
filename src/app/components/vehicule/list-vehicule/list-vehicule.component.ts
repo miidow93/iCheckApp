@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { EditVehiculeComponent } from '../edit-vehicule/edit-vehicule.component';
 import { Constants } from 'src/app/shared/constants';
 import { take } from 'rxjs/operators';
+import { faEdit } from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-list-vehicule',
@@ -18,6 +19,7 @@ export class ListVehiculeComponent implements OnInit {
   dataSource = new MatTableDataSource();
   data = [];
   oldDataSource;
+  faEdit = faEdit;
 
   constructor(private vehiculeService: VehiculeService, private route: Router, private dialog: MatDialog) { }
 
