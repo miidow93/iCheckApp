@@ -1,4 +1,4 @@
-import { NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -50,6 +50,9 @@ import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { QrGeneratorComponent } from './components/qr-generator/qr-generator.component';
 import { VehiculeComponent } from './components/vehicule/vehicule.component';
 import { ListVehiculeComponent } from './components/vehicule/list-vehicule/list-vehicule.component';
+import { NgxPrintModule } from 'ngx-print';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 export function getToken() {
@@ -89,7 +92,7 @@ export function getToken() {
     ListVehiculeComponent
 
   ],
-  entryComponents: [EditEnginsComponent,EditConducteurComponent],
+  entryComponents: [EditEnginsComponent, EditConducteurComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -102,6 +105,7 @@ export function getToken() {
     NgbModule,
     FontAwesomeModule,
     ChartsModule,
+    NgxPrintModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: getToken,
@@ -111,8 +115,9 @@ export function getToken() {
         ]
       }
     }),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
-  
+
   providers: [
     Camera,
     ScreenOrientation,
