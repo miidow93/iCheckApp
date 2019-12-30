@@ -114,7 +114,7 @@
   <div class="mdl-toolbar">
     <div class="logo">
       <ion-title class="ion-padding">
-        Synthése de contrôle
+        Historiques des camions
       </ion-title>
     </div>
   </div>
@@ -152,8 +152,7 @@
         <div class="card-header card-header-primary" style="background:rgb(0,110,130); ">
           <div class="row">
             <div class="col-md-10">
-              <h4 class="card-title">Synthése de controle</h4>
-              <p class="card-category"> Liste des conducteurs :</p>
+              <h4 class="card-title"> Historiques des camions</h4>
             </div>
             <div class="col-md-2 float-right">
               <button class="btn btn-info" style="border: 1px solid rgb(255, 255, 255);background-color:rgb(0,110,130)">
@@ -162,7 +161,6 @@
             </div>
           </div>
         </div>
-        <div class="card-body">
           <div class="table-responsive">
             <table mat-table [dataSource]="dataSource" matSort class="table  table-hover ">
 
@@ -229,7 +227,7 @@
               <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
           </div>
-        </div>
+        
       </div>
 
       <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>

@@ -99,7 +99,7 @@
 <div class="wrapper ">
 
     <div class="sidebar" data-color="azure" data-background-color="white"
-        style=" background: linear-gradient(rgb(255, 255, 255),rgba(255, 255, 255, 0.8)), url('https://demos.creative-tim.com/material-dashboard/assets/img/sidebar-3.jpg'); background-repeat: no-repeat;background-size: cover;"
+        style=" background: linear-gradient(rgba(255, 255, 255, 0.671),rgba(255, 255, 255, 0.8)), url('https://demos.creative-tim.com/material-dashboard/assets/img/sidebar-3.jpg'); background-repeat: no-repeat;background-size: cover;"
         data-image="C:\Users\EC\Desktop\app-dataconsignation-master\src\assets\images\sidebar-3.jpg">
         <!--
        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
@@ -108,7 +108,8 @@
         <div class="logo">
             <a [routerLink]="[{ outlets: { admin: ['dashboard'] } }]" class="simple-text logo-normal">
                 <!--<img [src]="logodatacons" alt="Lafrage Holcim" style="width: 40%;">-->
-                <ion-title>I-Check</ion-title>
+                <!-- <ion-title>I-Check</ion-title> -->
+                <img  src="{{ iCheckLogo }}" style="width: 50%; height: 50%;">
             </a>
         </div>
         <div class="sidebar-wrapper" style="overflow: hidden">
@@ -124,14 +125,14 @@
                     style="width: 105%;">
                     <a class="nav-link" [routerLink]="[{ outlets: { admin: ['synthese'] } }]">
                         <i class="material-icons">content_paste</i>
-                        <p>Synthèse de controle</p>
+                        <p>Historiques des camions</p>
                     </a>
                 </li>
                 <li class="nav-item " [routerLink]="[{ outlets: { admin: ['history'] } }]" routerLinkActive="active"
                     style="width: 105%;">
                     <a class="nav-link" [routerLink]="[{ outlets: { admin: ['history'] } }]">
                         <i class="material-icons">history</i>
-                        <p>Historiques des camions</p>
+                        <p>Synthèse de controle</p>
                     </a>
                 </li>
                 <li class="nav-item" [routerLink]="[{ outlets: { admin: ['user'] } }]" routerLinkActive="active"

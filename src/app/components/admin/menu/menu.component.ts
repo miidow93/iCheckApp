@@ -16,6 +16,7 @@ export class MenuComponent {
   faTruckLoading = faTruckLoading;
   faUser = faUser;
   role;
+  iCheckLogo = Icons.iCheckLogo;
 
 
   conducteurIcon = Icons.conducteurIcon;
