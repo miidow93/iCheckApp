@@ -15,7 +15,7 @@ import { UserComponent } from './components/user/user.component';
 import { ListUserComponent } from './components/user/list-user/list-user.component';
 import { VehiculeComponent } from './components/vehicule/vehicule.component';
 import { ListVehiculeComponent } from './components/vehicule/list-vehicule/list-vehicule.component';
-import { EditVehiculeComponent } from './components/vehicule/edit-vehicule/edit-vehicule.component';
+import { QrGeneratorComponent } from './components/qr-generator/qr-generator.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },
@@ -32,7 +32,8 @@ const routes: Routes = [
       { path: 'synthese/:id', component: DetailsComponent, outlet: 'admin' },
       { path: 'history', component: HistoryComponent, outlet: 'admin' },
       { path: 'vehicule/new', component: VehiculeComponent, outlet: 'admin' },
-      { path: 'vehicule',component: ListVehiculeComponent, outlet:'admin'}
+      { path: 'vehicule', component: ListVehiculeComponent, outlet: 'admin' },
+      { path: 'qr-generator', component: QrGeneratorComponent, outlet: 'admin' }
       // { path: 'engin', component: AddEnginsComponent, outlet: 'admin', canActivate: [AuthGuard] }
     ]
   },

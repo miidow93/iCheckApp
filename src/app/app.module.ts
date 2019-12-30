@@ -54,6 +54,7 @@ import { NgxPrintModule } from 'ngx-print';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { EditVehiculeComponent } from './components/vehicule/edit-vehicule/edit-vehicule.component';
+import { NgxQRCodeModule } from 'ngx-qrcode2';
 
 
 
@@ -93,7 +94,6 @@ export function getToken() {
     VehiculeComponent,
     ListVehiculeComponent,
     EditVehiculeComponent
-
   ],
 
   entryComponents: [EditEnginsComponent,EditConducteurComponent,EditVehiculeComponent],
@@ -120,6 +120,7 @@ export function getToken() {
         ]
       }
     }),
+    NgxQRCodeModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
 

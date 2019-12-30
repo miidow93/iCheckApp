@@ -164,3 +164,19 @@ ion-content .mdl-toolbar {
   z-index: 4;
   padding-bottom: 30px;
 }
+
+.aclass ngx-qrcode div img {
+  margin-right: auto;
+  margin-left: auto;
+  width: 250px !important;
+  height: 250px !important;
+}
+
+/*@media print {
+  .aclass ngx-qrcode div img {
+    margin-right: auto;
+    margin-left: auto;
+    width: 30% !important;
+    height: 30% !important;
+  }
+}*/
