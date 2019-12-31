@@ -147,9 +147,9 @@
       <button class="ml-2" (click)="filtrer()" mat-button>
         <fa-icon [icon]="faFilter"></fa-icon>
       </button>
-      <!-- <button class="ml-2 btn btn-link" (click)="refresh()" mat-button>
+      <button class="ml-2 btn btn-link" (click)="refresh()" mat-button>
         <fa-icon [icon]="faSyncAlt"></fa-icon>
-      </button> -->
+      </button>
 
     </div>
 
@@ -167,16 +167,16 @@
               </button> -->
 
 
-              <button class="btn btn-info" (click)="refresh()"
+              <button class="btn btn-info" (click)="scanQR()"
                 style="border: 1px solid rgb(255, 255, 255);background-color:rgb(0,110,130)">
-                <fa-icon [icon]="faSyncAlt" style="color: white;"></fa-icon>
+                <fa-icon [icon]="faQrCode" style="color: white;"></fa-icon>
               </button>
             </div>
           </div>
         </div>
         <div class="card-body">
           <div class="table-responsive">
-            <table mat-table [dataSource]="dataSource" matSort class="table  table-hover ">
+            <table mat-table [dataSource]="dataSource" matSort class="table table-hover ">
 
               <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef> ID </th>

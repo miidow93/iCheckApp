@@ -38,6 +38,15 @@ export class CheckListService {
       );
   }
 
+
+  getCheckListByMatricule(matricule) {
+    return this.http.get(`${API}/qrcode/${matricule}`)
+    .pipe(
+      tap(_ => this.log('Get CheckList By Matricule')),
+      // catchError(this.handleError('Add CheckList', []))
+    );
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
