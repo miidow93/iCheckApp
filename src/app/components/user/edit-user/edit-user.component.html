@@ -1,0 +1,72 @@
+<div style="padding-left: 5%; padding-right: 5%; padding-top: 5%;">
+
+
+  <div class="col-md-14">
+    <div class="card">
+      <div class="card-header card-header-info" style="background: rgb(0, 110, 130);">
+        <h4 class="card-title">Modifier un utilisateur</h4>
+        <p class="card-category">Remplissez le formulaire</p>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="editFormUser" (ngSubmit)="editUser(editFormUser)">
+          <div class="row">
+            <div class="col-md-6">
+                <mat-form-field class="w-100">
+                  <input matInput placeholder="Nom Complet" formControlName="nomComplet">
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                  <mat-form-field class="w-100">
+                    <input matInput placeholder="Nom d'utilisateur" formControlName="userName" disabled>
+                  </mat-form-field> 
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <div>
+                  <mat-form-field>
+                    <input matInput placeholder="Mot de passe" style="width: 100%;" formControlName="password">
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <div>
+                  <mat-form-field>
+                    <mat-label>Choisir un site</mat-label>
+                    <mat-select [(ngModel)]="selectedSiteID" formControlName="idSite">
+                      <mat-option *ngFor="let site of sites" [value]="site.id">
+                        {{site.libelle}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                  <mat-form-field style="width: 100%;">
+                    <mat-label>Choisir un role</mat-label>
+                    <mat-select [(ngModel)]="selectedRoleID" formControlName="idRole">
+                      <mat-option *ngFor="let role of roles" [value]="role.id">
+                        {{role.libelle}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          <button mat-button style="float: left;" (click)="closeDialog()">Annuler</button>
+          <div mat-dialog-actions class="form-row justify-content-end mb-2" >
+            <button type="submit" mat-button class="btn btn-info" style="background: rgb(0, 110, 130);">Modifier</button>
+          </div>
+          <div class="clearfix"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
