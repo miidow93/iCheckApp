@@ -15,6 +15,7 @@ export class MenuComponent {
   faClipboardList = faClipboardList;
   faTruckLoading = faTruckLoading;
   faUser = faUser;
+  sidebarImg = Icons.sidebarImg;
   role;
   iCheckLogo = Icons.iCheckLogo;
 

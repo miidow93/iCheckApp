@@ -50,8 +50,7 @@
               "src/assets/vendor/css-hamburgers/hamburgers.css",
               "src/assets/css/material-dashboard.css",
               "src/assets/css/datatable.css",
-              "node_modules/font-awesome/css/font-awesome.css"
-              
+              "node_modules/font-awesome/css/font-awesome.css",
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
@@ -105,8 +104,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+                  "maximumWarning": "5mb",
+                  "maximumError": "12mb"
                 }
               ],
               "serviceWorker": true,

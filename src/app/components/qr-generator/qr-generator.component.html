@@ -10,8 +10,8 @@
     <div class="col-md-14">
       <div class="card">
         <div class="card-header card-header-info" style="background: rgb(0, 110, 130);">
-          <h4 class="card-title">Ajouter un utilisateur</h4>
-          <p class="card-category">Remplissez le formulaire</p>
+          <h4 class="card-title">QR Code Générateur</h4>
+          <p class="card-category">Générer QR Code</p>
         </div>
         <div class="card-body">
           <form [formGroup]="matriculeForm">
@@ -27,8 +27,10 @@
                     </mat-select>
                   </mat-form-field>
                 </div>
-                <button printSectionId="print-section" ngxPrint  mat-button class="btn btn-info"
-                  style="background: rgb(0, 110, 130);">
+                <button printSectionId="print-section" ngxPrint mat-button class="btn btn-info"
+                  style="background: rgb(0, 110, 130);"
+                  [printStyle]="{img: {'width': '50%', 'margin-left': 'auto', 'margin-right': 'auto', 'margin-top': '30%', 'display': 'block'},
+                   span: {'margin-left': '35%'}}">
                   Imprimer
                 </button>
               </div>
@@ -38,7 +40,7 @@
                     qrc-errorCorrectionLevel="L">
                   </ngx-qrcode>
                   <div class="ml-4">
-                    <span>Qr Code du matricule: {{qrData}}</span>
+                    <span>Matricule: {{qrData}}</span>
                   </div>
                 </div>
               </div>
