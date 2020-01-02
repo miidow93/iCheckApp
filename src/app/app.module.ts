@@ -56,6 +56,8 @@ import { environment } from '../environments/environment';
 import { EditVehiculeComponent } from './components/vehicule/edit-vehicule/edit-vehicule.component';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { EditUserComponent } from './components/user/edit-user/edit-user.component';
+
 
 
 export function getToken() {
@@ -93,10 +95,12 @@ export function getToken() {
     QrGeneratorComponent,
     VehiculeComponent,
     ListVehiculeComponent,
-    EditVehiculeComponent
+    EditVehiculeComponent,
+    EditUserComponent
+
   ],
 
-  entryComponents: [EditEnginsComponent,EditConducteurComponent,EditVehiculeComponent],
+  entryComponents: [EditEnginsComponent,EditConducteurComponent,EditVehiculeComponent,EditUserComponent],
 
   imports: [
     BrowserModule,

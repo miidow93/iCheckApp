@@ -15,4 +15,7 @@ export class UserService {
   getAllUser(){
     return this.http.get(`${API}`);
   }
+  updateUser(id, data) {
+    return this.http.put(`${API}/${id}`,data);
+  }
 }

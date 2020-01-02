@@ -111,4 +111,5 @@ export class VehiculeComponent implements OnInit {
   navigateTo(){
     this.route.navigate(['admin', { outlets: { admin: 'vehicule' } }]);
   }
+ 
 }

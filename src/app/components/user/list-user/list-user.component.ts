@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatPaginator } from '@angular/material';
+import { MatTableDataSource, MatPaginator, MatDialog } from '@angular/material';
 import { UserService } from 'src/app/core/services/user/user.service';
 import { DataService } from 'src/app/shared/services/data.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { EditUserComponent } from '../edit-user/edit-user.component';
+import { faEdit } from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-list-user',
@@ -12,13 +14,16 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class ListUserComponent implements OnInit {
 
 
-  displayedColumns: string[] = ['nomcomplet', 'username', 'role', 'site'];
+  displayedColumns: string[] = ['nomcomplet', 'username', 'role', 'site','action'];
   dataSource = new MatTableDataSource();
   searchKey: string;
+  faEdit = faEdit;
+
   constructor(private service: UserService,
     private userDataService: DataService,
     private route: Router,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    private dialog: MatDialog) { }
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
   ngOnInit() {
@@ -36,6 +41,26 @@ export class ListUserComponent implements OnInit {
 
   navigateTo() {
     this.route.navigate(['admin', { outlets: { admin: 'user/new' } }]);
+  }
+
+  onEdit(element) {
+    console.log(element);
+    /*const config = new MatDialogConfig();
+    config.disableClose = true;
+    config.autoFocus = true;
+    config.width = '80%';*/
+    this.dialog.open(EditUserComponent, {
+      data: { user: element },
+      disableClose: true,
+      autoFocus: true,
+      width: '80%'
+    }).afterClosed().subscribe((res) => {
+      console.log('Close: ', res);
+      this.refresh();
+    });
+  }
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 }
