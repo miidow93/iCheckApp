@@ -10,9 +10,10 @@ import { Platform } from '@ionic/angular';
 import { MatTableDataSource, MatPaginator } from '@angular/material';
 import { FormControl } from '@angular/forms';
 import * as moment from 'moment';
-import { faFilter, faSyncAlt, faBan, faCircle } from '@fortawesome/free-solid-svg-icons';
+import { faFilter, faSyncAlt, faBan, faCircle, faQrcode } from '@fortawesome/free-solid-svg-icons';
 import { CheckListRefService } from 'src/app/core/services/checkListRef/check-list-ref.service';
 import { DataService } from 'src/app/shared/services/data.service';
+import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner/ngx';
 
 
 @Component({
@@ -21,7 +22,7 @@ import { DataService } from 'src/app/shared/services/data.service';
   styleUrls: ['./engins.component.scss'],
 })
 export class EnginsComponent implements OnInit {
-  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   displayedColumns: string[] = ['id', 'date', 'conducteur', 'vehicule', 'engin', 'etat', 'action'];
   dataSource = new MatTableDataSource();
   dateEntree = new FormControl(moment());
@@ -31,6 +32,7 @@ export class EnginsComponent implements OnInit {
   logoutIcon = Icons.logoutIcon;
   faFilter = faFilter;
   faSyncAlt = faSyncAlt;
+  faQrCode = faQrcode;
   faBan = faBan;
   faCircle = faCircle;
   data = [];
@@ -39,21 +41,13 @@ export class EnginsComponent implements OnInit {
   de; ds;
 
   constructor(private enginService: EnginService,
-      private router: Router,
-      private platform: Platform,
-      private checkListRefService: CheckListRefService,
-      private dataService: DataService,
-      private activatedRoute: ActivatedRoute) {
-        // this.initializeApp();
-  }
-
-  initializeApp() {
-    this.platform.ready().then(res => {
-      if(!this.platform.is('android') || !this.platform.is('tablet')) {
-        console.log('is not a tablet');
-        this.router.navigate(['login']);
-      }
-    });
+    private router: Router,
+    private platform: Platform,
+    private checkListRefService: CheckListRefService,
+    private checklistService: CheckListService,
+    private dataService: DataService,
+    private activatedRoute: ActivatedRoute,
+    private barcodeScanner: BarcodeScanner) {
   }
 
 
@@ -68,8 +62,8 @@ export class EnginsComponent implements OnInit {
       this.oldDataSource = this.dataSource.data;
       this.data = <any[]>this.dataSource.data;
     });
-    
-    
+
+
   }
 
   ngAfterViewInit() {
@@ -82,6 +76,7 @@ export class EnginsComponent implements OnInit {
     console.log('Element: ', element);
     console.log(this.activatedRoute)
   }
+
   onChange(term, event) {
     // console.log('Date: ', term.value);
     if (event === 'dateEntree') {
@@ -138,15 +133,27 @@ export class EnginsComponent implements OnInit {
     // return `http://localhost:4772/${serverPath}`;
   }
 
-  onClick(nomEngin, id) {
-    console.log(nomEngin, id);
-  }
+
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('role');
     this.router.navigate(['login']);
   }
+  
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  async scanQR() {
+    const options: BarcodeScannerOptions = {
+      showTorchButton: true,
+      orientation: 'landscape'
+    };
+
+    const scanCode = await this.barcodeScanner.scan(options);
+    this.checklistService.getCheckListByMatricule(scanCode.text).subscribe(res => {
+      console.log('Checklist by Qr: ', res);
+    });
+    console.log('Scan Code: ', scanCode);
   }
 }
