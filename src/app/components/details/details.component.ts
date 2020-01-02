@@ -141,4 +141,8 @@ export class DetailsComponent implements OnInit {
     });
     return keys;
   }
+
+  print() {
+    window.print();
+  }
 }

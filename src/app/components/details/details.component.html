@@ -1,13 +1,13 @@
 <ion-content>
 
-  <div *ngIf="str == 'agent'">
+  <div *ngIf="str == 'agent'" id="printAgent">
     <button mat-button style="font-size: 16px; font-weight: 400;padding: 1%;" (click)='NavigatToEngins()'>
       <i style="font-size: 25px;padding: 5%;color: rgb(0,110,130) ;" class="fa fa-arrow-circle-left"
         aria-hidden="true"></i>
     </button>
   </div>
 
-  <div *ngIf="str != 'agent'">
+  <div *ngIf="str != 'agent'" id="printAdmin">
     <button mat-button style="font-size: 16px; font-weight: 400;padding: 1%;" (click)='NavigatToSynthese()'>
       <i style="font-size: 25px;padding: 5%;color: rgb(0,110,130) ;" class="fa fa-arrow-circle-left"
         aria-hidden="true"></i>
@@ -39,7 +39,7 @@
 
     <div class="card card-stats">
       <div class="card-header card-header-warning card-header-icon">
-        <div class="card-icon" style="background: rgb(0,110,130);float:right">
+        <div id="printImg" class="card-icon" style="background: rgb(0,110,130);float:right">
           <i class="material-icons">content_copy</i>
         </div>
 
@@ -73,9 +73,11 @@
     </div>
     <br>
     <div class="borderBox" style="background-color: white;">
-      <button mat-raised-button class="btn btn-info" printSectionId="print-section" ngxPrint
+
+      <button mat-raised-button id="printDoc" class="btn btn-info" printSectionId="print-section" (click)="print()"
         style="margin-right: 1%;position: relative; background:rgb(0,110,130);transform: translateX(-50%); float: left; margin-left: 8%;margin-top: 2.5%;">Imprimer
         <i class="fa fa-print" style="font-size:25px"></i></button>
+
       <div id="print-section">
         <mat-list *ngFor="let question of questions" [dir]="dir">
           <h2 class="form-row justify-content-start mr-2" style="padding: 2%;">
