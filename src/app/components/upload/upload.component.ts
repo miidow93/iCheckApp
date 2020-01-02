@@ -71,8 +71,8 @@ export class UploadComponent implements OnInit {
 
   takePicture() {
     const cameraOpt: CameraOptions = {
-      quality: 100,
-      destinationType: this.camera.DestinationType.FILE_URI,
+      quality: 75,
+      destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
     };
@@ -81,6 +81,7 @@ export class UploadComponent implements OnInit {
       console.log('Image Data: ', imageData);
       let base64Image = 'data:image/jpeg;base64,' + imageData;
       this.image = base64Image;
+      this.dataService.changeCheckList({ imageURL: base64Image });
       /*this.uploadService.upload(this.image).subscribe(res => {
         console.log('Path: ', res);
       });*/
@@ -114,7 +115,7 @@ export class UploadComponent implements OnInit {
     });*/
     console.log('Form: ', form);
     this.dataService.changeCheckList({ motif: form.controls['motif'].value });
-    this.dataService.changeCheckList({ image: this.image != null ? this.image : '' });
+    
     this.dataService.changeCheckList(
       {
         controlleur: {

@@ -1,0 +1,22 @@
+.readonly-wrapper {
+  cursor: not-allowed;
+}
+
+.readonly-wrapper .readonly-block {
+  pointer-events: none;
+}
+
+/*.aclass {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+//   width: 50%;
+}*/
+
+/*@media print {
+    #print-section {
+        width: 30% !important;
+        height: 50% !important;
+        display: block;
+    }
+}*/

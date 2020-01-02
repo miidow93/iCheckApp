@@ -30,3 +30,5 @@ npm-debug.log*
 /plugins
 /www
 my-release-key.keystore
+src/manifest.webmanifest
+ngsw-config.json

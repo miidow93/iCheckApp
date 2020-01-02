@@ -98,106 +98,124 @@
 
 <div class="wrapper ">
 
-    <div class="sidebar" data-color="azure" data-background-color="white"
-        style=" background: linear-gradient(rgb(255, 255, 255),rgba(255, 255, 255, 0.8)), url('https://demos.creative-tim.com/material-dashboard/assets/img/sidebar-3.jpg'); background-repeat: no-repeat;background-size: cover;"
-        data-image="C:\Users\EC\Desktop\app-dataconsignation-master\src\assets\images\sidebar-3.jpg">
-        <!--
+  <div class="sidebar" data-color="azure" data-background-color="white"
+    style=" background: linear-gradient(rgba(255, 255, 255, 0.671),rgba(255, 255, 255, 0.8)), url('https://demos.creative-tim.com/material-dashboard/assets/img/sidebar-3.jpg'); background-repeat: no-repeat;background-size: cover;"
+    data-image="C:\Users\EC\Desktop\app-dataconsignation-master\src\assets\images\sidebar-3.jpg">
+    <!--
        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
        Tip 2: you can also add an image using data-image tag
       -->
-        <div class="logo">
-            <a [routerLink]="[{ outlets: { admin: ['dashboard'] } }]" class="simple-text logo-normal">
-                <!--<img [src]="logodatacons" alt="Lafrage Holcim" style="width: 40%;">-->
-                <ion-title>I-Check</ion-title>
-            </a>
-        </div>
-        <div class="sidebar-wrapper" style="overflow: hidden">
-            <ul class="nav">
-                <li class="nav-item" [routerLink]="[{ outlets: { admin: ['dashboard'] } }]" routerLinkActive="active"
-                    style="width: 105%;">
-                    <a class="nav-link" [routerLink]="[{ outlets: { admin: ['dashboard'] } }]">
-                        <i class="material-icons">dashboard</i>
-                        <p>Tableau de bord</p>
-                    </a>
-                </li>
-                <li class="nav-item " [routerLink]="[{ outlets: { admin: ['synthese'] } }]" routerLinkActive="active"
-                    style="width: 105%;">
-                    <a class="nav-link" [routerLink]="[{ outlets: { admin: ['synthese'] } }]">
-                        <i class="material-icons">content_paste</i>
-                        <p>Synthèse de controle</p>
-                    </a>
-                </li>
-                <li class="nav-item " [routerLink]="[{ outlets: { admin: ['history'] } }]" routerLinkActive="active"
-                    style="width: 105%;">
-                    <a class="nav-link" [routerLink]="[{ outlets: { admin: ['history'] } }]">
-                        <i class="material-icons">history</i>
-                        <p>Historiques des camions</p>
-                    </a>
-                </li>
-                <li class="nav-item" [routerLink]="[{ outlets: { admin: ['user'] } }]" routerLinkActive="active"
-                    style="width: 105%;">
-                    <a class="nav-link" [routerLink]="[{ outlets: { admin: ['user'] } }]">
-                        <i class="material-icons">supervised_user_circle</i>
-                        <p>Gestion des utilisateurs</p>
-                    </a>
-                </li>
-                <li class="nav-item active-pro ">
-                    <a class="nav-link" [routerLink]="[{ outlets: { admin: [logout] } }]" href="javascript:void(0);">
-                        <i class="material-icons">unarchive</i>
-                        <p>Déconnexion</p>
-                    </a>
-                </li>
-            </ul>
-        </div>
+    <div class="logo">
+      <a [routerLink]="[{ outlets: { admin: ['dashboard'] } }]" class="simple-text logo-normal">
+        <!--<img [src]="logodatacons" alt="Lafrage Holcim" style="width: 40%;">-->
+        <!-- <ion-title>I-Check</ion-title> -->
+        <img src="{{ iCheckLogo }}" style="width: 50%; height: 50%;">
+      </a>
     </div>
-    <div class="main-panel">
-        <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
-            <div class="container-fluid">
-                <div class="navbar-wrapper">
-                    <div class="tim-typo">
-                        <!-- <ion-label>{{ p.title }}</ion-label>-->
-                    </div>
-                </div>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="navbar-toggler-icon icon-bar"></span>
-                    <span class="navbar-toggler-icon icon-bar"></span>
-                    <span class="navbar-toggler-icon icon-bar"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-end">
-                    <ul>
-                        <li class="nav-item active-pro ">
+    <div class="sidebar-wrapper" style="overflow: hidden">
+      <ul class="nav">
+        <li class="nav-item" [routerLink]="[{ outlets: { admin: ['dashboard'] } }]" routerLinkActive="active"
+          style="width: 105%;">
+          <a class="nav-link" [routerLink]="[{ outlets: { admin: ['dashboard'] } }]">
+            <i class="material-icons">dashboard</i>
+            <p>Tableau de bord</p>
+          </a>
+        </li>
+        <li class="nav-item " [routerLink]="[{ outlets: { admin: ['synthese'] } }]" routerLinkActive="active"
+          style="width: 105%;">
+          <a class="nav-link" [routerLink]="[{ outlets: { admin: ['synthese'] } }]">
+            <i class="material-icons">content_paste</i>
+            <p>Historiques des camions</p>
+          </a>
+        </li>
+        <li class="nav-item " [routerLink]="[{ outlets: { admin: ['history'] } }]" routerLinkActive="active"
+          style="width: 105%;">
+          <a class="nav-link" [routerLink]="[{ outlets: { admin: ['history'] } }]">
+            <i class="material-icons">supervised_user_circle</i>
+            <p>Synthèse de controle</p>
+          </a>
+        </li>
+        <li class="nav-item" [routerLink]="[{ outlets: { admin: ['user'] } }]" routerLinkActive="active"
+          style="width: 105%;">
+          <a class="nav-link" [routerLink]="[{ outlets: { admin: ['user'] } }]">
+            <i class="material-icons">history</i>
+            <p>Gestion des utilisateurs</p>
+          </a>
+        </li>
 
-                        </li>
-                    </ul>
-                </div>
-            </div>
+        <li class="nav-item" [routerLink]="[{ outlets: { admin: ['vehicule'] } }]" routerLinkActive="active"
+          style="width: 105%;">
+          <a class="nav-link" [routerLink]="[{ outlets: { admin: ['vehicule'] } }]">
+            <i class="material-icons">local_shipping</i>
+            <p>Gestion des vehicules</p>
+          </a>
+        </li>
+
+        <li class="nav-item" [routerLink]="[{ outlets: { admin: ['qr-generator'] } }]" routerLinkActive="active"
+          style="width: 105%;">
+          <a class="nav-link" [routerLink]="[{ outlets: { admin: ['qr-generator'] } }]">
+            <i class="material-icons">line_style</i>
+            <p>Qr Generator</p>
+          </a>
+        </li>
+
+        <li class="nav-item active-pro ">
+          <a class="nav-link" [routerLink]="[{ outlets: { admin: [logout] } }]" href="javascript:void(0);">
+            <i class="material-icons">unarchive</i>
+            <p>Déconnexion</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="main-panel">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+      <div class="container-fluid">
+        <div class="navbar-wrapper">
+          <div class="tim-typo">
+            <!-- <ion-label>{{ p.title }}</ion-label>-->
+          </div>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="navbar-toggler-icon icon-bar"></span>
+          <span class="navbar-toggler-icon icon-bar"></span>
+          <span class="navbar-toggler-icon icon-bar"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end">
+          <ul>
+            <li class="nav-item active-pro ">
+
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+    <div class="content">
+      <div class="container-fluid">
+
+
+        <ion-router-outlet id="menu-content" name="admin"></ion-router-outlet>
+
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="container-fluid">
+        <nav class="float-left">
+          <ul>
+          </ul>
         </nav>
-        <!-- End Navbar -->
-        <div class="content">
-            <div class="container-fluid">
-
-
-                <ion-router-outlet id="menu-content" name="admin"></ion-router-outlet>
-
-            </div>
+        <div class="copyright float-right">
+          &copy;
+          <script>
+            document.write(new Date().getFullYear())
+          </script>, Réalisé par <i class="material-icons"></i>
+          <a href="#" target="_blank">ADH Engeeniring</a> pour un meilleur web.
         </div>
-        <footer class="footer">
-            <div class="container-fluid">
-                <nav class="float-left">
-                    <ul>
-                    </ul>
-                </nav>
-                <div class="copyright float-right">
-                    &copy;
-                    <script>
-                        document.write(new Date().getFullYear())
-                    </script>, Réalisé par <i class="material-icons"></i>
-                    <a href="#" target="_blank">ADH Engeeniring</a> pour un meilleur web.
-                </div>
-            </div>
-        </footer>
-    </div>
+      </div>
+    </footer>
+  </div>
 </div>

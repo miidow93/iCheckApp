@@ -1,4 +1,4 @@
-import { NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -47,6 +47,16 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 import { FileTransfer } from '@ionic-native/file-transfer/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
+import { QrGeneratorComponent } from './components/qr-generator/qr-generator.component';
+import { VehiculeComponent } from './components/vehicule/vehicule.component';
+import { ListVehiculeComponent } from './components/vehicule/list-vehicule/list-vehicule.component';
+import { NgxPrintModule } from 'ngx-print';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { EditVehiculeComponent } from './components/vehicule/edit-vehicule/edit-vehicule.component';
+import { NgxQRCodeModule } from 'ngx-qrcode2';
+
+
 
 export function getToken() {
   return localStorage.getItem('token');
@@ -79,9 +89,15 @@ export function getToken() {
     HistoryComponent,
     UploadComponent,
     UserComponent,
-    ListUserComponent
+    ListUserComponent,
+    QrGeneratorComponent,
+    VehiculeComponent,
+    ListVehiculeComponent,
+    EditVehiculeComponent
   ],
-  entryComponents: [EditEnginsComponent,EditConducteurComponent],
+
+  entryComponents: [EditEnginsComponent,EditConducteurComponent,EditVehiculeComponent],
+
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -94,6 +110,7 @@ export function getToken() {
     NgbModule,
     FontAwesomeModule,
     ChartsModule,
+    NgxPrintModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: getToken,
@@ -103,8 +120,10 @@ export function getToken() {
         ]
       }
     }),
+    NgxQRCodeModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
-  
+
   providers: [
     Camera,
     ScreenOrientation,

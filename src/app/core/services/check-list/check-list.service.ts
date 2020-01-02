@@ -50,8 +50,8 @@ export class CheckListService {
     console.log(message);
   }
 
-  getAllCheckListByType(type){
-    return this.http.get(`${API}/byType/${type}`);
+  getAllCheckListByType(){
+    return this.http.get(`${API}/all`);
   }
 }
  

@@ -1,0 +1,69 @@
+<ion-content >
+  <div class="mdl-toolbar">
+  <div class="logo">
+    <ion-title class="ion-padding" style="font-weight: 350;
+    color: #f7f5f5;
+    font-size: 25px;">
+      Gestion des vehicules
+    </ion-title>
+  </div>
+</div>
+
+  <div style="padding-left: 5%; padding-right: 5%; padding-top: 5%;">
+
+
+    <div class="col-md-14">
+      <div class="card">
+        <div class="card-header card-header-info" style="background: rgb(0, 110, 130);">
+          <h4 class="card-title">Ajouter un vehicule</h4>
+          <p class="card-category">Remplissez le formulaire</p>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="formVehicule" (ngSubmit)="AddVehicule(formVehicule)">
+            <div class="row">
+              <div class="col-md-4">
+                <div>
+                  <mat-form-field >
+                    <mat-select placeholder="Type" formControlName="type">
+                      <mat-option *ngFor="let engin of engins" [value]="engin.id">
+                        {{engin.nomEngin}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-md-4">
+                  <div>
+                    <mat-form-field >
+                      <input matInput placeholder="Matricule Camion" formControlName="matricule" >
+                    </mat-form-field>
+                  </div>
+              </div>
+            
+              <div class="col-md-4">
+                  <div>
+                    <mat-form-field>
+                      <input matInput [matDatepicker]="picker" placeholder="Date de validité Carte grise" [formControl]="date" (ngModelChange)="onChange(date)">
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                  <div>
+                    <input type="file" id="file" name="file" class="inputfile" #file (change)="upload($event);" />
+                    <label for="file"> <i class="fas fa-upload"></i> Choose a file</label>
+                    <span class="ml-2 h6" *ngIf="fileData">{{fileData.name}}</span>
+                </div>
+              </div>
+            </div>
+            <button mat-button style="float: left;" (click)="navigateTo()">Annuler</button>
+            <div mat-dialog-actions class="form-row justify-content-end mb-2" >
+              <button type="submit" mat-button class="btn btn-info" style="background: rgb(0, 110, 130);">Ajouter</button>
+            </div>
+            <div class="clearfix"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</ion-content>

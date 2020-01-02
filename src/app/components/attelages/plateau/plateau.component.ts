@@ -149,7 +149,7 @@ export class PlateauComponent implements OnInit {
     this.formValues.site = localStorage.getItem('site');
     this.formValues.etat = this.totalRate < 40 ? true : false;
     this.formValues.conducteur = { cin: form.controls['cin'].value, nomComplet: form.controls['nomComplet'].value };
-    this.formValues.vehicule = { matricule: form.controls['matricule'].value, engin: 'Benne' };
+    this.formValues.vehicule = { matricule: form.controls['matricule'].value, engin: 'Plateau' };
     this.formValues.catchAll = {
       checklistConducteur: Object.values(this.conducteurCheckList),
       checklistEquipement: Object.values(this.equipementCheckList),

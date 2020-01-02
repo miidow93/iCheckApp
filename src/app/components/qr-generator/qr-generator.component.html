@@ -1,0 +1,59 @@
+<ion-content>
+  <div class="mdl-toolbar">
+    <div class="logo">
+      <ion-title class="ion-padding">
+        QR Code Générateur
+      </ion-title>
+    </div>
+  </div>
+  <div class="pl-5 pr-5 pt-5">
+    <div class="col-md-14">
+      <div class="card">
+        <div class="card-header card-header-info" style="background: rgb(0, 110, 130);">
+          <h4 class="card-title">Ajouter un utilisateur</h4>
+          <p class="card-category">Remplissez le formulaire</p>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="matriculeForm">
+            <div class="row">
+              <div class="col-md-8">
+                <div class="form-group">
+                  <mat-form-field class="readonly-wrapper" class="w-100">
+                    <mat-label>Choisir un Véhicule</mat-label>
+                    <mat-select class="readonly-block" formControlName="matricule">
+                      <mat-option *ngFor="let item of vehicules" [value]="item.id" (click)="test(item.matricule)">
+                        {{item.matricule}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <button printSectionId="print-section" ngxPrint  mat-button class="btn btn-info"
+                  style="background: rgb(0, 110, 130);">
+                  Imprimer
+                </button>
+              </div>
+              <div class="col-md-4">
+                <div class="aclass" id="print-section">
+                  <ngx-qrcode [qrc-value]="qrData" [qrc-element-type]="elementType" qrc-class="qrcode"
+                    qrc-errorCorrectionLevel="L">
+                  </ngx-qrcode>
+                  <div class="ml-4">
+                    <span>Qr Code du matricule: {{qrData}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- <button mat-button class="float-left" (click)="navigateTo()">Annuler</button>
+            <div mat-dialog-actions class="form-row justify-content-end mb-2">
+              <button type="submit" mat-button class="btn btn-info"
+                style="background: rgb(0, 110, 130);">Ajouter</button>
+            </div> -->
+            <div class="clearfix"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</ion-content>

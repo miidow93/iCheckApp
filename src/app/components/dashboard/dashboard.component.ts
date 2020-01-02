@@ -22,11 +22,13 @@ export class DashboardComponent implements OnInit {
   messageLineChart;
   site;
   sites;
-  // blockedSite = [];
-  // notBlockedSite = [];
-  // controledSite = [];
-  // blocked;
-  // NotBlocked;
+  
+  countbenneBlock;
+  countciternesBlock;
+  countplateausBlock;
+  countbenneNotBlock;
+  countciternesNotBlock;
+  countplateausNotBlock;
   bennes = [];
   citernes = [];
   plateaus = [];
@@ -132,7 +134,7 @@ export class DashboardComponent implements OnInit {
  
     this.site = localStorage.getItem('site');
     this.getAllSites();
-    this.getNumberOfBlocked();
+    // this.getNumberOfBlocked();
     this.getNumberOfNotBlocked();
     this.getNumberOfControledSite();
     this.getNumberOfcontroled();
@@ -186,15 +188,6 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  getNumberOfBlocked() {
-    return this.statsService.getStatusBysite('benne').subscribe((res: any) => {
-      console.log('benne status: ', res);
-      // for (let i = 0; i < res.stats.length; i++) {
-      //   // this.blockedSite.push(res.stats[i])
-      // }
-    });
-  }
-
   getNumberOfNotBlocked() {
     return this.statsService.getNumberOfNotBlocked().subscribe((res: any) => {
       console.log('Not Blocked: ', res);
@@ -229,12 +222,6 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  countbenneBlock;
-  countciternesBlock;
-  countplateausBlock;
-  countbenneNotBlock;
-  countciternesNotBlock;
-  countplateausNotBlock;
   getAllSites() {
     this.statsService.getStats().subscribe(res => {
       console.log('Dashboard Stats: ', res);
