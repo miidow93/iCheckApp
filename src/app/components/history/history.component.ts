@@ -24,7 +24,7 @@ export class HistoryComponent implements OnInit {
   displayedColumnsBenne: string[] = ['controlleur', 'site', 'matricule', 'type', 'conducteur', 'etat', 'motif',
     'date', 'control1', 'control2', 'control3'
     , 'control4', 'control5', 'control6', 'control7', 'control8', 'control9', 'control10'];
-  dataSourceBenne = new MatTableDataSource();
+  dataSource = new MatTableDataSource();
 
   dateEntree = new FormControl(moment());
   dateSortie = new FormControl(moment());
@@ -34,7 +34,7 @@ export class HistoryComponent implements OnInit {
   faCircle = faCircle;
   data = [];
   de; ds;
-  oldDataSourceBenne;
+  oldDataSource;
 
   constructor(private blockageService: BlockageService,
     private file: File,
@@ -45,7 +45,7 @@ export class HistoryComponent implements OnInit {
     private platform: Platform,
     private check: CheckListService) { }
 
-  @ViewChild(MatPaginator, { static: false }) paginatorBenne: MatPaginator;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
 
   ngOnInit() {
@@ -58,7 +58,7 @@ export class HistoryComponent implements OnInit {
   }
 
   applyFilter(filterValue: string) {
-    this.dataSourceBenne.filter = filterValue.trim().toLowerCase();
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   onChange(term, event) {
@@ -97,22 +97,22 @@ export class HistoryComponent implements OnInit {
   }
 
 
-  // filtrer() {
-  //   console.log('DataSource: ', this.dataSource.data);
-  //   if (this.de && this.ds) {
-  //     if (this.de > this.ds) {
-  //       console.log(this.de);
-  //       alert('La date d\'entree doit être supérieure à la date de sortie');
-  //     } else {
-  //       const filter = this.data.filter(x => x.dateBlockage >= this.de && x.dateBlockage <= this.ds);
-  //       console.log('filter : ', filter);
-  //       this.dataSource.data = filter;
-  //     }
-  //   }
-  // }
-  // refresh() {
-  //   this.dataSource.data = this.oldDataSource;
-  // }
+  filtrer() {
+    console.log('DataSource: ', this.dataSource.data);
+    if (this.de && this.ds) {
+      if (this.de > this.ds) {
+        console.log(this.de);
+        alert('La date d\'entree doit être supérieure à la date de sortie');
+      } else {
+        const filter = this.data.filter(x => x.date >= this.de && x.date <= this.ds);
+        console.log('filter : ', filter);
+        this.dataSource.data = filter;
+      }
+    }
+  }
+  refresh() {
+    this.dataSource.data = this.oldDataSource;
+  }
 
   exporter() {
     console.log('Date: ', this.de + ' ' + this.ds);
@@ -181,10 +181,10 @@ export class HistoryComponent implements OnInit {
     this.check.getAllCheckListByType().subscribe(
       ((res: any) => {
         console.log('Benne Data :', res)
-        this.dataSourceBenne.data = res;
-        this.dataSourceBenne.paginator = this.paginatorBenne;
-        this.oldDataSourceBenne = this.dataSourceBenne.data;
-        this.data = <any[]>this.dataSourceBenne.data;
+        this.dataSource.data = res;
+        this.dataSource.paginator = this.paginator;
+        this.oldDataSource = this.dataSource.data;
+        this.data = <any[]>this.dataSource.data;
       }));
   }
 }

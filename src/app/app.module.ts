@@ -55,7 +55,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { EditVehiculeComponent } from './components/vehicule/edit-vehicule/edit-vehicule.component';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
-
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 
 
 export function getToken() {
@@ -126,6 +126,7 @@ export function getToken() {
 
   providers: [
     Camera,
+    BarcodeScanner,
     ScreenOrientation,
     StatusBar,
     SplashScreen,

@@ -51,6 +51,7 @@ export class DetailsComponent implements OnInit {
     });
 
   }
+  
   NavigatToEngins(){
     this.router.navigate(['engins']);
   }
