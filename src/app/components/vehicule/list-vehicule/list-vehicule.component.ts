@@ -71,4 +71,7 @@ export class ListVehiculeComponent implements OnInit {
       this.data = <any[]>this.dataSource.data;
     });
   }
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 }

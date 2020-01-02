@@ -99,6 +99,7 @@ export class HistoryComponent implements OnInit {
 
   filtrer() {
     console.log('DataSource: ', this.dataSource.data);
+
     if (this.de && this.ds) {
       if (this.de > this.ds) {
         console.log(this.de);
@@ -107,6 +108,7 @@ export class HistoryComponent implements OnInit {
         const filter = this.data.filter(x => x.date >= this.de && x.date <= this.ds);
         console.log('filter : ', filter);
         this.dataSource.data = filter;
+
       }
     }
   }

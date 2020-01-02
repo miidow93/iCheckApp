@@ -12,9 +12,9 @@ import * as moment from 'moment';
   styleUrls: ['./edit-vehicule.component.scss'],
 })
 export class EditVehiculeComponent implements OnInit {
-  editFormVehicule : FormGroup;
+  editFormVehicule: FormGroup;
   date = new FormControl(moment());
-  de ;
+  de;
   engins: any;
   fileToUpload;
   matcher = new FormErrorStateMatcher();
@@ -23,22 +23,22 @@ export class EditVehiculeComponent implements OnInit {
   previewUrl: any = null;
 
   constructor(
-    private formBuilder:FormBuilder,
-    private enginService:EnginService,
-    private dialogRef:MatDialogRef<EditVehiculeComponent>,
-    private vehiculeService:VehiculeService,
+    private formBuilder: FormBuilder,
+    private enginService: EnginService,
+    private dialogRef: MatDialogRef<EditVehiculeComponent>,
+    private vehiculeService: VehiculeService,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
     console.log('Passed Data: ', this.data);
     this.editFormVehicule = this.formBuilder.group({
-      type : ['',Validators.required],
-      matricule : ['',Validators.required]
+      type: ['', Validators.required],
+      matricule: ['', Validators.required]
     });
 
     this.enginService.getEngins().subscribe(res => {
       if (res) {
-        console.log('engin :',res)
+        console.log('engin :', res)
         this.engins = res;
       }
     });
@@ -49,55 +49,58 @@ export class EditVehiculeComponent implements OnInit {
     // this.de = this.validateDate(moment(this.date.value).format('YYYY-MM-DD') + 'T00:00:00');
     console.log(`dateValidite : ${this.de}`);
   }
-  editVehicule(form){
+  editVehicule(form) {
+    if (!form.valid) {
+      return;
+    }
     const dataEdit = {
-      id : this.data.vehicule.id,
-      matricule : form.controls['matricule'].value,
-      idEngin : form.controls['type'].value,
-      dateValidite : this.de,
+      id: this.data.vehicule.id,
+      matricule: form.controls['matricule'].value,
+      idEngin: form.controls['type'].value,
+      dateValidite: this.de,
       imageUrl: this.previewUrl != null ? this.previewUrl : (this.data.vehicule.imageUrl != null) ? this.data.vehicule.imageUrl : '',
     }
     console.log('data : ', dataEdit);
-    this.vehiculeService.updateVehicule(this.data.vehicule.id,dataEdit).subscribe(res => {
-      console.log('Ajout : ',res)
+    this.vehiculeService.updateVehicule(this.data.vehicule.id, dataEdit).subscribe(res => {
+      console.log('Ajout : ', res)
     });
     this.editFormVehicule.reset();
     this.closeDialog();
   }
-onChange(term) {
+  onChange(term) {
     console.log('Date: ', term.value);
     this.de = this.validateDate(term);
-    console.log('date',this.de); 
-}
-
-validateDate(date) {
-  let result = `${date.value._i.year}`;
-  const validateMonth = `${date.value._i.month}`;
-  const validateDay = `${date.value._i.date}`;
-  console.log('Month: ', validateMonth + ', Day: ' + validateDay);
-  const time = 'T00:00:00';
-  if (Number(validateMonth) < 9 && Number(validateDay) < 10) {
-    result += `-0${Number(validateMonth) + 1}-0${validateDay}${time}`;
-    // console.log('Resultat 1: ', result);
-  } else {
-    if (Number(validateMonth) >= 9) {
-      result += `-${Number(validateMonth) + 1}`;
-      // console.log('Resultat 2: ', result);
-    } else {
-      result += `-0${Number(validateMonth) + 1}`;
-      // console.log('Resultat 3: ', result);
-    }
-
-    if (Number(validateDay) >= 10) {
-      result += `-${validateDay}${time}`;
-      // console.log('Resultat 4: ', result);
-    } else {
-      result += `-0${validateDay}${time}`;
-      // console.log('Resultat 5: ', result);
-    }
+    console.log('date', this.de);
   }
-  return result;
-}
+
+  validateDate(date) {
+    let result = `${date.value._i.year}`;
+    const validateMonth = `${date.value._i.month}`;
+    const validateDay = `${date.value._i.date}`;
+    console.log('Month: ', validateMonth + ', Day: ' + validateDay);
+    const time = 'T00:00:00';
+    if (Number(validateMonth) < 9 && Number(validateDay) < 10) {
+      result += `-0${Number(validateMonth) + 1}-0${validateDay}${time}`;
+      // console.log('Resultat 1: ', result);
+    } else {
+      if (Number(validateMonth) >= 9) {
+        result += `-${Number(validateMonth) + 1}`;
+        // console.log('Resultat 2: ', result);
+      } else {
+        result += `-0${Number(validateMonth) + 1}`;
+        // console.log('Resultat 3: ', result);
+      }
+
+      if (Number(validateDay) >= 10) {
+        result += `-${validateDay}${time}`;
+        // console.log('Resultat 4: ', result);
+      } else {
+        result += `-0${validateDay}${time}`;
+        // console.log('Resultat 5: ', result);
+      }
+    }
+    return result;
+  }
 
   public upload(event: any): void {
     this.fileData = event.target.files[0];
