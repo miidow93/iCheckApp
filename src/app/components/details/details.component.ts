@@ -5,6 +5,7 @@ import { CheckListService } from 'src/app/core/services/check-list/check-list.se
 import { QuestionBase } from 'src/app/shared/forms/question-base';
 import { FormGroup } from '@angular/forms';
 import { Icons } from 'src/app/shared/icons';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-details',
@@ -27,7 +28,9 @@ export class DetailsComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
     private questionService: QuestionService,
-    private checkListService: CheckListService,private router:Router) { }
+    private checkListService: CheckListService,
+    private router:Router, 
+    private platform: Platform) { }
 
   ngOnInit() {
     this.questions = [];
@@ -50,6 +53,10 @@ export class DetailsComponent implements OnInit {
       console.log("str :",this.str)
     });
 
+  }
+
+  getPlatform() {
+    return this.platform.is('android') || this.platform.is('tablet');
   }
   
   NavigatToEngins(){

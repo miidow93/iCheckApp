@@ -44,7 +44,7 @@
         </div>
 
         <h5 class="card-title" style="float:left;width: 80%;">
-          <div class="container" style="width: 100%;">
+          <div class="container-fluid">
             <div class="row">
               <div class="col-sm 3"><span style="font-weight: bold;">Date: </span>
                 {{checkListValues?.date | date: 'dd/MM/yyyy'}}</div>
@@ -74,7 +74,7 @@
     <br>
     <div class="borderBox" style="background-color: white;">
 
-      <button mat-raised-button id="printDoc" class="btn btn-info" printSectionId="print-section" (click)="print()"
+      <button mat-raised-button *ngIf="!getPlatform()" id="printDoc" class="btn btn-info" printSectionId="print-section" (click)="print()"
         style="margin-right: 1%;position: relative; background:rgb(0,110,130);transform: translateX(-50%); float: left; margin-left: 8%;margin-top: 2.5%;">Imprimer
         <i class="fa fa-print" style="font-size:25px"></i></button>
 
