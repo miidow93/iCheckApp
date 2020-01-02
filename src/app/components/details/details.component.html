@@ -7,12 +7,20 @@
     </button>
   </div>
 
-  <div *ngIf="str != 'agent'" id="printAdmin">
+  <div *ngIf="!getPlatform()" class="mdl-toolbar">
+    <div class="logo">
+      <ion-title class="ion-padding">
+        Détails
+      </ion-title>
+    </div>
+  </div>
+
+  <!-- <div *ngIf="str != 'agent' && !isDesktop()" id="printAdmin">
     <button mat-button style="font-size: 16px; font-weight: 400;padding: 1%;" (click)='NavigatToSynthese()'>
       <i style="font-size: 25px;padding: 5%;color: rgb(0,110,130) ;" class="fa fa-arrow-circle-left"
         aria-hidden="true"></i>
     </button>
-  </div>
+  </div> -->
 
   <div style="padding: 0%;
   padding-left: 5%;

@@ -56,7 +56,11 @@ export class DetailsComponent implements OnInit {
   }
 
   getPlatform() {
-    return this.platform.is('android') || this.platform.is('tablet');
+    return this.platform.is('android') || this.platform.is('tablet') && !this.platform.is('desktop');
+  }
+
+  isDesktop() {
+    return this.platform.is('desktop');
   }
   
   NavigatToEngins(){
