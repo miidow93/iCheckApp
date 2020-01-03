@@ -11,6 +11,9 @@ export class DataService {
   private enginDataSource = new BehaviorSubject<any[]>([]);
   currentEnginDataSource = this.enginDataSource.asObservable();
 
+  private vehiculeDataSource = new BehaviorSubject<any[]>([]);
+  currentvehiculeDataSource = this.vehiculeDataSource.asObservable();
+
   private conducteurDataSource = new BehaviorSubject<any[]>([]);
   currentConducteurDataSource = this.conducteurDataSource.asObservable();
 
@@ -82,6 +85,11 @@ export class DataService {
   changeEnginDataSource(data) {
     // console.log('Engin Data Service: ', data);
     this.enginDataSource.next([...data]);
+  }
+
+  changeVehiculeDataSource(data) {
+    // console.log('Engin Data Service: ', data);
+    this.vehiculeDataSource.next([...data]);
   }
 
   changeConducteurDataSource(data) {

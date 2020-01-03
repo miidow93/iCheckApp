@@ -4,6 +4,8 @@ import { UserService } from 'src/app/core/services/user/user.service';
 import { RoleService } from 'src/app/core/services/role/role.service';
 import { SiteService } from 'src/app/core/services/site/site.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { take } from 'rxjs/operators';
+import { DataService } from 'src/app/shared/services/data.service';
 
 @Component({
   selector: 'app-user',
@@ -20,7 +22,8 @@ export class UserComponent implements OnInit {
     private formBuilder: FormBuilder,
     private roleService: RoleService,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private dataService: DataService) { }
 
   ngOnInit() {
     this.userForm = this.formBuilder.group({
@@ -43,11 +46,19 @@ export class UserComponent implements OnInit {
     })
   }
   Adduser(form) {
+    if (!form.valid) {
+      return;
+    }
     console.log(form.value);
-    this.userService.addUsers(form.value).subscribe();
+    this.userService.addUsers(form.value).subscribe(async (res) => {
+      await this.userService.getAllUser().pipe(take(1)).toPromise().then(users => {
+        this.dataService.changeUserDataSource(users);
+      });
+    });
     this.userForm.reset();
+    this.navigateTo();
   }
-  navigateTo(){
+  navigateTo() {
     this.router.navigate(['admin', { outlets: { admin: ['user'] } }]);
   }
 

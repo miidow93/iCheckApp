@@ -4,6 +4,8 @@ import * as moment from 'moment';
 import { EnginService } from 'src/app/core/services/engin/engin.service';
 import { VehiculeService } from 'src/app/core/services/vehicule/vehicule.service';
 import { Router } from '@angular/router';
+import { take } from 'rxjs/operators';
+import { DataService } from 'src/app/shared/services/data.service';
 
 
 @Component({
@@ -12,22 +14,27 @@ import { Router } from '@angular/router';
   styleUrls: ['./vehicule.component.scss'],
 })
 export class VehiculeComponent implements OnInit {
-  formVehicule : FormGroup;
+  formVehicule: FormGroup;
   date = new FormControl(moment());
   de;
   engins: any;
   fileData: File = null;
   previewUrl: any = null;
-  constructor(private route:Router,private formBuilder : FormBuilder,private vehiculeService : VehiculeService,private enginService:EnginService) { }
+  constructor(
+    private route: Router,
+    private formBuilder: FormBuilder,
+    private vehiculeService: VehiculeService,
+    private enginService: EnginService,
+    private dataService: DataService) { }
 
   ngOnInit() {
     this.formVehicule = this.formBuilder.group({
-      type : ['',Validators.required],
-      matricule : ['',Validators.required]
+      type: ['', Validators.required],
+      matricule: ['', Validators.required]
     });
     this.enginService.getEngins().subscribe(res => {
       if (res) {
-        console.log('engin :',res)
+        console.log('engin :', res)
         this.engins = res;
       }
     });
@@ -40,11 +47,11 @@ export class VehiculeComponent implements OnInit {
   }
 
   onChange(term) {
-      console.log('Date: ', term.value);
-      this.de = this.validateDate(term);
-      console.log('date',this.de); 
+    console.log('Date: ', term.value);
+    this.de = this.validateDate(term);
+    console.log('date', this.de);
   }
-  
+
   validateDate(date) {
     let result = `${date.value._i.year}`;
     const validateMonth = `${date.value._i.month}`;
@@ -74,17 +81,23 @@ export class VehiculeComponent implements OnInit {
     return result;
   }
   AddVehicule(form) {
+    if (!form.valid) {
+      return;
+    }
     const data = {
-      matricule : form.controls['matricule'].value,
-      idEngin : form.controls['type'].value,
-      dateValidite : this.de,
+      matricule: form.controls['matricule'].value,
+      idEngin: form.controls['type'].value,
+      dateValidite: this.de,
       imageUrl: this.previewUrl,
     }
     console.log('data : ', data);
-    this.vehiculeService.addVehicule(data).subscribe(res => {
-      console.log('Ajout : ',res)
+    this.vehiculeService.addVehicule(data).subscribe(async (res) => {
+      await this.vehiculeService.getAll().pipe(take(1)).toPromise().then(vehicules => {
+        this.dataService.changeVehiculeDataSource(vehicules);
+        this.formVehicule.reset();
+      });
     });
-    this.formVehicule.reset();
+    this.navigateTo();
   }
 
   public upload(event: any): void {
@@ -108,8 +121,8 @@ export class VehiculeComponent implements OnInit {
       console.log('Reader: ', this.previewUrl);
     };
   }
-  navigateTo(){
+  navigateTo() {
     this.route.navigate(['admin', { outlets: { admin: 'vehicule' } }]);
   }
- 
+
 }

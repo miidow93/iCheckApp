@@ -23,11 +23,16 @@ export class ListUserComponent implements OnInit {
     private userDataService: DataService,
     private route: Router,
     private activatedRoute: ActivatedRoute,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog,
+    private dataService:DataService) { }
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
   ngOnInit() {
     this.refresh();
+    this.dataService.currentUserDataSource.subscribe(res => {
+      console.log(res);
+      this.dataSource.data = res;
+    })
   }
 
   // Recuperation de la liste des utilisateurs;
