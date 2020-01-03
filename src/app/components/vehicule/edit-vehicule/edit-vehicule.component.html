@@ -13,7 +13,7 @@
             <div class="col-md-4">
               <div>
                 <mat-form-field >
-                  <mat-select placeholder="Type" formControlName="type">
+                  <mat-select [(ngModel)]="selected" placeholder="Type" formControlName="type">
                     <mat-option *ngFor="let engin of engins" [value]="engin.id">
                       {{engin.nomEngin}}
                     </mat-option>
