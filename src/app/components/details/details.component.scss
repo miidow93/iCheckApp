@@ -65,3 +65,9 @@ $text-color: lighten(black, 30%);
     width: 15px;
   }
 }
+
+@media print {
+  #printDoc, #printImg, #printAgent, #printAdmin {
+    display: none;
+  }
+}

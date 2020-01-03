@@ -139,7 +139,7 @@ export class EnginsComponent implements OnInit {
     localStorage.removeItem('role');
     this.router.navigate(['login']);
   }
-  
+
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
@@ -147,13 +147,20 @@ export class EnginsComponent implements OnInit {
   async scanQR() {
     const options: BarcodeScannerOptions = {
       showTorchButton: true,
-      orientation: 'landscape'
+      orientation: 'portrait'
     };
 
     const scanCode = await this.barcodeScanner.scan(options);
-    this.checklistService.getCheckListByMatricule(scanCode.text).subscribe(res => {
-      console.log('Checklist by Qr: ', res);
-    });
+    if (scanCode.text != '' || scanCode.text != null) {
+      this.checklistService.getCheckListByMatricule(scanCode.text).subscribe(res => {
+        console.log('Checklist by Qr: ', res);
+        if (res != null) {
+          this.router.navigateByUrl(`synthese/${res['id']}`);
+          console.log('Is not null: ');
+        }
+      });
+    }
+
     console.log('Scan Code: ', scanCode);
   }
 }

@@ -1,18 +1,26 @@
 <ion-content>
 
-  <div *ngIf="str == 'agent'">
+  <div *ngIf="str == 'agent'" id="printAgent">
     <button mat-button style="font-size: 16px; font-weight: 400;padding: 1%;" (click)='NavigatToEngins()'>
       <i style="font-size: 25px;padding: 5%;color: rgb(0,110,130) ;" class="fa fa-arrow-circle-left"
         aria-hidden="true"></i>
     </button>
   </div>
 
-  <div *ngIf="str != 'agent'">
+  <div *ngIf="!getPlatform()" class="mdl-toolbar">
+    <div class="logo">
+      <ion-title class="ion-padding">
+        Détails
+      </ion-title>
+    </div>
+  </div>
+
+  <!-- <div *ngIf="str != 'agent' && !isDesktop()" id="printAdmin">
     <button mat-button style="font-size: 16px; font-weight: 400;padding: 1%;" (click)='NavigatToSynthese()'>
       <i style="font-size: 25px;padding: 5%;color: rgb(0,110,130) ;" class="fa fa-arrow-circle-left"
         aria-hidden="true"></i>
     </button>
-  </div>
+  </div> -->
 
   <div style="padding: 0%;
   padding-left: 5%;
@@ -39,12 +47,12 @@
 
     <div class="card card-stats">
       <div class="card-header card-header-warning card-header-icon">
-        <div class="card-icon" style="background: rgb(0,110,130);float:right">
+        <div id="printImg" class="card-icon" style="background: rgb(0,110,130);float:right">
           <i class="material-icons">content_copy</i>
         </div>
 
         <h5 class="card-title" style="float:left;width: 80%;">
-          <div class="container" style="width: 100%;">
+          <div class="container-fluid">
             <div class="row">
               <div class="col-sm 3"><span style="font-weight: bold;">Date: </span>
                 {{checkListValues?.date | date: 'dd/MM/yyyy'}}</div>
@@ -73,9 +81,11 @@
     </div>
     <br>
     <div class="borderBox" style="background-color: white;">
-      <button mat-raised-button class="btn btn-info" printSectionId="print-section" ngxPrint
+
+      <button mat-raised-button *ngIf="!getPlatform()" id="printDoc" class="btn btn-info" printSectionId="print-section" (click)="print()"
         style="margin-right: 1%;position: relative; background:rgb(0,110,130);transform: translateX(-50%); float: left; margin-left: 8%;margin-top: 2.5%;">Imprimer
         <i class="fa fa-print" style="font-size:25px"></i></button>
+
       <div id="print-section">
         <mat-list *ngFor="let question of questions" [dir]="dir">
           <h2 class="form-row justify-content-start mr-2" style="padding: 2%;">
