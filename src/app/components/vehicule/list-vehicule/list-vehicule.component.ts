@@ -6,6 +6,7 @@ import { EditVehiculeComponent } from '../edit-vehicule/edit-vehicule.component'
 import { Constants } from 'src/app/shared/constants';
 import { take } from 'rxjs/operators';
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
+import { DataService } from 'src/app/shared/services/data.service';
 
 @Component({
   selector: 'app-list-vehicule',
@@ -21,10 +22,18 @@ export class ListVehiculeComponent implements OnInit {
   oldDataSource;
   faEdit = faEdit;
 
-  constructor(private vehiculeService: VehiculeService, private route: Router, private dialog: MatDialog) { }
+  constructor(
+    private vehiculeService: VehiculeService,
+    private route: Router,
+    private dialog: MatDialog,
+    private dataService: DataService) { }
 
   ngOnInit() {
     this.getAll();
+    this.dataService.currentvehiculeDataSource.subscribe(res => {
+      console.log(res);
+      this.dataSource.data = res;
+    })
   }
 
   getAll() {
