@@ -213,7 +213,7 @@ export class PlateauComponent implements OnInit {
   }
 
   getAllVehicules() {
-    this.vehiculeService.getAllVehicules('Benne').subscribe(res => {
+    this.vehiculeService.getAllVehicules('Plateau').subscribe(res => {
       console.log('Vehicules: ', res);
       this.vehicules = res;
     });
