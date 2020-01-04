@@ -93,9 +93,9 @@ ion-content {
   }
 }
 
-/*.mat-horizontal-stepper-header{
+.mat-horizontal-stepper-header{
   pointer-events: none !important;
-}*/
+}
 
 .btnFloatRight {
   float: right;
@@ -115,6 +115,10 @@ table {
 .mat-header-cell {
   text-align: center;
   // border-right: 0.5px solid rgb(78, 76, 48);
+}
+
+th.mat-header-cell {
+  text-align: center !important;
 }
 
 /*table th {

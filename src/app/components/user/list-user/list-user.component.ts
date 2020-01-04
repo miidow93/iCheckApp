@@ -5,6 +5,7 @@ import { DataService } from 'src/app/shared/services/data.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EditUserComponent } from '../edit-user/edit-user.component';
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-list-user',
@@ -35,13 +36,15 @@ export class ListUserComponent implements OnInit {
     })
   }
 
-  // Recuperation de la liste des utilisateurs;
-  refresh() {
-    this.service.getAllUser().subscribe((res: any[]) => {
-      console.log('all Users:', res)
-      this.userDataService.changeUserDataSource(res);
+
+  async refresh() {
+    await this.service.getAllUser().pipe(take(1)).toPromise().then((response: any) => {
+      console.log('Response Refresh: ', response);
+      this.dataSource.data = response;
+      this.dataSource.paginator = this.paginator;
+      /*this.oldDataSource = this.dataSource.data;
+      this.data = <any[]>this.dataSource.data;*/
     });
-    this.userDataService.currentUserDataSource.subscribe(data => { this.dataSource.data = data; this.dataSource.paginator = this.paginator });
   }
 
   navigateTo() {
@@ -64,6 +67,7 @@ export class ListUserComponent implements OnInit {
       this.refresh();
     });
   }
+  
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }

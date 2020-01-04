@@ -1,4 +1,3 @@
-
 <!--
 <ion-header>
   <ion-toolbar>
@@ -55,80 +54,82 @@
 
 
 
-<ion-content >
+<ion-content>
   <!-- <p style="font-size: 15px; background-color: red;">Gestion des utilisateurs</p> -->
 
-<div class="mdl-toolbar">
-  <div class="logo">
-    <ion-title class="ion-padding">
-      Gestion des utilisateurs
-    </ion-title>
+  <div class="mdl-toolbar">
+    <div class="logo">
+      <ion-title class="ion-padding">
+        Gestion des utilisateurs
+      </ion-title>
+    </div>
   </div>
-</div>
 
 
-<div style="padding-left: 5%; padding-right: 5%;padding-top: 5%;">
-  <mat-form-field class="w-100">
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Chercher un utilisateur">
-  </mat-form-field>
-  <br>
-     <div class="mat-elevation-z8">
-         <div class="card">
-             <div class="card-header card-header-primary" style="background:rgb(0,110,130); ">
-                <div class="row">
-                    <div class="col-md-10">             
-                            <h4 class="card-title" >Utilisateurs</h4>
-                            <p class="card-category"  >Liste des utilisateurs :</p> 
-                    </div>
-                    <div class="col-md-2 float-right">
-                      <button class="btn btn-info"  (click)="navigateTo()"
-                       style="border: 1px solid rgb(255, 255, 255);background-color:rgb(0,110,130)">
-                       <i class="fa fa-plus" aria-hidden="true"></i>
-                           </button>
-                  </div>
-              </div>
-             </div>
-             <div class="card-body">
-               <div class="table-responsive">
-     <table mat-table [dataSource]="dataSource" matSort class ="table  table-hover " >
-      <ng-container matColumnDef="nomcomplet">
-        <th mat-header-cell *matHeaderCellDef> Nom Conducteur </th>
-        <td mat-cell *matCellDef="let element"> {{element.nomComplet}} </td>
-      </ng-container>
+  <div style="padding-left: 5%; padding-right: 5%;padding-top: 5%;">
+    <mat-form-field class="w-100">
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Chercher un utilisateur">
+    </mat-form-field>
+    <br>
+    <div class="mat-elevation-z8">
+      <div class="card">
+        <div class="card-header card-header-primary" style="background:rgb(0,110,130); ">
+          <div class="row">
+            <div class="col-md-10">
+              <h4 class="card-title">Utilisateurs</h4>
+              <p class="card-category">Liste des utilisateurs :</p>
+            </div>
+            <div class="col-md-2 float-right">
+              <button class="btn btn-info" (click)="navigateTo()"
+                style="border: 1px solid rgb(255, 255, 255);background-color:rgb(0,110,130)">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
 
-      <ng-container matColumnDef="username">
-        <th mat-header-cell *matHeaderCellDef> Nom d'utilisateur </th>
-        <td mat-cell *matCellDef="let element"> {{element.username}} </td>
-      </ng-container>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table mat-table [dataSource]="dataSource" matSort class="table table-hover">
 
-      <ng-container matColumnDef="role">
-        <th mat-header-cell *matHeaderCellDef> Role </th>
-        <td mat-cell *matCellDef="let element"> {{element.role}} </td>
-      </ng-container>
+              <ng-container matColumnDef="nomcomplet">
+                <th mat-header-cell *matHeaderCellDef> Nom Conducteur </th>
+                <td mat-cell *matCellDef="let element"> {{element.nomComplet}} </td>
+              </ng-container>
 
-      <ng-container matColumnDef="site">
-        <th mat-header-cell *matHeaderCellDef> Site </th>
-        <td mat-cell *matCellDef="let element"> {{element.site}} </td>
-      </ng-container>
+              <ng-container matColumnDef="username">
+                <th mat-header-cell *matHeaderCellDef> Nom d'utilisateur </th>
+                <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+              </ng-container>
 
-      <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef> Action </th>
-        <td mat-cell *matCellDef="let element">
-          <button class="form-row justify-content-center" (click)="onEdit(element)"
-            mat-icon-button>
-          <fa-icon [icon]="faEdit"></fa-icon>
-          </button>
-        </td>
-      </ng-container>
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              <ng-container matColumnDef="role">
+                <th mat-header-cell *matHeaderCellDef> Role </th>
+                <td mat-cell *matCellDef="let element"> {{element.role}} </td>
+              </ng-container>
 
-     </table>
-   </div>
- </div>
-</div>
+              <ng-container matColumnDef="site">
+                <th mat-header-cell *matHeaderCellDef>Site</th>
+                <td mat-cell *matCellDef="let element"> {{element.site}} </td>
+              </ng-container>
 
-     <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-   </div>
+              <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef>Action</th>
+                <td mat-cell *matCellDef="let element">
+                  <button class="form-row justify-content-center" (click)="onEdit(element)" mat-icon-button>
+                    <fa-icon [icon]="faEdit"></fa-icon>
+                  </button>
+                </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </div>
   </div>
-  </ion-content>
+</ion-content>

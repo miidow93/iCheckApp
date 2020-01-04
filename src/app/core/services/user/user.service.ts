@@ -12,9 +12,11 @@ export class UserService {
   addUsers(data){
     return this.http.post(`${API}`,data);
   }
+
   getAllUser(){
     return this.http.get(`${API}`);
   }
+  
   updateUser(id, data) {
     return this.http.put(`${API}${id}`,data);
   }

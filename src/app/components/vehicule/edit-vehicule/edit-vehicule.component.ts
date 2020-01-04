@@ -22,6 +22,7 @@ export class EditVehiculeComponent implements OnInit {
   isLoadingResults = false;
   fileData: File = null;
   previewUrl: any = null;
+  selected;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -44,6 +45,8 @@ export class EditVehiculeComponent implements OnInit {
         this.engins = res;
       }
     });
+    this.selected = this.data.vehicule.idEngin;
+    this.editFormVehicule.controls['matricule'].setValue(this.data.vehicule.matricule);
   }
 
   ngAfterViewInit(): void {
@@ -51,22 +54,26 @@ export class EditVehiculeComponent implements OnInit {
     // this.de = this.validateDate(moment(this.date.value).format('YYYY-MM-DD') + 'T00:00:00');
     console.log(`dateValidite : ${this.de}`);
   }
+
   editVehicule(form) {
     if (!form.valid) {
       return;
     }
+
     const dataEdit = {
       id: this.data.vehicule.id,
       matricule: form.controls['matricule'].value,
       idEngin: form.controls['type'].value,
       dateValidite: this.de,
       imageUrl: this.previewUrl != null ? this.previewUrl : (this.data.vehicule.imageUrl != null) ? this.data.vehicule.imageUrl : '',
-    }
+    };
+
     console.log('data : ', dataEdit);
     this.vehiculeService.updateVehicule(this.data.vehicule.id, dataEdit).subscribe(res => {
       this.toastAlert('Bien Modifier')
       console.log('Ajout : ', res)
     });
+
     this.editFormVehicule.reset();
     this.closeDialog();
   }
