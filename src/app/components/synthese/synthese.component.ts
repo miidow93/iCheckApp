@@ -15,7 +15,7 @@ import { faFilter, faSyncAlt, faBan, faCircle } from '@fortawesome/free-solid-sv
 export class SyntheseComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
-  displayedColumns: string[] = ['id', 'date', 'conducteur', 'vehicule', 'engin', 'etat', 'action'];
+  displayedColumns: string[] = ['id', 'date', 'conducteur', 'vehicule', 'engin','action'];
   dataSource = new MatTableDataSource();
   dateEntree = new FormControl(moment());
   dateSortie = new FormControl(moment());
@@ -88,6 +88,8 @@ export class SyntheseComponent implements OnInit, AfterViewInit {
     }
     return result;
   }
+
+  
 
   filtrer() {
     console.log('DataSource: ', this.dataSource.data);

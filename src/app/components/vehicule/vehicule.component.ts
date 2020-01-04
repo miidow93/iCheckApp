@@ -6,6 +6,7 @@ import { VehiculeService } from 'src/app/core/services/vehicule/vehicule.service
 import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
 import { DataService } from 'src/app/shared/services/data.service';
+import { ToastController } from '@ionic/angular';
 
 
 @Component({
@@ -25,7 +26,8 @@ export class VehiculeComponent implements OnInit {
     private formBuilder: FormBuilder,
     private vehiculeService: VehiculeService,
     private enginService: EnginService,
-    private dataService: DataService) { }
+    private dataService: DataService,
+    private toastCtrl: ToastController ) { }
 
   ngOnInit() {
     this.formVehicule = this.formBuilder.group({
@@ -92,6 +94,7 @@ export class VehiculeComponent implements OnInit {
     }
     console.log('data : ', data);
     this.vehiculeService.addVehicule(data).subscribe(async (res) => {
+      this.toastAlert('Bien Ajouter');
       await this.vehiculeService.getAll().pipe(take(1)).toPromise().then(vehicules => {
         this.dataService.changeVehiculeDataSource(vehicules);
         this.formVehicule.reset();
@@ -99,6 +102,17 @@ export class VehiculeComponent implements OnInit {
     });
     this.navigateTo();
   }
+
+  async toastAlert(msg) {
+    const toast = await this.toastCtrl.create({
+      message: `${msg}`,
+      duration: 2000,
+      color: 'success'
+    });
+
+    toast.present();
+  }
+
 
   public upload(event: any): void {
     this.fileData = event.target.files[0];

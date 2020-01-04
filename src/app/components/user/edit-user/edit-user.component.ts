@@ -4,6 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { UserService } from 'src/app/core/services/user/user.service';
 import { RoleService } from 'src/app/core/services/role/role.service';
 import { SiteService } from 'src/app/core/services/site/site.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-edit-user',
@@ -24,6 +25,7 @@ export class EditUserComponent implements OnInit {
     private userService: UserService,
     private roleService: RoleService,
     private siteService: SiteService,
+    private toastCtrl: ToastController
   ) { }
 
   ngOnInit() {
@@ -92,6 +94,7 @@ export class EditUserComponent implements OnInit {
       idSite: form.controls['idSite'].value,
     }
     this.userService.updateUser(this.data.user.id, userEdit).subscribe(res => {
+      this.toastAlert('Bien Modifier')
       console.log('Ajout : ', res)
     });
     this.editFormUser.reset();
@@ -99,6 +102,16 @@ export class EditUserComponent implements OnInit {
   }
   closeDialog() {
     this.dialogRef.close();
+  }
+
+  async toastAlert(msg) {
+    const toast = await this.toastCtrl.create({
+      message: `${msg}`,
+      duration: 2000,
+      color: 'success'
+    });
+
+    toast.present();
   }
 
 }

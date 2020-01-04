@@ -5,6 +5,7 @@ import { FormErrorStateMatcher } from 'src/app/core/handlers/form-error-state-ma
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { VehiculeService } from 'src/app/core/services/vehicule/vehicule.service';
 import * as moment from 'moment';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-edit-vehicule',
@@ -27,7 +28,8 @@ export class EditVehiculeComponent implements OnInit {
     private enginService: EnginService,
     private dialogRef: MatDialogRef<EditVehiculeComponent>,
     private vehiculeService: VehiculeService,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private toastCtrl: ToastController) { }
 
   ngOnInit() {
     console.log('Passed Data: ', this.data);
@@ -62,10 +64,21 @@ export class EditVehiculeComponent implements OnInit {
     }
     console.log('data : ', dataEdit);
     this.vehiculeService.updateVehicule(this.data.vehicule.id, dataEdit).subscribe(res => {
+      this.toastAlert('Bien Modifier')
       console.log('Ajout : ', res)
     });
     this.editFormVehicule.reset();
     this.closeDialog();
+  }
+
+  async toastAlert(msg) {
+    const toast = await this.toastCtrl.create({
+      message: `${msg}`,
+      duration: 2000,
+      color: 'success'
+    });
+
+    toast.present();
   }
   onChange(term) {
     console.log('Date: ', term.value);
