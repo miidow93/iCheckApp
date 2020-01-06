@@ -9,7 +9,6 @@ import { ExcelService } from 'src/app/core/services/excel/excel.service';
 import { saveAs } from 'file-saver/';
 import { ToastController, Platform } from '@ionic/angular';
 import { File, FileEntry } from '@ionic-native/file/ngx';
-import { FileTransfer } from '@ionic-native/file-transfer/ngx';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { CheckListService } from 'src/app/core/services/check-list/check-list.service';
 import { MomentDateAdapter, MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
@@ -31,6 +30,8 @@ import { Icons } from 'src/app/shared/icons';
 })
 export class HistoryComponent implements OnInit {
 
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+
   // displayedColumns: string[] = ['id', 'vehicule', 'dateBlockage', 'motif', 'dateDeblockage'];
   displayedColumnsBenne: string[] = ['controlleur', 'site', 'matricule', 'type', 'conducteur', 'motif',
     'date','image', 'control1', 'control2', 'control3'
@@ -50,20 +51,19 @@ export class HistoryComponent implements OnInit {
   
   constructor(private blockageService: BlockageService,
     private file: File,
-    private fileTransfer: FileTransfer,
     private fileOpener: FileOpener,
     private excelService: ExcelService,
     private toastCtrl: ToastController,
     private platform: Platform,
     private checkService: CheckListService) { }
 
-  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
 
   ngOnInit() {
     // this.getBlockage();
     this.getAllcheckByType();
   }
+
   ngAfterViewInit() {
     this.de = moment(this.dateEntree.value).format('YYYY-MM-DD') + 'T00:00:00';
     this.ds = moment(this.dateSortie.value).format('YYYY-MM-DD') + 'T00:00:00';
@@ -114,16 +114,20 @@ export class HistoryComponent implements OnInit {
 
     if (this.de && this.ds) {
       if (this.de > this.ds) {
-        console.log(this.de);
+        console.log('De: ', this.de);
         alert('La date d\'entree doit être supérieure à la date de sortie');
       } else {
-        const filter = this.data.filter(x => x.date >= this.de && x.date <= this.ds);
+        console.log('This Data: ', this.data);
+        const filter = this.data.filter(x => {
+          return moment(x.date).format('YYYY-MM-DD') >= moment(this.de).format('YYYY-MM-DD') && moment(x.date).format('YYYY-MM-DD') >= moment(this.ds).format('YYYY-MM-DD')
+        });
         console.log('filter : ', filter);
         this.dataSource.data = filter;
 
       }
     }
   }
+
   refresh() {
     this.dataSource.data = this.oldDataSource;
   }

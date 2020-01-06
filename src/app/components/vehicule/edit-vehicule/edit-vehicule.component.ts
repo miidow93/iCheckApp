@@ -2,15 +2,24 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { EnginService } from 'src/app/core/services/engin/engin.service';
 import { FormErrorStateMatcher } from 'src/app/core/handlers/form-error-state-matcher';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA, DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material';
 import { VehiculeService } from 'src/app/core/services/vehicule/vehicule.service';
 import * as moment from 'moment';
 import { ToastController } from '@ionic/angular';
+import { MomentDateAdapter, MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
 
 @Component({
   selector: 'app-edit-vehicule',
   templateUrl: './edit-vehicule.component.html',
   styleUrls: ['./edit-vehicule.component.scss'],
+  providers: [
+    // `MomentDateAdapter` and `MAT_MOMENT_DATE_FORMATS` can be automatically provided by importing
+    // `MatMomentDateModule` in your applications root module. We provide it at the component level
+    // here, due to limitations of our example generation script.
+    { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
+    { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
+    { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' }
+  ]
 })
 export class EditVehiculeComponent implements OnInit {
   editFormVehicule: FormGroup;

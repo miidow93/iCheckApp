@@ -6,7 +6,11 @@ import { FormControl } from '@angular/forms';
 import * as moment from 'moment';
 import { faFilter, faSyncAlt, faBan, faCircle } from '@fortawesome/free-solid-svg-icons';
 import { MomentDateAdapter, MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
-
+import { ExcelService } from 'src/app/core/services/excel/excel.service';
+import { saveAs } from 'file-saver/';
+import { ToastController, Platform } from '@ionic/angular';
+import { File, FileEntry } from '@ionic-native/file/ngx';
+import { FileOpener } from '@ionic-native/file-opener/ngx';
 
 @Component({
   selector: 'app-synthese',
@@ -38,8 +42,14 @@ export class SyntheseComponent implements OnInit, AfterViewInit {
   de; ds;
 
   constructor(private checkListRefService: CheckListRefService,
+    private platform: Platform,
     private router: Router,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    private file: File,
+    private fileOpener: FileOpener,
+    private excelService: ExcelService,
+    private toastCtrl: ToastController
+    ) { }
 
   ngOnInit() {
     console.log('Synthese Init');
@@ -133,7 +143,72 @@ export class SyntheseComponent implements OnInit, AfterViewInit {
     // console.log(`Element: , operation: ${operation}`, element);
     element.etat = operation === 'lock' ? true : false
   }
+
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  exporter() {
+    console.log('Date: ', this.de + ' ' + this.ds);
+    const date = { startDate: this.de.toString(), endDate: this.ds.toString() };
+    console.log('Test: ', date);
+    this.excelService.exportChecklistToExcel(date).subscribe(res => {
+      console.log('Res: ', res);
+      if (res.size > 0) {
+        const blob = new Blob([res], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+        const url = window.URL.createObjectURL(blob);
+        const pwa = window.open(url);
+        // const filename = uuid.v4();
+        const filename = 'historique_' + moment(new Date()).format('DDMMYYYY_hhmmssSSS') + '.xlsx';
+        if (this.platform.is('android') || this.platform.is('tablet') && !this.platform.is('desktop')) {
+          console.log('Tablet');
+          // let filePath = (this.platform.is('android')) ? this.file.externalRootDirectory : this.file.cacheDirectory;
+          this.file.checkDir(this.file.externalRootDirectory, 'iCheck').then(res => {
+            console.log('Directory exists: ', res);
+            let filePath = (this.platform.is('android')) ? this.file.externalRootDirectory + '/iCheck' : this.file.cacheDirectory;
+            this.createFile(filePath, filename, blob);
+          }).catch(err => {
+            console.log('Directory doesn\'t exists', JSON.stringify(err));
+            this.file.createDir(this.file.externalRootDirectory, 'iCheck', false).then(res => {
+              console.log('Directory created: ', res);
+              let filePath = this.file.externalRootDirectory + '/iCheck';
+              this.createFile(filePath, filename, blob);
+            }).catch(err => {
+              console.log('Cannot create the directory: ', JSON.stringify(err));
+            });
+          });
+
+        } else {
+          saveAs(blob, `${filename}`);
+          if (!pwa || pwa.closed || typeof pwa.closed === 'undefined') {
+            alert('Please disable your Pop-up blocker and try again.');
+          }
+        }
+
+
+      } else {
+        this.toastPresent('Aucune données disponible pour les deux dates.');
+      }
+    });
+  }
+
+  createFile(filePath, filename, blob) {
+    console.log('Create File path: ', filePath);
+    console.log('Create File name: ', name);
+    console.log('Create File blob: ', blob);
+    this.file.writeFile(filePath, filename + '.xlsx', blob).then((fileEntry: FileEntry) => {
+      console.log('File Created: ', fileEntry);
+      this.fileOpener.open(fileEntry.toURL(), 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+        .then(() => console.log('File is opened'))
+        .catch(err => console.error(err));
+    });
+  }
+
+  async toastPresent(msg) {
+    const toast = await this.toastCtrl.create({
+      message: msg,
+      duration: 3000
+    });
+    toast.present();
   }
 }

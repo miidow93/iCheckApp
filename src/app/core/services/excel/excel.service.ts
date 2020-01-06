@@ -10,7 +10,12 @@ const API = Constants.api + 'excel/download/';
 export class ExcelService {
 
   constructor(private http:HttpClient) { }
+  
   exportToExcel(date) {
     return this.http.get(`${API}${date.startDate}/${date.endDate}`, {responseType: 'blob'});
+  }
+
+  exportChecklistToExcel(date) {
+    return this.http.get(`${API}checklist/${date.startDate}/${date.endDate}`, {responseType: 'blob'});
   }
 }
