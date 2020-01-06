@@ -39,6 +39,7 @@ export class DashboardComponent implements OnInit {
   plateauIcon = Icons.plateauImage;
   citerneIcon = Icons.citerneImage;
   sidebar = Icons.sideimage;
+  interval: any;
   public barChartData: any[];
   public barChartLabels = [];
   engins: Engin[];
@@ -131,7 +132,7 @@ export class DashboardComponent implements OnInit {
    ) { }
 
   ngOnInit() {
- 
+
     this.site = localStorage.getItem('site');
     this.getAllSites();
     // this.getNumberOfBlocked();
@@ -139,7 +140,18 @@ export class DashboardComponent implements OnInit {
     this.getNumberOfControledSite();
     this.getNumberOfcontroled();
     this.statsNbrTotal();
-    // this.getAllStats();
+      // this.getAllStats();
+
+    this.interval = setInterval(() => { 
+        this.getAllSites();
+        // this.getNumberOfBlocked();
+        this.getNumberOfNotBlocked();
+        this.getNumberOfControledSite();
+        this.getNumberOfcontroled();
+        this.statsNbrTotal();
+  }, 60000*60);
+ 
+    
   }
 
   ngAfterViewInit() {

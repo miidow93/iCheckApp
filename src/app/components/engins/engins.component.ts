@@ -7,19 +7,27 @@ import { Constants } from 'src/app/shared/constants';
 import { Icons } from 'src/app/shared/icons';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Platform } from '@ionic/angular';
-import { MatTableDataSource, MatPaginator } from '@angular/material';
+import { MatTableDataSource, MatPaginator,DateAdapter,MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material';
 import { FormControl } from '@angular/forms';
 import * as moment from 'moment';
 import { faFilter, faSyncAlt, faBan, faCircle, faQrcode } from '@fortawesome/free-solid-svg-icons';
 import { CheckListRefService } from 'src/app/core/services/checkListRef/check-list-ref.service';
 import { DataService } from 'src/app/shared/services/data.service';
 import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner/ngx';
-
+import { MomentDateAdapter, MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
 
 @Component({
   selector: 'app-engins',
   templateUrl: './engins.component.html',
   styleUrls: ['./engins.component.scss'],
+  providers: [
+    // `MomentDateAdapter` and `MAT_MOMENT_DATE_FORMATS` can be automatically provided by importing
+    // `MatMomentDateModule` in your applications root module. We provide it at the component level
+    // here, due to limitations of our example generation script.
+    { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
+    { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
+    { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' }
+  ]
 })
 export class EnginsComponent implements OnInit {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;

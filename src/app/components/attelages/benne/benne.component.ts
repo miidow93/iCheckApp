@@ -12,6 +12,8 @@ import * as moment from 'moment';
 import { Router } from '@angular/router';
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Icons } from 'src/app/shared/icons';
+import { faQrcode } from '@fortawesome/free-solid-svg-icons';
+import { BarcodeScannerOptions, BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 
 @Component({
   selector: 'app-benne',
@@ -43,6 +45,7 @@ export class BenneComponent implements OnInit {
   benneImg = Icons.benneImg;
   precedentIcon = Icons.precedentIcon;
   FargeHolcimImg = Icons.FargeHolcimImg;
+  faQrCode = faQrcode;
 
 
   constructor(config: NgbRatingConfig,
@@ -51,7 +54,8 @@ export class BenneComponent implements OnInit {
     private checkListService: CheckListService,
     private conducteurService: ConducteurService,
     private vehiculeService: VehiculeService,
-    private router: Router) {
+    private router: Router,
+    private barcodeScanner: BarcodeScanner) {
     config.max = 5;
     config.readonly = true;
   }
@@ -251,6 +255,18 @@ export class BenneComponent implements OnInit {
   completed() {
     console.log('Completed');
     this.stepper.selected.completed = true;
+  }
+
+  async scanQR() {
+    const options: BarcodeScannerOptions = {
+      showTorchButton: true,
+      orientation: 'portrait'
+    };
+
+    const scanCode = await this.barcodeScanner.scan(options);
+    if (scanCode.text != '' || scanCode.text != null) {
+      this.formConducteur.controls['matricule'].setValue(scanCode.text);
+      }
   }
 
 }

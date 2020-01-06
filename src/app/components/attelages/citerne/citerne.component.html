@@ -55,6 +55,9 @@
                 <input type="text" matInput formControlName="matricule" placeholder="Matricule"
                   [matAutocomplete]="matricule" />
               </mat-form-field>
+              <button type="button" (click)="scanQR()">
+                  <fa-icon [icon]="faQrCode" style="color: #006e82;size: 200px;"></fa-icon>
+                </button>
 
               <mat-autocomplete #matricule="matAutocomplete">
                 <mat-option *ngFor="let vehicule of (filteredVehicules | async)" [value]="vehicule.matricule">

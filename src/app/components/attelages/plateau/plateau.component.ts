@@ -11,6 +11,8 @@ import * as moment from 'moment';
 import { startWith, map } from 'rxjs/operators';
 import { MatAutocompleteSelectedEvent, MatStepper } from '@angular/material';
 import { Icons } from 'src/app/shared/icons';
+import { faQrcode } from '@fortawesome/free-solid-svg-icons';
+import { BarcodeScannerOptions, BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 
 
 @Component({
@@ -42,6 +44,7 @@ export class PlateauComponent implements OnInit {
   plateauImg = Icons.plateauImg;
   precedentIcon = Icons.precedentIcon;
   FargeHolcimImg = Icons.FargeHolcimImg;
+  faQrCode = faQrcode;
 
   constructor(private formBuilder: FormBuilder,
     private dataService: DataService,
@@ -50,7 +53,8 @@ export class PlateauComponent implements OnInit {
     private vehiculeService: VehiculeService,
     private router: Router/*,
     private platform: Platform,
-    private screenOrientation: ScreenOrientation*/) {
+    private screenOrientation: ScreenOrientation*/,
+    private barcodeScanner: BarcodeScanner) {
     // this.initializeApp();
   }
 
@@ -260,6 +264,18 @@ export class PlateauComponent implements OnInit {
   completed() {
     console.log('Completed');
     this.stepper.selected.completed = true;
+  }
+
+  async scanQR() {
+    const options: BarcodeScannerOptions = {
+      showTorchButton: true,
+      orientation: 'portrait'
+    };
+
+    const scanCode = await this.barcodeScanner.scan(options);
+    if (scanCode.text != '' || scanCode.text != null) {
+      this.formConducteur.controls['matricule'].setValue(scanCode.text);
+      }
   }
 
 }

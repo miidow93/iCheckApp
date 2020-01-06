@@ -11,6 +11,8 @@ import * as moment from 'moment';
 import { startWith, map } from 'rxjs/operators';
 import { MatAutocompleteSelectedEvent, MatStepper } from '@angular/material';
 import { Icons } from 'src/app/shared/icons';
+import { faQrcode } from '@fortawesome/free-solid-svg-icons';
+import { BarcodeScannerOptions, BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 
 @Component({
   selector: 'app-citerne',
@@ -41,13 +43,15 @@ export class CiterneComponent implements OnInit {
   citerneImg = Icons.citerneImg;
   FargeHolcimImg = Icons.FargeHolcimImg;
   precedentIcon = Icons.precedentIcon;
+  faQrCode = faQrcode;
 
   constructor(private formBuilder: FormBuilder,
     private dataService: DataService,
     private checkListService: CheckListService,
     private conducteurService: ConducteurService,
     private vehiculeService: VehiculeService,
-    private router: Router) { }
+    private router: Router,
+    private barcodeScanner: BarcodeScanner) { }
 
   ngOnInit() {
     this.dataService.currentConducteurCheckList.subscribe(res => {
@@ -247,6 +251,18 @@ export class CiterneComponent implements OnInit {
   completed() {
     console.log('Completed');
     this.stepper.selected.completed = true;
+  }
+
+  async scanQR() {
+    const options: BarcodeScannerOptions = {
+      showTorchButton: true,
+      orientation: 'portrait'
+    };
+
+    const scanCode = await this.barcodeScanner.scan(options);
+    if (scanCode.text != '' || scanCode.text != null) {
+      this.formConducteur.controls['matricule'].setValue(scanCode.text);
+      }
   }
 
 }
