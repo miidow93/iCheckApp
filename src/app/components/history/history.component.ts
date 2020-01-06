@@ -30,7 +30,7 @@ import { MomentDateAdapter, MAT_MOMENT_DATE_FORMATS } from '@angular/material-mo
 export class HistoryComponent implements OnInit {
 
   // displayedColumns: string[] = ['id', 'vehicule', 'dateBlockage', 'motif', 'dateDeblockage'];
-  displayedColumnsBenne: string[] = ['controlleur', 'site', 'matricule', 'type', 'conducteur', 'etat', 'motif',
+  displayedColumnsBenne: string[] = ['controlleur', 'site', 'matricule', 'type', 'conducteur', 'motif',
     'date', 'control1', 'control2', 'control3'
     , 'control4', 'control5', 'control6', 'control7', 'control8', 'control9', 'control10'];
   dataSource = new MatTableDataSource();
