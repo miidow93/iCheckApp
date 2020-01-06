@@ -27,5 +27,6 @@ export enum Icons {
     citerneImage = './assets/images/citerneImage.png',
     plateauImage = './assets/images/plateauImage.png',
     sideimage = './assets/images/sidebar-1.jpg',
-    sidebarImg = './assets/images/sidebar-3.jpg'
+    sidebarImg = './assets/images/sidebar-3.jpg',
+    noImage = './assets/images/noImage.jpg'
 }

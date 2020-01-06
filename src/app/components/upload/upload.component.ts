@@ -130,7 +130,6 @@ export class UploadComponent implements OnInit {
         console.log('checklist: ', res);
         this.router.navigate(['engins']);
       });
-
     }
   }
 

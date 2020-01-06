@@ -13,6 +13,8 @@ import { FileTransfer } from '@ionic-native/file-transfer/ngx';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { CheckListService } from 'src/app/core/services/check-list/check-list.service';
 import { MomentDateAdapter, MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
+import { Constants } from 'src/app/shared/constants';
+import { Icons } from 'src/app/shared/icons';
 
 @Component({
   selector: 'app-history',
@@ -31,7 +33,7 @@ export class HistoryComponent implements OnInit {
 
   // displayedColumns: string[] = ['id', 'vehicule', 'dateBlockage', 'motif', 'dateDeblockage'];
   displayedColumnsBenne: string[] = ['controlleur', 'site', 'matricule', 'type', 'conducteur', 'motif',
-    'date', 'control1', 'control2', 'control3'
+    'date','image', 'control1', 'control2', 'control3'
     , 'control4', 'control5', 'control6', 'control7', 'control8', 'control9', 'control10'];
   dataSource = new MatTableDataSource();
 
@@ -44,7 +46,8 @@ export class HistoryComponent implements OnInit {
   data = [];
   de; ds;
   oldDataSource;
-
+  noImage = Icons.noImage;
+  
   constructor(private blockageService: BlockageService,
     private file: File,
     private fileTransfer: FileTransfer,
@@ -52,7 +55,7 @@ export class HistoryComponent implements OnInit {
     private excelService: ExcelService,
     private toastCtrl: ToastController,
     private platform: Platform,
-    private check: CheckListService) { }
+    private checkService: CheckListService) { }
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
@@ -189,7 +192,7 @@ export class HistoryComponent implements OnInit {
   }
 
   getAllcheckByType() {
-    this.check.getAllCheckListByType().subscribe(
+    this.checkService.getAllCheckListByType().subscribe(
       ((res: any) => {
         console.log('Benne Data :', res)
         this.dataSource.data = res;
@@ -197,5 +200,10 @@ export class HistoryComponent implements OnInit {
         this.oldDataSource = this.dataSource.data;
         this.data = <any[]>this.dataSource.data;
       }));
+  }
+
+  createImagePath(serverPath: string) {
+    return `${Constants.serverImg}${serverPath}`;
+    // return `http://localhost:4772/${serverPath}`;
   }
 }

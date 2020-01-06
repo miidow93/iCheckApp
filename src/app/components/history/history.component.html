@@ -183,6 +183,14 @@
                 <td mat-cell *matCellDef="let element"> {{element.date | date: 'dd/MM/yyyy'}} </td>
               </ng-container>
 
+              <ng-container matColumnDef="image">
+                <th mat-header-cell *matHeaderCellDef> image </th>
+                <td mat-cell *matCellDef="let element">
+                    <img class="zoom" *ngIf="element.imageURL != null && element.imageURL != ''" [src]="createImagePath(element.imageURL)" />
+                    <img class="zoom" *ngIf="element.imageURL == null || element.imageURL == ''" [src]="noImage" />
+                </td>
+              </ng-container>
+
               <ng-container matColumnDef="control1">
                 <th mat-header-cell *matHeaderCellDef> Casque sec </th>
                 <td mat-cell *matCellDef="let element">
