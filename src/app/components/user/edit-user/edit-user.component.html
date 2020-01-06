@@ -8,7 +8,7 @@
         <p class="card-category">Remplissez le formulaire</p>
       </div>
       <div class="card-body">
-        <form [formGroup]="editFormUser" (ngSubmit)="editUser(editFormUser)">
+        <form [formGroup]="editFormUser">
           <div class="row">
             <div class="col-md-6">
                 <mat-form-field class="w-100">
@@ -61,7 +61,7 @@
             </div>
           <button mat-button style="float: left;" (click)="closeDialog()">Annuler</button>
           <div mat-dialog-actions class="form-row justify-content-end mb-2" >
-            <button type="submit" mat-button class="btn btn-info" style="background: rgb(0, 110, 130);">Modifier</button>
+            <button type="submit" mat-button class="btn btn-info" style="background: rgb(0, 110, 130);" (click)="editUser(editFormUser)">Modifier</button>
           </div>
           <div class="clearfix"></div>
         </form>

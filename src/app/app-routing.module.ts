@@ -45,7 +45,7 @@ const routes: Routes = [
   { path: 'checklistEquipement', component: CheckListEquipementComponent },
   { path: 'checklistEngin', component: CheckListEnginComponent },*/
   { path: 'checklist/:image', component: CheckListComponent },
-  { path: 'engins', component: EnginsComponent, canActivate: [AuthGuard] },
+  { path: 'engins', component: EnginsComponent/*, canActivate: [AuthGuard]*/ },
   { path: 'synthese/:id', component: DetailsComponent },
   { path: '**', redirectTo: 'login' }
 ];
