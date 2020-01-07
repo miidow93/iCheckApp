@@ -115,7 +115,7 @@ export class UploadComponent implements OnInit {
     });*/
     console.log('Form: ', form);
     this.dataService.changeCheckList({ motif: form.controls['motif'].value });
-    
+    this.dataService.changeCheckList({ imageURL: this.image });
     this.dataService.changeCheckList(
       {
         controlleur: {

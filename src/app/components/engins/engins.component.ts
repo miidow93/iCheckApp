@@ -15,6 +15,7 @@ import { CheckListRefService } from 'src/app/core/services/checkListRef/check-li
 import { DataService } from 'src/app/shared/services/data.service';
 import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner/ngx';
 import { MomentDateAdapter, MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-engins',
@@ -55,7 +56,8 @@ export class EnginsComponent implements OnInit {
     private checklistService: CheckListService,
     private dataService: DataService,
     private activatedRoute: ActivatedRoute,
-    private barcodeScanner: BarcodeScanner) {
+    private barcodeScanner: BarcodeScanner,
+    private sanitizer: DomSanitizer) {
   }
 
 
@@ -136,8 +138,9 @@ export class EnginsComponent implements OnInit {
   refresh() {
     this.dataSource.data = this.oldDataSource;
   }
+  
   createImagePath(serverPath: string) {
-    return `${Constants.serverImg}${serverPath}`;
+    return this.sanitizer.bypassSecurityTrustUrl(`${Constants.serverImg}${serverPath}`);
     // return `http://localhost:4772/${serverPath}`;
   }
 

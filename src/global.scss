@@ -179,6 +179,15 @@ ion-content .mdl-toolbar {
   height: 250px !important;
 }
 
+@media (max-width: 1200px) {
+  .aclass ngx-qrcode div img {
+    margin-right: auto;
+    margin-left: 3%;
+    width: 250px !important;
+    height: 250px !important;
+  }
+}
+
 /*@media print {
   .aclass ngx-qrcode div img {
     margin-right: auto;

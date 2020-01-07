@@ -15,7 +15,6 @@ export enum Constants {
     // api = ' http://10.54.7.216:1070/api/', // Settat
     // serverImg = ' http://10.54.7.216:1070/' // Settat
    
-    // img_OurVisitor: './assets/images/LOGOVISITEUR.png',
-    // img_Cms = './assets/images/CMS.jpg'
-
+    // api = ' http://10.54.5.29:1070/api/', // Oujda
+    // serverImg = ' http://10.54.5.29:1070/' // Oujda
 }

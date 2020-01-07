@@ -4,7 +4,7 @@
   </ion-toolbar>
 </ion-header> -->
 <div class="container">
-  <form [formGroup]="motifForm" (ngSubmit)="submit(motifForm)">
+  <form [formGroup]="motifForm">
       <label id="example-radio-group-label">Autoriser ou Non autoriser le véhicule</label>
       <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" (change)="onChange($event)" formControlName="etat">
       <mat-radio-button class="example-radio-button" *ngFor="let item of etats" [value]="item.etat">
@@ -17,8 +17,8 @@
       </mat-form-field>
 
       <div class="form-row justify-content-end">
-        <button mat-stroked-button class="mr-2" color="warn" (click)="takePicture()">Prendre une photo</button>
-        <button type="submit" class="btn btn-primary" style="background-color: rgb(0,110,130);float: right;">Envoyer</button>
+        <button type="button" mat-stroked-button class="mr-2" color="warn" (click)="takePicture()">Prendre une photo</button>
+        <button type="submit" class="btn btn-primary" style="background-color: rgb(0,110,130);float: right;" (click)="submit(motifForm)">Envoyer</button>
       </div>
     </div>
   </form>
