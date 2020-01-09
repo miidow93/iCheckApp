@@ -59,6 +59,10 @@ export class DetailsComponent implements OnInit {
     return this.platform.is('android') || this.platform.is('tablet') && !this.platform.is('desktop');
   }
 
+  getDesktop() {
+    return this.platform.is('desktop') || this.platform.is('pwa');
+  }
+
   isDesktop() {
     return this.platform.is('desktop');
   }

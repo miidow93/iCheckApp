@@ -118,12 +118,13 @@ export class HistoryComponent implements OnInit {
         alert('La date d\'entree doit être supérieure à la date de sortie');
       } else {
         console.log('This Data: ', this.data);
+        console.log('This De: ', this.de);
+        console.log('This Ds: ', this.ds);
         const filter = this.data.filter(x => {
-          return moment(x.date).format('YYYY-MM-DD') >= moment(this.de).format('YYYY-MM-DD') && moment(x.date).format('YYYY-MM-DD') >= moment(this.ds).format('YYYY-MM-DD')
+          return moment(x.date).format('YYYY-MM-DD') >= moment(this.de).format('YYYY-MM-DD') && moment(x.date).format('YYYY-MM-DD') <= moment(this.ds).format('YYYY-MM-DD')
         });
         console.log('filter : ', filter);
         this.dataSource.data = filter;
-
       }
     }
   }
@@ -143,8 +144,8 @@ export class HistoryComponent implements OnInit {
         const url = window.URL.createObjectURL(blob);
         const pwa = window.open(url);
         // const filename = uuid.v4();
-        const filename = 'blockage_' + moment(new Date()).format('DDMMYYYY_hhmmssSSS') + '.xlsx';
-        if (this.platform.is('android') || this.platform.is('tablet')) {
+        const filename = 'synthese_' + moment(new Date()).format('DDMMYYYY_hhmmssSSS') + '.xlsx';
+        if (this.platform.is('android') || this.platform.is('tablet') && !this.platform.is('desktop')) {
           // let filePath = (this.platform.is('android')) ? this.file.externalRootDirectory : this.file.cacheDirectory;
           this.file.checkDir(this.file.externalRootDirectory, 'iCheck').then(res => {
             console.log('Directory exists: ', res);
@@ -198,10 +199,10 @@ export class HistoryComponent implements OnInit {
   getAllcheckByType() {
     this.checkService.getAllCheckListByType().subscribe(
       ((res: any) => {
-        console.log('Benne Data :', res)
+        console.log('CheckList Data :', res)
         this.dataSource.data = res;
         this.dataSource.paginator = this.paginator;
-        this.oldDataSource = this.dataSource.data;
+        this.oldDataSource = res;
         this.data = <any[]>this.dataSource.data;
       }));
   }

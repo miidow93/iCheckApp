@@ -27,8 +27,8 @@ import { FileOpener } from '@ionic-native/file-opener/ngx';
 })
 export class SyntheseComponent implements OnInit, AfterViewInit {
 
-  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
-  displayedColumns: string[] = ['id', 'date', 'conducteur', 'vehicule', 'engin','action'];
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  displayedColumns: string[] = ['site', 'date', 'conducteur', 'vehicule', 'engin', 'etat', 'action', 'details'];
   dataSource = new MatTableDataSource();
   dateEntree = new FormControl(moment());
   dateSortie = new FormControl(moment());
@@ -37,7 +37,7 @@ export class SyntheseComponent implements OnInit, AfterViewInit {
   faBan = faBan;
   faCircle = faCircle;
   data = [];
-
+  site: string = '';
   oldDataSource;
   de; ds;
 
@@ -49,10 +49,11 @@ export class SyntheseComponent implements OnInit, AfterViewInit {
     private fileOpener: FileOpener,
     private excelService: ExcelService,
     private toastCtrl: ToastController
-    ) { }
+  ) { }
 
   ngOnInit() {
     console.log('Synthese Init');
+    this.site = localStorage.getItem('site');
     this.checkListRefService.getAllCheckListRef().subscribe((res: any) => {
       console.log('CheckListRefs: ', res);
       this.dataSource.data = res;
@@ -108,7 +109,7 @@ export class SyntheseComponent implements OnInit, AfterViewInit {
     return result;
   }
 
-  
+
 
   filtrer() {
     console.log('DataSource: ', this.dataSource.data);
@@ -128,20 +129,28 @@ export class SyntheseComponent implements OnInit, AfterViewInit {
   }
 
   blocked(element, operation) {
+    // console.log('Element Blocked: ', element);
     const data = {
       id: element.id,
       idCheckListRef: element.idCheckListRef,
       rating: element.rating,
       date: element.date,
       idConducteur: element.idConducteur,
-      idVehicule: element.idVehicule, 
+      idVehicule: element.idVehicule,
+      idSite: element.idSite,
       etat: operation === 'lock' ? true : false
+    };
+    const lockMsg = 'Veuillez décliner ce vehicule ?';
+    const unlockMsg = 'Veuillez autoriser ce vehicule ?';
+    const msg = operation === 'lock' ? lockMsg : unlockMsg;
+    if (confirm(msg)) {
+      this.checkListRefService.updateCheckList(data.id, data).subscribe(res => {
+        console.log('Update Checklist ref', res);
+      });
+      // console.log(`Element: , operation: ${operation}`, element);
+      element.etat = operation === 'lock' ? true : false
     }
-    this.checkListRefService.updateCheckList(data.id, data).subscribe(res => {
-      console.log('Update Checklist ref', res);
-    });
-    // console.log(`Element: , operation: ${operation}`, element);
-    element.etat = operation === 'lock' ? true : false
+
   }
 
   applyFilter(filterValue: string) {

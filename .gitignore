@@ -32,3 +32,5 @@ npm-debug.log*
 my-release-key.keystore
 src/manifest.webmanifest
 ngsw-config.json
+iCheckHolcim_2.apk
+iCheckHolcim.apk

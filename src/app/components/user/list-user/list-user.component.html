@@ -93,12 +93,12 @@
             <table mat-table [dataSource]="dataSource" matSort class="table table-hover">
 
               <ng-container matColumnDef="nomcomplet">
-                <th mat-header-cell *matHeaderCellDef> Nom Conducteur </th>
+                <th mat-header-cell *matHeaderCellDef> Nom Utilisateur </th>
                 <td mat-cell *matCellDef="let element"> {{element.nomComplet}} </td>
               </ng-container>
 
               <ng-container matColumnDef="username">
-                <th mat-header-cell *matHeaderCellDef> Nom d'utilisateur </th>
+                <th mat-header-cell *matHeaderCellDef> Pseudo </th>
                 <td mat-cell *matCellDef="let element"> {{element.username}} </td>
               </ng-container>
 

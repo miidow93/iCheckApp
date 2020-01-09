@@ -17,5 +17,9 @@ export class CheckListRefService {
     return this.http.put(`${Constants.api}checklistrefs/${id}`, checklist);
   }
 
+  getCheckListBySite(site) {
+    return this.http.get(`${Constants.api}checklistrefs/bysite/${site}`);
+  }
+
   
 }

@@ -32,7 +32,7 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 })
 export class EnginsComponent implements OnInit {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
-  displayedColumns: string[] = ['id', 'date', 'conducteur', 'vehicule', 'engin', 'etat', 'action'];
+  displayedColumns: string[] = ['site', 'date', 'conducteur', 'vehicule', 'engin', 'etat', 'action'];
   dataSource = new MatTableDataSource();
   dateEntree = new FormControl(moment());
   dateSortie = new FormControl(moment());
@@ -45,6 +45,7 @@ export class EnginsComponent implements OnInit {
   faBan = faBan;
   faCircle = faCircle;
   data = [];
+  site: string = '';
 
   oldDataSource;
   de; ds;
@@ -65,7 +66,8 @@ export class EnginsComponent implements OnInit {
   ngOnInit() {
     this.dataService.allDataChecklist.subscribe();
     this.enginService.getEngins().subscribe(res => { this.engins = res; console.log(res); });
-    this.checkListRefService.getAllCheckListRef().subscribe((res: any) => {
+    this.site = localStorage.getItem('site');
+    this.checkListRefService.getCheckListBySite(this.site).subscribe((res: any) => {
       console.log('CheckListRefs: ', res);
       this.dataSource.data = res;
       this.dataSource.paginator = this.paginator;
