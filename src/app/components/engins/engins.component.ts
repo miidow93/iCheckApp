@@ -6,7 +6,7 @@ import { EnginService } from 'src/app/core/services/engin/engin.service';
 import { Constants } from 'src/app/shared/constants';
 import { Icons } from 'src/app/shared/icons';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Platform } from '@ionic/angular';
+import { Platform, ToastController } from '@ionic/angular';
 import { MatTableDataSource, MatPaginator,DateAdapter,MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material';
 import { FormControl } from '@angular/forms';
 import * as moment from 'moment';
@@ -58,6 +58,7 @@ export class EnginsComponent implements OnInit {
     private dataService: DataService,
     private activatedRoute: ActivatedRoute,
     private barcodeScanner: BarcodeScanner,
+    private toastCtrl: ToastController,
     private sanitizer: DomSanitizer) {
   }
 
@@ -171,9 +172,24 @@ export class EnginsComponent implements OnInit {
           this.router.navigateByUrl(`synthese/${res['id']}`);
           console.log('Is not null: ');
         }
+      }, err => {
+        this.toastAlert('Aucune checklist avec ce matricule');
+        /*if(err.status === 404) {
+          alert('Error Not Found');
+        }*/
       });
     }
 
     console.log('Scan Code: ', scanCode);
+  }
+
+  async toastAlert(msg) {
+    const toast = await this.toastCtrl.create({
+      message: `${msg}`,
+      duration: 2000,
+      color: 'warning'
+    });
+
+    toast.present();
   }
 }

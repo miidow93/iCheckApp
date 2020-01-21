@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { MatRadioChange, MatRadioButton } from '@angular/material';
 import { CheckListService } from 'src/app/core/services/check-list/check-list.service';
 import { UploadService } from 'src/app/core/services/upload/upload.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-upload',
@@ -32,6 +33,7 @@ export class UploadComponent implements OnInit {
     private dataService: DataService,
     private checkListService: CheckListService,
     private uploadService: UploadService,
+    private toastCtrl: ToastController,
     private router: Router) { }
 
   ngOnInit() {
@@ -82,6 +84,7 @@ export class UploadComponent implements OnInit {
       let base64Image = 'data:image/jpeg;base64,' + imageData;
       this.image = base64Image;
       this.dataService.changeCheckList({ imageURL: base64Image });
+      this.toastPreview('Bien télécharger l\'image');
       /*this.uploadService.upload(this.image).subscribe(res => {
         console.log('Path: ', res);
       });*/
@@ -128,6 +131,7 @@ export class UploadComponent implements OnInit {
       console.log('checklist: ', this.checklist);
       this.checkListService.addCheckList(this.checklist).subscribe(res => {
         console.log('checklist: ', res);
+        this.toastPreview('Bien ajouté');
         this.router.navigate(['engins']);
       });
     }
@@ -146,4 +150,12 @@ export class UploadComponent implements OnInit {
     console.log(mrButton.inputId);
   }
 
+
+  async toastPreview(msg) {
+    const toast = await this.toastCtrl.create({
+      message: msg,
+      duration: 2000
+    });
+    toast.present();
+  }
 }

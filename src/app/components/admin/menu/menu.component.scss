@@ -293,5 +293,14 @@ ion-menu {
   // max-width: 25% !important;
 }
 
+#nav ul {
+  display: none;
+}
 
+#submenu {
+  padding-left: 11%;
+}
 
+#submenu .nav-item {
+  font-size: 12vw;
+}

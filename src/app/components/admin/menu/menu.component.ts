@@ -3,6 +3,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { faTruck, faClipboardList, faTruckLoading, faUser } from '@fortawesome/free-solid-svg-icons';
 import { Icons } from 'src/app/shared/icons';
+
+import * as $ from 'jquery';
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -95,7 +98,14 @@ export class MenuComponent {
     }
   ];
 
+  isOpen = false;
 
+  openSubmenu() {
+    console.log('Submenu');
+    // console.log('Enter submenu');
+    $('#nav .nav-link').next('ul').toggle();
+
+  }
 
 
   goToSynthese() {
