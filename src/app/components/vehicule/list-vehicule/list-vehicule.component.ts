@@ -7,6 +7,7 @@ import { Constants } from 'src/app/shared/constants';
 import { take } from 'rxjs/operators';
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
 import { DataService } from 'src/app/shared/services/data.service';
+import { Icons } from 'src/app/shared/icons';
 
 @Component({
   selector: 'app-list-vehicule',
@@ -21,7 +22,8 @@ export class ListVehiculeComponent implements OnInit {
   data = [];
   oldDataSource;
   faEdit = faEdit;
-
+  lhmIcon = Icons.lhmIcon;
+  
   constructor(
     private vehiculeService: VehiculeService,
     private route: Router,

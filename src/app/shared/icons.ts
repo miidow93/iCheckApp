@@ -23,6 +23,7 @@ export enum Icons {
     passwordIcon = './assets/icon/password.svg',
     precedentIcon = './assets/icon/back.png',
     FargeHolcimImg = './assets/images/FARGEHOLCIM.png',
+    lhmIcon = './assets/images/HOLCIMMAROC.png',
     benneImage = './assets/images/benneImage.png',
     citerneImage = './assets/images/citerneImage.png',
     plateauImage = './assets/images/plateauImage.png',

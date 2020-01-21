@@ -135,13 +135,14 @@ th.mat-header-cell {
 
 ion-content .mdl-toolbar {
   .logo ion-title {
-    color: white;
+    color: rgb(0, 110, 130);
     white-space: nowrap;
     font-weight: 400px;
     font-size: 19px;
     line-height: 30px;
   }
-  background: linear-gradient(rgb(0, 110, 130), rgba(0, 110, 130, 0.8));
+  // background: linear-gradient(rgb(0, 110, 130), rgba(0, 110, 130, 0.8));
+  background: linear-gradient(rgb(249, 253, 253), rgba(232, 234, 235, 0.8));
   border: 0;
   // font-size: 16px;
   border-radius: 0;

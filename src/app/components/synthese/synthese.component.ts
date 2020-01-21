@@ -11,6 +11,7 @@ import { saveAs } from 'file-saver/';
 import { ToastController, Platform } from '@ionic/angular';
 import { File, FileEntry } from '@ionic-native/file/ngx';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
+import { Icons } from 'src/app/shared/icons';
 
 @Component({
   selector: 'app-synthese',
@@ -36,6 +37,7 @@ export class SyntheseComponent implements OnInit, AfterViewInit {
   faSyncAlt = faSyncAlt;
   faBan = faBan;
   faCircle = faCircle;
+  lhmIcon = Icons.lhmIcon;
   data = [];
   site: string = '';
   oldDataSource;

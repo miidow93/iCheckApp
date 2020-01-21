@@ -48,6 +48,7 @@ export class HistoryComponent implements OnInit {
   de; ds;
   oldDataSource;
   noImage = Icons.noImage;
+  lhmIcon = Icons.lhmIcon;
   
   constructor(private blockageService: BlockageService,
     private file: File,

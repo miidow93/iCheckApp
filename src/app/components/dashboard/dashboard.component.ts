@@ -39,6 +39,7 @@ export class DashboardComponent implements OnInit {
   plateauIcon = Icons.plateauImage;
   citerneIcon = Icons.citerneImage;
   sidebar = Icons.sideimage;
+  lhmIcon = Icons.lhmIcon;
   interval: any;
   public barChartData: any[];
   public barChartLabels = [];

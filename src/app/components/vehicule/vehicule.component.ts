@@ -9,6 +9,7 @@ import { DataService } from 'src/app/shared/services/data.service';
 import { ToastController } from '@ionic/angular';
 import { DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material';
 import { MomentDateAdapter, MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
+import { Icons } from 'src/app/shared/icons';
 
 
 @Component({
@@ -29,6 +30,7 @@ export class VehiculeComponent implements OnInit {
   date = new FormControl(moment());
   de;
   engins: any;
+  lhmIcon = Icons.lhmIcon;
   fileData: File = null;
   previewUrl: any = null;
   constructor(

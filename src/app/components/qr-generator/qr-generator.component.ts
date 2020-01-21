@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { VehiculeService } from 'src/app/core/services/vehicule/vehicule.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Icons } from 'src/app/shared/icons';
 
 @Component({
   selector: 'app-qr-generator',
@@ -8,7 +9,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./qr-generator.component.scss'],
 })
 export class QrGeneratorComponent implements OnInit {
-
+  
+  lhmIcon = Icons.lhmIcon;
   vehicules;
   matriculeForm: FormGroup;
   qrData = 'ICheck';
