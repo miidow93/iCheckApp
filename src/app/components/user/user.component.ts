@@ -7,6 +7,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs/operators';
 import { DataService } from 'src/app/shared/services/data.service';
 import { ToastController } from '@ionic/angular';
+import { Icons } from 'src/app/shared/icons';
 
 @Component({
   selector: 'app-user',
@@ -18,6 +19,7 @@ export class UserComponent implements OnInit {
   userForm: FormGroup;
   roles;
   sites;
+  lhmIcon = Icons.lhmIcon;
   constructor(private siteService: SiteService,
     private userService: UserService,
     private formBuilder: FormBuilder,

@@ -57,6 +57,7 @@ import { EditVehiculeComponent } from './components/vehicule/edit-vehicule/edit-
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { EditUserComponent } from './components/user/edit-user/edit-user.component';
+import { SiteComponent } from './components/site/site.component';
 
 
 
@@ -96,7 +97,8 @@ export function getToken() {
     VehiculeComponent,
     ListVehiculeComponent,
     EditVehiculeComponent,
-    EditUserComponent
+    EditUserComponent,
+    SiteComponent
 
   ],
 

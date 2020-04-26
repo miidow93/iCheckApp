@@ -16,4 +16,8 @@ export class SiteService {
   getAllSites() {
     return this.http.get(`${API}all`);
   }
+
+  postSite(data){
+    return this.http.post(`${API}`,data);
+  }
 }

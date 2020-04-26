@@ -6,6 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { EditUserComponent } from '../edit-user/edit-user.component';
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
 import { take } from 'rxjs/operators';
+import { Icons } from 'src/app/shared/icons';
 
 @Component({
   selector: 'app-list-user',
@@ -19,6 +20,7 @@ export class ListUserComponent implements OnInit {
   dataSource = new MatTableDataSource();
   searchKey: string;
   faEdit = faEdit;
+  lhmIcon = Icons.lhmIcon;
 
   constructor(private service: UserService,
     private userDataService: DataService,

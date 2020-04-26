@@ -1,0 +1,64 @@
+<ion-content>
+  <div class="mdl-toolbar">
+    <div class="logo">
+      <ion-title class="ion-padding">
+        Gestion des sites
+        <img [src]="lhmIcon" style="width: 50px;" class="float-right" alt="lhm" />
+      </ion-title>
+    </div>
+  </div>
+<!--Add Site Form-->
+  <div style="padding-left: 5%; padding-right: 5%; padding-top: 5%;">
+    <div class="col-md-14">
+      <div class="card">
+        <div class="card-header card-header-info" style="background: rgb(0, 110, 130);">
+          <h4 class="card-title">ajouter un site</h4>
+          <p class="card-category">Remplissez le formulaire</p>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="siteForm" (ngSubmit)="onSubmit(siteForm)">
+            <div class="row">
+              <div class="col-md-8">
+                <div>
+                  <mat-form-field class="w-100">
+                    <input matInput placeholder="site" formControlName="libelle">
+                  </mat-form-field>
+                </div>
+                
+              </div>
+            </div>
+            <div mat-dialog-actions class="form-row justify-content-end mb-2" >
+              <button type="submit" mat-button class="btn btn-info" style="background: rgb(0, 110, 130);">Ajouter</button>
+            </div>
+          </form>
+        </div>
+      
+  <!--Site List-->
+  <div class="card-body">
+    <div class="table-responsive">
+      <table mat-table [dataSource]="dataSource" matSort class="table table-hover">
+        <ng-container matColumnDef="site">
+          <th mat-header-cell *matHeaderCellDef>site</th>
+          <td mat-cell *matCellDef="let element"> {{element.label}} </td>
+        </ng-container>
+
+        <!-- <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef>Action</th>
+          <td mat-cell *matCellDef="let element">
+            <button class="form-row justify-content-center" mat-icon-button>
+              <fa-icon [icon]="faEdit"></fa-icon>
+            </button>
+          </td>
+        </ng-container> -->
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      </table>
+    </div>
+  </div>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
+</div>
+</div>
+</ion-content>
