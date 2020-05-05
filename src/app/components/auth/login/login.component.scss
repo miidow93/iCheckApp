@@ -1,3 +1,12 @@
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+ion-icon {
+  &.big {
+    width: 40px;
+    height: 40px;
+  }
+}
+
 /* Structure */
 
 @font-face {

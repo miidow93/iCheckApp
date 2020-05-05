@@ -4,6 +4,10 @@ import { FormErrorStateMatcher } from 'src/app/core/handlers/form-error-state-ma
 import { Router } from '@angular/router';
 import { Icons } from 'src/app/shared/icons';
 import { AuthServices } from 'src/app/core/services/auth/auth.service';
+import { AuthService, GoogleLoginProvider } from 'angularx-social-login';
+import {faUserCheck  } from '@fortawesome/free-solid-svg-icons';
+
+
 
 
 @Component({
@@ -27,9 +31,16 @@ export class LoginComponent implements OnInit {
   userIcon = Icons.userIcon;
   passwordIcon = Icons.passwordIcon;
 
+  userGoogle = faUserCheck;
+
   /*, @Inject(LOCALE_ID) public locale: string*/
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthServices) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private authService: AuthServices,
+    private socialAuthServ:AuthService
+  ) { }
 
   ngOnInit() {
     // console.log('Locale: ', this.locale);
@@ -66,5 +77,19 @@ export class LoginComponent implements OnInit {
         }
       }, err => console.log('Error: ', err));
   }
-  
+  user;
+
+  signInGoogle(platform){
+    platform = GoogleLoginProvider.PROVIDER_ID;
+
+    this.socialAuthServ.signIn(platform).then((res)=>{
+      this.user = res;
+      if(this.user != null){
+        this.router.navigate(['admin'])
+      }
+    });
+
+    
+  }
+
 }

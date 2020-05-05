@@ -58,12 +58,23 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { EditUserComponent } from './components/user/edit-user/edit-user.component';
 import { SiteComponent } from './components/site/site.component';
+import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from 'angularx-social-login'
 
 
 
 export function getToken() {
   return localStorage.getItem('token');
 }
+
+const google_oauth_client_id: string = "123756252178-4vehq8tadnfvm7kigh1rfarqi322qgg7.apps.googleusercontent.com";
+
+let config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider(google_oauth_client_id)
+  }
+])
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -102,7 +113,7 @@ export function getToken() {
 
   ],
 
-  entryComponents: [EditEnginsComponent,EditConducteurComponent,EditVehiculeComponent,EditUserComponent],
+  entryComponents: [EditEnginsComponent, EditConducteurComponent, EditVehiculeComponent, EditUserComponent],
 
   imports: [
     BrowserModule,
@@ -117,6 +128,7 @@ export function getToken() {
     FontAwesomeModule,
     ChartsModule,
     NgxPrintModule,
+    SocialLoginModule.initialize(config),
     JwtModule.forRoot({
       config: {
         tokenGetter: getToken,

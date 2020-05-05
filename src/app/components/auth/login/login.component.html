@@ -190,13 +190,34 @@
 									<a href="#" class="kt-link kt-login__link-forgot">
 
 									</a>
-									<div class="form-row justify-content-center">
-										<button type="submit" [disabled]="!loginForm.valid" id="kt_login_signin_submit"
+									<div class="row">
+										<div class="col-6">
+											<button type="submit" [disabled]="!loginForm.valid" id="kt_login_signin_submit"
 											style="background: rgb(0,110,130);border-color: rgb(0,110,130);"
 											class="btn btn-primary btn-elevate kt-login__btn-primary">Se
 											connecter</button>
+										</div>
+										
+											<div class="col-6">
+												<button class="btn btn-primary btn-elevate kt-login__btn-primary" type="button" (click)="signInGoogle('Google')" style="background: rgb(231, 49, 49);border-color: rgb(231, 49, 49);">
+													<fa-icon [icon]="userGoogle" class="mr-1"></fa-icon>Se connecter avec Google
+											</button>
+											</div>
+											
 									</div>
 								</div>
+
+								<!-- <div class="kt-login__actions">
+									<a href="#" class="kt-link kt-login__link-forgot">
+
+									</a>
+									<div class="form-row justify-content-center">
+										<button type="button"  id="kt_login_signin_submit"
+											style="background: rgb(0,110,130);border-color: rgb(0,110,130);"
+											class="btn btn-primary btn-elevate kt-login__btn-primary" (click)="signInGoogle('Google')"><i class="fab fa-google-plus-g"></i>Se
+											connecter avec google</button>
+									</div>
+								</div> -->
 
 								<!--end::Action-->
 							</form>

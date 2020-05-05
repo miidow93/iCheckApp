@@ -4,7 +4,7 @@ import { MatTableDataSource, MatPaginator, DateAdapter, MAT_DATE_LOCALE, MAT_DAT
 import { DataService } from 'src/app/shared/services/data.service';
 import { FormControl } from '@angular/forms';
 import * as moment from 'moment';
-import { faFilter, faSyncAlt, faBan, faCircle } from '@fortawesome/free-solid-svg-icons';
+import { faFilter, faSyncAlt, faBan, faCircle  } from '@fortawesome/free-solid-svg-icons';
 import { ExcelService } from 'src/app/core/services/excel/excel.service';
 import { saveAs } from 'file-saver/';
 import { ToastController, Platform } from '@ionic/angular';
