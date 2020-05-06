@@ -66,7 +66,7 @@ export function getToken() {
   return localStorage.getItem('token');
 }
 
-const google_oauth_client_id: string = "123756252178-4vehq8tadnfvm7kigh1rfarqi322qgg7.apps.googleusercontent.com";
+const google_oauth_client_id: string = "123756252178-03g50os3216gu0mkest35mpfbs8ggl9p.apps.googleusercontent.com";
 
 let config = new AuthServiceConfig([
   {
