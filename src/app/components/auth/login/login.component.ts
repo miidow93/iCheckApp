@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
       this.listUser = res
       console.log('liste user : ', this.listUser)
     })
-  }
+  } 
 
 
 
